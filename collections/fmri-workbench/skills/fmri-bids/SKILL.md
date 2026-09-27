@@ -39,6 +39,11 @@ cannot establish the user's hypothesis or contrast direction. Negative onsets
 and zero-duration events are not inherently invalid. Do not shift onsets merely
 because metadata records volumes discarded before the stored image.
 
+For onboarding, use [events to candidate designs](references/events-to-design.md)
+to identify factors, modulators, phases and candidate contrasts from those files.
+Return evidence-backed proposals and remaining questions; proposing a design
+does not require fitting a model or inventing the study's primary hypothesis.
+
 ## Match by meaning, not order
 
 Use full acquisition keys and explicit projection rules for event/confound joins.

@@ -1,8 +1,11 @@
 # First-level to GDS bridge
 
-Do not assume a direct converter between fmrireg's group_data object and fmrigds.
-Use explicit arrays/tables or documented image/HDF5 adapters. Validate one source,
-then one subject/contrast, before fan-out. Retain sample/subject/contrast identity.
+For fmrireg NIfTI outputs, follow the [tested NIfTI handoff](nifti-handoff.md):
+separate beta/SE files, JSON contrast order, explicit subject pairing and verified
+grid/coverage masks. Use `gds(nifti_source(...), format="nifti", mask=...)`.
+Validate one source, then one subject/contrast, before fan-out. Retain
+sample/subject/contrast identity. Other arrays/tables and documented image/HDF5
+adapters remain available; do not assume a converter from `collect_results()`.
 
 For a modest ROI example, convert a verified fmrireg contrast reducer table to:
 
@@ -34,9 +37,7 @@ Do not compute a multi-condition contrast variance by summing coefficient
 variances while ignoring covariance. Repeated contrast/session inputs need their
 within-person statistical dependence represented or reduced with justification.
 
-Native fmrigds adapters ingest NIfTI, HDF5/fmristore and tabular inputs. Determine
-the installed file/assay mapping contract with help/probe and serialize it in the
-analysis. This workbench supplies a semantic contract, not a universal image
-adapter. Keep fmrireg and fmrigds loosely coupled and use public extension points
-for any additional adapter. Return a manifest of effects, uncertainties, spatial
-identity, scientific meaning and provenance, not a directory of unlabeled t maps.
+Native fmrigds adapters ingest NIfTI, HDF5/fmristore and tabular inputs. Verify the
+selected adapter's file/assay mapping and serialize it in the analysis. The NIfTI
+recipe is one concrete route, not a universal image adapter. Return a manifest of
+effects, uncertainties, spatial identity, scientific meaning and provenance.

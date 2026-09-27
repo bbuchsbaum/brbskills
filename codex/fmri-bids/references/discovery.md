@@ -42,6 +42,10 @@ Summarize schema, event counts/levels per run, durations, timing ranges, missing
 values and variable distributions. Trial_type is optional in BIDS; user-specified
 models may use other columns. Resolve participants/session covariates and missingness
 only for requested group analyses. Event units and semantics need protocol evidence.
+For an open analysis question, turn this evidence into a short
+[candidate-design brief](events-to-design.md): column roles, task phases,
+runwise cell/modulator coverage, plausible contrasts and unresolved meanings.
+The initial inventory script does not perform this interpretation.
 
 Inventory all confound columns and JSON descriptions before selecting a set.
 Read only selected confounds with bidser's public helpers after the plan is chosen;

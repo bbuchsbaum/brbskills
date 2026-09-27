@@ -99,6 +99,20 @@
       "criteria": "Writes the requested note without invoking any fMRI skill or importing analysis workflow.",
       "intended_skill": null,
       "execution_status": "not_run"
+    },
+    {
+      "id": "nifti-group-handoff",
+      "prompt": "I have fmrireg fits for 20 independent subjects with two signed contrasts. I want NIfTI outputs for fmrigds. Some subject masks differ, and real effects can be zero. Show the export/import plan and checks; do not run or choose a group model for me.",
+      "criteria": "Uses public write_results by_stat with contrast beta and SE, exact selectors and returned paths; verifies ContrastOrder for both files and all subjects; pairs by keys before supplying explicit subjects; checks every grid/affine and coverage masks, preserving real zeros and explicit missingness; does not treat by_contrast statistic volumes or raw regressor betas as contrast maps; distinguishes SE from variance and preserves independent subject units; keeps group model choice explicit.",
+      "intended_skill": "fmrireg",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "events-to-design",
+      "prompt": "Onboard a hypothetical task from these permitted summaries. The events dictionary documents phase=stimulus/response, condition=A/B, trial_id linking phases, outcome=success/failure for response rows, and rating=1..4 (ordinal). All subjects have both conditions, but four subjects have no failures and rating is missing for nonresponses. Propose likely designs of interest and the remaining scientific questions. No primary hypothesis has been selected; do not execute anything.",
+      "criteria": "Uses events and dictionary to distinguish phase, experimental factor, join key, observed outcome and ordinal measure. Proposes a short supported set of candidate designs with distinct estimands without assuming a cognitive domain, primary contrast, or required outcome-based analysis. Notes verified trial joins, missing outcome cells, missing ratings versus zero, and that ordinal ratings need not be linear. Preserves within-person identity and measurement timing, requests only material unresolved choices, and distinguishes event-table feasibility from realized HRF/design estimability. Does not inspect activation or fit BOLD to pick a design.",
+      "intended_skill": "fmri",
+      "execution_status": "not_run"
     }
   ]
 }

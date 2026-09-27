@@ -35,8 +35,9 @@ For a small tabular bridge, use fmrigds columns
 `sample,subject,contrast,beta,var`; retain a sidecar identifying sample order and
 spatial semantics. Voxel index "17" is not a portable anatomical coordinate.
 Use native image/HDF5 adapters for large data, verify their installed input
-contract, and test one source block before cohort ingestion. No built-in direct
-fmrireg-to-fmrigds converter is assumed by this skill.
+contract, and test one source block before cohort ingestion. The
+[NIfTI handoff](nifti-handoff.md) gives a verified public-API route with separate
+contrast beta/SE files; record the volume index as well as each contrast's path.
 
 ## Group handoff
 

@@ -1,0 +1,88 @@
+{
+  "reviewed": "2026-09-27",
+  "scope": "Synthetic first-level contrast NIfTI export, fmrigds import and group arithmetic; no study data",
+  "upstream": {
+    "fmrireg": {
+      "branch": "master",
+      "commit": "8aca5ba50380840d7537f8397ab05f7f2e81a934",
+      "version": "0.3.0"
+    },
+    "fmrigds": {
+      "branch": "main",
+      "commit": "829139e4bbc3dadbda13710e0bfcccad2aa6a1a4",
+      "version": "0.1.0.9000"
+    },
+    "fmridesign": {
+      "branch": "main",
+      "commit": "cfd0c309aa29ff6302e276dfc0584f5f60b6bd78",
+      "version": "0.6.1.9000"
+    }
+  },
+  "environment": {
+    "R": "4.5.1",
+    "platform": "aarch64-apple-darwin20",
+    "installation": "Three pinned packages compiled/installed into an isolated local library; other dependencies from existing library",
+    "dependencies": {
+      "fmriAR": "0.3.3 at ca27f2772bb4675573fae717a992c993c2f986c8",
+      "fmridataset": "0.11.0.9000 at 0e0cb4db0e2f481cc43ffbd601b09ad9cbfaead5",
+      "fmrihrf": "0.4.0 at 71cd64c44c31d13c6f7650aac6cbc9f7a6f5e7a3",
+      "neuroim2": "0.19.0.9000",
+      "RNifti": "1.10.0"
+    }
+  },
+  "probe": {
+    "script": "skills/fmrireg/scripts/smoke_nifti_handoff.R",
+    "sha256": "e6bd97a55385913388e8d1f452406ef3640bd49526bf0dff876243c9f9bbff73",
+    "status": "passed",
+    "exit_code": 0,
+    "subjects": 3,
+    "runs_per_subject": 2,
+    "contrasts": 2,
+    "in_mask_voxels": 5,
+    "grid": [
+      3,
+      3,
+      2
+    ],
+    "checks": [
+      "FLOAT32 beta/SE maps match fitted contrasts",
+      "Sparse spatial positions and outside-mask zeros",
+      "Header dimensions and affine retained",
+      "Explicit unsorted subject IDs and JSON contrast order preserved",
+      "Distinct SEs across contrasts; intentionally swapped SE volumes rejected by value comparison",
+      "Fixed-pooling effect and SE agree with independent inverse-variance arithmetic",
+      "Group OLS mean and SE agree with independent mean/sd/sqrt(n)",
+      "Group OLS contributing N and residual df",
+      "Derived coverage fixture: real zero retained, NA omitted with samplewise N"
+    ],
+    "expected_warning": "The partial-coverage fixture reports one sample with non-finite subjects.",
+    "contrast_names": [
+      "A_minus_B",
+      "A_vs_baseline"
+    ]
+  },
+  "api_findings": [
+    "by_stat fourth axis indexes contrasts; by_contrast fourth axis indexes statistics",
+    "nifti_source accepts SE; reducers derive variance as SE squared",
+    "Explicit subjects bypass filename pairing checks",
+    "NIfTI importer does not compare all input affines",
+    "Default import mask covers all grid voxels",
+    "fmrigds main at this pin lacks zero_is_missing and group threshold pools subject and contrast axes",
+    "fmrireg format=gds packages regressor-level assays at this pin"
+  ],
+  "limits": [
+    "Not a full R package test suite or R CMD check",
+    "Not a complete dependency lock or installed cluster verification",
+    "No real-data registration, noise calibration, group inference qualification or behavioral Codex/Claude evaluation"
+  ],
+  "local_evidence": "Git-ignored .local/fmrireg-corpus/2026-09-27-trillium/mining/group-probe/{install-results.json,probe-5.log,probe-result-5.json,run-5/session-info.txt}",
+  "review": "Independent statistical/API review found a symmetric-SE fixture weakness; replaced opposite contrasts with non-symmetric contrasts and verified deliberate SE swap detection.",
+  "bundle_checks": {
+    "repository_tests": 23,
+    "collection_tests": 42,
+    "sync": "passed",
+    "check": "passed",
+    "bundle_audit": "passed",
+    "diff_check": "passed"
+  }
+}

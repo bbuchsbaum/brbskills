@@ -20,6 +20,9 @@ and [inference decisions](references/inference.md). Check [installed capabilitie
 Verify subject identity/order, independent units, repeated sessions/conditions,
 spatial alignment, contrast semantics and units, masks, missingness, covariates,
 and the meaning of available assays. Follow the [handoff bridge](references/handoff.md).
+For subject NIfTI beta/SE maps use the [NIfTI recipe](references/nifti-handoff.md),
+including explicit contrast order and coverage masks; import success does not
+verify every image's affine.
 An SE is not a variance; a z/p map cannot uniquely supply an effect and its
 sampling variance. Effects without uncertainty can support a suitable unweighted
 group model; do not invent unit variance for precision weighting. Repeated runs

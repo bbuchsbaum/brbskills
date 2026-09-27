@@ -8,6 +8,10 @@ availability; QC warnings; and an evidence-linked proposed analysis. Report
 ranges rather than hundreds of subject rows. Each material claim is observed,
 inferred (with confidence and evidence), proposed, or unresolved. A plausible
 interpretation is not a confirmed scientific fact.
+For an unspecified task model, first prepare the
+[event-informed candidate designs](events-to-design.md). Ask the user to resolve
+the consequential differences between supported options, rather than asking them
+to describe columns and conditions the files already establish.
 
 Ask for the user's question/contrast only when absent. Offer the interaction
 choice once: "Brief recommendations, a standard plan review, or explanations of

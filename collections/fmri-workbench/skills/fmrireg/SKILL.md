@@ -19,7 +19,16 @@ and reuse prior decisions. Verify the installed [API](references/api.md) and
 [capabilities](references/capabilities.md). Ask only unresolved first-level
 scientific questions; do not interview about group covariates or report atlases.
 
+When adapting an existing script or joining bidser inputs to a manual model, use
+[existing analysis patterns](references/existing-analyses.md). Preserve the
+estimand and downstream outputs; verify historical workarounds against the
+selected package versions before retaining them.
+
 ## Specify an estimable model
+
+When the intended model is still open, inspect the event tables and use
+[events to candidate designs](references/events-to-design.md) to propose supported
+questions and contrasts before choosing a formula.
 
 Record the event meaning and timing origin, duration/amplitude handling, HRF and
 basis interpretation, contrast sign/weights, run structure, scaling, nuisance,
@@ -31,7 +40,7 @@ small design/timing sample. Treat a missing condition as unavailable, not zero.
 Do not silently delete nuisance columns, change contrasts, or simplify a
 preregistered model to make a fit run.
 
-Use the public frame/design interfaces and `fmri_lm()`. For repeated fits use
+Use the public frame/design interfaces and `fmri_lm()`. For new repeated-fit workflows prefer
 `fmri_template()` + explicit bindings + `instantiate()` + `preflight()`; read
 [batch and export](references/batch-and-export.md). The `from_bids()` shortcut
 requires a separately certified unambiguous dataset; its reviewed implementation
@@ -56,7 +65,11 @@ Export unthresholded contrast estimates plus SE/variance and needed statistics/
 df; carry coefficient order, contrast weights, masks/space, units, temporal-noise
 settings, and complete provenance. See [artifact contracts](references/artifact-contracts.md).
 For group-ready results retain within-person covariance when required. Do not
-average t/z maps as if they were effect estimates. Group inference is optional;
+average t/z maps as if they were effect estimates. For NIfTI inputs to fmrigds,
+follow the [subject-to-group recipe](references/nifti-handoff.md): separate contrast
+beta/SE files, explicit contrast order, verified grids and coverage masks.
+`scripts/smoke_nifti_handoff.R` checks this route on synthetic data when both
+packages are available. Group inference is optional;
 a first-level request ends with first-level outputs and QC.
 
 Apply explicitly confirmed, applicable preferences, but never infer that examples

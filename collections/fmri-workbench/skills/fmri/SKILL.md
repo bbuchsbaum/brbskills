@@ -24,6 +24,10 @@ Discover which requested stages already have valid inputs. For datasets, use
 but these four packages do not implement a preprocessing pipeline. Explain and
 record the preprocessing handoff rather than fitting raw BOLD.
 
+When the question is open, use [events to candidate designs](references/events-to-design.md)
+to infer plausible models from event tables and task documentation. Present a few
+supported candidates and their unresolved meanings before the interview.
+
 Present a compact **observed / proposed / needs your decision** summary. Resolve
 the scientific question, estimand, meaningful condition labels, cohort, and
 material ambiguities. Use the [adaptive interview](references/interview.md).

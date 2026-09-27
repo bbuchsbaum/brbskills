@@ -54,3 +54,8 @@ The workbench's group target is **fmrigds**, so perform an explicit documented
 handoff rather than assuming collect_results returns a GDS. A small table bridge
 uses sample/subject/contrast/beta/var; large image/HDF5 routes use validated native
 adapters. Preserve covariance and spatial semantics, not just filenames.
+
+For the concrete NIfTI route, use the [subject-to-group recipe](nifti-handoff.md).
+It covers `write_results(..., strategy="by_stat", contrast_stats=c("beta","se"))`,
+the returned beta/SE paths and JSON contrast order, coverage masks and fmrigds
+`nifti_source()`. The default reducer statistics omit SE; request it explicitly.
