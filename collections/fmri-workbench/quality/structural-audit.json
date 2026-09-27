@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "errors": [],
+  "skills": [
+    {
+      "skill": "fmri",
+      "skill_lines": 65,
+      "body_words": 414,
+      "description_characters": 209
+    },
+    {
+      "skill": "fmri-bids",
+      "skill_lines": 65,
+      "body_words": 424,
+      "description_characters": 216
+    },
+    {
+      "skill": "fmrigds",
+      "skill_lines": 63,
+      "body_words": 383,
+      "description_characters": 225
+    },
+    {
+      "skill": "fmrireg",
+      "skill_lines": 65,
+      "body_words": 424,
+      "description_characters": 216
+    },
+    {
+      "skill": "neuromosaic",
+      "skill_lines": 64,
+      "body_words": 410,
+      "description_characters": 221
+    }
+  ],
+  "total_description_characters": 1087,
+  "note": "Words/characters are measured; no token count or provider latency benchmark is claimed."
+}

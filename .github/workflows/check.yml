@@ -1,0 +1,37 @@
+name: Check skills
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python scripts/skills.py check
+      - run: python -m unittest discover -s tests -v
+      - name: Test each skill offline
+        run: |
+          for suite in skills/*/tests/test_*.py; do
+            python "$suite"
+          done
+      - name: Check fMRI Workbench collection
+        run: |
+          python collections/fmri-workbench/tools/audit_bundle.py
+          python -m unittest discover -s collections/fmri-workbench/tests -v
+      - name: Check shell helpers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+          shellcheck skills/alliance-hpc/scripts/*.sh skills/alliance-hpc/templates/*.sbatch
+      - run: python scripts/skills.py package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: individual-skill-downloads
+          path: dist/*.zip

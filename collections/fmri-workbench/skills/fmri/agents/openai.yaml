@@ -1,0 +1,6 @@
+interface:
+  display_name: "fMRI workbench"
+  short_description: "Coordinate a traceable fMRI analysis"
+  default_prompt: "Use $fmri for the requested scope; inspect existing inputs and decisions before asking questions."
+policy:
+  allow_implicit_invocation: true

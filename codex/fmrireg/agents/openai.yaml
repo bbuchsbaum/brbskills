@@ -1,0 +1,6 @@
+interface:
+  display_name: "fmrireg"
+  short_description: "Model and diagnose first-level fMRI"
+  default_prompt: "Use $fmrireg for the requested scope; inspect existing inputs and decisions before asking questions."
+policy:
+  allow_implicit_invocation: true

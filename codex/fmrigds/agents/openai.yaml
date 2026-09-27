@@ -1,0 +1,6 @@
+interface:
+  display_name: "fmrigds"
+  short_description: "Plan and validate group fMRI inference"
+  default_prompt: "Use $fmrigds for the requested scope; inspect existing inputs and decisions before asking questions."
+policy:
+  allow_implicit_invocation: true

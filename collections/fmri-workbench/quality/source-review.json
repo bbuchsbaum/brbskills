@@ -1,0 +1,143 @@
+{
+  "reviewed": "2026-09-27",
+  "method": "Connected GitHub source and documentation reads",
+  "important": "Blob hashes identify file content, not a tested package commit or an installation lock. Branch URLs are mutable. Installed capability probing and a real package lock are required.",
+  "files": [
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "README.md",
+      "blob_sha": "b9b085e0c18646c8879677c83af595bea3b5d1c4",
+      "finding": "Preprocessed-data boundary",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/README.md"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "R/from_bids.R",
+      "blob_sha": "e06efa1b0f0709bd3df3e8858fcb1eb95a40128d",
+      "finding": "Run-only sorting, first TR, common mask; explicit binding escape hatch",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/R/from_bids.R"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "man/from_bids.Rd",
+      "blob_sha": "ee4d27a5ffa5adff6d9bab0395eff3c0d9cfb7d4",
+      "finding": "Convenience importer public contract",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/man/from_bids.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "vignettes/multisubject_fanout.Rmd",
+      "blob_sha": "70060b64bb9fc96bf02459e6a2804dfb367df99b",
+      "finding": "Templates, preflight, jobs, future and exports",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/vignettes/multisubject_fanout.Rmd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "man/fmri_template.Rd",
+      "blob_sha": "476a39637cabafd9599c0a602f54a43514584db1",
+      "finding": "Template signature and default runwise_meta",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/man/fmri_template.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "man/fmri_lm_control.Rd",
+      "blob_sha": "ff699d403b19d533339e91440f7f02a675daf45b",
+      "finding": "Typed statistical configuration",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/man/fmri_lm_control.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "man/baseline_spec.Rd",
+      "blob_sha": "0342c8f0a0edcbdf5b59bce3f0a9b192c6764643",
+      "finding": "Baseline/drift public interface",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/man/baseline_spec.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "man/estimation_spec.Rd",
+      "blob_sha": "73cc946f95c61383bc796b68f446dab10ba975e8",
+      "finding": "Joint versus runwise fitting",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/man/estimation_spec.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "man/noise_spec.Rd",
+      "blob_sha": "1302498cdf962b6513c749177c95d4ab1c9bf9e0",
+      "finding": "Censor is AR-estimation/whitening only; engine restrictions",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/man/noise_spec.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrireg",
+      "branch": "master",
+      "path": "vignettes/fmrireg.Rmd",
+      "blob_sha": "3eae1812cd930a5ec83f3ca3a1572e9ad218f33c",
+      "finding": "Current frames, event/baseline model and fitting",
+      "url": "https://github.com/bbuchsbaum/fmrireg/blob/master/vignettes/fmrireg.Rmd"
+    },
+    {
+      "repository": "bbuchsbaum/bidser",
+      "branch": "master",
+      "path": "README.md",
+      "blob_sha": "f84ea430162a8b23306f218f71782dc2dd5cd666",
+      "finding": "Discovery and public confound sets",
+      "url": "https://github.com/bbuchsbaum/bidser/blob/master/README.md"
+    },
+    {
+      "repository": "bbuchsbaum/bidser",
+      "branch": "master",
+      "path": "man/get_metadata.Rd",
+      "blob_sha": "b83675fc79a8ec355e94023ec9bbcb294612a630",
+      "finding": "Inherited metadata with provenance",
+      "url": "https://github.com/bbuchsbaum/bidser/blob/master/man/get_metadata.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/bidser",
+      "branch": "master",
+      "path": "man/read_confounds.Rd",
+      "blob_sha": "70c2cac072e64c3ce164bbc42fa3c9da51725867",
+      "finding": "Confound return shape and cleaning defaults",
+      "url": "https://github.com/bbuchsbaum/bidser/blob/master/man/read_confounds.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/bidser",
+      "branch": "master",
+      "path": "man/query_files.Rd",
+      "blob_sha": "02810f7a4f8ebfb07d78dd1d7edf5a5ec8bd877c",
+      "finding": "Exact queries, scopes, refresh and entity tables",
+      "url": "https://github.com/bbuchsbaum/bidser/blob/master/man/query_files.Rd"
+    },
+    {
+      "repository": "bbuchsbaum/fmrigds",
+      "branch": "main",
+      "path": "README.md",
+      "blob_sha": "da74601ed2a70afe83b4d58f6ccfa1c7487ac433",
+      "finding": "Lazy group grammar, reducers, LMM scope, examination",
+      "url": "https://github.com/bbuchsbaum/fmrigds/blob/main/README.md"
+    },
+    {
+      "repository": "bbuchsbaum/fmrigds",
+      "branch": "main",
+      "path": "vignettes/fmrigds.Rmd",
+      "blob_sha": "c5a08949a1613875ca4bf033a5cf59856c8e34c4",
+      "finding": "Assay semantics and table handoff; effects versus evidence",
+      "url": "https://github.com/bbuchsbaum/fmrigds/blob/main/vignettes/fmrigds.Rmd"
+    },
+    {
+      "repository": "bbuchsbaum/neuromosaic",
+      "branch": "main",
+      "path": "README.md",
+      "blob_sha": "81f2dcd2e1744e4845cb481f4ffdbe93d6eaa1dc",
+      "finding": "Map manifest, CLI, rendering and recoverable interactive voxels",
+      "url": "https://github.com/bbuchsbaum/neuromosaic/blob/main/README.md"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+test_ambiguous_specificity (test_workbench.WorkbenchTests.test_ambiguous_specificity) ... ok
+test_approval_requires_consent (test_workbench.WorkbenchTests.test_approval_requires_consent) ... ok
+test_approval_requires_evidence (test_workbench.WorkbenchTests.test_approval_requires_evidence) ... ok
+test_bad_budget (test_workbench.WorkbenchTests.test_bad_budget) ... ok
+test_bundle_audit (test_workbench.WorkbenchTests.test_bundle_audit) ... ok
+test_changed_code_invalidates (test_workbench.WorkbenchTests.test_changed_code_invalidates) ... ok
+test_changed_plan_invalidates (test_workbench.WorkbenchTests.test_changed_plan_invalidates) ... ok
+test_conditional_scope (test_workbench.WorkbenchTests.test_conditional_scope) ... ok
+test_confound_rows (test_workbench.WorkbenchTests.test_confound_rows) ... ok
+test_current_over_profiles (test_workbench.WorkbenchTests.test_current_over_profiles) ... ok
+test_digest_ignores_approval_only (test_workbench.WorkbenchTests.test_digest_ignores_approval_only) ... ok
+test_duplicate_check (test_workbench.WorkbenchTests.test_duplicate_check) ... ok
+test_duplicate_echo (test_workbench.WorkbenchTests.test_duplicate_echo) ... ok
+test_empty_defaults (test_workbench.WorkbenchTests.test_empty_defaults) ... ok
+test_exact_bool_vs_integer (test_workbench.WorkbenchTests.test_exact_bool_vs_integer) ... ok
+test_full_needs_pilot (test_workbench.WorkbenchTests.test_full_needs_pilot) ... ok
+test_full_valid (test_workbench.WorkbenchTests.test_full_valid) ... ok
+test_install_no_overwrite (test_workbench.WorkbenchTests.test_install_no_overwrite) ... ok
+test_install_single_leaf (test_workbench.WorkbenchTests.test_install_single_leaf) ... ok
+test_install_unknown (test_workbench.WorkbenchTests.test_install_unknown) ... ok
+test_inventory_never_certifies (test_workbench.WorkbenchTests.test_inventory_never_certifies) ... ok
+test_inventory_requires_selection (test_workbench.WorkbenchTests.test_inventory_requires_selection) ... ok
+test_json_value_inert (test_workbench.WorkbenchTests.test_json_value_inert) ... ok
+test_lock_exclusion (test_workbench.WorkbenchTests.test_lock_exclusion) ... ok
+test_locked_conflict (test_workbench.WorkbenchTests.test_locked_conflict) ... ok
+test_material_unresolved (test_workbench.WorkbenchTests.test_material_unresolved) ... ok
+test_mixed_tr (test_workbench.WorkbenchTests.test_mixed_tr) ... ok
+test_most_specific (test_workbench.WorkbenchTests.test_most_specific) ... ok
+test_new_plan_blocked (test_workbench.WorkbenchTests.test_new_plan_blocked) ... ok
+test_new_plan_cli_no_overwrite (test_workbench.WorkbenchTests.test_new_plan_cli_no_overwrite) ... ok
+test_pilot_approval (test_workbench.WorkbenchTests.test_pilot_approval) ... ok
+test_plan_schema (test_workbench.WorkbenchTests.test_plan_schema) ... ok
+test_preference_consent (test_workbench.WorkbenchTests.test_preference_consent) ... ok
+test_preference_not_authorization (test_workbench.WorkbenchTests.test_preference_not_authorization) ... ok
+test_preference_schema (test_workbench.WorkbenchTests.test_preference_schema) ... ok
+test_profile_does_not_expose_labels (test_workbench.WorkbenchTests.test_profile_does_not_expose_labels) ... ok
+test_profile_malformed (test_workbench.WorkbenchTests.test_profile_malformed) ... ok
+test_profile_na (test_workbench.WorkbenchTests.test_profile_na) ... ok
+test_project_over_user (test_workbench.WorkbenchTests.test_project_over_user) ... ok
+test_remove (test_workbench.WorkbenchTests.test_remove) ... ok
+test_scope_mismatch (test_workbench.WorkbenchTests.test_scope_mismatch) ... ok
+test_sessions_repeat_run (test_workbench.WorkbenchTests.test_sessions_repeat_run) ... ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 1.916s
+
+OK

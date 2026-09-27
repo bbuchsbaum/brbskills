@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.Rproj.user/
+.fmri/
+analysis/
+evals/results/
+quality/runs/
+*.nii
+*.nii.gz
+*.h5
+*.rds

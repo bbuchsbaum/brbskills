@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "preferences": [
+    {
+      "key": "first_level.confounds",
+      "value": "motion24",
+      "when": {
+        "analysis": "task_glm",
+        "pipeline": "fmriprep"
+      },
+      "source": "explicit_user",
+      "confirmed_at": "2026-09-27T00:00:00Z",
+      "evidence": "FICTIONAL EXAMPLE ONLY: not consent from an actual user"
+    },
+    {
+      "key": "first_level.drift",
+      "value": {
+        "basis": "bs",
+        "degree": 3
+      },
+      "when": {
+        "analysis": "task_glm"
+      },
+      "source": "explicit_user",
+      "confirmed_at": "2026-09-27T00:00:00Z",
+      "evidence": "FICTIONAL EXAMPLE ONLY: parameters must still be inspected"
+    }
+  ],
+  "events": []
+}

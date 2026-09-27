@@ -1,0 +1,6 @@
+interface:
+  display_name: "fmri-bids"
+  short_description: "Discover and audit a BIDS fMRI dataset"
+  default_prompt: "Use $fmri-bids for the requested scope; inspect existing inputs and decisions before asking questions."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Alliance HPC"
+  short_description: "Plan and troubleshoot Alliance Slurm workloads"

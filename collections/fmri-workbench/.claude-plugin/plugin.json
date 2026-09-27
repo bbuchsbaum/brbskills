@@ -1,0 +1,15 @@
+{
+  "name": "fmri-workbench",
+  "version": "0.1.0",
+  "description": "Modular BIDS discovery, first-level fMRI modeling, group inference, and reporting with explicit scientific decisions.",
+  "author": {
+    "name": "fMRI Workbench contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "fmri",
+    "bids",
+    "neuroimaging",
+    "research"
+  ]
+}

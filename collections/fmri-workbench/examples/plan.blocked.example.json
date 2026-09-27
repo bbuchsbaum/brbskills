@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "illustrative-first-level",
+  "scope": [
+    "first_level"
+  ],
+  "stage_configs": {
+    "first_level": {}
+  },
+  "decisions": [
+    {
+      "key": "scientific_question",
+      "stage": "shared",
+      "value": null,
+      "status": "unresolved",
+      "material": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "data_boundary",
+      "stage": "first_level",
+      "status": "not_checked",
+      "blocking": true,
+      "evidence": ""
+    },
+    {
+      "id": "input_alignment",
+      "stage": "first_level",
+      "status": "not_checked",
+      "blocking": true,
+      "evidence": ""
+    },
+    {
+      "id": "native_preflight",
+      "stage": "first_level",
+      "status": "not_checked",
+      "blocking": true,
+      "evidence": ""
+    },
+    {
+      "id": "design_qc",
+      "stage": "first_level",
+      "status": "not_checked",
+      "blocking": true,
+      "evidence": ""
+    }
+  ],
+  "fingerprints": {},
+  "budget": {
+    "approved": false,
+    "cpu_hours": null,
+    "max_workers": 1,
+    "max_memory_gb": null
+  },
+  "data_policy": {
+    "model_visible": "unresolved",
+    "sharing": "none"
+  },
+  "approval": {}
+}
