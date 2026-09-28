@@ -16,7 +16,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 TARGETS = ("codex", "claude")
 NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
-IGNORED = {"__pycache__", ".DS_Store"}
+IGNORED = {"__pycache__", ".DS_Store", ".git", ".ruff_cache", ".pytest_cache"}
 
 
 def inventory(directory: Path) -> dict[str, bytes]:

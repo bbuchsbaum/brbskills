@@ -68,6 +68,21 @@ class RepositoryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Out of sync'):
             skills.check(self.root, self.catalog)
 
+    def test_repository_metadata_and_tool_caches_are_not_shipped(self):
+        excluded = ('.git', '.ruff_cache', '.pytest_cache')
+        for name in excluded:
+            directory = self.source / 'references' / name
+            directory.mkdir()
+            (directory / 'private-data').write_text('local metadata or cache')
+        skills.sync(self.root, self.catalog)
+        skills.package(self.root, self.catalog, ['example'], 'both')
+        for product in skills.TARGETS:
+            for name in excluded:
+                self.assertFalse((self.root / product / 'example' / 'references' / name).exists())
+            with zipfile.ZipFile(self.root / 'dist' / f'example-{product}.zip') as archive:
+                self.assertFalse(any(part in excluded for name in archive.namelist()
+                                     for part in Path(name).parts))
+
     def test_source_symlink_rejected(self):
         (self.source/'outside').symlink_to(self.root)
         with self.assertRaisesRegex(ValueError, 'Symlink'):
