@@ -25,6 +25,10 @@ checking overlap. Protect run-specific intercepts and drift boundaries.
 Record whether volumes are retained, masked/weighted, spike-modeled or actually
 trimmed. A motion summary threshold is an explicit analysis/exclusion policy,
 not an automatic diagnosis. No universal FD cutoff is imposed by this skill.
+Plot motion alongside event timing: run averages can hide peaks or task-related
+motion. Record motion units, any FD convention and derivative boundary treatment.
+Use the plot to assess confounding and QC, not to invent a censoring rule after
+seeing the effect maps.
 Freeze any participant/run exclusion rules before examining effects. Never exclude
 an individual simply because removing them increases a target statistic.
 

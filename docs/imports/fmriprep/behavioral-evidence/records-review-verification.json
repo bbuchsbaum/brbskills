@@ -1,0 +1,10 @@
+{
+  "overflow_receipt": {
+    "rejected": true,
+    "error": "non-finite JSON number"
+  },
+  "repeated_submission_token": {
+    "rejected": true,
+    "error": "duplicate submission token for target and owner"
+  }
+}

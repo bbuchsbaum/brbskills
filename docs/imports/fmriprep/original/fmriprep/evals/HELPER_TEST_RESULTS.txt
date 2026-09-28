@@ -1,0 +1,18 @@
+test_cli_json_and_failed_write_exit (test_probe_host.ProbeTests.test_cli_json_and_failed_write_exit) ... ok
+test_declared_compute_is_not_certification (test_probe_host.ProbeTests.test_declared_compute_is_not_certification) ... ok
+test_duplicate_rejected (test_probe_host.ProbeTests.test_duplicate_rejected) ... ok
+test_input_overlap_denied (test_probe_host.ProbeTests.test_input_overlap_denied) ... ok
+test_missing_path_is_observation (test_probe_host.ProbeTests.test_missing_path_is_observation) ... ok
+test_no_commands_by_default (test_probe_host.ProbeTests.test_no_commands_by_default) ... ok
+test_parse_space_path (test_probe_host.ProbeTests.test_parse_space_path) ... ok
+test_raw_write_role_denied (test_probe_host.ProbeTests.test_raw_write_role_denied) ... ok
+test_relative_rejected (test_probe_host.ProbeTests.test_relative_rejected) ... ok
+test_secret_environment_not_dumped (test_probe_host.ProbeTests.test_secret_environment_not_dumped) ... ok
+test_symlink_overlap_denied (test_probe_host.ProbeTests.test_symlink_overlap_denied) ... ok
+test_version_timeout_reported (test_probe_host.ProbeTests.test_version_timeout_reported) ... ok
+test_write_probe_leaves_directory_unchanged (test_probe_host.ProbeTests.test_write_probe_leaves_directory_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.005s
+
+OK

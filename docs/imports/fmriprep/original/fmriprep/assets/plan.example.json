@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "example_only": true,
+  "status": "draft",
+  "inputs": {
+    "bids_root": null,
+    "snapshot_identity": null,
+    "subjects": [],
+    "selection_manifest": null,
+    "validation_receipt": null
+  },
+  "software": {
+    "version": null,
+    "identity": null,
+    "identity_kind": null,
+    "verified_in_execution_context": false
+  },
+  "recipe": {
+    "output_spaces": [
+      "T1w",
+      "MNI152NLin2009cAsym:res-2"
+    ],
+    "surface_reconstruction": null,
+    "anatomical_reference": null,
+    "sdc_policy": null,
+    "stc_policy": "metadata_driven",
+    "nonsteady_state_policy": "automatic_unless_approved_override",
+    "quality": "full"
+  },
+  "decisions": [
+    {
+      "field": "output_spaces",
+      "source": "proposed_default",
+      "approved": false
+    }
+  ],
+  "expected_outputs_manifest": null,
+  "blockers": [
+    "Resolve dataset, software, decisions, execution profile, and authorization"
+  ],
+  "authorization": {
+    "prepare": false,
+    "probe": false,
+    "pilot": false,
+    "cohort": false,
+    "publish": false,
+    "cleanup": false
+  },
+  "approved_scientific_hash": null
+}

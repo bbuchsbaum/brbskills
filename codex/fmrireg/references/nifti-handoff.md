@@ -76,6 +76,10 @@ represent corresponding anatomy on the intended common grid, or pass through a
 documented, validated spatial transformation with an explicit uncertainty policy.
 SE/variance propagation through interpolation is not established by merely
 resampling an SE image like an effect image.
+Fitting preprocessed BOLD on the final common grid avoids a later SE-map
+interpolation step, but still requires registration and coverage QC. Review
+anatomical extraction, EPI-to-anatomical alignment and template alignment
+separately where applicable; affine normalization can leave local mismatch.
 
 Check **every** beta, SE and mask: first three dimensions, voxel-to-world affine,
 voxel sizes/units and spatial reference. Verify qform/sform consistency where
@@ -147,6 +151,11 @@ uncertainty. Genuine first-level SEs also allow an appropriate precision-aware
 random-effects meta-analysis via `reduce(plan, method="random")`. Fixed-effects
 precision pooling is not the default population model.
 
+Importing SE maps does not make equal-weight OLS precision weighted. For a small
+one-sample integration test, independently compare the group mean, between-person
+SE, t, contributing N and df against arithmetic on the imported effects. Keep
+this arithmetic check distinct from validation of the scientific model.
+
 Compute the chosen plan after model/cohort checks. Preserve actual N, df,
 uncertainty and diagnostics, and apply the declared multiplicity correction over
 the full search family. OLS returns names such as `coef:(Intercept)` and
@@ -169,3 +178,6 @@ A tiny synthetic fit/export/import/group arithmetic check accompanies the
 fmrireg skill. It checks this route with multiple subjects, contrasts and a sparse
 mask. It does not validate study registration, coverage choices, temporal-noise
 calibration, or a production group model. Re-run in the selected package environment.
+An actual one-run cohort handoff also leaves within-person run pooling and
+repeated-session handling untested; qualify those paths separately before
+claiming support from that execution.

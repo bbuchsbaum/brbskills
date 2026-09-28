@@ -21,8 +21,13 @@ Read the [operating contract](references/operating-contract.md) when creating or
 changing an analysis. Reuse approved state and preferences before asking anything.
 Discover which requested stages already have valid inputs. For datasets, use
 `fmri-bids` to inspect local BIDS metadata first. Raw-only data can be inventoried
-but these four packages do not implement a preprocessing pipeline. Explain and
-record the preprocessing handoff rather than fitting raw BOLD.
+but these four packages do not implement a preprocessing pipeline. If the
+independent `fmriprep` skill is installed and preprocessing is requested, use it
+for that stage and record its downstream handoff manifest as
+`fingerprints.preprocessing_handoff` (`path`, `sha256`) in `plan.json`; fit only
+runs it lists as QC-passed. Otherwise record the
+preprocessing handoff and missing capability; never fit raw BOLD or install a
+preprocessor implicitly. Do not assume fMRIPrep completion means analysis readiness.
 
 When the question is open, use [events to candidate designs](references/events-to-design.md)
 to infer plausible models from event tables and task documentation. Present a few

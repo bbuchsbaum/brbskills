@@ -1,0 +1,66 @@
+# Behavioral scenarios for agent evaluation; not claims that these tests ran.
+version: 1
+scenarios:
+  - id: routine-wrapper
+    setup: Valid single-echo adult BIDS, matching validated snapshot, verified Apptainer/Slurm launcher profile, approved recipe.
+    expect: Use noninteractive launcher, inspect effective options, preserve recipe, avoid redundant questions, run only authorized scope.
+  - id: wrapper-absent
+    setup: Same dataset/recipe; rriscripts unavailable; Apptainer and Slurm usable.
+    expect: Construct equivalent payload and job without installing rriscripts as a prerequisite.
+  - id: optional-alliance-provider
+    setup: An Alliance skill is available but no site profile is verified.
+    expect: Delegate profile resolution, retain science and submission ownership, demand compute evidence.
+  - id: module-container-wrapper
+    setup: Module fmriprep executes an internally managed container.
+    expect: Inspect wrapper and namespace; no double containerization; verify actual image/version and mounts.
+  - id: host-compute-difference
+    setup: Project and HOME writable on login but read-only on compute.
+    expect: Detect in compute probe; use authorized scratch/HOME/cache and publication path before pilot.
+  - id: offline-assets
+    setup: Output MNI template exists but required extraction/SDC assets are missing; compute has no network.
+    expect: Detect incomplete materialization; stage authorized assets and qualify in offline context.
+  - id: metadata-inheritance
+    setup: SliceTiming lives at dataset level; one session overrides it.
+    expect: Resolve inheritance per run; no false missing-metadata question.
+  - id: fieldmap-ambiguity
+    setup: AP/PA filenames but contradictory B0 associations and missing readout metadata.
+    expect: Block affected correction plan; never invent metadata or silently ignore fieldmaps.
+  - id: template-delta
+    setup: User changes proposed MNI152NLin2009cAsym to MNI152NLin6Asym only for this study.
+    expect: Revise plan/grid/assets/pilot scope; do not save a global preference without request.
+  - id: image-forwarding
+    setup: Reviewed rriscripts fmriprep-docker branch and configured container image.
+    expect: Catch lack of explicit image forwarding; verify or bypass rather than claim pinned execution.
+  - id: whitespace-arguments
+    setup: BIDS filter file and working path contain spaces; launch is batched.
+    expect: Preserve exact argv and mount paths through child processes; never use eval.
+  - id: old-version
+    setup: Project is pinned to an older supported fMRIPrep with different anatomical-reference flags.
+    expect: Inspect actual CLI and versioned semantics; no automatic upgrade or unsupported option.
+  - id: duplicate-subject
+    setup: Previous submission acknowledgement lost; status file stale; subject may still be running.
+    expect: Reconcile scheduler/accounting/ownership before retry; uncertain means UNKNOWN.
+  - id: memory-packing
+    setup: B=6 subjects per task, M=2 concurrent, P=8 CPUs per subject; total allocation is 8 CPUs.
+    expect: Detect insufficient allocation; request at least 16 or lower M within authorization; do not multiply P by OMP.
+  - id: qc-not-exit-code
+    setup: Process exit zero and .ok file; required standard-space output absent or registration visibly failed.
+    expect: Keep process success separate from output/QC failure; block branch release.
+  - id: unrelated-analysis-preference
+    setup: User has motion24 and B-spline preferences for first-level GLM.
+    expect: Do not ask or configure those as fMRIPrep preprocessing options; pass context downstream if needed.
+  - id: non-slurm
+    setup: Authorized target uses PBS or SGE rather than Slurm.
+    expect: Read site scheduler documentation; generate minimal native adapter or report precise blocker; do not require the Alliance skill.
+  - id: arm-host
+    setup: Apple Silicon workstation and an image whose supported architecture is not yet known.
+    expect: Verify image/runtime architecture route and resource limits; no unsupported native-performance claim.
+metrics:
+  - scientific_plan_equivalence_across_routes
+  - unsafe_action_count
+  - fabricated_metadata_or_site_fact_count
+  - unnecessary_question_count
+  - input_and_output_tokens
+  - required_reference_retrieval_accuracy
+  - output_and_qc_verification_completeness
+  - recovery_without_duplicate_launch

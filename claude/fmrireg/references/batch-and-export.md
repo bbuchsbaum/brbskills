@@ -44,10 +44,24 @@ accessible file paths, masks and output permissions. A serialized job does not
 make paths portable. Keep scheduler flags outside the model and respect site
 policies. Do not introduce a mandatory daemon, cloud service or job-graph system.
 
+Before fan-out, exercise the selected fit, writer, importer and group calculation
+in the deployed environment when that handoff is in scope. Package loading alone
+does not exercise optional export dependencies. Check dependency minimum versions,
+not just presence; isolate build/runtime repairs from the user's configuration.
+Recheck historical wrapper workarounds against the deployed revision before
+carrying them forward. Size worker counts from measured peak memory and runtime
+on representative data; more workers can substantially increase memory use.
+
 Resume using input/code/environment hashes and per-unit receipts. Stage temporary
 outputs and retain failed attempts. Compare actual successes to the approved
 cohort; assess whether failures change representativeness or estimability before
 group analysis. Never silently discard failed subjects.
+
+Tie preprocessing QC to the exact input attempt (for example, its result-manifest
+hash) before fitting. Keep spatial review separate from solver checks: successful
+execution does not establish alignment, and a GLS check conditional on fitted
+AR parameters does not establish temporal-noise calibration. Save the realized
+design columns, rank/conditioning and numeric contrast weights with each result.
 
 The reviewed fmrireg convenience group path is collect_results -> fmri_meta.
 The workbench's group target is **fmrigds**, so perform an explicit documented

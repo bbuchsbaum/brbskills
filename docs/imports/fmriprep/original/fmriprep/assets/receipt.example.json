@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "example_only": true,
+  "scientific_hash": null,
+  "execution_hash": null,
+  "attempt_id": null,
+  "submission": {
+    "status": "not_submitted",
+    "job_id": null,
+    "timestamp": null
+  },
+  "observed_software": null,
+  "exact_argv": [],
+  "environment_allowlist": {},
+  "script_identity": null,
+  "process": {
+    "status": "not_started",
+    "exit_code": null
+  },
+  "outputs": {
+    "status": "not_checked",
+    "manifest": null
+  },
+  "qc": {
+    "status": "not_reviewed",
+    "reviewer": null,
+    "flags": []
+  },
+  "publication": {
+    "status": "not_published",
+    "manifest": null
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "kind": "execution",
+  "example_only": true,
+  "content_id": null,
+  "content": {
+    "scientific_id": null,
+    "target": {
+      "site": null,
+      "node_pool": null,
+      "architecture": null
+    },
+    "provisioning": {
+      "kind": null,
+      "identity": null,
+      "setup_commands": []
+    },
+    "runtime": {
+      "kind": null,
+      "entrypoint": null,
+      "identity": null
+    },
+    "scheduler": {
+      "kind": null,
+      "account": null,
+      "queue": null,
+      "submit_owner": null
+    },
+    "resources": {
+      "subjects_per_task": 1,
+      "parallel_subjects": 1,
+      "nprocs_per_subject": null,
+      "omp_threads": null,
+      "mem_mb_per_subject": null,
+      "allocation_cpus": null,
+      "allocation_mem_mb": null,
+      "walltime": null,
+      "array_concurrency": null
+    },
+    "paths": [
+      {
+        "role": "bids",
+        "host": null,
+        "application": "/data",
+        "access": "ro"
+      },
+      {
+        "role": "output",
+        "host": null,
+        "application": "/out",
+        "access": "rw"
+      },
+      {
+        "role": "work",
+        "host": null,
+        "application": "/work",
+        "access": "rw"
+      },
+      {
+        "role": "license",
+        "host": null,
+        "application": "/opt/freesurfer/license.txt",
+        "access": "ro"
+      },
+      {
+        "role": "templateflow",
+        "host": null,
+        "application": "/templateflow",
+        "access": "unresolved"
+      }
+    ],
+    "payload": {
+      "argv": [],
+      "env": {},
+      "cwd": null
+    },
+    "assets": {
+      "manifest": {
+        "$file": "inputs/assets.json",
+        "sha256": null
+      }
+    },
+    "network": {
+      "compute_network_available": null,
+      "telemetry": "disabled",
+      "external_data_transfer_authorized": false
+    },
+    "storage": {
+      "retained_work": null,
+      "publication_destination": null,
+      "publication_procedure": null
+    },
+    "scripts": [
+      {
+        "$file": "attempts/example/job.sh",
+        "sha256": null
+      }
+    ]
+  },
+  "evidence": [],
+  "qualification": {
+    "status": "not_assessed",
+    "pilot_receipts": []
+  },
+  "blockers": [
+    "Illustration only: not launchable."
+  ]
+}

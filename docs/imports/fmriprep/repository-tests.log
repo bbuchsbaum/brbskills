@@ -1,0 +1,29 @@
+test_both_extracted_products_run_helpers_without_sibling_skills (test_fmriprep_packaging.FmriprepPackagingTests.test_both_extracted_products_run_helpers_without_sibling_skills) ... ok
+test_default_run_leaves_all_bundle_files_unchanged (test_lme4_packaging.Lme4PackagingTests.test_default_run_leaves_all_bundle_files_unchanged) ... ok
+test_explicit_receipt_is_written_outside_bundle (test_lme4_packaging.Lme4PackagingTests.test_explicit_receipt_is_written_outside_bundle) ... ok
+test_invalid_source_date_is_rejected (test_lme4_packaging.Lme4PackagingTests.test_invalid_source_date_is_rejected) ... ok
+test_source_dates_preserve_independent_review_dates (test_lme4_packaging.Lme4PackagingTests.test_source_dates_preserve_independent_review_dates) ... ok
+test_both_products_share_workflow_and_references (test_repository.RepositoryTests.test_both_products_share_workflow_and_references) ... ok
+test_collection_skill_packages_independently_with_license_and_metadata (test_repository.RepositoryTests.test_collection_skill_packages_independently_with_license_and_metadata) ... ok
+test_collection_symlink_is_rejected (test_repository.RepositoryTests.test_collection_symlink_is_rejected) ... ok
+test_drift_is_detected_and_repaired (test_repository.RepositoryTests.test_drift_is_detected_and_repaired) ... ok
+test_duplicate_skill_name_across_collections_rejected (test_repository.RepositoryTests.test_duplicate_skill_name_across_collections_rejected) ... ok
+test_escaping_reference_rejected (test_repository.RepositoryTests.test_escaping_reference_rejected) ... ok
+test_invalid_frontmatter_rejected (test_repository.RepositoryTests.test_invalid_frontmatter_rejected) ... ok
+test_missing_and_added_generated_files_fail_check (test_repository.RepositoryTests.test_missing_and_added_generated_files_fail_check) ... ok
+test_optional_frontmatter_values_are_validated (test_repository.RepositoryTests.test_optional_frontmatter_values_are_validated) ... ok
+test_output_symlink_rejected_before_any_sync (test_repository.RepositoryTests.test_output_symlink_rejected_before_any_sync) ... ok
+test_package_is_deterministic_and_self_contained (test_repository.RepositoryTests.test_package_is_deterministic_and_self_contained) ... ok
+test_package_refuses_unknown_skill_or_stale_tree (test_repository.RepositoryTests.test_package_refuses_unknown_skill_or_stale_tree) ... ok
+test_removed_files_do_not_linger (test_repository.RepositoryTests.test_removed_files_do_not_linger) ... ok
+test_repository_metadata_is_not_shipped (test_repository.RepositoryTests.test_repository_metadata_is_not_shipped) ... ok
+test_shared_refresh_refuses_destination_symlink (test_repository.RepositoryTests.test_shared_refresh_refuses_destination_symlink) ... ok
+test_shared_source_drift_blocks_check_then_sync_refreshes_both_targets (test_repository.RepositoryTests.test_shared_source_drift_blocks_check_then_sync_refreshes_both_targets) ... ok
+test_single_skill_and_product_package_excludes_other_skills (test_repository.RepositoryTests.test_single_skill_and_product_package_excludes_other_skills) ... ok
+test_source_symlink_rejected (test_repository.RepositoryTests.test_source_symlink_rejected) ... ok
+test_unknown_output_is_not_silently_deleted (test_repository.RepositoryTests.test_unknown_output_is_not_silently_deleted) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 11.776s
+
+OK

@@ -1,0 +1,14 @@
+{
+  "checked_on": "2026-09-28",
+  "entrypoint_word_count": 824,
+  "entrypoint_line_count": 97,
+  "helper_unit_tests_passed": 13,
+  "behavioral_scenarios_authored_not_executed": 18,
+  "json_assets_parse": true,
+  "yaml_frontmatter_parse": true,
+  "relative_markdown_links_resolve": true,
+  "fmriprep_executed": false,
+  "real_scheduler_or_container_qualification": false,
+  "repository_modified": false,
+  "repository_inspected_commit": "acb0a384a8aebcf9ea3b1b57d526478ad1681dc8"
+}

@@ -14,6 +14,8 @@ grant permission to connect, submit, cancel, or delete.
 
 Resolve bundled paths relative to this skill directory. Read only the relevant
 section; a diagnosis or planning request does not require a full campaign workflow.
+For fMRIPrep workloads, a separately installed `fmriprep` skill owns the scientific
+recipe; this skill resolves only the site execution route.
 
 | Task | Reference |
 |---|---|

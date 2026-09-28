@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "downstream_handoff_manifest",
+  "example_only": true,
+  "derivative_root": null,
+  "scientific_id": null,
+  "execution_ids": [],
+  "software": {
+    "fmriprep_version": null,
+    "image": null,
+    "image_digest": null
+  },
+  "analysis_denoised": false,
+  "runs": [
+    {
+      "raw_bold": {
+        "path": "sub-01/func/sub-01_task-example_run-1_bold.nii.gz",
+        "sha256": null
+      },
+      "outputs": [
+        {
+          "space": "MNI152NLin2009cAsym",
+          "resolution": "res-2",
+          "grid_verified": null,
+          "files": [],
+          "masks_and_transforms": []
+        }
+      ],
+      "repetition_time_s": null,
+      "slice_timing": {
+        "applied": null,
+        "reference_fraction": null,
+        "skipped_reason": null
+      },
+      "sdc_applied": null,
+      "confounds": {
+        "tsv": null,
+        "json": null,
+        "rows": null
+      },
+      "nonsteady_state_volumes": null,
+      "report": null,
+      "state": {
+        "process": "not_started",
+        "outputs": "not_checked",
+        "qc": {
+          "status": "not_reviewed",
+          "decision": "hold",
+          "reviewer": null,
+          "evidence": [],
+          "flags": []
+        }
+      }
+    }
+  ],
+  "missing_or_failed_runs": []
+}

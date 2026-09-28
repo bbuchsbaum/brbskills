@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "kind": "plan",
+  "example_only": true,
+  "content_id": null,
+  "content": {
+    "inputs": {
+      "snapshot_identity": null,
+      "selection_manifest": {
+        "$file": "inputs/selected-runs.json",
+        "sha256": null
+      },
+      "validation_receipt": {
+        "$file": "inputs/validation.json",
+        "sha256": null
+      }
+    },
+    "software": {
+      "version": null,
+      "identity_kind": null,
+      "identity": null
+    },
+    "recipe": {
+      "output_spaces": [
+        {
+          "name": "T1w",
+          "grid": "generated anatomical reference"
+        },
+        {
+          "name": "MNI152NLin2009cAsym",
+          "resolution_index": "2",
+          "verified_voxel_size_mm": null
+        }
+      ],
+      "surface_reconstruction": null,
+      "anatomical_reference": null,
+      "sdc_policy": null,
+      "stc_policy": "metadata_driven",
+      "nonsteady_state_policy": "automatic_unless_approved_override",
+      "quality": "full"
+    },
+    "required_outputs": {
+      "$file": "inputs/required-products.json",
+      "sha256": null
+    }
+  },
+  "decisions": [
+    {
+      "field": "recipe.output_spaces",
+      "source": "proposed_default",
+      "approved": false
+    }
+  ],
+  "authorizations": [],
+  "evidence": [],
+  "blockers": [
+    "Illustration only: resolve data, software, recipe and authority."
+  ]
+}

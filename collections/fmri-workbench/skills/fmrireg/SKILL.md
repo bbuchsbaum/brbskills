@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires local filesystem access; R for package execution and Python 3.10+ for optional helpers.
 metadata:
   version: "0.1.0"
-  reviewed: "2026-09-27"
+  reviewed: "2026-09-28"
 ---
 
 # First-level fMRI with fmrireg
@@ -52,7 +52,7 @@ multiple echoes/representations. Use `as_manifest()` for explicit bindings.
 `scripts/smoke_first_level.R` is a small synthetic compatibility test, not a
 production default. `assets/first_level_template.R` builds jobs from reviewed
 bindings and explicit choices without launching them. Verify a representative
-pilot (and distinct acquisition strata), coefficient/contrast signs, residuals,
+pilot (including known irregular runs and distinct acquisition strata), coefficient/contrast signs, residuals,
 uncertainty, and execution resources before approved fan-out. Use native job
 failure records and file-backed reducers; keep whole fits out of agent context.
 The reviewed `noise_spec(censor=...)` is not regression-volume removal; it only

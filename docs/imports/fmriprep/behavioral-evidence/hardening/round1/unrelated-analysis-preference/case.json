@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "context": "User has motion24 and B-spline preferences for first-level GLM.",
+  "request": "Prepare fMRIPrep; my later GLM will use motion24 and a B-spline baseline."
+}

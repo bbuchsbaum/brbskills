@@ -7,6 +7,7 @@ Each skill can be downloaded and installed independently.
 |---|---|---|---|
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
 | [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
+| [fmriprep](skills/fmriprep/SKILL.md) | Portable BIDS preprocessing plans, execution, recovery, and QC | [codex/fmriprep](codex/fmriprep) | [claude/fmriprep](claude/fmriprep) |
 | [alliance-hpc](skills/alliance-hpc/SKILL.md) | Alliance/DRAC Slurm planning, execution, and troubleshooting | [codex/alliance-hpc](codex/alliance-hpc) | [claude/alliance-hpc](claude/alliance-hpc) |
 | [fmri](collections/fmri-workbench/skills/fmri/SKILL.md) | Coordinate multi-stage task-fMRI analyses | [codex/fmri](codex/fmri) | [claude/fmri](claude/fmri) |
 | [fmri-bids](collections/fmri-workbench/skills/fmri-bids/SKILL.md) | Discover BIDS data and assess analysis readiness | [codex/fmri-bids](codex/fmri-bids) | [claude/fmri-bids](claude/fmri-bids) |
@@ -17,9 +18,11 @@ Each skill can be downloaded and installed independently.
 The five fMRI skills form the [fMRI Workbench collection](collections/fmri-workbench/README.md).
 Download the stage you need; `fmri` coordinates multiple installed stages and does
 not automatically install the others. These skills cover task-fMRI analysis from
-preprocessed inputs; they do not provide a spatial preprocessing pipeline. See
-[import and validation status](docs/imports/fmri-workbench.md) before relying on the
-R templates or scientific workflow.
+preprocessed inputs. The independent `fmriprep` skill supplies an optional spatial
+preprocessing workflow using an available fMRIPrep installation; rriscripts and
+Alliance guidance are optional. Consult the [fmriprep validation record](skills/fmriprep/tests/VALIDATION.md)
+and [Workbench import status](docs/imports/fmri-workbench.md) for their respective
+verification limits.
 
 ## Download an individual skill
 
@@ -178,7 +181,8 @@ separately maintained copies of the instructions.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for authoring and checks, and the
 [Alliance HPC](docs/imports/alliance-hpc.md),
-[fMRI Workbench](docs/imports/fmri-workbench.md), and
+[fMRI Workbench](docs/imports/fmri-workbench.md),
+[fMRIPrep](docs/imports/fmriprep/IMPLEMENTATION.md), and
 [visual hill climb](docs/imports/visual-hill-climb.md) import records for provenance and validation limits.
 The repository uses standalone skill folders for selective Git downloads. Native
 plugin packaging can be added if marketplace installation is wanted.

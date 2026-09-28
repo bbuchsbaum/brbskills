@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "kind": "receipt",
+  "example_only": true,
+  "attempt_id": null,
+  "scientific_id": null,
+  "execution_id": null,
+  "submission": {
+    "state": "not_submitted",
+    "token": null,
+    "target": null,
+    "owner": null,
+    "intent_at": null,
+    "job_id": null,
+    "acknowledged_at": null
+  },
+  "script": {
+    "$file": "attempts/example/job.sh",
+    "sha256": null
+  },
+  "selected_units": [],
+  "exact_argv": [],
+  "environment_allowlist": {},
+  "observed_software": null,
+  "process": {
+    "status": "not_started",
+    "exit_code": null
+  },
+  "outputs": {
+    "status": "not_checked",
+    "manifest": null
+  },
+  "qc": {
+    "status": "not_reviewed",
+    "decision": "hold",
+    "reviewer": null,
+    "evidence": [],
+    "flags": []
+  },
+  "publication": {
+    "status": "not_published",
+    "manifest": null
+  }
+}

@@ -1,0 +1,1 @@
+{"argv": ["/data", "/out", "participant", "--participant-label", "01", "--output-spaces", "T1w", "MNI152NLin2009cAsym:res-2", "--nprocs", "8", "--omp-nthreads", "2", "--mem-mb", "16000", "--notrack", "--bids-filter-file", "/config/filter $literal; name.json", "--work-dir", "/work"], "env": {"TEMPLATEFLOW_HOME": "/templateflow", "OMP_NUM_THREADS": "2"}, "synthetic": true}

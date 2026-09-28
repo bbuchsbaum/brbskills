@@ -1,0 +1,81 @@
+{
+  "archive_sha256": "6ab4120f4747413505165496d06961269cc46522b3b3368b21f3ac8be1e01a03",
+  "source_archive": "fmriprep-companion-skill.zip",
+  "imported": "2026-09-28",
+  "files": {
+    "DESIGN.md": {
+      "sha256": "b5ae6b40754a3cc1067d141ba61dd6080a2f5425b46a65cc8502591f34e61110",
+      "bytes": 8596
+    },
+    "README.md": {
+      "sha256": "e570feb2925a65888b683eb18467c8b7e0efc8a388c6b5ea7534d2c37ac95622",
+      "bytes": 3186
+    },
+    "VALIDATION.json": {
+      "sha256": "a4ad224e24fe4cde66df2e19bf0b66c52d87c781233eda352f1e66dddfc5870a",
+      "bytes": 481
+    },
+    "fmriprep/SKILL.md": {
+      "sha256": "a33a50a905aec196b17d7d527608d6c4f8f607774061693f2fa7941a83ea35a8",
+      "bytes": 6378
+    },
+    "fmriprep/assets/execution.example.json": {
+      "sha256": "5e6843d4e80ccf9dcff1c0c1b07eb204d904993eb964cb61c93c0ad6949800f7",
+      "bytes": 1814
+    },
+    "fmriprep/assets/plan.example.json": {
+      "sha256": "0235831ea5c9fde6102c9283378343542e8232faf505a3595e509a017934b5c2",
+      "bytes": 1131
+    },
+    "fmriprep/assets/preferences.example.json": {
+      "sha256": "9d792e968c2aa676ba559667d3503eec0d66d5a11f803f617347f612eeb05bf1",
+      "bytes": 416
+    },
+    "fmriprep/assets/receipt.example.json": {
+      "sha256": "1dc1b48fa186f8765086ce70f70e8a059b31c2089ed27e10b16327a36f3ddedf",
+      "bytes": 628
+    },
+    "fmriprep/evals/HELPER_TEST_RESULTS.txt": {
+      "sha256": "3c4009200f94a5c30a039fdd72d4507542a4e66ff1232b606c3aea2c2a722684",
+      "bytes": 1365
+    },
+    "fmriprep/evals/scenarios.yaml": {
+      "sha256": "509307b3f935a73776f29c3a4ce258c6e97448891fcbed7e91fad39574309aa0",
+      "bytes": 4392
+    },
+    "fmriprep/evals/test_probe_host.py": {
+      "sha256": "71427396665cf1363033b595047e5da5500ad0fd97cf76c62a41910dc8b2918a",
+      "bytes": 4132
+    },
+    "fmriprep/references/bids-and-decisions.md": {
+      "sha256": "a880b2ed44acf2f1b2f2486e15b5b5ca50df9578c1431edcd798a146b521ca98",
+      "bytes": 5455
+    },
+    "fmriprep/references/execution.md": {
+      "sha256": "cf98db45b460551ee53c2cb1e0beec058bd152d5a7bc9cbc91ee878c8e684bdc",
+      "bytes": 8893
+    },
+    "fmriprep/references/operations.md": {
+      "sha256": "0b7a378d73dd5076173fa19ff9fc80c06a7bb0d070a9a1ae83a4dec864b2e585",
+      "bytes": 4883
+    },
+    "fmriprep/references/rriscripts.md": {
+      "sha256": "f05142c217358a416598346bd8d173d876cbbfd8841d8ef823636efc57b33a38",
+      "bytes": 5071
+    },
+    "fmriprep/references/semantics.md": {
+      "sha256": "b163cad5197df8229ffdeefbae982699d37524b2af688ac7535ca11e42e05031",
+      "bytes": 5269
+    },
+    "fmriprep/references/sources.md": {
+      "sha256": "1a29973589258b185021e07de94ee6af4e2cdf0ef324c83574f8093b8ba8541a",
+      "bytes": 2846
+    },
+    "fmriprep/scripts/probe_host.py": {
+      "sha256": "6f9cd958b330c90fc95473ccdc4bbd5461972a37d399440cbf661163858a47ac",
+      "bytes": 8325
+    }
+  },
+  "separate_design_sha256": "b5ae6b40754a3cc1067d141ba61dd6080a2f5425b46a65cc8502591f34e61110",
+  "separate_design_matches_archive": true
+}

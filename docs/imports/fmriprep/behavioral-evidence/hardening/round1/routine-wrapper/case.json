@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "context": "Valid single-echo adult BIDS, matching validated snapshot, verified Apptainer/Slurm launcher profile, approved recipe.",
+  "request": "Prepare the next already-authorized pilot using the installed launcher; state what evidence you still need."
+}

@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "context": "User changes proposed MNI152NLin2009cAsym to MNI152NLin6Asym only for this study.",
+  "request": "Use MNI152NLin6Asym for this study instead. Update the plan and tell me what needs rechecking."
+}

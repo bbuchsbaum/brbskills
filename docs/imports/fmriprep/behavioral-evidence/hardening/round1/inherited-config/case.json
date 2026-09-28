@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "context": "Explicit INI sets image only; project INI skips validation and user INI disables reconstruction. Approved plan requires reconstruction and has no validation receipt.",
+  "request": "Review the effective launcher configuration before generating a pilot."
+}

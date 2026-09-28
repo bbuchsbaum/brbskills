@@ -1,0 +1,4 @@
+interface:
+  display_name: "fMRIPrep"
+  short_description: "Portable fMRIPrep planning, execution, and QC"
+  default_prompt: "Use $fmriprep to inspect my BIDS dataset and propose a reproducible preprocessing plan for the available system."

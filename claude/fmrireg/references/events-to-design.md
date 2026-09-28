@@ -36,6 +36,14 @@ crossed, nested, between-subject, or confounded with session/run. A large pooled
 count can conceal missing within-person comparisons. Do not infer a factorial
 manipulation by splitting composite labels without documentation.
 
+Compare condition order and temporal coverage across all intended runs, not only
+labels and counts. Conditions occupying separate run segments can be confounded
+with time even when both are present; record counterbalancing across people.
+Derive each run's volume count and timing from its own image and metadata. Audit
+event ends and confound rows against that run and its retained-volume mapping;
+flag discrepancies for explanation rather than silently clipping events. Include
+known shorter runs, missing cells and other irregular cases in the pilot.
+
 Inspect duration distributions, phase sequences, inter-event spacing, overlaps,
 response availability, and modulator variation within conditions/runs. Verify
 timing against the stored-image origin; negative onsets and zero durations can be

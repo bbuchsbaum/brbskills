@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "context": "B=6 subjects per task, M=2 concurrent, P=8 CPUs per subject; total allocation is 8 CPUs.",
+  "request": "Check the allocation for this pack and propose a correction within the existing resource limit."
+}
