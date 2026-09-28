@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-27",
+  "offline_tests": {
+    "source": 14,
+    "extracted_codex": 14,
+    "extracted_claude": 14
+  },
+  "browser": {
+    "browser-check": {
+      "passed": true,
+      "playwright": "1.62.1",
+      "browser": "140.0.7339.186",
+      "checks": "capture, immutable images, gate success/negative controls, offline/no-images/pending/complete, inert markup, keyboard slider, responsive light/dark"
+    },
+    "browser-pinned": {
+      "passed": true,
+      "playwright": "1.62.1",
+      "browser": "151.0.7922.34",
+      "checks": "capture, immutable images, gate success/negative controls, offline/no-images/pending/complete, inert markup, keyboard slider, responsive light/dark"
+    }
+  },
+  "independent_review": "Three reproduced findings fixed; synthetic rerun found no residual blocker in reviewed scope.",
+  "not_run": [
+    "fresh end-to-end Codex and Claude behavior evaluations",
+    "hosted CI",
+    "Windows"
+  ],
+  "tested_source_sha256": {
+    "scripts/checks/cls.js": "1209f86da9cc58029d8de92a62672ea0daeb30ceb925e7b8ad6f236082f26112",
+    "scripts/checks/speed.js": "082020781729cadb03402304612d91d61f4841f1bf9a869545c1bd1f9f04b073",
+    "scripts/common.py": "9f03787120b50071d412b866a1eb7f1a79534f9cba102e5a2ea85782b28f3bba",
+    "scripts/lib.js": "d638b68f538cf10a7f27a33fd205aed21be22d0fe5381fda9ebeff16f6279183",
+    "scripts/prep_shots.py": "0430da51bf1bb83756d0108d433a34d022900fafb93869824227eee64691cc4c",
+    "scripts/prep_shots.sh": "2f3c980575e91a28a6e10f6b04937b0fdeea284c0fc9b53dad3755f592340d16",
+    "scripts/shoot.js": "974212c0b6cfe88b983b75775f332bb343844373001da306ea4acd0c78a01698",
+    "scripts/update_data.py": "033c38a09ced3b3d649ed3f29a666c207b3524fe3a2838f2de1fc3774d0ab65b",
+    "assets/hillclimb.example.json": "1b7d5ebb567a2337dbba6ffe6a0be7293b60755298147f97f943eff6f5cf070d",
+    "assets/progress-page/index.html": "4bb5e9d2cc25ec1597416de89e0d8659eada31230cdc99e0badd513b53d7c83a",
+    "assets/run.sh.example": "d25f486a4e11f0cd6e900e3dbbaef38b7ac30394a350c3d744a48bec98f10bb4"
+  },
+  "repository_exit_status": {
+    "sync-check": 0,
+    "repository-tests": 0,
+    "visual-helpers": 0,
+    "alliance-tests": 0,
+    "collection-audit": 0,
+    "collection-tests": 0,
+    "lme4-validator": 0,
+    "shellcheck": 0,
+    "package": 0
+  }
+}

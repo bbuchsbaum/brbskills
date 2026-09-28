@@ -1,0 +1,35 @@
+name: Visual hill-climb helpers
+on:
+  push:
+    paths: ['skills/visual-hill-climb/**', '.github/workflows/visual-hill-climb.yml']
+  pull_request:
+    paths: ['skills/visual-hill-climb/**', '.github/workflows/visual-hill-climb.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  helpers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: python skills/visual-hill-climb/tests/test_helpers.py
+      - name: Install isolated browser test dependency
+        run: |
+          npm install --prefix "$RUNNER_TEMP/vhc-tools" --no-save playwright@1.62.1
+          node "$RUNNER_TEMP/vhc-tools/node_modules/playwright/cli.js" install --with-deps chromium --only-shell
+      - name: Exercise captures, gates and offline progress page
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/vhc-tools/node_modules/playwright
+          VHC_EVIDENCE_DIR: ${{ runner.temp }}/vhc-evidence
+        run: node skills/visual-hill-climb/tests/browser_smoke.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-hill-climb-browser-evidence
+          path: ${{ runner.temp }}/vhc-evidence

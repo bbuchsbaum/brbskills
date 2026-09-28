@@ -6,6 +6,7 @@ Each skill can be downloaded and installed independently.
 | Skill | Purpose | Codex folder | Claude Code folder |
 |---|---|---|---|
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
+| [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
 | [alliance-hpc](skills/alliance-hpc/SKILL.md) | Alliance/DRAC Slurm planning, execution, and troubleshooting | [codex/alliance-hpc](codex/alliance-hpc) | [claude/alliance-hpc](claude/alliance-hpc) |
 | [fmri](collections/fmri-workbench/skills/fmri/SKILL.md) | Coordinate multi-stage task-fMRI analyses | [codex/fmri](codex/fmri) | [claude/fmri](claude/fmri) |
 | [fmri-bids](collections/fmri-workbench/skills/fmri-bids/SKILL.md) | Discover BIDS data and assess analysis readiness | [codex/fmri-bids](codex/fmri-bids) | [claude/fmri-bids](claude/fmri-bids) |
@@ -176,8 +177,9 @@ Codex additionally receives `agents/openai.yaml` when supplied. There are no
 separately maintained copies of the instructions.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for authoring and checks, and the
-[Alliance HPC](docs/imports/alliance-hpc.md) and
-[fMRI Workbench](docs/imports/fmri-workbench.md) import records for provenance and validation limits.
+[Alliance HPC](docs/imports/alliance-hpc.md),
+[fMRI Workbench](docs/imports/fmri-workbench.md), and
+[visual hill climb](docs/imports/visual-hill-climb.md) import records for provenance and validation limits.
 The repository uses standalone skill folders for selective Git downloads. Native
 plugin packaging can be added if marketplace installation is wanted.
 

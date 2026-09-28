@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual hill climb"
+  short_description: "Improve visuals through bounded, scored critique rounds"
+  default_prompt: "Use $visual-hill-climb to improve this visual artifact from a fixed baseline, with regression checks, a local progress page, and independent critique when available."

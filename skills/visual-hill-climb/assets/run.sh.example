@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Adapt these required specimen names before v0. Non-web targets need their own gate.
+set -euo pipefail
+H=${HARNESS:-$(cd -- "$(dirname -- "$0")/.." && pwd)}
+export HARNESS="$H"
+R=${1:?usage: bash checks/run.sh ROUND}
+if [[ ! "$R" =~ ^[A-Za-z0-9][A-Za-z0-9_-]*$ ]]; then
+  printf 'Invalid round ID: %s\n' "$R" >&2
+  exit 2
+fi
+O="$H/out/$R"
+pages() {
+  local item result=''
+  for item in "$@"; do
+    if [[ ! -f "$O/$item" ]]; then
+      printf 'Required specimen missing: %s\n' "$O/$item" >&2
+      return 1
+    fi
+    result+=";$O/$item"
+  done
+  printf '%s\n' "${result#;}"
+}
+# Resolve both lists first: missing files must never be silently skipped.
+layout_pages=$(pages index.html detail.html)
+speed_pages=$(pages index.html long-page.html)
+node "$H/scripts/checks/cls.js" "$layout_pages"
+node "$H/scripts/checks/speed.js" "$speed_pages"
+# Add project-specific checks here. Every command must preserve failure status.

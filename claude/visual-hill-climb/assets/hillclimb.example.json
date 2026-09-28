@@ -1,0 +1,21 @@
+{
+  "title": "myproject hill climb",
+  "intro": "Iterative redesign of the myproject UI. Each round renders fixed specimens, collects scored critiques from independent reviewers, then applies the changes that move the scores.",
+  "captureNote": "First screen captured at 1440x1000 (phones at 390x844).",
+  "dims": ["typography", "color", "layout", "hierarchy", "data", "components", "function", "themes", "mobile", "identity"],
+  "critics": {
+    "visual": "Visual design",
+    "function": "Function & accessibility",
+    "user": "Target user / adopter"
+  },
+  "viewports": {
+    "desktop": { "width": 1440, "height": 1000 },
+    "mobile": { "width": 390, "height": 844 }
+  },
+  "shots": [
+    { "name": "home", "file": "index.html", "vp": "desktop" },
+    { "name": "home-mobile", "file": "index.html", "vp": "mobile" },
+    { "name": "home-dark", "file": "index.html", "vp": "desktop", "dark": true },
+    { "name": "detail", "file": "detail.html", "vp": "desktop" }
+  ]
+}
