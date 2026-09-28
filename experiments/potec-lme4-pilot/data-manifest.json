@@ -1,0 +1,169 @@
+{
+  "github_revision": "46247ca2aea5876311acf6b59338880d0bf5449d",
+  "retrieved_at": "2026-09-27T15:33:16.878315+00:00",
+  "inputs": [
+    {
+      "path": "data/source/README.md",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/README.md",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/README.md",
+      "bytes": 12887,
+      "sha256": "730759a466634c6094dcb85ce05e5f19cb22f852d9a3ed85f279ea8b075d920e"
+    },
+    {
+      "path": "data/source/CODEBOOK.md",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/CODEBOOK.md",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/CODEBOOK.md",
+      "bytes": 589903,
+      "sha256": "648277815a9e2903b129ccd87ce3316153ef89bb2e30a9102937c9c81f2f1e94"
+    },
+    {
+      "path": "data/source/participants/README.md",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/participants/README.md",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/participants/README.md",
+      "bytes": 5601,
+      "sha256": "2ef868320c9709524016274bffe8115083b07ca66d730bbc839adb02abdc542b"
+    },
+    {
+      "path": "data/source/participants/participant_data.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/participants/participant_data.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/participants/participant_data.tsv",
+      "bytes": 9518,
+      "sha256": "7eeecfbd42a29eea977ca903bd7d68465de98303bac2baf6352b9232ddeb9803"
+    },
+    {
+      "path": "data/source/additional_scripts/merge_reading_measures.py",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/additional_scripts/merge_reading_measures.py",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/additional_scripts/merge_reading_measures.py",
+      "bytes": 4459,
+      "sha256": "1c344e9522c393324008eb978518c2b0d2f0abbf275677d5544c86f6100b72f7"
+    },
+    {
+      "path": "data/source/additional_scripts/compute_reading_measures.py",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/additional_scripts/compute_reading_measures.py",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/additional_scripts/compute_reading_measures.py",
+      "bytes": 13547,
+      "sha256": "d9c933d9f5efc465dc8b7efa9304f098ac6e1a9566b6517e3161a19a3f0bbf9a"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_b0.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b0.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b0.tsv",
+      "bytes": 96621,
+      "sha256": "b42889b8333cd5ef972c05a77b7afb256b1f9e1146aa7813179752e4363fca41"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_b1.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b1.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b1.tsv",
+      "bytes": 105309,
+      "sha256": "75a0dc3a99fd14f633cc3523c1cecc323846d06ba45bdd703fed2b7c316b6130"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_b2.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b2.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b2.tsv",
+      "bytes": 100595,
+      "sha256": "632998b630936a3f20e24aa21d802353c1f90378b1b58ad5e97ebaff2c261d3d"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_b3.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b3.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b3.tsv",
+      "bytes": 118504,
+      "sha256": "a2834e8018d403728adb162c0ea97cdcc775fd346a6f18bb71d50a831c9653c8"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_b4.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b4.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b4.tsv",
+      "bytes": 105427,
+      "sha256": "2e6de07d1331eab944b4ea784d98e1fb847b84c9f978274b80a668a344d6b334"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_b5.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b5.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_b5.tsv",
+      "bytes": 101745,
+      "sha256": "ba16da7c7ec0bc5321d653eaa9ca5668235c2e5eb3b585f199e835621db8f473"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_p0.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p0.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p0.tsv",
+      "bytes": 116414,
+      "sha256": "49663be87b40d78682bb57ad54c853212bc7152eee2c350a8d0208bff253af9b"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_p1.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p1.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p1.tsv",
+      "bytes": 100107,
+      "sha256": "2015cf51f665b97e581fb3adee8ebabca7f2dc5a65f208a5ed08dc8f27304dee"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_p2.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p2.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p2.tsv",
+      "bytes": 84005,
+      "sha256": "88d2183b5296db781110dfbf4d2e0d930c5ff63f8d21b17f04816cd0302c76b3"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_p3.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p3.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p3.tsv",
+      "bytes": 118265,
+      "sha256": "e2ab19ddcf9e5e052ca659e9efe972648451740c65fa6f5d33195c41dc7fad24"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_p4.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p4.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p4.tsv",
+      "bytes": 93267,
+      "sha256": "d5fc3b31808c2b052862529035165c1c4840b48ae8e0450354d02e2c7ad858f4"
+    },
+    {
+      "path": "data/source/stimuli/word_features/word_features_p5.tsv",
+      "source": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p5.tsv",
+      "resolved_url": "https://raw.githubusercontent.com/DiLi-Lab/PoTeC/46247ca2aea5876311acf6b59338880d0bf5449d/stimuli/word_features/word_features_p5.tsv",
+      "bytes": 110465,
+      "sha256": "c0eadd8c88b59ed840e626f1506fb5b0c44f003990398e6f7cbd338abb12fc5c"
+    },
+    {
+      "path": "data/reading_measures_merged.zip",
+      "source": "https://osf.io/download/3ywhz",
+      "resolved_url": "https://storage.googleapis.com/cos-osf-prod-files-de-1/460a94369cd8d2903788679fc94778aaf714f5fbb1b7990b832319f7fe1d2129",
+      "bytes": 39458427,
+      "sha256": "460a94369cd8d2903788679fc94778aaf714f5fbb1b7990b832319f7fe1d2129"
+    }
+  ],
+  "skill_files_sha256": {
+    "README.md": "44f17eb8f96b2d35b44e55ce7ab7ab9e6e9e3c1299fcac3a9e5127438d2892c8",
+    "RESEARCH_SYNTHESIS.md": "d59554800bf12846f0e1fd0545c7fdb5356c18a40baf251b18147b6124d7ee87",
+    "SKILL.md": "a81b5319ece74e4294b762b8a7a98ed7198fa9922f5432c074f2c8fa6313c5f6",
+    "VALIDATION.json": "774a5f3f68ff154129bfd3855ed2eb899791bd86610b1af6f1318ce4b26767bb",
+    "VALIDATION.md": "c6ca1b00cb36bf343323a04f7076fd91bec3e440114af1e8a24be93dd8f2379a",
+    "agents/openai.yaml": "006575e88feca9e4b2e761d0c53d509d52b41f5a8e2ce4c18f251b56580be456",
+    "evals/scenarios.yml": "09a52c622d2502a3cd4af96b7b4ada07bb2265f7713626f121e4a258e362247e",
+    "examples/glmm.R": "403d29ff184d60d7d554d4fb05d52ab82179df219719eec5d4e718fafd395c33",
+    "examples/lmm.R": "aa3e6d04457a50dfed74e0c7866c145c2f095ba46b6f026634f36cc9b1e78177",
+    "references/contrasts-predictions.md": "45c270c26984ada2e30b487f326fa01425e416bc60a1d8470ff4e636a29eaf59",
+    "references/convergence-singularity.md": "1ea1de7fa7abee2fbc9d9af40925fd07e2134afab456615dbb7a910c527c6dbf",
+    "references/design-random-effects.md": "460c3e81b7b52b5d7f9578d74399c10273dd238ffdd015c5ec2c8374ef6de9a7",
+    "references/diagnostics-glmm.md": "8695480ae1e6bf99676a232271f4631e174d363760e24e5935f100401f588f24",
+    "references/evidence-policy.md": "d9eda18e95f6781442bbd8bbf0fd7989e4955466d22af18bcfeff692e09990a8",
+    "references/index.md": "b488a7a2a3496451e894a8f2c491eca85672693bbd5497f0c10eb3470e5b4351",
+    "references/inference-selection.md": "36e15eba0f6bcd320556ce182a71c634500e3db93b7b21b3c08bfa5c635d3e42",
+    "references/reporting.md": "18ca7f7ae98eb8e5e080f4aa7ae66a24e61fec1838c3620942145c57ea72b841",
+    "references/sources.json": "c45f243ec5c2ab10b8e1a9fec69706c25456a9a5dfd3e3d5e44ea453afaa66fb",
+    "references/sources.md": "14af37a6bb960afc68f7c40251c330a4e262bd489f95ad332de3f23f0d4963f9",
+    "references/workflow.md": "4d9cd9e4d30cb978da2538c0a0654d8513ce07822339cd950fdf640bcb18c615",
+    "requirements-dev.txt": "433d68de1c577be5630b176507c5c592f67ddb52fb47cf7f4509c87544d51c61",
+    "scripts/model_audit.R": "8b62da8333a830aab37f28f2d385f37fb564e09d29a60413910e2793c20a0bf3",
+    "templates/analysis-plan.yml": "bc3806dd59f17191e6ad2e84915899363ed0bd553bb8236d336f72aa20f5e452",
+    "templates/report.md": "26db4924fbc9882fef057e2cc71abf6c6862c4537f13f1a811a2e8c2641304a5",
+    "tests/README.md": "89cfdde34b36e5f5462a8b04105ee2b33cf1b2f466f772825dbd1e807b4fa138",
+    "tests/smoke.R": "459fc433458045c3c7e62c60a32ba2aef399db8e98680c4463c75632c1cbe630",
+    "tests/validate_bundle.py": "fb149a79eeeddd18685f3be4e0770e5b9c35d022fb953efd880d7b26dd65dee3"
+  },
+  "note": "OSF archive is separately hashed; a Git revision does not pin its contents."
+}

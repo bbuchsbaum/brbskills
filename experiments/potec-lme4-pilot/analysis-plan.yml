@@ -1,0 +1,65 @@
+analysis_id: potec-lme4-exploratory-pilot-20260927
+purpose: exploratory
+skill: ../../skills/lme4-mixed-models/SKILL.md
+evaluation_scope: Informed single analyst trial; no blind comparison or causal claim about skill benefit.
+question: Does the own-versus-other discipline contrast change with study level, and does domain match modify sensitivity to surprisal and lexical difficulty?
+estimand:
+  quantity: Equal-discipline average of own-minus-other text contrasts within each study level, and graduate-minus-undergraduate difference of those contrasts.
+  direction: Own minus other; graduate minus undergraduate.
+  population: Comparable German biology/physics students and scientific text words; extrapolation beyond 12 purposively selected texts is weak.
+  scale: Log milliseconds and log odds for planned tests; milliseconds and probabilities for explicitly labelled predictions.
+  averaging_weights: Equal weight to biology and physics readers. Lexical reference profile uses means over unique eligible word items, not outcome-selected rows.
+  prediction_target: Report both random effects zero and integrated new-reader/new-item/new-text point predictions at the reference lexical profile.
+  causal_identification_basis: None; reader discipline and study level are observational.
+outcomes:
+  LMM: log(FPRT) among FPF==1 with FPRT>0; no additive constant for skipped words.
+  GLMM: FPReg over all eligible word opportunities, including unfixated words coded zero. This combines first-pass fixation opportunity with conditional regression propensity.
+design:
+  observation_unit: reader by text by word position
+  structure: Readers crossed with word tokens; word tokens nested in texts; repeated words also share reader-text reading episodes.
+  reader_slopes: T, S, T*S, W, F vary within reader and support focal domain/surprisal questions.
+  item_slopes: D, L, D*L vary across readers within each word item.
+  text_slopes: D, L, D*L vary across readers within each text; only 12 text groups, so inspect boundary estimates.
+  residual_dependence: Inspect adjacent-word residual dependence within reader-text; no claim that random intercepts guarantee temporal independence.
+data:
+  manifest: data-manifest.json
+  immutable_row_id: reader_id:text_id:word_index_in_text
+  surprisal_choice: text_surprisal_gpt2-large, selected before fitting; validate against pinned corrected source features.
+  frequency: Natural log of strictly positive source lemma_frequency_normalized; merged upstream zero-filled missing features are restored to missing.
+  primary_subset: Complete lexical covariates; condition additionally on first-pass fixation only for the LMM.
+  missingness_limits: Complete-case lexical subset changes word population; no MAR or causal selection claim is established.
+parameterization:
+  D: biology=-0.5, physics=+0.5
+  L: undergraduate=-0.5, graduate=+0.5
+  T: biology=-0.5, physics=+0.5
+  S_F_W: Standardize using unique eligible word items; retain constants in outputs/scaling.csv.
+model:
+  fixed: D*L*T*S + (D*T)*(F+W)
+  rationale: Preserve factorial hierarchy, including the focal four-way surprisal interaction. Length/frequency expertise interactions allow discipline and text-domain dependence; level moderation of those two lexical effects is outside this pilot.
+  primary_random: (1+T+S+TS+W+F||reader)+(1+D+L+DL||item)+(1+D+L+DL||text)+(1|reader_text)
+  random_policy: Design-supported essential slopes with explicit numeric contrasts and diagonal covariance in this recorded basis; this is a pragmatic initial restriction, not a maximality consensus.
+  sensitivity_random: Correlated reader and item blocks with the same slopes, diagonal text block and reader-text intercept retained.
+  simplification: No p-value-driven selection. Boundary components retained in primary analysis; inspect PCA and covariance before any documented change. No automatic smallest-variance deletion.
+  LMM_estimation: REML
+  GLMM_estimation: Binomial logit, Laplace nAGQ=1. nAGQ=0 may provide a documented timing/start fit only.
+inference:
+  planned_family: Six contrasts per outcome: own-other at each level and their difference, for intercept and surprisal slope. Twelve tests jointly Holm adjusted.
+  LMM_method: Satterthwaite via lmerTest where computationally feasible; otherwise explicitly labelled asymptotic Wald, with its limitation.
+  GLMM_method: Asymptotic Wald z, not KR/Satterthwaite.
+  intervals: Unadjusted 95 percent intervals, explicitly distinguished from Holm-adjusted p-values.
+  response_predictions: Plugin integrated point estimates include all fitted Gaussian random-effect variances; lognormal means also include residual variance. No fully propagated intervals without refitting variance uncertainty.
+  likelihood_comparisons: No fixed-effect search or LRT planned. Any later fixed-effect likelihood comparison requires compatible ML fits and identical row IDs.
+diagnostics:
+  singularity_tolerance: 0.0001
+  numerical_rescue: Review scaling/specification, one stricter fit and one alternate optimizer if needed, within remaining compute budget. Retain unresolved conditions.
+  stability: Inspect changes in focal contrasts relative to their standard errors; >0.25 SE or material sign/interpretation change triggers explicit warning.
+  LMM: Conditional residual QQ, fitted trend, group/lexical patterns, adjacent-word dependence.
+  GLMM: Event counts, conditional calibration by fitted probability and covariates, adjacent-word residual dependence, simulation checks with documented conditioning.
+  sensitivities: Correlated covariance where feasible; GLMM restricted to FPF==1 as a different estimand, explicitly labelled.
+compute:
+  environment: Local installed R; no cluster or paid service.
+  timing_subset: Seeded quarter of word items stratified by all 12 texts, shared across all 75 readers; outcome independent. Pilot fits not labelled full-data results.
+  per_fit_timeout_seconds: 900
+  initial_total_fit_budget_seconds: 3600
+  expansion: Use timing evidence to attempt full-data fits; if impractical retain clearly labelled subset results and resource limitations.
+status: PLANNED_BEFORE_FITTING

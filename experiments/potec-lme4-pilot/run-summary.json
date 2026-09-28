@@ -1,0 +1,402 @@
+{
+  "completed_at": "2026-09-27T16:10:40.432723+00:00",
+  "status": "bounded_exploratory_trial_complete",
+  "scientific_status": [
+    "SINGULAR_REVIEW",
+    "NUMERICAL_UNRESOLVED",
+    "Gaussian residual adequacy concerns"
+  ],
+  "primary_models": {
+    "LMM": {
+      "rows": 95683,
+      "scope": "full eligible fixated-word data"
+    },
+    "GLMM": {
+      "rows": 33600,
+      "scope": "shared quarter-word sample"
+    }
+  },
+  "completed_fits": 5,
+  "incomplete_checks": {
+    "glmm_joint_derivatives": "timeout at 900 seconds",
+    "lmm_alternative_optimizer": "timeout at 600 seconds"
+  },
+  "active_jobs": [],
+  "html_validation": {
+    "embedded_images": 9,
+    "all_images_have_alt": true,
+    "rendered": true,
+    "browser_layout_check": "not performed; scientific figure PNGs inspected"
+  },
+  "receipts": {
+    "fetch.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:33:10.206973+00:00",
+      "finished_utc": "2026-09-27T15:33:16.927328+00:00",
+      "duration_seconds": 6.720293,
+      "command": [
+        "python3",
+        "experiments/potec-lme4-pilot/fetch_data.py"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/fetch.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 300.0,
+      "log_bytes": 1085
+    },
+    "glmm-derivatives.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:51:46.875809+00:00",
+      "finished_utc": "2026-09-27T16:06:46.931899+00:00",
+      "duration_seconds": 900.024871,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/check_glmm_derivatives.R"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/glmm-derivatives.log",
+      "exit_code": 124,
+      "child_returncode": -15,
+      "reason": "timeout",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 129
+    },
+    "glmm-quarter-diagonal.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:36:50.143295+00:00",
+      "finished_utc": "2026-09-27T15:50:05.840145+00:00",
+      "duration_seconds": 795.700653,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/fit.R",
+        "glmm",
+        "quarter",
+        "diagonal"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/glmm-quarter-diagonal.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 451
+    },
+    "lmm-full-alternate.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:56:49.798639+00:00",
+      "finished_utc": "2026-09-27T16:06:49.865534+00:00",
+      "duration_seconds": 600.034365,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/fit.R",
+        "lmm",
+        "full",
+        "diagonal",
+        "alternate"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/lmm-full-alternate.log",
+      "exit_code": 124,
+      "child_returncode": -15,
+      "reason": "timeout",
+      "detail": null,
+      "timeout_seconds": 600.0,
+      "log_bytes": 198
+    },
+    "lmm-full-diagonal.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:40:42.521824+00:00",
+      "finished_utc": "2026-09-27T15:50:07.357590+00:00",
+      "duration_seconds": 564.838181,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/fit.R",
+        "lmm",
+        "full",
+        "diagonal"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/lmm-full-diagonal.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 443
+    },
+    "lmm-full-strict.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:51:46.887882+00:00",
+      "finished_utc": "2026-09-27T15:55:26.067294+00:00",
+      "duration_seconds": 219.180321,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/fit.R",
+        "lmm",
+        "full",
+        "diagonal",
+        "strict"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/lmm-full-strict.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 441
+    },
+    "lmm-quarter-correlated.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:45:34.090478+00:00",
+      "finished_utc": "2026-09-27T15:50:06.055400+00:00",
+      "duration_seconds": 271.966037,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/fit.R",
+        "lmm",
+        "quarter",
+        "correlated"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/lmm-quarter-correlated.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 600.0,
+      "log_bytes": 453
+    },
+    "lmm-quarter-diagonal.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:36:50.127441+00:00",
+      "finished_utc": "2026-09-27T15:37:38.584278+00:00",
+      "duration_seconds": 48.457031,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/fit.R",
+        "lmm",
+        "quarter",
+        "diagonal"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/lmm-quarter-diagonal.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 448
+    },
+    "prepare.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:35:36.334067+00:00",
+      "finished_utc": "2026-09-27T15:35:39.796161+00:00",
+      "duration_seconds": 3.462624,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/prepare.R"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/prepare.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 120.0,
+      "log_bytes": 566
+    },
+    "render-final.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T16:09:44.998051+00:00",
+      "finished_utc": "2026-09-27T16:09:50.017709+00:00",
+      "duration_seconds": 5.019516,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "quarto",
+        "render",
+        "analysis.qmd",
+        "--output",
+        "analysis.html"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/render-final.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 180.0,
+      "log_bytes": 1540
+    },
+    "render-initial.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T16:02:12.904398+00:00",
+      "finished_utc": "2026-09-27T16:02:12.992809+00:00",
+      "duration_seconds": 0.088278,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "quarto",
+        "render",
+        "analysis.qmd",
+        "--output",
+        "analysis.html"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/render-initial.log",
+      "exit_code": 1,
+      "child_returncode": 1,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 120.0,
+      "log_bytes": 103
+    },
+    "render-r2.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T16:02:46.474872+00:00",
+      "finished_utc": "2026-09-27T16:02:56.363245+00:00",
+      "duration_seconds": 9.88816,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "quarto",
+        "render",
+        "analysis.qmd",
+        "--output",
+        "analysis.html"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/render-r2.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 180.0,
+      "log_bytes": 1472
+    },
+    "summarize-final.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T16:08:00.862973+00:00",
+      "finished_utc": "2026-09-27T16:08:06.509989+00:00",
+      "duration_seconds": 5.646934,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/summarize.R",
+        "full",
+        "quarter"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/summarize-final.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 120.0,
+      "log_bytes": 3712
+    },
+    "summarize-r2.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:52:38.315450+00:00",
+      "finished_utc": "2026-09-27T15:59:37.042941+00:00",
+      "duration_seconds": 418.700198,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/summarize.R",
+        "full",
+        "quarter"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/summarize-r2.log",
+      "exit_code": 0,
+      "child_returncode": 0,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 2918
+    },
+    "summarize.log.meta.json": {
+      "schema_version": 1,
+      "started_utc": "2026-09-27T15:50:18.845367+00:00",
+      "finished_utc": "2026-09-27T15:50:20.276549+00:00",
+      "duration_seconds": 1.43112,
+      "command": [
+        "env",
+        "LC_ALL=C",
+        "VECLIB_MAXIMUM_THREADS=1",
+        "Rscript",
+        "--vanilla",
+        "experiments/potec-lme4-pilot/summarize.R",
+        "full",
+        "quarter"
+      ],
+      "cwd": "/Users/bbuchsbaum/code/brbskills",
+      "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/summarize.log",
+      "exit_code": 1,
+      "child_returncode": 1,
+      "reason": "exited",
+      "detail": null,
+      "timeout_seconds": 900.0,
+      "log_bytes": 338
+    }
+  },
+  "artifacts_sha256": {
+    "README.md": "ad5ec8bebb06a40155aa07e61b08d62ecc4a32ccda4688df660a7cddae1dffcc",
+    "analysis-plan.yml": "462a7b7d57d3e29d7ceadaf0e4619a6348bd8aa524f09baa1f3bcbb04a5f660d",
+    "analysis.html": "7d26a5b0e55beff755be561c4f2286a5a639632e1c48dac47c10733943f13f61",
+    "analysis.qmd": "9313e485e9cb0c8a4fae60abf526360f018ff0fc342701fef3b37c147b577b7e",
+    "check_glmm_derivatives.R": "beedff6d80c05d1a0833484a6fd73ae440799ac54dc5ea7eb65fd88a5fba4483",
+    "fetch_data.py": "0ff67f079827cdf6c5b39a256a554a5958d19d03fa622e7ad92ea021b0ef35b7",
+    "findings.md": "9d8f54401ee973d34487addeb38ae95e4b78693a8dc242799cd47c2fbaecc519",
+    "fit.R": "c624e278f91848cee9abb1e4fd2bc77793d438b0fe6b6b493d89bbcaf2f08392",
+    "prepare.R": "b371475f7c3d7bdd59a9429b3d051e6c4fd717bd7dd672f1e5b3719182e0f6c5",
+    "sensitivity.R": "c69291c13a33b413f8db0719bf7241abe63f9dfcbaa1e1ab4a75103250b7a078",
+    "skill-assessment.md": "c8dfadfee888d4e89a1feecbfe45da219586469355353ce9fa06d9f8518b93e7",
+    "summarize.R": "92e040529480f85369222d3ac88b331106c769a2f633310c5377f5c1eb1f2fd0",
+    "verify.R": "eab990004ae2eb05840b5470c820fc4b9ba45e53b3802a0eef072b44dc589b62"
+  }
+}

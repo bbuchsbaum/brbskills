@@ -1,0 +1,26 @@
+{
+  "note": "Recorded while initial fits run; these files have not changed since the initial fit launches.",
+  "files_sha256": {
+    "analysis-plan.yml": "462a7b7d57d3e29d7ceadaf0e4619a6348bd8aa524f09baa1f3bcbb04a5f660d",
+    "prepare.R": "b371475f7c3d7bdd59a9429b3d051e6c4fd717bd7dd672f1e5b3719182e0f6c5",
+    "fit.R": "470918fa830295e30a24c2697ba65912e9c56125c126d62fd0854b9bc9b72e5d"
+  },
+  "jobs": {
+    "lmm_quarter": {
+      "session": 28020,
+      "state": "completed",
+      "elapsed_seconds": 46.686
+    },
+    "glmm_quarter": {
+      "session": 16130,
+      "state": "running",
+      "timeout_seconds": 900
+    },
+    "lmm_full": {
+      "session": 8670,
+      "state": "running",
+      "timeout_seconds": 900
+    }
+  },
+  "next_decision": "Inspect full LMM and quarter GLMM audits, including derivatives; choose feasible sensitivity runs without focal p-value selection."
+}

@@ -1,0 +1,401 @@
+---
+title: "Domain expertise and scientific reading"
+subtitle: "An exploratory PoTeC analysis with lme4"
+author: "Analysis produced with the lme4-mixed-models skill"
+date: "2026-09-27"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Show R code"
+    embed-resources: true
+    fig-width: 9
+    fig-height: 5
+execute:
+  warning: true
+  message: false
+params:
+  lmm_scope: full
+  glmm_scope: quarter
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(data.table)
+library(lme4)
+library(ggplot2)
+library(knitr)
+options(width=100)
+out <- "outputs"
+model_dir <- function(outcome) file.path(out,paste(outcome,params[[paste0(outcome,"_scope")]],"diagonal-primary",sep="-"))
+lmm <- readRDS(file.path(model_dir("lmm"),"fit.rds"))
+glmm <- readRDS(file.path(model_dir("glmm"),"fit.rds"))
+if(file.exists(file.path(model_dir("glmm"),"fit_derivative_checked.rds")))
+  glmm <- readRDS(file.path(model_dir("glmm"),"fit_derivative_checked.rds"))
+d <- readRDS(file.path(out,"analysis_data.rds"))
+contrasts <- fread(file.path(out,"planned_contrasts.csv"))
+stopifnot(nrow(contrasts)==12,
+          all(contrasts$scope[contrasts$outcome=="lmm"]==params$lmm_scope),
+          all(contrasts$scope[contrasts$outcome=="glmm"]==params$glmm_scope))
+predictions <- fread(file.path(out,"response_predictions.csv"))
+diagnostics <- fread(file.path(out,"diagnostic_summary.csv"))
+manifest <- jsonlite::read_json("data-manifest.json",simplifyVector=TRUE)
+audit_lmm <- jsonlite::read_json(file.path(model_dir("lmm"),"audit.json"),simplifyVector=TRUE)
+audit_glmm <- jsonlite::read_json(file.path(model_dir("glmm"),"audit.json"),simplifyVector=TRUE)
+tab <- function(x,digits=3,caption=NULL) {
+  if (!knitr::is_latex_output()) return(knitr::kable(x,digits=digits,caption=caption))
+  x <- as.data.frame(x)
+  names(x) <- gsub("_", " ", names(x), fixed=TRUE)
+  weights <- vapply(x,function(z) if(is.numeric(z) || is.logical(z)) 1 else {
+    n <- mean(nchar(as.character(z)),na.rm=TRUE)
+    if(!is.finite(n)) n <- 0
+    if(n>25) 3.5 else if(n>12) 2 else 1.2
+  },numeric(1))
+  weights <- pmax(weights,pmin(2,nchar(names(x))/13))
+  # Reserve space for inter-column padding inside a 6.9-inch text block.
+  widths <- (6.9 - ncol(x)*0.09)*weights/sum(weights)
+  t <- knitr::kable(x,format="latex",booktabs=TRUE,longtable=TRUE,digits=digits,
+                    row.names=FALSE,escape=TRUE,linesep="",caption=caption,label=NA)
+  t <- kableExtra::kable_styling(t,latex_options="repeat_header",font_size=8)
+  for(i in seq_along(widths)) t <- kableExtra::column_spec(t,i,width=sprintf("%.3fin",widths[i]))
+  t
+}
+if (knitr::is_latex_output()) options(width=78)
+```
+
+## Purpose and interpretation
+
+This analysis asks whether reading one's own discipline rather than the other
+discipline is associated with different first-pass reading behavior, whether
+that contrast differs between undergraduate and graduate readers, and whether
+domain match modifies sensitivity to surprisal. Word length and lexical
+frequency are included as additional lexical predictors.
+
+This is an **exploratory, informed trial of a statistical skill**. The analyst
+had seen the proposed evaluation criteria. There is no no-skill comparison and
+no basis for estimating the skill's causal benefit from this run. The scientific
+analysis itself is observational: discipline and study level were not randomized.
+
+The continuous analysis uses `r format(nobs(lmm),big.mark=",")` fixated-word
+observations (`r params$lmm_scope` word sample). The binary analysis uses
+`r format(nobs(glmm),big.mark=",")` word opportunities
+(`r params$glmm_scope` word sample). Both preserve all 75 readers and 12 texts.
+The sampled-word fits use a seeded quarter of eligible word tokens within every
+text, shared across readers. They must not be described as full-data analyses.
+
+## Findings
+
+{{< include findings.md >}}
+
+## Data provenance and the observation unit
+
+The inputs come from the [PoTeC repository](https://github.com/DiLi-Lab/PoTeC)
+and its linked OSF word-level reading-measures archive. Git revision
+`r manifest$github_revision` supplies the documentation and lexical features.
+The separately downloaded OSF archive has its own SHA-256 in
+`data-manifest.json`; the Git revision alone does not pin that archive.
+The repository records a surprisal correction on June 17, 2026. Every selected
+surprisal value in the archive was checked against the corrected pinned features.
+
+The audit found **142,125 unique reader × text × word-position observations**,
+75 readers and 1,895 word tokens. The roughly 404,000 count discussed in the
+benchmark proposal belongs to a different, scanpath-level table. Treating
+fixation-level repetitions as independent word outcomes would change the unit
+of analysis.
+
+```{r}
+#| label: data-counts
+tab(fread(file.path(out,"data_counts.csv")))
+tab(fread(file.path(out,"reader_groups.csv")))
+```
+
+The upstream merge script fills missing lexical features with zero. The pinned
+original word-feature files identify 115 words with unavailable lemma frequency,
+corresponding to 8,625 reader–word rows. These were restored to missing and excluded
+from this complete-covariate pilot. The remaining set has 133,500 binary-outcome
+rows and 95,683 first-pass-fixated rows. This restriction changes the word population;
+it is not evidence that lexical missingness is ignorable.
+
+The analysis uses text-context GPT-2-large surprisal, chosen before fitting.
+Log frequency, word length and surprisal are centered and scaled using **unique
+eligible word tokens**, rather than the fixation-selected outcome rows.
+
+```{r}
+#| label: scaling
+tab(fread(file.path(out,"scaling.csv")))
+```
+
+## Outcomes, design and estimands
+
+For the LMM, the response is `log(FPRT)` among `FPF == 1` observations with
+strictly positive FPRT. The audit verified that positive FPRT agrees with FPF.
+Skipped words are not treated as zero-millisecond readings and no arbitrary
+constant is added before logging.
+
+For the GLMM, FPReg is modeled over **all eligible word opportunities**, including
+zeros for words not fixated in the first pass. The audit verified that unfixated
+words have FPReg zero. This outcome combines fixation opportunity and regression
+propensity. It is different from the probability of regression conditional on
+first-pass fixation; the conditional analysis is a sensitivity target, not an
+interchangeable denominator.
+
+```{r}
+#| label: glmm-event-counts
+tab(fread(file.path(out,"glmm_event_counts.csv")))
+```
+
+Each of the eight factorial cells contains regressions and non-regressions.
+This rules out complete separation by those cells alone; it does not prove
+absence of separation along every continuous predictor combination.
+
+Readers are crossed with word tokens. Tokens belong to texts. Multiple words
+also share a reader–text reading episode. Text domain and lexical covariates vary
+within readers; reader discipline and study level vary within word items. A
+by-word slope for word length or text domain would not represent within-word
+variation. The support audit is retained in `outputs/design_support.csv`.
+
+Numeric contrasts are fixed before fitting: biology = −0.5 and physics = +0.5
+for reader discipline `D` and text domain `T`; undergraduate = −0.5 and graduate
+= +0.5 for study level `L`. `S`, `F`, and `W` denote standardized surprisal,
+log lemma frequency and word length. `TS=T*S` and `DL=D*L` are explicit numeric
+random-effect columns.
+
+For each study level, the domain-match estimand is
+
+$$
+\Delta_l=\tfrac12\{\eta_{B,l,B}-\eta_{B,l,P}
+                       +\eta_{P,l,P}-\eta_{P,l,B}\},
+$$
+
+at the mean lexical profile. Reader disciplines receive equal weight, rather
+than their unequal sample proportions. We also estimate
+$\Delta_{graduate}-\Delta_{undergraduate}$, and the same three contrasts
+of the surprisal slope. These are linear-predictor contrasts: log milliseconds
+for the LMM and log odds for the GLMM. They are not probability differences.
+
+## Model specification and computation
+
+The fixed structure is
+
+```r
+D * L * T * S + (D * T) * (F + W)
+```
+
+This preserves the factorial hierarchy, includes study-level moderation of the
+expertise–surprisal relationship, and allows domain-match dependence of the
+length and frequency associations. Study-level moderation of length/frequency
+is outside this pilot's fixed-effect specification.
+
+The starting random structure is
+
+```r
+(1 + T + S + TS + W + F || reader) +
+(1 + D + L + DL || item) +
+(1 + D + L + DL || text) +
+(1 | reader_text)
+```
+
+All double-bar predictors are numeric. This deliberately diagonal covariance
+structure is a pragmatic restriction in the recorded contrast/centering basis.
+It is not invariant to arbitrary recoding and is not claimed to be a maximal
+model. Reader domain and domain-by-surprisal slopes protect the central within-reader
+questions; item and text slopes represent reader-group variation within stimuli.
+Only 12 texts inform the text covariance components.
+
+The LMM uses REML. The GLMM uses a binomial logit likelihood with Laplace
+approximation (`nAGQ=1`). Gradient and Hessian calculation was explicitly enabled;
+installed lme4 defaults can omit derivative checks for large models. No
+fixed-effect selection or significance-driven random-effect deletion was used.
+The analysis plan and bounded computational policy are in `analysis-plan.yml`.
+
+```{r}
+#| label: model-audit
+audits <- data.frame(
+  model=c("Log-FPRT LMM","FPReg GLMM"),
+  observations=c(nobs(lmm),nobs(glmm)),
+  elapsed_seconds=c(audit_lmm$elapsed_seconds,audit_glmm$elapsed_seconds),
+  singular=c(audit_lmm$singular,audit_glmm$singular),
+  optimizer_code=c(audit_lmm$optimizer_code,audit_glmm$optimizer_code),
+  derivatives_available=c(audit_lmm$derivatives_available,audit_glmm$derivatives_available))
+tab(audits)
+```
+
+Optimizer exit codes are not adequacy certificates. The retained audits include
+warnings, `VarCorr`, `rePCA`, gradients and Hessian eigenvalues. Boundary estimates
+were retained and examined rather than removed until a warning disappeared.
+
+Installed lme4 2.0.1 did not provide the singular GLMM's derivatives despite
+`calc.derivs=TRUE`. The extra check reconstructs the same deviance function,
+verifies its objective against the fitted likelihood, and explicitly evaluates
+finite-difference derivatives. The original fit and original audit are preserved.
+
+```{r}
+#| label: explicit-glmm-derivatives
+extra_path <- file.path(model_dir("glmm"),"explicit_derivatives.json")
+if(file.exists(extra_path)) {
+  extra <- jsonlite::read_json(extra_path,simplifyVector=TRUE)
+  tab(data.frame(min_Hessian_eigenvalue=min(extra$hessian_eigenvalues),
+    max_absolute_free_scaled_gradient=extra$max_abs_free_scaled_gradient,
+    minimum_boundary_gradient=extra$minimum_boundary_gradient,
+    elapsed_seconds=extra$elapsed_seconds),digits=6)
+} else {
+  cat("Explicit derivative check timed out after 900 seconds; no Hessian result is available. Numerical qualification remains unresolved.")
+}
+```
+
+```{r}
+#| label: variance-components
+tab(as.data.frame(VarCorr(lmm)),caption="Log-FPRT LMM variance components")
+tab(as.data.frame(VarCorr(glmm)),caption="FPReg GLMM variance components")
+```
+
+The full coefficient tables below describe the recorded contrast basis. They
+are not substitutes for the planned domain-match contrasts.
+
+```{r}
+#| label: fixed-coefficients
+fixed_table <- function(fit) {
+  data.frame(term=names(fixef(fit)),estimate=unname(fixef(fit)),
+             SE=sqrt(diag(as.matrix(vcov(fit)))),row.names=NULL)
+}
+tab(fixed_table(lmm),digits=4,caption="Log-FPRT LMM fixed coefficients")
+tab(fixed_table(glmm),digits=4,caption="FPReg GLMM fixed coefficients")
+```
+
+## Planned contrasts and inference
+
+The LMM uses Satterthwaite approximate t inference through `lmerTest`; the GLMM
+uses exploratory asymptotic Wald z inference with lme4's RX/PIRLS covariance
+approximation. The explicit GLMM joint-Hessian calculation timed out, so these
+GLMM intervals and p-values are numerically unqualified and are retained for
+transparency, not as validated scientific inference.
+Satterthwaite/Kenward–Roger corrections are not
+applied to the logistic model. The twelve planned tests—six per outcome—form
+one Holm-adjusted family. The displayed 95% intervals are **unadjusted**.
+These are model-based approximations, not simulation-calibrated guarantees.
+
+```{r}
+#| label: planned-contrasts
+display_contrasts <- contrasts[,.(outcome,contrast,estimate,
+  `95% interval`=sprintf("[%.4f, %.4f]",lower,upper),`Holm p`=p_holm)]
+tab(display_contrasts,digits=4)
+```
+
+![](outputs/figures/lmm-contrasts.png){fig-alt="Log reading-time domain-match contrasts and unadjusted confidence intervals."}
+
+![](outputs/figures/glmm-contrasts.png){fig-alt="Log-odds domain-match contrasts and unadjusted confidence intervals."}
+
+## Response scales and observed data
+
+For new-group predictions, the variance of the random linear predictor is
+$v=zGz^\top$, summed across the fitted reader, item, text and reading-episode
+blocks. A lognormal arithmetic mean is
+$\exp(x\beta+(v+\sigma^2)/2)$. Simply exponentiating the log-scale expectation
+does not produce that mean.
+
+For the GLMM, the new-group probability integrates
+$\operatorname{logit}^{-1}(x\beta+u)$ over $u\sim N(0,v)$.
+Gauss–Hermite quadrature was checked using two quadrature sizes and independent
+adaptive numerical integration. Setting random effects to zero instead yields
+$\operatorname{logit}^{-1}(x\beta)$, a distinct target.
+
+The curves below show **plug-in point estimates**, with estimated variance
+components held fixed. They have no uncertainty ribbons and should not be read
+as precise population curves. The contrast plots above display fixed-effect
+uncertainty. A full interval for the integrated response mean would also need
+to propagate covariance-parameter uncertainty. Solid curves integrate over
+new-group heterogeneity; dashed curves set group effects to zero. For the LMM,
+both arithmetic-mean curves include residual lognormal retransformation.
+
+![](outputs/figures/lmm-predictions.png){fig-alt="Predicted first-pass reading time versus surprisal, by study level and domain match."}
+
+![](outputs/figures/glmm-predictions.png){fig-alt="Predicted first-pass regression probability versus surprisal, by study level and domain match."}
+
+```{r}
+#| label: reference-predictions
+tab(predictions[abs(S)<1e-10,.(outcome,level,match,zero_RE,integrated)],digits=4)
+```
+
+Observed reader summaries provide context without treating thousands of words
+as independent reader replicates. These raw means mix lexical profiles and
+are not the same estimands as the adjusted reference-profile predictions.
+
+![](outputs/figures/lmm-raw.png){fig-alt="Paired observed reader mean first-pass reading times for own and other discipline texts."}
+
+![](outputs/figures/glmm-raw.png){fig-alt="Paired observed reader regression rates for own and other discipline texts."}
+
+## Adequacy and sensitivity
+
+```{r}
+#| label: diagnostic-summary
+tab(diagnostics,digits=4)
+tab(fread(file.path(model_dir("glmm"),"conditional_simulation_checks.csv")),digits=4)
+```
+
+Adjacent-word residual pairs are formed only within a reader–text episode and
+only where original word positions differ by one. Gaps introduced by subsampling
+or missing covariates are not treated as adjacent words. Binary simulation checks
+use 200 Bernoulli simulations conditional on fitted fixed and random effects,
+without refitting. They probe residual structure at those fitted values; they do
+not validate generalization or calibrate inferential error rates. DHARMa was not
+installed, so these explicit checks are not labelled DHARMa results.
+
+![](outputs/figures/lmm-qq.png){fig-alt="Q-Q plot of conditional LMM residuals."}
+
+![](outputs/figures/lmm-residuals.png){fig-alt="Conditional LMM residuals against fitted values with a smooth trend."}
+
+![](outputs/figures/glmm-calibration.png){fig-alt="Observed and fitted first-pass regression probabilities by in-sample prediction decile."}
+
+```{r}
+#| label: sensitivity
+if(file.exists(file.path(out,"sensitivity_contrasts.csv"))) {
+  sensitivity <- fread(file.path(out,"sensitivity_contrasts.csv"))
+  tab(sensitivity[,.(model,contrast,estimate,`Shift / baseline SE`=shift_in_primary_SE)],digits=4)
+} else {
+  cat("Sensitivity results are documented in findings.md; no completed comparison table is available.")
+}
+```
+
+Sensitivity fits are judged by focal estimate changes and numerical evidence,
+not by which produces smaller p-values. Correlated reader/item covariance is the
+prespecified structural alternative. A fixation-conditioned FPReg model, if
+completed, changes the outcome population and must be interpreted accordingly.
+Remaining sensitivity and adequacy limitations are stated in the findings.
+
+## Reproduction and retained evidence
+
+The document executes R to inspect retained fits and produce tables; expensive
+fitting is separated into scripts so rendering does not silently launch hours
+of refitting. The scripts and fitting formulas remain editable and reproducible:
+
+```bash
+python3 fetch_data.py
+Rscript --vanilla prepare.R
+Rscript --vanilla fit.R lmm full diagonal
+Rscript --vanilla fit.R glmm quarter diagonal
+Rscript --vanilla summarize.R full quarter
+Rscript --vanilla sensitivity.R
+quarto render analysis.qmd
+```
+
+Use the actual fit scopes and additional commands listed in `findings.md`.
+Existing downloaded inputs are retained; verify `data-manifest.json` before
+reuse. Re-running with a new download may produce different upstream bytes.
+The prose findings describe this frozen run; substantive refits require reviewing
+that interpretation as well as regenerating numerical tables.
+The raw log and JSON receipt for each controlled run retain its exit status,
+timing and command. No source skill or pre-existing repo edits were changed.
+The CSV contrast table also retains standard errors, denominator degrees of
+freedom, unadjusted p-values, interval limits and inference methods.
+
+```{r}
+#| label: runtime-versions
+sessionInfo()
+```
+
+## What this trial showed about the skill
+
+{{< include skill-assessment.md >}}

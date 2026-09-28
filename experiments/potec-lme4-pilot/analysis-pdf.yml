@@ -1,0 +1,22 @@
+format:
+  pdf:
+    documentclass: scrartcl
+    pdf-engine: xelatex
+    papersize: letter
+    fontsize: 10pt
+    geometry:
+      - margin=0.8in
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    keep-tex: true
+    code-block-font-size: scriptsize
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+        \RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breakanywhere,fontsize=\scriptsize}
+        \setlength{\tabcolsep}{3pt}
+        \setlength{\emergencystretch}{3em}
+execute:
+  echo: false

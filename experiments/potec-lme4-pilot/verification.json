@@ -1,0 +1,6 @@
+{
+  "artifact_checks": "passed",
+  "checks": ["row identities and counts", "outcome filtering and units", "fixed-design rank", "REML and Laplace settings", "contrast algebra", "Holm family", "prediction ranges"],
+  "scientific_status": "NUMERICAL_UNRESOLVED; SINGULAR_REVIEW; LMM residual adequacy concerns",
+  "note": "Artifact consistency is not a model-validity or skill-effectiveness certificate."
+}

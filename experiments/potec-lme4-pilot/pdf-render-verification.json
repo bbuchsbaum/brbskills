@@ -1,0 +1,62 @@
+{
+  "completed_at": "2026-09-27T16:49:30.547369+00:00",
+  "task": "Render existing PoTeC Quarto report to PDF",
+  "output": "output/pdf/potec-lme4-analysis.pdf",
+  "pages": 14,
+  "embedded_figures": 9,
+  "checks": {
+    "render_exit_code": 0,
+    "all_pages_visually_reviewed": true,
+    "tables_and_equations_reviewed": true,
+    "text_margin_check": "passed: all extracted words within x=49..563 points on letter pages",
+    "companion_html_render_exit_code": 0,
+    "companion_html_embedded_images": 9
+  },
+  "changes": [
+    "PDF print metadata and table sizing",
+    "Quarto math delimiters",
+    "Model labels for coefficient and variance tables",
+    "Wrapped verbatim output",
+    "PDF reproduction command"
+  ],
+  "scientific_models_refitted": false,
+  "scientific_limitations": "Existing singularity, numerical qualification, and model adequacy limitations are preserved in the report.",
+  "render_receipt": {
+    "schema_version": 1,
+    "started_utc": "2026-09-27T16:47:46.536670+00:00",
+    "finished_utc": "2026-09-27T16:47:56.224543+00:00",
+    "duration_seconds": 9.783977,
+    "command": [
+      "env",
+      "LC_ALL=C",
+      "quarto",
+      "render",
+      "analysis.qmd",
+      "--to",
+      "pdf",
+      "--metadata-file",
+      "analysis-pdf.yml",
+      "--output",
+      "potec-lme4-analysis.pdf",
+      "--output-dir",
+      "output/pdf"
+    ],
+    "cwd": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot",
+    "log": "/Users/bbuchsbaum/code/brbskills/experiments/potec-lme4-pilot/logs/render-pdf-final.log",
+    "exit_code": 0,
+    "child_returncode": 0,
+    "reason": "exited",
+    "detail": null,
+    "timeout_seconds": 240.0,
+    "log_bytes": 2259
+  },
+  "artifacts_sha256": {
+    "analysis.qmd": "86f25a867e36dba843c9e882d8d1be59716e505058a10fee0f972dbd5223f697",
+    "analysis-pdf.yml": "e491c5df4a2c07a640aaec04da5c209447bd2d9fd01b76fb3c97f00faac34377",
+    "analysis.html": "e9bfeea9f167dc81fbda353a18c15ab5ad40faa4331949fa861af160417590a2",
+    "findings.md": "9d8f54401ee973d34487addeb38ae95e4b78693a8dc242799cd47c2fbaecc519",
+    "skill-assessment.md": "c8dfadfee888d4e89a1feecbfe45da219586469355353ce9fa06d9f8518b93e7",
+    "output/pdf/potec-lme4-analysis.pdf": "4d2e0192260deaf60b5e0c898f3903b193585a78146933f6d1b2184b9029fa51"
+  },
+  "prior_receipt": "run-summary.json retains the original analysis-time hashes; this receipt records the later rendering changes."
+}
