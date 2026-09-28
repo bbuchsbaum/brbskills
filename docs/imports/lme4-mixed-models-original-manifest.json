@@ -1,0 +1,132 @@
+{
+  "name": "lme4-mixed-models",
+  "version": "0.1.0-candidate",
+  "created": "2026-09-25",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5993,
+      "sha256": "ae1d392a877fa18f8ae889eeda0913b66b1f07dbe3381345bcb3c82947f921d3"
+    },
+    {
+      "path": "RESEARCH_SYNTHESIS.md",
+      "bytes": 11378,
+      "sha256": "d59554800bf12846f0e1fd0545c7fdb5356c18a40baf251b18147b6124d7ee87"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 10181,
+      "sha256": "de6f1da0cf1c30b34504981518da36bc3d455903c7e3ceffccf26d35cf278f53"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 3000,
+      "sha256": "774a5f3f68ff154129bfd3855ed2eb899791bd86610b1af6f1318ce4b26767bb"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 2320,
+      "sha256": "c6ca1b00cb36bf343323a04f7076fd91bec3e440114af1e8a24be93dd8f2379a"
+    },
+    {
+      "path": "evals/scenarios.yml",
+      "bytes": 8797,
+      "sha256": "09a52c622d2502a3cd4af96b7b4ada07bb2265f7713626f121e4a258e362247e"
+    },
+    {
+      "path": "examples/glmm.R",
+      "bytes": 3930,
+      "sha256": "403d29ff184d60d7d554d4fb05d52ab82179df219719eec5d4e718fafd395c33"
+    },
+    {
+      "path": "examples/lmm.R",
+      "bytes": 3303,
+      "sha256": "aa3e6d04457a50dfed74e0c7866c145c2f095ba46b6f026634f36cc9b1e78177"
+    },
+    {
+      "path": "references/contrasts-predictions.md",
+      "bytes": 6410,
+      "sha256": "45c270c26984ada2e30b487f326fa01425e416bc60a1d8470ff4e636a29eaf59"
+    },
+    {
+      "path": "references/convergence-singularity.md",
+      "bytes": 5410,
+      "sha256": "1ea1de7fa7abee2fbc9d9af40925fd07e2134afab456615dbb7a910c527c6dbf"
+    },
+    {
+      "path": "references/design-random-effects.md",
+      "bytes": 6536,
+      "sha256": "460c3e81b7b52b5d7f9578d74399c10273dd238ffdd015c5ec2c8374ef6de9a7"
+    },
+    {
+      "path": "references/diagnostics-glmm.md",
+      "bytes": 5748,
+      "sha256": "8695480ae1e6bf99676a232271f4631e174d363760e24e5935f100401f588f24"
+    },
+    {
+      "path": "references/evidence-policy.md",
+      "bytes": 5541,
+      "sha256": "d9eda18e95f6781442bbd8bbf0fd7989e4955466d22af18bcfeff692e09990a8"
+    },
+    {
+      "path": "references/index.md",
+      "bytes": 1002,
+      "sha256": "86d25e5de4c77219d4d36640de90085b40bbdb8945231f190059d6f57fd828e9"
+    },
+    {
+      "path": "references/inference-selection.md",
+      "bytes": 7773,
+      "sha256": "36e15eba0f6bcd320556ce182a71c634500e3db93b7b21b3c08bfa5c635d3e42"
+    },
+    {
+      "path": "references/reporting.md",
+      "bytes": 3116,
+      "sha256": "18ca7f7ae98eb8e5e080f4aa7ae66a24e61fec1838c3620942145c57ea72b841"
+    },
+    {
+      "path": "references/sources.json",
+      "bytes": 24012,
+      "sha256": "c45f243ec5c2ab10b8e1a9fec69706c25456a9a5dfd3e3d5e44ea453afaa66fb"
+    },
+    {
+      "path": "references/sources.md",
+      "bytes": 18227,
+      "sha256": "14af37a6bb960afc68f7c40251c330a4e262bd489f95ad332de3f23f0d4963f9"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "bytes": 103,
+      "sha256": "433d68de1c577be5630b176507c5c592f67ddb52fb47cf7f4509c87544d51c61"
+    },
+    {
+      "path": "scripts/model_audit.R",
+      "bytes": 11428,
+      "sha256": "8b62da8333a830aab37f28f2d385f37fb564e09d29a60413910e2793c20a0bf3"
+    },
+    {
+      "path": "templates/analysis-plan.yml",
+      "bytes": 1961,
+      "sha256": "bc3806dd59f17191e6ad2e84915899363ed0bd553bb8236d336f72aa20f5e452"
+    },
+    {
+      "path": "templates/report.md",
+      "bytes": 1561,
+      "sha256": "26db4924fbc9882fef057e2cc71abf6c6862c4537f13f1a811a2e8c2641304a5"
+    },
+    {
+      "path": "tests/README.md",
+      "bytes": 1585,
+      "sha256": "6ec72ab8936a1481ee2ed11666270a6bf1ebadae802b541a279b045c6d7ce3c7"
+    },
+    {
+      "path": "tests/smoke.R",
+      "bytes": 5104,
+      "sha256": "459fc433458045c3c7e62c60a32ba2aef399db8e98680c4463c75632c1cbe630"
+    },
+    {
+      "path": "tests/validate_bundle.py",
+      "bytes": 9107,
+      "sha256": "08fb38ea4ae682e209303d47a81b304ab9ae896629fb54965d55afa440277405"
+    }
+  ]
+}

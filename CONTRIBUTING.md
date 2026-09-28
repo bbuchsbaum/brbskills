@@ -61,6 +61,7 @@ python -m unittest discover -s tests -v
 python skills/alliance-hpc/tests/test_skill.py
 python collections/fmri-workbench/tools/audit_bundle.py
 python -m unittest discover -s collections/fmri-workbench/tests -v
+python skills/lme4-mixed-models/tests/validate_bundle.py
 shellcheck skills/alliance-hpc/scripts/*.sh skills/alliance-hpc/templates/*.sbatch
 python scripts/skills.py package alliance-hpc
 ```

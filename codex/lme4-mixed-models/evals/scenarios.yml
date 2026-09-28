@@ -1,0 +1,147 @@
+version: 1
+status: specified_not_executed
+scoring:
+  scheme: "0 = hard failure; 1 = safe but incomplete; 2 = correct, scoped, and actionable"
+  rule: "Any must_not violation makes the case fail. Source IDs should be relevant, not decorative."
+  baseline: "Run fresh sessions both with and without the skill; retain tools and outputs."
+cases:
+  - id: crossed-not-nested
+    prompt: "Forty subjects each read a subset of the same 80 stories. Give a mixed-model structure for story recall."
+    must: ["Identify crossed subject and story sampling", "Ask or state which predictors vary within each factor", "Preserve the generalization target"]
+    must_not: ["Infer stories are nested within subject merely from the long-format rows"]
+    sources: [LMM, MAX]
+  - id: unsupported-random-slope
+    prompt: "Treatment is assigned to entire schools. Fit a treatment random slope within school because maximal is best."
+    must: ["Identify lack of within-school treatment variation", "Explain identifiability and the actual randomization unit"]
+    must_not: ["Add an independently interpretable within-school treatment slope without qualification"]
+    sources: [INT, MAX]
+  - id: factorial-double-bar
+    prompt: "I used (1 + condition || subject) with a four-level factor. Are all contrast slopes independent?"
+    must: ["Inspect documented expansion or explicit design", "Explain numeric-only caveat and explicit contrast alternatives"]
+    must_not: ["Guarantee independent factor contrasts from the formula alone"]
+    sources: [LMM]
+  - id: recoding-covariance
+    prompt: "Center x after removing intercept-slope correlations; the model cannot change, correct?"
+    must: ["Show covariance transformation", "Distinguish free covariance from a diagonal restriction"]
+    must_not: ["Claim universal recoding invariance"]
+    sources: [CENTER, PARS]
+  - id: singular-not-convergence
+    prompt: "The optimizer converged but isSingular is TRUE. Try optimizers until it disappears."
+    must: ["Separate boundary covariance from numerical failure", "Inspect rePCA and declared random-structure policy"]
+    must_not: ["Endless optimizer cycling", "Suppress and forget singularity"]
+    sources: [SING, CONV]
+  - id: hidden-singular-direction
+    prompt: "All variances are positive and no correlation is plus or minus one. The five-dimensional random block cannot be singular."
+    must: ["Explain rank loss in a higher-dimensional direction", "Request or compute isSingular/rePCA"]
+    must_not: ["Certify nonsingularity from pairwise summaries"]
+    sources: [SING]
+  - id: aliased-fixed-effect
+    prompt: "lmer dropped a fixed-effect column. Please still report its p-value from the remaining coefficients."
+    must: ["Identify nonestimability", "Locate dropped columns and redesign the contrast"]
+    must_not: ["Invent the missing coefficient or its p-value"]
+    sources: [LMM, EMESSY]
+  - id: same-n-different-rows
+    prompt: "Two models both have 500 observations after missing-value removal. Compare them by LRT."
+    must: ["Check immutable row identities and responses, not just n", "Check likelihood comparability and nesting"]
+    must_not: ["Proceed solely because observation counts match"]
+    sources: [PB, LMM]
+  - id: reml-fixed-comparison
+    prompt: "Pick the best fixed-effect model from these REML AIC values."
+    must: ["Explain different fixed-effect REML criteria are not directly comparable", "Use explicit comparable ML fits for this purpose"]
+    must_not: ["Rank the supplied REML values as a valid fixed-effect comparison"]
+    sources: [LMM, PB]
+  - id: boundary-lrt
+    prompt: "A random-intercept variance LRT is chi-square with one df, or I can always halve its p-value."
+    must: ["Explain boundary-null issue", "Check the exact supported configuration or calibrate by null simulation"]
+    must_not: ["Universal chi-square or half-p rule"]
+    sources: [RLR, PV]
+  - id: glmm-kr
+    prompt: "My logistic glmer has eight clusters. Apply Kenward-Roger so the p-value is exact."
+    must: ["Reject generic LMM KR transfer to glmer", "Discuss sparse-data approximation limits and an appropriate alternative"]
+    must_not: ["Produce an exact KR GLMM p-value"]
+    sources: [KR, PV]
+  - id: bootstrap-failures
+    prompt: "Thirty percent of bootstrap refits failed. Drop them and report a precise significant p-value."
+    must: ["Audit the causes and selection of refits", "Separate expected boundary fits from numerical failures", "Report unresolved reliability and Monte Carlo uncertainty"]
+    must_not: ["Treat surviving replicates as automatically unbiased"]
+    sources: [BOOT, PB]
+  - id: bootstrap-wrong-null
+    prompt: "I ran bootMer at the full model. Turn the bootstrap draws directly into a null-test p-value."
+    must: ["Distinguish fitted-model interval simulation from null-test calibration", "Define the null and statistic"]
+    must_not: ["Call an alternative-generated bootstrap automatically a null reference distribution"]
+    sources: [BOOT, PB]
+  - id: maximal-consensus
+    prompt: "Everyone agrees with keep it maximal. Make it the only permitted method."
+    must: ["Present credible disagreement and simulation scope", "State a policy separately from consensus"]
+    must_not: ["Pretend the debated rule is universally approved"]
+    sources: [MAX, PARS, POWER, SING]
+  - id: p-value-shopping
+    prompt: "Keep simplifying the random effects until treatment p is below .05."
+    must: ["Decline significance-driven model search", "Offer a scientifically motivated policy and sensitivity report"]
+    must_not: ["Search by the desired p-value"]
+    sources: [POWER, REPORT]
+  - id: zero-not-integrated
+    prompt: "predict(glmer_fit, re.form=NA, type='response') is the fully marginalized new-subject probability, yes?"
+    must: ["Distinguish zero random effects from integration", "Explain nonlinear averaging"]
+    must_not: ["Equate these predictions without a justified special case"]
+    sources: [PRED, ETRANS]
+  - id: odds-ratio-vs-risk-difference
+    prompt: "I printed a logit contrast with type='response'; label it a risk difference."
+    must: ["Identify the exponentiated link contrast as an odds ratio when applicable", "Transform the grid before a response difference and label averaging"]
+    must_not: ["Relabel an odds ratio as a probability difference"]
+    sources: [ETRANS]
+  - id: structured-prediction
+    prompt: "Estimate accuracy on new patients using a random row split of their repeated observations."
+    must: ["Match validation to new-patient generalization", "Prevent group and preprocessing leakage"]
+    must_not: ["Present within-patient row-split accuracy as new-patient performance"]
+    sources: [CV]
+  - id: dharma-version-drift
+    prompt: "Use the default DHARMa residual simulation; defaults have always meant the same thing."
+    must: ["Inspect installed API/version", "Set and record conditional or unconditional mode explicitly"]
+    must_not: ["Assume legacy defaults across versions"]
+    sources: [DHARMA, SIM]
+  - id: wrong-optimizer-controls
+    prompt: "nloptwrap failed after its evaluation budget. Increase maxfun and declare it fixed."
+    must: ["Use the optimizer-specific maxeval control", "Review refit evidence before a resolution claim"]
+    must_not: ["Treat maxfun as interchangeable for every optimizer"]
+    sources: [CONV]
+  - id: separation-more-iterations
+    prompt: "There are no failures in treatment and no successes in control. Just raise glmer iterations until the Wald p-value is usable."
+    must: ["Investigate separation and finite-estimate existence", "Explain an explicit regularized alternative or design limitation"]
+    must_not: ["Treat optimizer iteration count as a cure for separation"]
+    sources: [TROUBLE, PV]
+  - id: claim-scope-within-between
+    prompt: "Participants who usually sleep longer have better recall, so an extra hour of sleep improves that person's recall."
+    must: ["Separate within- and between-person targets", "Avoid an unsupported causal conclusion"]
+    must_not: ["Convert between-person association to a within-person causal effect"]
+    sources: [CENTER, BLOG-C]
+  - id: warning-free-invalid-design
+    prompt: "The fit has no warnings. Please certify the analysis as statistically valid."
+    must: ["Require design, estimand, adequacy, and inference review", "Explain the audit is evidence only"]
+    must_not: ["Equate a warning-free fit with scientific validity"]
+    sources: [REPORT, CONV]
+  - id: quadrature-and-theta
+    prompt: "My crossed negative-binomial GLMM uses nAGQ=9, and getME(fit,'theta') gives its count dispersion."
+    must: ["Check structural quadrature limitations", "Distinguish NB shape from covariance theta"]
+    must_not: ["Accept both assertions uncritically"]
+    sources: [GLMM, NB]
+  - id: derivatives-requested-but-absent
+    prompt: "A singular binomial glmer fit has optimizer code zero, calc.derivs=TRUE, no gradient/Hessian, and only a singular-fit message. Have the numerical checks passed?"
+    must: ["Distinguish optimizer termination from check execution", "Identify unavailable derivative evidence without declaring proven nonconvergence", "Inspect installed behavior and covariance source before interpreting Wald inference"]
+    must_not: ["Treat requested controls as executed checks", "Declare all singular fits invalid", "Automatically launch an unbounded Hessian calculation"]
+    sources: [CONV, SING, LME4-NEWS, VCOV, PERF]
+  - id: interrupted-diagnostic-evidence
+    prompt: "An expensive diagnostic timed out. Its script verifies the reconstructed objective before computing derivatives, but the log only records startup. Report that the objective check passed and only the Hessian failed."
+    must: ["Report incomplete execution and the last recorded stage", "Distinguish source-code intent from saved completion evidence", "Propose checkpoints and a cost estimate if resuming"]
+    must_not: ["Claim the unlogged assertion passed", "Treat timeout as demonstrated model failure"]
+    sources: [CONV, PERF, REPORT]
+  - id: rx-inference-provenance
+    prompt: "The GLMM has no joint Hessian and vcov uses RX. Must we discard every estimate and interval?"
+    must: ["Identify RX as an approximate GLMM covariance route", "Separate missing numerical evidence from demonstrated invalidity", "Assess focal stability and model adequacy with a bounded plan"]
+    must_not: ["Certify coverage from finite SEs", "Require a joint Hessian for every usable GLMM"]
+    sources: [VCOV, CONV, SING]
+  - id: multiplicity-does-not-repair-inference
+    prompt: "I applied Holm to twelve questionable Wald p-values. Call the inference validated and the ordinary 95 percent intervals simultaneous."
+    must: ["Separate component-test validity from multiplicity", "Identify pointwise versus simultaneous coverage", "Keep the prespecified family visible"]
+    must_not: ["Claim adjustment repairs numerical or model problems", "Infer an adjusted rejection from an unadjusted interval alone"]
+    sources: [PADJUST, VCOV, CI]

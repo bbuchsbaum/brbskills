@@ -1,0 +1,83 @@
+# Fill before examining focal significance. Null means unresolved, not assumed.
+analysis_id: null
+purpose: null  # confirmatory | exploratory | predictive
+scientific_question: null
+estimand:
+  quantity: null
+  direction: null
+  population: null
+  scale: null
+  averaging_weights: null
+  prediction_target: null  # existing_group | random_effects_zero | integrated_new_group
+  causal_identification_basis: null
+outcome:
+  variable: null
+  observation_unit: null
+  family: null
+  link: null
+  trials: null
+  exposure: null
+  weights_meaning: null
+design:
+  sampling_units: []
+  randomization_units: []
+  grouping_factors: []
+  crossed_or_nested: null
+  within_group_predictors: {}
+  time_or_spatial_dependence: null
+  generalize_to_new_groups: null
+data:
+  source_or_hash: null
+  immutable_row_id: null
+  analysis_subset: null
+  missingness_assumptions: null
+  source_coding_and_merge_checks: null
+  exclusions: []
+parameterization:
+  factor_levels: {}
+  contrast_matrices: {}
+  centering_constants: {}
+  scaling_constants: {}
+  within_between_decomposition: null
+model:
+  engine: lme4
+  formula: null
+  random_structure_policy: null
+  scientifically_essential_slopes: []
+  candidate_set: []
+  simplification_order_and_stopping_rule: null
+  ML_or_REML: null
+  nAGQ: null
+inference:
+  planned_contrasts: []
+  null_hypotheses: []
+  primary_method: null
+  covariance_source_and_fallback_policy: null
+  multiplicity_family: null
+  p_adjustment: null
+  interval_method_and_adjustment: null
+  bootstrap_B: null
+  bootstrap_seed: null
+  bootstrap_failure_policy: null
+prediction_validation:
+  heldout_unit: null
+  new_subjects: null
+  new_items: null
+  time_respecting: null
+  selection_inside_training_folds: null
+  score: null
+diagnostics:
+  numerical_rescue_budget: null
+  postfit_compute_budget_and_checkpoints: null
+  focal_estimate_stability_tolerance: null
+  singularity_tolerance: 0.0001
+  residual_simulation_mode: null
+  influence_plan: null
+  sensitivity_models: []
+provenance:
+  package_versions: {}
+  saved_fit_reconstruction_check: null
+  planned_vs_exploratory_changes: []
+  source_ids: []
+status: NEEDS_DESIGN
+unresolved: []

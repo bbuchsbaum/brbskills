@@ -1,0 +1,3 @@
+# Optional static/algebra validator only; NOT needed to load the skill or run R analyses.
+numpy
+PyYAML

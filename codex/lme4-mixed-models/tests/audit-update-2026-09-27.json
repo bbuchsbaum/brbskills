@@ -1,0 +1,177 @@
+{
+  "date": "2026-09-27",
+  "scope": "General numerical-evidence and inference-reporting update; no change to scientific model policy",
+  "source_hashes": {
+    "SKILL.md": "269eb8eae862c1a373c94775db476ffac2bd3fdf14f34ae0758bb3a5ad619870",
+    "scripts/model_audit.R": "f851181524d86b1eee97b6b8610e33d94b8786ed7f4d3b6ae19abc9f55548db3",
+    "tests/smoke.R": "15cef320ac462abc51891b2c6fd048e034cb287b2b8f51ba2434d21376917429",
+    "tests/validate_bundle.py": "4496f0ca1becec955b2ca39ae72eab2161cf32a87c9421827a56a8a30c110f48",
+    "examples/glmm.R": "26703eb62303cb50df4f6a27d636c6038ea5ef2b2f1ee72cd57cc9d74e33e9d2",
+    "references/convergence-singularity.md": "9210a9106281747aed23ef43a3fae31b57b4d1755ee6f017b24801a9aa41d644",
+    "references/inference-selection.md": "e0607a5a05f86b6734e6a4ab9f69fea9b673b355663d45f84bcd6a72007a622c",
+    "references/reporting.md": "1ce816ef644a876c16ce817bb263651f18524537aee27e182c09a664d65d236f",
+    "references/workflow.md": "006652d267faf8a8b2c41e00468764ada2cf9c82002700174edf809707ef085c",
+    "templates/analysis-plan.yml": "ab906188151026bc0a9aa76823ff6787f0779f6dac384b2266ff3d0259e8ab80",
+    "templates/report.md": "7f858771db28921a8c23b92fe807a5309f8986f57e521a62256e6156c3cf789c",
+    "evals/scenarios.yml": "aee6a50ce03b7bfb8c765e5ab90c3c166af674361cac4d31f38de1a6b10354d3"
+  },
+  "runtime": {
+    "command": "LC_ALL=C Rscript tests/smoke.R",
+    "exit_code": 0,
+    "checks_passed": 23,
+    "output": "PASS: invalid model rejected \nPASS: capture preserves warning, message, and error \nPASS: Gaussian audit records evidence without validity certification \nPASS: disabled derivatives are missing evidence, not a failed optimizer \nPASS: Hessian defects are visible without relying on warning messages \nPASS: LMM covariance capture retains the actual RX matrix \nPASS: random slope support counted \nPASS: missing support values require explicit handling \nPASS: REML fixed-effect comparison blocked by default \nPASS: comparable ML frames pass conservative guard \nPASS: row identity and ordering mismatch rejected \nPASS: duplicate IDs rejected \nPASS: rank deficiency distinguished from singular covariance \nPASS: balanced zero-between-group construction flags singularity \nPASS: centering changes a diagonal covariance constraint \nPASS: logit-normal integration matches zero-variance and symmetry identities \nPASS: logit-normal integrated mean differs from random effects zero \nPASS: GLMM audit identifies family and quadrature \nPASS: GLMM covariance capture identifies Hessian and explicit RX routes \nPASS: missing GLMM Hessian retains RX inference provenance without inventing a check \nPASS: covariance fallback conditions remain visible and provenance unresolved \nPASS: singular binomial fixture cannot hide missing derivatives behind optimizer success \nPASS: inconsistent GLMM quadrature comparison rejected \nSKIP: DHARMa optional runtime branch (not installed)\nSKIP: bootstrap execution; RUN_SLOW=true enables it. B=20 is ONLY a smoke test.\n23 runtime smoke checks passed. This is NOT agent or inferential validation.\nR version 4.5.1 (2025-06-13)\nPlatform: aarch64-apple-darwin20\nRunning under: macOS Sonoma 14.3\n\nMatrix products: default\nBLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1\n\nlocale:\n[1] C\n\ntime zone: America/Toronto\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nloaded via a namespace (and not attached):\n [1] lme4_2.0-1       Matrix_1.7-3     lattice_0.22-7   splines_4.5.1   \n [5] Rdpack_2.6.6     cli_3.6.6        nloptr_2.2.1     grid_4.5.1      \n [9] reformulas_0.4.4 compiler_4.5.1   boot_1.3-31      rbibutils_2.4.1 \n[13] tools_4.5.1      nlme_3.1-170     minqa_1.2.8      Rcpp_1.1.2      \n[17] rlang_1.3.0      MASS_7.3-65     \n",
+    "limitations": [
+      "One R/lme4 environment only",
+      "Optional DHARMa and bootstrap branches skipped",
+      "No inferential calibration claim"
+    ]
+  },
+  "glmm_example": {
+    "command": "LC_ALL=C Rscript --vanilla examples/glmm.R",
+    "exit_code": 0,
+    "isolated_copy": true,
+    "covariance_source": "finite_difference_Hessian",
+    "three_finite_contrast_SEs": true,
+    "prediction_plot_visually_inspected": true,
+    "interval_adjustment": "bonferroni",
+    "p_adjustment": "holm",
+    "DHARMa": "not installed; skipped"
+  },
+  "static": {
+    "verification_date": "2026-09-27",
+    "checks": [
+      {
+        "name": "source_registry",
+        "status": "PASS",
+        "details": "48 unique, scoped source entries. URL syntax checked; no live link crawler was run."
+      },
+      {
+        "name": "portable_frontmatter_and_core_budget",
+        "status": "PASS",
+        "details": {
+          "core_word_count": 545,
+          "frontmatter_keys": [
+            "description",
+            "name"
+          ]
+        }
+      },
+      {
+        "name": "relative_markdown_links",
+        "status": "PASS",
+        "details": "37 relative Markdown links resolve."
+      },
+      {
+        "name": "citation_id_resolution",
+        "status": "PASS",
+        "details": {
+          "referenced_source_ids": 48,
+          "registered_source_ids": 48
+        }
+      },
+      {
+        "name": "yaml_contracts_and_eval_specs",
+        "status": "PASS",
+        "details": "Analysis plan and 28 behavioral specifications parsed; evaluations NOT executed."
+      },
+      {
+        "name": "R_lexical_delimiter_check_only",
+        "status": "PASS",
+        "details": "Balanced delimiters/quoted strings in 4 R files; NOT an R parser/runtime check."
+      },
+      {
+        "name": "core_guardrail_presence",
+        "status": "PASS",
+        "details": "15 critical concepts present. Presence is not a behavioral success test."
+      },
+      {
+        "name": "derived_centering_changes_diagonal_constraint",
+        "status": "PASS",
+        "details": {
+          "old_covariance": 0.0,
+          "new_covariance": 3.0
+        }
+      },
+      {
+        "name": "derived_full_covariance_basis_invariance",
+        "status": "PASS",
+        "details": "Random-contribution variance invariant under the matching full covariance transformation."
+      },
+      {
+        "name": "derived_binary_contrast_scaling",
+        "status": "PASS",
+        "details": "Binary contrast scale identities verified."
+      },
+      {
+        "name": "derived_logit_zero_RE_differs_from_integrated_mean",
+        "status": "PASS",
+        "details": {
+          "eta": 2.0,
+          "random_variance": 1.0,
+          "at_random_effect_zero": 0.8807970779778823,
+          "integrated_logit_normal_mean": 0.8445374814698765
+        }
+      },
+      {
+        "name": "derived_logit_normal_symmetry",
+        "status": "PASS",
+        "details": {
+          "integrated_mean_at_eta_zero": 0.5
+        }
+      },
+      {
+        "name": "derived_log_link_marginal_mean",
+        "status": "PASS",
+        "details": {
+          "numerical": 3.6692966676192444,
+          "closed_form": 3.6692966676192436
+        }
+      },
+      {
+        "name": "derived_monte_carlo_standard_error_examples",
+        "status": "PASS",
+        "details": {
+          "B_1000": 0.006892024376045111,
+          "B_10000": 0.0021794494717703367
+        }
+      }
+    ],
+    "static_and_algebra_checks_passed": 14,
+    "static_and_algebra_checks_failed": 0,
+    "Rscript_found_in_this_execution": "/usr/local/bin/Rscript",
+    "R_runtime_tests": "NOT EXECUTED by this validator",
+    "agent_behavior_evaluations": "NOT EXECUTED",
+    "independent_statistical_review": "NOT PERFORMED"
+  },
+  "repository": {
+    "check_exit_code": 0,
+    "unittest_exit_code": 0,
+    "tests_passed": 23,
+    "generated_changes_outside_lme4": []
+  },
+  "forward_case": {
+    "runtime": "Fresh-context Codex subagent; lean_expert role configured with gpt-6-astra",
+    "prior_conversation": "not supplied",
+    "allowed_resources": "Skill entrypoint and relevant linked references; read-only; no fits",
+    "prompt": "I fitted a binomial glmer model for repeated manufacturing defect checks. There are 60 batches and 18 machines. The saved fit is singular, optimizer code is zero, calc.derivs was requested TRUE, optinfo$derivs is NULL, and the only saved convergence message is boundary (singular) fit. vcov returns finite values. A separate diagnostic job had a 10-minute timeout; its source checks objective equality before differentiation, but the saved log contains only job started. We have six prespecified Wald contrasts, Holm-adjusted p-values, and ordinary 95% intervals. Please write the computational/inference limitations paragraph and the next two practical actions. Do not fit models or change files.",
+    "response": "The binomial mixed model included 60 batches and 18 machines and returned optimizer code zero, but this establishes optimizer termination rather than complete numerical validation. The fitted random-effects covariance was singular, requiring review of the supported covariance structure; singularity alone does not demonstrate optimizer failure. Although `calc.derivs=TRUE` was requested, the saved derivatives are absent, so derivative-based stability and convergence-check execution remain unverified. The separate diagnostic job's 10-minute limit and \"job started\" log provide no evidence that objective agreement or differentiation completed: an assertion in its source is not a completed check. Finite `vcov` values establish neither the covariance calculation's provenance nor reliable interval coverage. The six prespecified contrasts therefore have provisional asymptotic Wald inference, whose adequacy also depends on event information, dependence structure, and model fit; the grouping-factor counts alone do not establish adequate calibration. Holm adjustment controls family-wise error across these six tests only insofar as their component p-values are valid. The ordinary 95% intervals are unadjusted, pointwise intervals, not simultaneous intervals, and may disagree with Holm-adjusted rejection decisions.\n\n1. Recover and document the evidence. Inspect the saved fit, actual controls, package version, covariance method and any fallback conditions; retain the exact covariance matrix used for the six contrasts. Record derivatives as unavailable and diagnostic stages beyond \"job started\" as unverified. Inspect `VarCorr`/`rePCA` and the singularity tolerance to identify the affected covariance directions.\n\n2. Run one budgeted, checkpointed sensitivity investigation. First review design support, event sparsity and separation, scaling, and repeated-measure dependence. Then choose a targeted numerical comparison based on its cost and relevance to the six contrasts. If reconstructing the objective, save verified objective agreement before differentiation; assess a boundary optimum using feasible directions. Compare focal estimates and uncertainty under the justified check and the declared random-structure policy, without automatically deleting grouping factors or slopes. Preserve the unadjusted-interval label, or use a separately specified simultaneous-interval procedure if that is the intended claim.",
+    "files_read": [
+      "SKILL.md",
+      "references/convergence-singularity.md",
+      "references/inference-selection.md",
+      "references/contrasts-predictions.md",
+      "references/reporting.md"
+    ],
+    "parent_review": {
+      "result": "required distinctions observed",
+      "criteria": [
+        "Optimizer termination distinguished from missing check evidence",
+        "No completion inferred from unlogged assertions",
+        "Finite covariance distinguished from validated coverage",
+        "Multiplicity distinguished from pointwise intervals",
+        "Budgeted next steps; no automatic slope deletion"
+      ]
+    },
+    "limits": "Single qualitative case; no baseline or cross-product comparison; not a measured skill-improvement result"
+  }
+}

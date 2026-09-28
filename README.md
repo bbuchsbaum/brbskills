@@ -5,6 +5,7 @@ Each skill can be downloaded and installed independently.
 
 | Skill | Purpose | Codex folder | Claude Code folder |
 |---|---|---|---|
+| [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
 | [alliance-hpc](skills/alliance-hpc/SKILL.md) | Alliance/DRAC Slurm planning, execution, and troubleshooting | [codex/alliance-hpc](codex/alliance-hpc) | [claude/alliance-hpc](claude/alliance-hpc) |
 | [fmri](collections/fmri-workbench/skills/fmri/SKILL.md) | Coordinate multi-stage task-fMRI analyses | [codex/fmri](codex/fmri) | [claude/fmri](claude/fmri) |
 | [fmri-bids](collections/fmri-workbench/skills/fmri-bids/SKILL.md) | Discover BIDS data and assess analysis readiness | [codex/fmri-bids](codex/fmri-bids) | [claude/fmri-bids](claude/fmri-bids) |

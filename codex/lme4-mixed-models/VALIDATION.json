@@ -1,0 +1,106 @@
+{
+  "verification_date": "2026-09-25",
+  "checks": [
+    {
+      "name": "source_registry",
+      "status": "PASS",
+      "details": "44 unique, scoped source entries. URL syntax checked; no live link crawler was run."
+    },
+    {
+      "name": "portable_frontmatter_and_core_budget",
+      "status": "PASS",
+      "details": {
+        "core_word_count": 1266,
+        "frontmatter_keys": [
+          "description",
+          "name"
+        ]
+      }
+    },
+    {
+      "name": "relative_markdown_links",
+      "status": "PASS",
+      "details": "27 relative Markdown links resolve."
+    },
+    {
+      "name": "citation_id_resolution",
+      "status": "PASS",
+      "details": {
+        "referenced_source_ids": 44,
+        "registered_source_ids": 44
+      }
+    },
+    {
+      "name": "yaml_contracts_and_eval_specs",
+      "status": "PASS",
+      "details": "Analysis plan and 24 behavioral specifications parsed; evaluations NOT executed."
+    },
+    {
+      "name": "R_lexical_delimiter_check_only",
+      "status": "PASS",
+      "details": "Balanced delimiters/quoted strings in 4 R files; NOT an R parser/runtime check."
+    },
+    {
+      "name": "core_guardrail_presence",
+      "status": "PASS",
+      "details": "15 critical concepts present. Presence is not a behavioral success test."
+    },
+    {
+      "name": "derived_centering_changes_diagonal_constraint",
+      "status": "PASS",
+      "details": {
+        "old_covariance": 0.0,
+        "new_covariance": 3.0
+      }
+    },
+    {
+      "name": "derived_full_covariance_basis_invariance",
+      "status": "PASS",
+      "details": "Random-contribution variance invariant under the matching full covariance transformation."
+    },
+    {
+      "name": "derived_binary_contrast_scaling",
+      "status": "PASS",
+      "details": "Binary contrast scale identities verified."
+    },
+    {
+      "name": "derived_logit_zero_RE_differs_from_integrated_mean",
+      "status": "PASS",
+      "details": {
+        "eta": 2.0,
+        "random_variance": 1.0,
+        "at_random_effect_zero": 0.8807970779778823,
+        "integrated_logit_normal_mean": 0.8445374814698766
+      }
+    },
+    {
+      "name": "derived_logit_normal_symmetry",
+      "status": "PASS",
+      "details": {
+        "integrated_mean_at_eta_zero": 0.5000000000000001
+      }
+    },
+    {
+      "name": "derived_log_link_marginal_mean",
+      "status": "PASS",
+      "details": {
+        "numerical": 3.6692966676192444,
+        "closed_form": 3.6692966676192436
+      }
+    },
+    {
+      "name": "derived_monte_carlo_standard_error_examples",
+      "status": "PASS",
+      "details": {
+        "B_1000": 0.006892024376045111,
+        "B_10000": 0.0021794494717703367
+      }
+    }
+  ],
+  "static_and_algebra_checks_passed": 14,
+  "static_and_algebra_checks_failed": 0,
+  "Rscript_found_in_this_execution": null,
+  "R_runtime_tests": "NOT EXECUTED by this validator",
+  "agent_behavior_evaluations": "NOT EXECUTED",
+  "independent_statistical_review": "NOT PERFORMED"
+}

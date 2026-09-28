@@ -1,0 +1,3 @@
+interface:
+  display_name: "lme4 Mixed Models"
+  short_description: "Plan, diagnose, and review mixed models in R"
