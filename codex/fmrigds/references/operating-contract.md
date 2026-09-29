@@ -36,6 +36,13 @@ ask questions that metadata or an approved plan answers. Explain scientific
 tradeoffs, not every file operation. Do not ask group questions for a first-level
 request. Keep explanation depth separate from permission to execute.
 
+When guided practice is requested and `trainee-mode` is installed, its experimental
+protocol can extend teaching review with selected learning checkpoints and
+graduated hints. Keep these practice pauses distinct from material-decision
+questions: fixed approved choices need explanation, not renewed approval. Reuse
+the existing decision record for proposer, chooser, executor, and support given.
+Stopping teaching pauses leaves scientific checks and required approvals intact.
+
 Always resolve the scientific estimand, ambiguous cohort/condition meaning,
 unsupported design, critical data conflicts, and material protocol changes.
 Presentation choices and reversible implementation details can use disclosed

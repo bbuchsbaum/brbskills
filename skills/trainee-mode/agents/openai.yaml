@@ -1,0 +1,4 @@
+interface:
+  display_name: "Trainee mode (experimental)"
+  short_description: "Experimental coaching at chosen analysis checkpoints"
+  default_prompt: "Use $trainee-mode to help me practise selected analysis decisions, with graduated hints and feedback tied to evidence."

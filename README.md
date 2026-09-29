@@ -5,6 +5,7 @@ Each skill can be downloaded and installed independently.
 
 | Skill | Purpose | Codex folder | Claude Code folder |
 |---|---|---|---|
+| [trainee-mode](skills/trainee-mode/SKILL.md) **(experimental)** | Guided practice at selected analysis checkpoints; learning benefits unvalidated | [codex/trainee-mode](codex/trainee-mode) | [claude/trainee-mode](claude/trainee-mode) |
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
 | [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
 | [fmriprep](skills/fmriprep/SKILL.md) | Portable BIDS preprocessing plans, execution, recovery, and QC | [codex/fmriprep](codex/fmriprep) | [claude/fmriprep](claude/fmriprep) |
@@ -23,6 +24,13 @@ preprocessing workflow using an available fMRIPrep installation; rriscripts and
 Alliance guidance are optional. Consult the [fmriprep validation record](skills/fmriprep/tests/VALIDATION.md)
 and [Workbench import status](docs/imports/fmri-workbench.md) for their respective
 verification limits.
+
+The experimental `trainee-mode` skill extends teaching interactions with selected
+pause points, graduated hints, and attribution in the existing decision record.
+It does not replace an analysis skill or change its execution permissions.
+Protocol behavior and learning benefits remain unvalidated; see its
+[rationale](skills/trainee-mode/references/evidence.md) and
+[validation status](skills/trainee-mode/tests/VALIDATION.md).
 
 ## Download an individual skill
 
