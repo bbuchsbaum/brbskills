@@ -1,0 +1,109 @@
+{
+ "schema": 2,
+ "generated": "2026-09-30T10:12:03.120-04:00",
+ "revision": 4,
+ "project": {
+  "name": "mixeff",
+  "root": "/Users/bbuchsbaum/code/mixeff",
+  "git": {
+   "branch": "main",
+   "head": "e02f7a1",
+   "subject": "Initial import",
+   "dirty": 0
+  }
+ },
+ "server": {
+  "running": false,
+  "started": null
+ },
+ "style": {
+  "theme": "dark",
+  "density": "dense",
+  "accent": "#6366f1",
+  "notes": ""
+ },
+ "sessions": [
+  {
+   "id": "0c9d8e7f-6a5b-4c3d-9e2f-1a0b9c8d7e6f",
+   "short": "0c9d",
+   "agent": "claude",
+   "label": "mixeff",
+   "cwd": "/Users/bbuchsbaum/code/mixeff",
+   "started": "2026-09-30T10:11:22.120-04:00",
+   "last_seen": "2026-09-30T10:11:34.120-04:00",
+   "ended": null,
+   "activity": "working",
+   "activity_since": "2026-09-30T10:11:30.120-04:00",
+   "current": {
+    "tool": "Grep",
+    "summary": "isSingular|singular fit",
+    "started": "2026-09-30T10:12:01.120-04:00",
+    "destructive": null
+   },
+   "last_prompt": {
+    "ts": "2026-09-30T10:11:30.120-04:00",
+    "text": "Why does fit_lmm() warn about a singular fit on the sleepstudy example?"
+   },
+   "attention": [],
+   "plan": null,
+   "stats": {
+    "tool_calls": 1,
+    "edits": 0,
+    "commands": 0,
+    "failures": 0,
+    "turns": 1,
+    "subagents": 0,
+    "files_touched": 1
+   },
+   "tests": [],
+   "files": [
+    {
+     "path": "R/fit_lmm.R",
+     "edits": 0,
+     "reads": 1,
+     "last": "2026-09-30T10:11:34.120-04:00"
+    }
+   ],
+   "events": [
+    {
+     "id": 4229,
+     "ts": "2026-09-30T10:11:22.120-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "startup",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4230,
+     "ts": "2026-09-30T10:11:30.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Why does fit_lmm() warn about a singular fit on the sleepstudy example?",
+     "detail": "Why does fit_lmm() warn about a singular fit on the sleepstudy example?",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4231,
+     "ts": "2026-09-30T10:11:34.120-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/fit_lmm.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 46,
+     "subagent": null
+    }
+   ],
+   "inbox": [],
+   "paused": false,
+   "wakeable": null
+  }
+ ],
+ "conflicts": [],
+ "mote": null
+}

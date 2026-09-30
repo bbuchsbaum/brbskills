@@ -1,0 +1,9 @@
+{
+  "session_id": "5d7a0c2e-live-4000-8000-000000000000",
+  "transcript_path": "/tmp/x/transcript.jsonl",
+  "cwd": "{cwd}",
+  "permission_mode": "default",
+  "prompt_id": "p-1",
+  "hook_event_name": "UserPromptSubmit",
+  "prompt": "Run the tests and fix failures"
+}

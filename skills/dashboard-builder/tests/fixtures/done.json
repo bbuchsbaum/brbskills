@@ -1,0 +1,423 @@
+{
+ "schema": 2,
+ "generated": "2026-09-30T10:12:03.120-04:00",
+ "revision": 2210,
+ "project": {
+  "name": "neurosurf",
+  "root": "/Users/bbuchsbaum/code/neurosurf",
+  "git": {
+   "branch": "release/0.4.0",
+   "head": "5f60c2b",
+   "subject": "Bump version to 0.4.0",
+   "dirty": 0
+  }
+ },
+ "server": {
+  "running": false,
+  "started": null
+ },
+ "style": {
+  "theme": "light",
+  "density": "airy",
+  "accent": "#0f766e",
+  "notes": ""
+ },
+ "sessions": [
+  {
+   "id": "9a8b7c6d-5e4f-4a3b-8c2d-1e0f9a8b7c6d",
+   "short": "9a8b",
+   "agent": "claude",
+   "label": "neurosurf 0.4 release prep",
+   "cwd": "/Users/bbuchsbaum/code/neurosurf",
+   "started": "2026-09-30T08:39:03.120-04:00",
+   "last_seen": "2026-09-30T09:50:23.159-04:00",
+   "ended": "2026-09-30T09:50:23.159-04:00",
+   "activity": "ended",
+   "activity_since": "2026-09-30T09:50:23.159-04:00",
+   "current": null,
+   "last_prompt": {
+    "ts": "2026-09-30T08:40:03.120-04:00",
+    "text": "Prepare neurosurf 0.4.0: check, coverage ≥ 80%, rebuild pkgdown, draft NEWS."
+   },
+   "attention": [],
+   "plan": {
+    "title": "neurosurf 0.4.0 release prep",
+    "goal": "Clean check, coverage ≥ 80%, site rebuilt, NEWS drafted",
+    "context": null,
+    "status": "done",
+    "status_note": "Ready for submission",
+    "status_updated": "2026-09-30T09:50:03.120-04:00",
+    "tasks": [
+     {
+      "id": 1,
+      "title": "R CMD check",
+      "detail": null,
+      "status": "done",
+      "note": "1 NOTE: large installed size",
+      "started": "2026-09-30T08:41:03.120-04:00",
+      "finished": "2026-09-30T08:48:03.120-04:00"
+     },
+     {
+      "id": 2,
+      "title": "Raise coverage to ≥ 80%",
+      "detail": null,
+      "status": "done",
+      "note": "76.2% → 82.9%",
+      "started": "2026-09-30T08:48:03.120-04:00",
+      "finished": "2026-09-30T09:32:03.120-04:00"
+     },
+     {
+      "id": 3,
+      "title": "Rebuild pkgdown site",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T09:34:03.120-04:00",
+      "finished": "2026-09-30T09:39:03.120-04:00"
+     },
+     {
+      "id": 4,
+      "title": "Draft NEWS.md",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T09:39:03.120-04:00",
+      "finished": "2026-09-30T09:41:03.120-04:00"
+     },
+     {
+      "id": 5,
+      "title": "Final check",
+      "detail": null,
+      "status": "done",
+      "note": "0/0/0",
+      "started": "2026-09-30T09:41:03.120-04:00",
+      "finished": "2026-09-30T09:48:03.120-04:00"
+     },
+     {
+      "id": 6,
+      "title": "Submit to CRAN",
+      "detail": null,
+      "status": "skipped",
+      "note": "Out of scope — user submits",
+      "started": null,
+      "finished": null
+     }
+    ],
+    "questions": [],
+    "blockers": [],
+    "metrics": [
+     {
+      "name": "Coverage",
+      "value": 82.9,
+      "total": null,
+      "unit": "%",
+      "good": "up",
+      "updated": "2026-09-30T09:31:03.120-04:00",
+      "history": [
+       [
+        "2026-09-30T08:50:03.120-04:00",
+        76.2
+       ],
+       [
+        "2026-09-30T09:17:03.120-04:00",
+        79.4
+       ],
+       [
+        "2026-09-30T09:31:03.120-04:00",
+        82.9
+       ]
+      ]
+     },
+     {
+      "name": "Check NOTEs",
+      "value": 0,
+      "total": null,
+      "unit": null,
+      "good": "down",
+      "updated": "2026-09-30T09:48:03.120-04:00",
+      "history": [
+       [
+        "2026-09-30T08:48:03.120-04:00",
+        1
+       ],
+       [
+        "2026-09-30T09:48:03.120-04:00",
+        0
+       ]
+      ]
+     }
+    ],
+    "deliverables": [
+     {
+      "path": "/Users/bbuchsbaum/code/neurosurf/docs/index.html",
+      "label": "pkgdown site",
+      "ts": "2026-09-30T09:39:03.120-04:00",
+      "note": "Local build, not deployed"
+     },
+     {
+      "path": "/Users/bbuchsbaum/code/neurosurf/reports/coverage report #2.html",
+      "label": "Coverage report",
+      "ts": "2026-09-30T09:32:03.120-04:00",
+      "note": "82.9% line coverage"
+     },
+     {
+      "path": "/Users/bbuchsbaum/code/neurosurf/NEWS.md",
+      "label": "NEWS.md",
+      "ts": "2026-09-30T09:41:03.120-04:00",
+      "note": null
+     },
+     {
+      "path": "cran-comments.md",
+      "label": "cran-comments.md",
+      "ts": "2026-09-30T09:42:03.120-04:00",
+      "note": null
+     }
+    ],
+    "log": [
+     {
+      "ts": "2026-09-30T09:48:03.120-04:00",
+      "text": "All gates green; stopping for user review."
+     }
+    ]
+   },
+   "stats": {
+    "tool_calls": 12,
+    "edits": 7,
+    "commands": 5,
+    "failures": 0,
+    "turns": 1,
+    "subagents": 0,
+    "files_touched": 3
+   },
+   "tests": [
+    {
+     "ts": "2026-09-30T08:47:03.120-04:00",
+     "runner": "testthat",
+     "passed": 301,
+     "failed": 0,
+     "skipped": 4,
+     "command": "devtools::check()"
+    },
+    {
+     "ts": "2026-09-30T09:32:03.120-04:00",
+     "runner": "testthat",
+     "passed": 356,
+     "failed": 0,
+     "skipped": 4,
+     "command": "covr::package_coverage()"
+    },
+    {
+     "ts": "2026-09-30T09:47:03.120-04:00",
+     "runner": "testthat",
+     "passed": 356,
+     "failed": 0,
+     "skipped": 4,
+     "command": "devtools::check()"
+    }
+   ],
+   "files": [
+    {
+     "path": "NEWS.md",
+     "edits": 1,
+     "reads": 0,
+     "last": "2026-09-30T09:40:35.352-04:00"
+    },
+    {
+     "path": "tests/testthat/test-smooth.R",
+     "edits": 3,
+     "reads": 0,
+     "last": "2026-09-30T09:26:55.182-04:00"
+    },
+    {
+     "path": "tests/testthat/test-surface-geometry.R",
+     "edits": 3,
+     "reads": 0,
+     "last": "2026-09-30T09:07:53.931-04:00"
+    }
+   ],
+   "events": [
+    {
+     "id": 4563,
+     "ts": "2026-09-30T08:39:03.120-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "startup",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4564,
+     "ts": "2026-09-30T08:40:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Prepare neurosurf 0.4.0: check, coverage ≥ 80%, rebuild pkgdown, draft NEWS.",
+     "detail": "Prepare neurosurf 0.4.0: check, coverage ≥ 80%, rebuild pkgdown, draft NEWS.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4565,
+     "ts": "2026-09-30T08:40:08.120-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'devtools::check()'",
+     "detail": "0 errors ✔ | 0 warnings ✔ | 1 note ✖",
+     "ok": true,
+     "duration_ms": 380000,
+     "subagent": null
+    },
+    {
+     "id": 4566,
+     "ts": "2026-09-30T08:46:33.120-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'covr::package_coverage()'",
+     "detail": "Coverage: 76.2%",
+     "ok": true,
+     "duration_ms": 140000,
+     "subagent": null
+    },
+    {
+     "id": 4567,
+     "ts": "2026-09-30T08:55:13.120-04:00",
+     "kind": "tool",
+     "tool": "Write",
+     "summary": "tests/testthat/test-surface-geometry.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 447,
+     "subagent": null
+    },
+    {
+     "id": 4568,
+     "ts": "2026-09-30T09:01:33.567-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "tests/testthat/test-surface-geometry.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 364,
+     "subagent": null
+    },
+    {
+     "id": 4569,
+     "ts": "2026-09-30T09:07:53.931-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "tests/testthat/test-surface-geometry.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 379,
+     "subagent": null
+    },
+    {
+     "id": 4570,
+     "ts": "2026-09-30T09:14:14.310-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "tests/testthat/test-smooth.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 135,
+     "subagent": null
+    },
+    {
+     "id": 4571,
+     "ts": "2026-09-30T09:20:34.445-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "tests/testthat/test-smooth.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 737,
+     "subagent": null
+    },
+    {
+     "id": 4572,
+     "ts": "2026-09-30T09:26:55.182-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "tests/testthat/test-smooth.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 163,
+     "subagent": null
+    },
+    {
+     "id": 4573,
+     "ts": "2026-09-30T09:28:12.012-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'covr::package_coverage()'",
+     "detail": "Coverage: 82.9%",
+     "ok": true,
+     "duration_ms": 150000,
+     "subagent": null
+    },
+    {
+     "id": 4574,
+     "ts": "2026-09-30T09:31:58.680-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'pkgdown::build_site()'",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 210000,
+     "subagent": null
+    },
+    {
+     "id": 4575,
+     "ts": "2026-09-30T09:40:35.352-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "NEWS.md",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 139,
+     "subagent": null
+    },
+    {
+     "id": 4576,
+     "ts": "2026-09-30T09:41:52.159-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'devtools::check()'",
+     "detail": "0 errors ✔ | 0 warnings ✔ | 0 notes ✔",
+     "ok": true,
+     "duration_ms": 371000,
+     "subagent": null
+    },
+    {
+     "id": 4577,
+     "ts": "2026-09-30T09:48:23.159-04:00",
+     "kind": "turn_end",
+     "tool": null,
+     "summary": null,
+     "detail": "Release prep complete. Check clean, coverage 82.9%.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4578,
+     "ts": "2026-09-30T09:50:23.159-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "end",
+     "detail": "SessionEnd: prompt_input_exit",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    }
+   ],
+   "inbox": [],
+   "paused": false,
+   "wakeable": false
+  }
+ ],
+ "conflicts": [],
+ "mote": null
+}

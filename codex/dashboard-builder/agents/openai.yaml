@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dashboard builder"
+  short_description: "Live project dashboard for agent sessions, with messages to agents"
+  default_prompt: "Use $dashboard-builder: join this project's dashboard, record the plan and milestones, check the dashboard inbox at milestones, and treat dashboard messages like chat messages from the user."

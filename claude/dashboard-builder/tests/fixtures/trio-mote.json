@@ -1,0 +1,1140 @@
+{
+ "schema": 2,
+ "generated": "2026-09-30T10:12:03.120-04:00",
+ "revision": 5217,
+ "project": {
+  "name": "rMVPA",
+  "root": "/Users/bbuchsbaum/code/rMVPA",
+  "git": {
+   "branch": "perf/rsa-cache",
+   "head": "9e41d07",
+   "subject": "Cache model RDMs per sphere size",
+   "dirty": 12
+  }
+ },
+ "server": {
+  "running": true,
+  "started": "2026-09-30T09:12:03.120-04:00"
+ },
+ "style": {
+  "theme": "dark",
+  "density": "dense",
+  "accent": "#6366f1",
+  "notes": ""
+ },
+ "sessions": [
+  {
+   "id": "a91e77c0-3b2f-4d8e-8f10-2c9b44e1d0f3",
+   "short": "a91e",
+   "agent": "claude",
+   "label": "Searchlight RSA refactor",
+   "cwd": "/Users/bbuchsbaum/code/rMVPA",
+   "started": "2026-09-30T08:48:03.120-04:00",
+   "last_seen": "2026-09-30T10:09:33.120-04:00",
+   "ended": null,
+   "activity": "working",
+   "activity_since": "2026-09-30T09:14:03.120-04:00",
+   "current": {
+    "tool": "Edit",
+    "summary": "R/rsa_model.R",
+    "started": "2026-09-30T10:11:59.120-04:00",
+    "destructive": null
+   },
+   "last_prompt": {
+    "ts": "2026-09-30T09:14:03.120-04:00",
+    "text": "Looks right. Implement it, bead bd-4f1."
+   },
+   "attention": [],
+   "plan": {
+    "title": "Precompute model RDMs in RSA searchlight",
+    "goal": "Same results on fixtures; searchlight ≥ 2× faster",
+    "context": null,
+    "status": "on_track",
+    "status_note": null,
+    "status_updated": "2026-09-30T10:12:03.120-04:00",
+    "tasks": [
+     {
+      "id": 1,
+      "title": "Design precompute cache",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T08:52:03.120-04:00",
+      "finished": "2026-09-30T09:12:03.120-04:00"
+     },
+     {
+      "id": 2,
+      "title": "Implement cache in rsa_model()",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T09:14:03.120-04:00",
+      "finished": "2026-09-30T09:42:03.120-04:00"
+     },
+     {
+      "id": 3,
+      "title": "Bit-identical check on fixtures",
+      "detail": null,
+      "status": "done",
+      "note": "144/144 pass",
+      "started": "2026-09-30T09:42:03.120-04:00",
+      "finished": "2026-09-30T09:50:03.120-04:00"
+     },
+     {
+      "id": 4,
+      "title": "Benchmark",
+      "detail": null,
+      "status": "done",
+      "note": "41.2 s → 12.7 s",
+      "started": "2026-09-30T09:50:03.120-04:00",
+      "finished": "2026-09-30T09:54:03.120-04:00"
+     },
+     {
+      "id": 5,
+      "title": "Extend cache to rsa_iterate()",
+      "detail": null,
+      "status": "doing",
+      "note": null,
+      "started": "2026-09-30T09:55:03.120-04:00",
+      "finished": null
+     }
+    ],
+    "questions": [],
+    "blockers": [],
+    "metrics": [
+     {
+      "name": "Searchlight median",
+      "value": 12.7,
+      "total": null,
+      "unit": "s",
+      "good": "down",
+      "updated": "2026-09-30T09:54:03.120-04:00",
+      "history": [
+       [
+        "2026-09-30T08:57:03.120-04:00",
+        41.2
+       ],
+       [
+        "2026-09-30T09:54:03.120-04:00",
+        12.7
+       ]
+      ]
+     }
+    ],
+    "deliverables": [],
+    "log": []
+   },
+   "stats": {
+    "tool_calls": 26,
+    "edits": 12,
+    "commands": 5,
+    "failures": 1,
+    "turns": 2,
+    "subagents": 1,
+    "files_touched": 4
+   },
+   "tests": [
+    {
+     "ts": "2026-09-30T09:48:03.120-04:00",
+     "runner": "testthat",
+     "passed": 143,
+     "failed": 1,
+     "skipped": 0,
+     "command": "devtools::test(filter=\"rsa\")"
+    },
+    {
+     "ts": "2026-09-30T09:51:03.120-04:00",
+     "runner": "testthat",
+     "passed": 144,
+     "failed": 0,
+     "skipped": 0,
+     "command": "devtools::test(filter=\"rsa\")"
+    }
+   ],
+   "files": [
+    {
+     "path": "R/rsa_iterate.R",
+     "edits": 0,
+     "reads": 4,
+     "last": "2026-09-30T10:03:10.768-04:00"
+    },
+    {
+     "path": "R/rsa_model.R",
+     "edits": 9,
+     "reads": 1,
+     "last": "2026-09-30T09:51:40.566-04:00"
+    },
+    {
+     "path": "tests/testthat/test_rsa.R",
+     "edits": 0,
+     "reads": 2,
+     "last": "2026-09-30T09:38:19.471-04:00"
+    },
+    {
+     "path": "R/searchlight.R",
+     "edits": 3,
+     "reads": 1,
+     "last": "2026-09-30T09:34:12.072-04:00"
+    }
+   ],
+   "events": [
+    {
+     "id": 4294,
+     "ts": "2026-09-30T08:48:03.120-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "startup",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4295,
+     "ts": "2026-09-30T08:49:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Refactor the RSA searchlight so model RDMs are precomputed once per sphere size.",
+     "detail": "Refactor the RSA searchlight so model RDMs are precomputed once per sphere size. Keep results bit-identical to the current implementation on the MVPA test fixtures.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4296,
+     "ts": "2026-09-30T08:49:06.120-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 29,
+     "subagent": null
+    },
+    {
+     "id": 4297,
+     "ts": "2026-09-30T08:49:08.149-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/searchlight.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 68,
+     "subagent": null
+    },
+    {
+     "id": 4298,
+     "ts": "2026-09-30T08:49:10.217-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/rsa_iterate.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 52,
+     "subagent": null
+    },
+    {
+     "id": 4299,
+     "ts": "2026-09-30T08:49:12.269-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "tests/testthat/test_rsa.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 76,
+     "subagent": null
+    },
+    {
+     "id": 4300,
+     "ts": "2026-09-30T08:49:17.345-04:00",
+     "kind": "tool",
+     "tool": "Task",
+     "summary": "Plan: precompute strategy for model RDMs",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 95000,
+     "subagent": null
+    },
+    {
+     "id": 4301,
+     "ts": "2026-09-30T08:51:22.345-04:00",
+     "kind": "turn_end",
+     "tool": null,
+     "summary": null,
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4302,
+     "ts": "2026-09-30T09:14:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Looks right. Implement it, bead bd-4f1.",
+     "detail": "Looks right. Implement it, bead bd-4f1.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4303,
+     "ts": "2026-09-30T09:14:06.120-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "mote claim bd-4f1",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 500,
+     "subagent": null
+    },
+    {
+     "id": 4304,
+     "ts": "2026-09-30T09:14:08.620-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "mote reserve R/rsa_model.R R/searchlight.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 400,
+     "subagent": null
+    },
+    {
+     "id": 4305,
+     "ts": "2026-09-30T09:16:39.020-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 593,
+     "subagent": null
+    },
+    {
+     "id": 4306,
+     "ts": "2026-09-30T09:19:09.613-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/searchlight.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 219,
+     "subagent": null
+    },
+    {
+     "id": 4307,
+     "ts": "2026-09-30T09:21:39.832-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 131,
+     "subagent": null
+    },
+    {
+     "id": 4308,
+     "ts": "2026-09-30T09:24:09.963-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 586,
+     "subagent": null
+    },
+    {
+     "id": 4309,
+     "ts": "2026-09-30T09:26:40.549-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/searchlight.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 275,
+     "subagent": null
+    },
+    {
+     "id": 4310,
+     "ts": "2026-09-30T09:29:10.824-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 821,
+     "subagent": null
+    },
+    {
+     "id": 4311,
+     "ts": "2026-09-30T09:31:41.645-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 427,
+     "subagent": null
+    },
+    {
+     "id": 4312,
+     "ts": "2026-09-30T09:34:12.072-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/searchlight.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 656,
+     "subagent": null
+    },
+    {
+     "id": 4313,
+     "ts": "2026-09-30T09:36:42.728-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 743,
+     "subagent": null
+    },
+    {
+     "id": 4314,
+     "ts": "2026-09-30T09:36:48.471-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'devtools::test(filter=\"rsa\")'",
+     "detail": "[ FAIL 1 | PASS 143 ]",
+     "ok": false,
+     "duration_ms": 88000,
+     "subagent": null
+    },
+    {
+     "id": 4315,
+     "ts": "2026-09-30T09:38:19.471-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "tests/testthat/test_rsa.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 73,
+     "subagent": null
+    },
+    {
+     "id": 4316,
+     "ts": "2026-09-30T09:38:49.544-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 241,
+     "subagent": null
+    },
+    {
+     "id": 4317,
+     "ts": "2026-09-30T09:38:53.785-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'devtools::test(filter=\"rsa\")'",
+     "detail": "[ FAIL 0 | PASS 144 ]",
+     "ok": true,
+     "duration_ms": 86000,
+     "subagent": null
+    },
+    {
+     "id": 4318,
+     "ts": "2026-09-30T09:40:27.785-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript bench/rsa_searchlight_bench.R",
+     "detail": "median 41.2 s -> 12.7 s",
+     "ok": true,
+     "duration_ms": 212000,
+     "subagent": null
+    },
+    {
+     "id": 4319,
+     "ts": "2026-09-30T09:47:49.785-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 781,
+     "subagent": null
+    },
+    {
+     "id": 4320,
+     "ts": "2026-09-30T09:51:40.566-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 87,
+     "subagent": null
+    },
+    {
+     "id": 4321,
+     "ts": "2026-09-30T09:55:30.653-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/rsa_iterate.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 93,
+     "subagent": null
+    },
+    {
+     "id": 4322,
+     "ts": "2026-09-30T09:59:20.746-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/rsa_iterate.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 22,
+     "subagent": null
+    },
+    {
+     "id": 4323,
+     "ts": "2026-09-30T10:03:10.768-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/rsa_iterate.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 44,
+     "subagent": null
+    },
+    {
+     "id": 4324,
+     "ts": "2026-09-30T10:09:33.120-04:00",
+     "kind": "message",
+     "tool": null,
+     "summary": "From dashboard",
+     "detail": "Post the benchmark numbers to the board when done.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    }
+   ],
+   "inbox": [
+    {
+     "id": "m7",
+     "ts": "2026-09-30T10:09:03.120-04:00",
+     "kind": "message",
+     "text": "Post the benchmark numbers to the board when done.",
+     "qid": null,
+     "status": "delivered",
+     "delivered": "2026-09-30T10:09:33.120-04:00",
+     "via": "PostToolUse"
+    }
+   ],
+   "paused": false,
+   "wakeable": null
+  },
+  {
+   "id": "3d07b5e2-9a4c-4e11-b7a0-6f2d1c88e412",
+   "short": "3d07",
+   "agent": "claude",
+   "label": "Fix vignette build",
+   "cwd": "/Users/bbuchsbaum/code/rMVPA",
+   "started": "2026-09-30T08:07:03.120-04:00",
+   "last_seen": "2026-09-30T09:38:47.003-04:00",
+   "ended": null,
+   "activity": "idle",
+   "activity_since": "2026-09-30T09:38:47.003-04:00",
+   "current": null,
+   "last_prompt": {
+    "ts": "2026-09-30T09:36:03.120-04:00",
+    "text": "Also the RSA vignette, same problem?"
+   },
+   "attention": [],
+   "plan": null,
+   "stats": {
+    "tool_calls": 9,
+    "edits": 3,
+    "commands": 3,
+    "failures": 1,
+    "turns": 2,
+    "subagents": 0,
+    "files_touched": 3
+   },
+   "tests": [],
+   "files": [
+    {
+     "path": "R/rsa_model.R",
+     "edits": 1,
+     "reads": 1,
+     "last": "2026-09-30T09:37:31.410-04:00"
+    },
+    {
+     "path": "vignettes/rsa.Rmd",
+     "edits": 1,
+     "reads": 1,
+     "last": "2026-09-30T09:36:36.173-04:00"
+    },
+    {
+     "path": "vignettes/searchlight.Rmd",
+     "edits": 1,
+     "reads": 1,
+     "last": "2026-09-30T08:09:55.264-04:00"
+    }
+   ],
+   "events": [
+    {
+     "id": 4623,
+     "ts": "2026-09-30T08:07:03.120-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "startup",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4624,
+     "ts": "2026-09-30T08:08:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "pkgdown build fails on the searchlight vignette. Find out why.",
+     "detail": "pkgdown build fails on the searchlight vignette. Find out why.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4625,
+     "ts": "2026-09-30T08:08:08.120-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'pkgdown::build_article(\"searchlight\")'",
+     "detail": "Error: object 'rsa_des' not found",
+     "ok": false,
+     "duration_ms": 64000,
+     "subagent": null
+    },
+    {
+     "id": 4626,
+     "ts": "2026-09-30T08:09:15.120-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "vignettes/searchlight.Rmd",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 144,
+     "subagent": null
+    },
+    {
+     "id": 4627,
+     "ts": "2026-09-30T08:09:55.264-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "vignettes/searchlight.Rmd",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 202,
+     "subagent": null
+    },
+    {
+     "id": 4628,
+     "ts": "2026-09-30T08:10:00.466-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'pkgdown::build_article(\"searchlight\")'",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 71000,
+     "subagent": null
+    },
+    {
+     "id": 4629,
+     "ts": "2026-09-30T08:11:26.466-04:00",
+     "kind": "turn_end",
+     "tool": null,
+     "summary": null,
+     "detail": "Vignette builds; waiting for review.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4630,
+     "ts": "2026-09-30T09:36:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Also the RSA vignette, same problem?",
+     "detail": "Also the RSA vignette, same problem?",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 4631,
+     "ts": "2026-09-30T09:36:06.120-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "vignettes/rsa.Rmd",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 53,
+     "subagent": null
+    },
+    {
+     "id": 4632,
+     "ts": "2026-09-30T09:36:36.173-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "vignettes/rsa.Rmd",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 65,
+     "subagent": null
+    },
+    {
+     "id": 4633,
+     "ts": "2026-09-30T09:36:46.238-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 172,
+     "subagent": null
+    },
+    {
+     "id": 4634,
+     "ts": "2026-09-30T09:37:31.410-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "R/rsa_model.R",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 593,
+     "subagent": null
+    },
+    {
+     "id": 4635,
+     "ts": "2026-09-30T09:37:37.003-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "Rscript -e 'pkgdown::build_article(\"rsa\")'",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 58000,
+     "subagent": null
+    },
+    {
+     "id": 4636,
+     "ts": "2026-09-30T09:38:47.003-04:00",
+     "kind": "turn_end",
+     "tool": null,
+     "summary": null,
+     "detail": "Both vignettes build. Fixed a roxygen example in R/rsa_model.R.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    }
+   ],
+   "inbox": [
+    {
+     "id": "m9",
+     "ts": "2026-09-30T10:11:03.120-04:00",
+     "kind": "message",
+     "text": "Hold off on R/rsa_model.R — the refactor session owns it. Revert your edit there.",
+     "qid": null,
+     "status": "queued",
+     "delivered": null,
+     "via": null
+    }
+   ],
+   "paused": false,
+   "wakeable": true
+  },
+  {
+   "id": "c2d4e6f8-1a3b-4c5d-8e9f-0a1b2c3d4e5f",
+   "short": "c2d4",
+   "agent": "codex",
+   "label": "Port contrast_rsa to C++",
+   "cwd": "/Users/bbuchsbaum/code/rMVPA",
+   "started": "2026-09-30T09:31:03.120-04:00",
+   "last_seen": "2026-09-30T10:08:03.120-04:00",
+   "ended": null,
+   "activity": "working",
+   "activity_since": "2026-09-30T09:32:03.120-04:00",
+   "current": null,
+   "last_prompt": null,
+   "attention": [],
+   "plan": {
+    "title": "Port contrast_rsa to C++",
+    "goal": "Same output to 1e-12; ≥5× faster",
+    "context": null,
+    "status": "on_track",
+    "status_note": null,
+    "status_updated": "2026-09-30T10:12:03.120-04:00",
+    "tasks": [
+     {
+      "id": 1,
+      "title": "Port inner loop",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T09:41:03.120-04:00",
+      "finished": "2026-09-30T09:52:03.120-04:00"
+     },
+     {
+      "id": 2,
+      "title": "Equivalence tests",
+      "detail": null,
+      "status": "done",
+      "note": "37/37",
+      "started": "2026-09-30T09:52:03.120-04:00",
+      "finished": "2026-09-30T10:07:03.120-04:00"
+     },
+     {
+      "id": 3,
+      "title": "Benchmark",
+      "detail": null,
+      "status": "doing",
+      "note": null,
+      "started": "2026-09-30T10:08:03.120-04:00",
+      "finished": null
+     }
+    ],
+    "questions": [],
+    "blockers": [],
+    "metrics": [
+     {
+      "name": "Equivalence tests",
+      "value": 37,
+      "total": 37,
+      "unit": null,
+      "good": "up",
+      "updated": "2026-09-30T10:07:03.120-04:00",
+      "history": [
+       [
+        "2026-09-30T10:07:03.120-04:00",
+        37
+       ]
+      ]
+     }
+    ],
+    "deliverables": [],
+    "log": []
+   },
+   "stats": {
+    "tool_calls": null,
+    "edits": null,
+    "commands": null,
+    "failures": null,
+    "turns": null,
+    "subagents": null,
+    "files_touched": null
+   },
+   "tests": [],
+   "files": [],
+   "events": [
+    {
+     "id": 2876,
+     "ts": "2026-09-30T09:32:03.120-04:00",
+     "kind": "note",
+     "tool": null,
+     "summary": "Plan: port contrast_rsa() inner loop to RcppArmadillo (bd-512)",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2877,
+     "ts": "2026-09-30T09:41:03.120-04:00",
+     "kind": "note",
+     "tool": null,
+     "summary": "Task 1 doing: port inner loop",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2878,
+     "ts": "2026-09-30T09:52:03.120-04:00",
+     "kind": "note",
+     "tool": null,
+     "summary": "Task 1 done: inner loop ported; build needed each_col fix",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2879,
+     "ts": "2026-09-30T09:53:03.120-04:00",
+     "kind": "note",
+     "tool": null,
+     "summary": "Delivered dashboard message m4 via cli",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2880,
+     "ts": "2026-09-30T10:07:03.120-04:00",
+     "kind": "note",
+     "tool": null,
+     "summary": "Task 2 done: equivalence tests 37/37 to 1e-12",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2881,
+     "ts": "2026-09-30T10:08:03.120-04:00",
+     "kind": "note",
+     "tool": null,
+     "summary": "Task 3 doing: benchmark vs R implementation",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    }
+   ],
+   "inbox": [
+    {
+     "id": "m4",
+     "ts": "2026-09-30T09:46:03.120-04:00",
+     "kind": "message",
+     "text": "Use arma::mat views, no copies.",
+     "qid": null,
+     "status": "delivered",
+     "delivered": "2026-09-30T09:53:03.120-04:00",
+     "via": "cli"
+    }
+   ],
+   "paused": false,
+   "wakeable": false
+  }
+ ],
+ "conflicts": [
+  {
+   "path": "R/rsa_model.R",
+   "sessions": [
+    "a91e",
+    "3d07",
+    "c2d4"
+   ],
+   "sources": [
+    "edit",
+    "reservation",
+    "post"
+   ],
+   "live": true,
+   "last_edit": "2026-09-30T09:51:40.566-04:00",
+   "mote_reserved_by": "claude-a91e",
+   "detail": [
+    {
+     "session": "a91e",
+     "kind": "edit",
+     "ts": "2026-09-30T09:51:40.566-04:00",
+     "ref": null,
+     "expires": null
+    },
+    {
+     "session": "3d07",
+     "kind": "edit",
+     "ts": "2026-09-30T09:37:31.410-04:00",
+     "ref": null,
+     "expires": null
+    },
+    {
+     "session": "a91e",
+     "kind": "reservation",
+     "ts": "2026-09-30T09:46:03.120-04:00",
+     "ref": "bd-4f1",
+     "expires": "2026-09-30T10:46:03.120-04:00"
+    },
+    {
+     "session": "c2d4",
+     "kind": "post",
+     "ts": "2026-09-30T09:50:03.120-04:00",
+     "ref": "post-87",
+     "expires": null
+    }
+   ]
+  }
+ ],
+ "mote": {
+  "store": "/Users/bbuchsbaum/code/rMVPA/.mote",
+  "fetched": "2026-09-30T10:11:43.120-04:00",
+  "error": null,
+  "counts": {
+   "open": 31,
+   "doing": 4,
+   "blocked": 2,
+   "review": 1
+  },
+  "doing": [
+   {
+    "id": "bd-4f1",
+    "title": "Precompute model RDMs in RSA searchlight",
+    "assignee": "claude-a91e",
+    "tags": [
+     "perf",
+     "rsa"
+    ],
+    "priority": 1
+   },
+   {
+    "id": "bd-512",
+    "title": "Port contrast_rsa inner loop to RcppArmadillo",
+    "assignee": "codex-c2d4",
+    "tags": [
+     "perf",
+     "cpp"
+    ],
+    "priority": 1
+   },
+   {
+    "id": "bd-4c9",
+    "title": "Fix vignette builds after rsa_design rename",
+    "assignee": "claude-3d07",
+    "tags": [
+     "docs"
+    ],
+    "priority": 2
+   },
+   {
+    "id": "bd-3a0",
+    "title": "Nested CV for ridge-regression searchlight",
+    "assignee": "chief",
+    "tags": [
+     "model"
+    ],
+    "priority": 2
+   }
+  ],
+  "ready": [
+   {
+    "id": "bd-51a",
+    "title": "Expose sphere radius sweep in run_searchlight()",
+    "assignee": null,
+    "tags": [
+     "api"
+    ],
+    "priority": 2
+   },
+   {
+    "id": "bd-50e",
+    "title": "Add feature-selection vignette",
+    "assignee": null,
+    "tags": [
+     "docs"
+    ],
+    "priority": 3
+   },
+   {
+    "id": "bd-4ff",
+    "title": "Deprecate mvpa_dataset(mask=) positional arg",
+    "assignee": null,
+    "tags": [
+     "api"
+    ],
+    "priority": 3
+   }
+  ],
+  "blocked": [
+   {
+    "id": "bd-4e2",
+    "title": "CRAN release 0.2.0",
+    "assignee": "chief",
+    "tags": [
+     "release"
+    ],
+    "priority": 1
+   },
+   {
+    "id": "bd-49b",
+    "title": "GPU backend for crossnobis",
+    "assignee": null,
+    "tags": [
+     "perf"
+    ],
+    "priority": 4
+   }
+  ],
+  "reservations": [
+   {
+    "actor": "claude-a91e",
+    "paths": [
+     "R/rsa_model.R",
+     "R/searchlight.R"
+    ],
+    "issue": "bd-4f1",
+    "created": "2026-09-30T09:46:03.120-04:00",
+    "expires": "2026-09-30T10:46:03.120-04:00"
+   },
+   {
+    "actor": "codex-c2d4",
+    "paths": [
+     "src/contrast_rsa.cpp"
+    ],
+    "issue": "bd-512",
+    "created": null,
+    "expires": "2026-09-30T10:24:03.120-04:00"
+   }
+  ],
+  "actors": [
+   {
+    "actor": "claude-a91e",
+    "status": "active",
+    "expires": "2026-09-30T10:21:03.120-04:00"
+   },
+   {
+    "actor": "codex-c2d4",
+    "status": "active",
+    "expires": "2026-09-30T10:19:03.120-04:00"
+   },
+   {
+    "actor": "claude-3d07",
+    "status": "idle",
+    "expires": "2026-09-30T10:14:03.120-04:00"
+   },
+   {
+    "actor": "chief",
+    "status": "away",
+    "expires": null
+   }
+  ],
+  "posts": [
+   {
+    "id": "post-88",
+    "topic": "perf",
+    "from": "claude-a91e",
+    "ts": "2026-09-30T09:55:03.120-04:00",
+    "excerpt": "Searchlight RSA benchmark: median 41.2 s → 12.7 s on the 3 mm fixture, results bit-identical.",
+    "replies": 2
+   },
+   {
+    "id": "post-87",
+    "topic": "coordination",
+    "from": "codex-c2d4",
+    "ts": "2026-09-30T09:50:03.120-04:00",
+    "excerpt": "Touching R/rsa_model.R only for the .Call wrapper — will rebase on bd-4f1 when it lands.",
+    "replies": 1
+   },
+   {
+    "id": "post-85",
+    "topic": "release",
+    "from": "chief",
+    "ts": "2026-09-30T07:12:03.120-04:00",
+    "excerpt": "0.2.0 is blocked until both perf beads land and vignettes build on CI.",
+    "replies": 4
+   }
+  ]
+ }
+}

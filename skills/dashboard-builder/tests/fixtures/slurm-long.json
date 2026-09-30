@@ -1,0 +1,310 @@
+{
+ "schema": 2,
+ "generated": "2026-09-30T10:12:03.120-04:00",
+ "revision": 96,
+ "project": {
+  "name": "hcp-surface-decoding",
+  "root": "/Users/bbuchsbaum/code/hcp-surface-decoding",
+  "git": {
+   "branch": "main",
+   "head": "04be1aa",
+   "subject": "Add HCP-D participant list",
+   "dirty": 0
+  }
+ },
+ "server": {
+  "running": false,
+  "started": null
+ },
+ "style": {
+  "theme": "dark",
+  "density": "dense",
+  "accent": "#6366f1",
+  "notes": ""
+ },
+ "sessions": [
+  {
+   "id": "71aa0e3c-2b4d-4f6a-8c9e-0d1f2a3b4c5d",
+   "short": "71aa",
+   "agent": "claude",
+   "label": "fMRIPrep campaign · 64 subjects",
+   "cwd": "/Users/bbuchsbaum/code/hcp-surface-decoding",
+   "started": "2026-09-30T08:01:03.120-04:00",
+   "last_seen": "2026-09-30T09:20:56.120-04:00",
+   "ended": null,
+   "activity": "working",
+   "activity_since": "2026-09-30T08:02:03.120-04:00",
+   "current": {
+    "tool": "mcp__remoteslurm__campaign_drive",
+    "summary": "campaign c-0930a · wait until all 64 terminal (timeout 3 h)",
+    "started": "2026-09-30T09:24:45.120-04:00",
+    "destructive": null
+   },
+   "last_prompt": {
+    "ts": "2026-09-30T08:02:03.120-04:00",
+    "text": "Run fMRIPrep 24.1 on all 64 subjects of the HCP-D subset on the cluster, 8 at a time. Retry failures once, then summarise QC. I'm going to be away until lunch."
+   },
+   "attention": [],
+   "plan": {
+    "title": "fMRIPrep 24.1 on HCP-D subset",
+    "goal": "64/64 subjects preprocessed or failed twice with a logged reason; QC summary written",
+    "context": null,
+    "status": "on_track",
+    "status_note": "≈ 1 h 20 m remaining at current throughput",
+    "status_updated": "2026-09-30T09:20:03.120-04:00",
+    "tasks": [
+     {
+      "id": 1,
+      "title": "Preflight container, bind paths and FreeSurfer licence",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T08:03:03.120-04:00",
+      "finished": "2026-09-30T08:07:03.120-04:00"
+     },
+     {
+      "id": 2,
+      "title": "Submit array 1-64%8",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T08:07:03.120-04:00",
+      "finished": "2026-09-30T08:08:03.120-04:00"
+     },
+     {
+      "id": 3,
+      "title": "Drive campaign to completion",
+      "detail": null,
+      "status": "doing",
+      "note": "38/64 done, 1 retried",
+      "started": "2026-09-30T08:08:03.120-04:00",
+      "finished": null
+     },
+     {
+      "id": 4,
+      "title": "Retry failures once with more memory",
+      "detail": null,
+      "status": "todo",
+      "note": null,
+      "started": null,
+      "finished": null
+     },
+     {
+      "id": 5,
+      "title": "QC summary (MRIQC-lite + carpet plots)",
+      "detail": null,
+      "status": "todo",
+      "note": null,
+      "started": null,
+      "finished": null
+     }
+    ],
+    "questions": [],
+    "blockers": [],
+    "metrics": [
+     {
+      "name": "Subjects done",
+      "value": 38,
+      "total": 64,
+      "unit": null,
+      "good": "up",
+      "updated": "2026-09-30T09:20:03.120-04:00",
+      "history": [
+       [
+        "2026-09-30T08:08:03.120-04:00",
+        0
+       ],
+       [
+        "2026-09-30T08:37:03.120-04:00",
+        0
+       ],
+       [
+        "2026-09-30T09:02:03.120-04:00",
+        19
+       ],
+       [
+        "2026-09-30T09:20:03.120-04:00",
+        38
+       ]
+      ]
+     },
+     {
+      "name": "Failed jobs",
+      "value": 1,
+      "total": null,
+      "unit": null,
+      "good": "down",
+      "updated": "2026-09-30T09:20:03.120-04:00",
+      "history": [
+       [
+        "2026-09-30T09:02:03.120-04:00",
+        1
+       ],
+       [
+        "2026-09-30T09:20:03.120-04:00",
+        1
+       ]
+      ]
+     },
+     {
+      "name": "Core-hours",
+      "value": null,
+      "total": null,
+      "unit": "h",
+      "good": "up",
+      "updated": null,
+      "history": []
+     }
+    ],
+    "deliverables": [],
+    "log": []
+   },
+   "stats": {
+    "tool_calls": 9,
+    "edits": 0,
+    "commands": 2,
+    "failures": 0,
+    "turns": 1,
+    "subagents": 0,
+    "files_touched": 1
+   },
+   "tests": [],
+   "files": [
+    {
+     "path": "config/fmriprep.toml",
+     "edits": 0,
+     "reads": 1,
+     "last": "2026-09-30T08:02:06.120-04:00"
+    }
+   ],
+   "events": [
+    {
+     "id": 2098,
+     "ts": "2026-09-30T08:01:03.120-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "startup",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2099,
+     "ts": "2026-09-30T08:02:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Run fMRIPrep 24.1 on all 64 subjects of the HCP-D subset on the cluster, 8 at a ",
+     "detail": "Run fMRIPrep 24.1 on all 64 subjects of the HCP-D subset on the cluster, 8 at a time. Retry failures once, then summarise QC. I'm going to be away until lunch.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2100,
+     "ts": "2026-09-30T08:02:06.120-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "config/fmriprep.toml",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 184,
+     "subagent": null
+    },
+    {
+     "id": 2101,
+     "ts": "2026-09-30T08:02:11.304-04:00",
+     "kind": "tool",
+     "tool": "mcp__remoteslurm__campaign_preflight",
+     "summary": "fmriprep-hcpd · 64 subjects",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 38000,
+     "subagent": null
+    },
+    {
+     "id": 2102,
+     "ts": "2026-09-30T08:02:55.304-04:00",
+     "kind": "tool",
+     "tool": "mcp__remoteslurm__campaign_start",
+     "summary": "fmriprep-hcpd · array 1-64%8",
+     "detail": "campaign c-0930a started",
+     "ok": true,
+     "duration_ms": 12000,
+     "subagent": null
+    },
+    {
+     "id": 2103,
+     "ts": "2026-09-30T08:03:10.304-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "python3 dash.py metric 'Subjects done' 0 --total 64",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 300,
+     "subagent": null
+    },
+    {
+     "id": 2104,
+     "ts": "2026-09-30T08:37:03.120-04:00",
+     "kind": "tool",
+     "tool": "mcp__remoteslurm__campaign_events",
+     "summary": "c-0930a",
+     "detail": "8 running, 56 pending",
+     "ok": true,
+     "duration_ms": 3000,
+     "subagent": null
+    },
+    {
+     "id": 2105,
+     "ts": "2026-09-30T09:02:06.120-04:00",
+     "kind": "tool",
+     "tool": "mcp__remoteslurm__campaign_failures",
+     "summary": "c-0930a",
+     "detail": "sub-1043: OOM (48G)",
+     "ok": true,
+     "duration_ms": 4000,
+     "subagent": null
+    },
+    {
+     "id": 2106,
+     "ts": "2026-09-30T09:02:15.120-04:00",
+     "kind": "tool",
+     "tool": "mcp__remoteslurm__campaign_retry",
+     "summary": "sub-1043 --mem 64G",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 6000,
+     "subagent": null
+    },
+    {
+     "id": 2107,
+     "ts": "2026-09-30T09:20:03.120-04:00",
+     "kind": "tool",
+     "tool": "mcp__remoteslurm__campaign_events",
+     "summary": "c-0930a",
+     "detail": "38 done, 8 running, 18 pending",
+     "ok": true,
+     "duration_ms": 3000,
+     "subagent": null
+    },
+    {
+     "id": 2108,
+     "ts": "2026-09-30T09:20:56.120-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "python3 dash.py metric 'Subjects done' 38 --total 64",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 300,
+     "subagent": null
+    }
+   ],
+   "inbox": [],
+   "paused": false,
+   "wakeable": null
+  }
+ ],
+ "conflicts": [],
+ "mote": null
+}

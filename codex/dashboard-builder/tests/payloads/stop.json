@@ -1,0 +1,12 @@
+{
+  "session_id": "5d7a0c2e-live-4000-8000-000000000000",
+  "transcript_path": "/tmp/x/transcript.jsonl",
+  "cwd": "{cwd}",
+  "permission_mode": "default",
+  "prompt_id": "p-1",
+  "hook_event_name": "Stop",
+  "stop_hook_active": false,
+  "last_assistant_message": "Done: all tests pass.",
+  "background_tasks": [],
+  "session_crons": []
+}

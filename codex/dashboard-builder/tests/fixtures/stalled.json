@@ -1,0 +1,254 @@
+{
+ "schema": 2,
+ "generated": "2026-09-30T10:12:03.120-04:00",
+ "revision": 318,
+ "project": {
+  "name": "fmriprep-qc",
+  "root": "/Users/bbuchsbaum/code/fmriprep-qc",
+  "git": {
+   "branch": "qc-report",
+   "head": "88d0e1f",
+   "subject": "Carpet plots per subject",
+   "dirty": 2
+  }
+ },
+ "server": {
+  "running": false,
+  "started": null
+ },
+ "style": {
+  "theme": "dark",
+  "density": "dense",
+  "accent": "#6366f1",
+  "notes": ""
+ },
+ "sessions": [
+  {
+   "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e",
+   "short": "b1c2",
+   "agent": "claude",
+   "label": "Carpet-plot QC for 24 subjects",
+   "cwd": "/Users/bbuchsbaum/code/fmriprep-qc",
+   "started": "2026-09-30T09:26:03.120-04:00",
+   "last_seen": "2026-09-30T09:57:57.120-04:00",
+   "ended": null,
+   "activity": "stalled",
+   "activity_since": "2026-09-30T09:57:57.120-04:00",
+   "current": null,
+   "last_prompt": {
+    "ts": "2026-09-30T09:27:03.120-04:00",
+    "text": "Generate carpet plots and FD traces for every subject and flag anything with mean FD > 0.3 mm."
+   },
+   "attention": [],
+   "plan": {
+    "title": "Carpet-plot QC",
+    "goal": "24 carpet plots + FD traces; flagged subjects listed in a report",
+    "context": null,
+    "status": "on_track",
+    "status_note": null,
+    "status_updated": "2026-09-30T09:55:03.120-04:00",
+    "tasks": [
+     {
+      "id": 1,
+      "title": "Carpet plots for 24 subjects",
+      "detail": null,
+      "status": "done",
+      "note": null,
+      "started": "2026-09-30T09:28:03.120-04:00",
+      "finished": "2026-09-30T09:52:03.120-04:00"
+     },
+     {
+      "id": 2,
+      "title": "Flag mean FD > 0.3 mm",
+      "detail": null,
+      "status": "done",
+      "note": "sub-07, sub-19",
+      "started": "2026-09-30T09:52:03.120-04:00",
+      "finished": "2026-09-30T09:55:03.120-04:00"
+     },
+     {
+      "id": 3,
+      "title": "Render QC report",
+      "detail": null,
+      "status": "doing",
+      "note": null,
+      "started": "2026-09-30T09:56:03.120-04:00",
+      "finished": null
+     }
+    ],
+    "questions": [],
+    "blockers": [],
+    "metrics": [],
+    "deliverables": [],
+    "log": []
+   },
+   "stats": {
+    "tool_calls": 8,
+    "edits": 2,
+    "commands": 4,
+    "failures": 0,
+    "turns": 1,
+    "subagents": 0,
+    "files_touched": 3
+   },
+   "tests": [
+    {
+     "ts": "2026-09-30T09:28:03.120-04:00",
+     "runner": "pytest",
+     "passed": 6,
+     "failed": 0,
+     "skipped": 0,
+     "command": "uv run pytest tests/test_carpet.py -q"
+    }
+   ],
+   "files": [
+    {
+     "path": "qc/report.qmd",
+     "edits": 1,
+     "reads": 0,
+     "last": "2026-09-30T09:48:55.439-04:00"
+    },
+    {
+     "path": "qc/out/summary.tsv",
+     "edits": 0,
+     "reads": 1,
+     "last": "2026-09-30T09:48:18.296-04:00"
+    },
+    {
+     "path": "qc/carpet.py",
+     "edits": 1,
+     "reads": 1,
+     "last": "2026-09-30T09:27:46.159-04:00"
+    }
+   ],
+   "events": [
+    {
+     "id": 2506,
+     "ts": "2026-09-30T09:26:03.120-04:00",
+     "kind": "session",
+     "tool": null,
+     "summary": "startup",
+     "detail": null,
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2507,
+     "ts": "2026-09-30T09:27:03.120-04:00",
+     "kind": "prompt",
+     "tool": null,
+     "summary": "Generate carpet plots and FD traces for every subject and flag anything with mea",
+     "detail": "Generate carpet plots and FD traces for every subject and flag anything with mean FD > 0.3 mm.",
+     "ok": null,
+     "duration_ms": null,
+     "subagent": null
+    },
+    {
+     "id": 2508,
+     "ts": "2026-09-30T09:27:06.120-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "qc/carpet.py",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 39,
+     "subagent": null
+    },
+    {
+     "id": 2509,
+     "ts": "2026-09-30T09:27:46.159-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "qc/carpet.py",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 137,
+     "subagent": null
+    },
+    {
+     "id": 2510,
+     "ts": "2026-09-30T09:27:51.296-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "uv run pytest tests/test_carpet.py -q",
+     "detail": "6 passed",
+     "ok": true,
+     "duration_ms": 9000,
+     "subagent": null
+    },
+    {
+     "id": 2511,
+     "ts": "2026-09-30T09:28:05.296-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "uv run python -m qc.carpet --subjects all --jobs 8",
+     "detail": "24/24 written",
+     "ok": true,
+     "duration_ms": 1210000,
+     "subagent": null
+    },
+    {
+     "id": 2512,
+     "ts": "2026-09-30T09:48:18.296-04:00",
+     "kind": "tool",
+     "tool": "Read",
+     "summary": "qc/out/summary.tsv",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 143,
+     "subagent": null
+    },
+    {
+     "id": 2513,
+     "ts": "2026-09-30T09:48:22.439-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "uv run python -m qc.flag --fd 0.3 qc/out/summary.tsv",
+     "detail": "flagged: sub-07, sub-19",
+     "ok": true,
+     "duration_ms": 3000,
+     "subagent": null
+    },
+    {
+     "id": 2514,
+     "ts": "2026-09-30T09:48:55.439-04:00",
+     "kind": "tool",
+     "tool": "Edit",
+     "summary": "qc/report.qmd",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 48,
+     "subagent": null
+    },
+    {
+     "id": 2515,
+     "ts": "2026-09-30T09:57:57.120-04:00",
+     "kind": "tool",
+     "tool": "Bash",
+     "summary": "quarto render qc/report.qmd",
+     "detail": null,
+     "ok": true,
+     "duration_ms": 48000,
+     "subagent": null
+    }
+   ],
+   "inbox": [],
+   "paused": false,
+   "wakeable": null
+  }
+ ],
+ "conflicts": [],
+ "mote": {
+  "store": "/Users/bbuchsbaum/code/fmriprep-qc/.mote",
+  "fetched": "2026-09-30T10:09:03.120-04:00",
+  "error": "mote: store is locked by another process (pid 48211)",
+  "counts": null,
+  "doing": [],
+  "ready": [],
+  "blocked": [],
+  "reservations": [],
+  "actors": [],
+  "posts": []
+ }
+}

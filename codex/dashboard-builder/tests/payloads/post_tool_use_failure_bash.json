@@ -1,0 +1,16 @@
+{
+  "session_id": "5d7a0c2e-live-4000-8000-000000000000",
+  "transcript_path": "/tmp/x/transcript.jsonl",
+  "cwd": "{cwd}",
+  "permission_mode": "default",
+  "prompt_id": "p-1",
+  "hook_event_name": "PostToolUseFailure",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "ls /nonexistent"
+  },
+  "tool_use_id": "toolu_live_3",
+  "error": "Exit code 1\nls: /nonexistent: No such file or directory",
+  "is_interrupt": false,
+  "duration_ms": 40
+}
