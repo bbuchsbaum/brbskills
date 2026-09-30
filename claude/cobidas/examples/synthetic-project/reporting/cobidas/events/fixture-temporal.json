@@ -1,0 +1,32 @@
+{
+  "id": "fixture-temporal",
+  "kind": "fact",
+  "scope": "analysis-main",
+  "by": "synthetic-fixture-builder",
+  "key": "denoising.temporal",
+  "phase": "actual",
+  "status": "known",
+  "value": {
+    "basis": "Legendre polynomials",
+    "degree": 2,
+    "per_run": true,
+    "includes_intercept": true,
+    "bandpass_performed": false,
+    "fit_strategy": "Nuisance terms included jointly in the task GLM"
+  },
+  "basis": "observed",
+  "evidence": [
+    {
+      "path": "evidence/resolved.json",
+      "locator": "/temporal",
+      "kind": "synthetic_fixture",
+      "sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b"
+    }
+  ],
+  "activity_ids": [
+    "fixture-receipt"
+  ],
+  "supersedes": [],
+  "notes": "Actual describes the fabricated record state, not a real MRI execution.",
+  "recorded_at": "2026-09-30T14:06:47.675071Z"
+}

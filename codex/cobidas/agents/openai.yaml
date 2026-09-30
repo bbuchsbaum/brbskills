@@ -1,0 +1,6 @@
+interface:
+  display_name: "COBIDAS MRI Methods"
+  short_description: "Record MRI analysis evidence and write auditable methods"
+  default_prompt: "Use $cobidas to record or audit this MRI/fMRI analysis and draft evidence-backed methods with explicit reporting gaps."
+policy:
+  allow_implicit_invocation: true

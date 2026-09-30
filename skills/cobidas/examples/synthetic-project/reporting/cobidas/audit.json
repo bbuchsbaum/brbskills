@@ -1,0 +1,862 @@
+{
+  "format_version": "0.1.0",
+  "generated_at": "2026-09-30T14:06:47.682690Z",
+  "audit_digest": "8d58f59fb9b15cec790e8a4cf1f5ea8facca19682c216e44b05c837e2c4e5631",
+  "authority": "Local operational catalogue; NOT official COBIDAS row IDs or mandatory flags.",
+  "limitations": [
+    "Local catalogue coverage is not an exhaustive official COBIDAS audit.",
+    "Structural integrity and byte identity do not prove truth, completeness or semantic entailment.",
+    "Membership counts, source locators and scientific values require independent verification.",
+    "Known-incomplete facts support only their populated values; declared missing subdetails remain audit gaps.",
+    "Only directly referenced local evidence bytes are checked; remote objects and manifest members are not fetched.",
+    "Snapshot consistency requires quiescent sources; no concurrent file-mutation or manuscript-write guarantee."
+  ],
+  "errors": [],
+  "coverage": [
+    {
+      "scope": "study",
+      "key": "study.question",
+      "section": "Design",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Aims, estimands and hypotheses; primary/exploratory status."
+    },
+    {
+      "scope": "study",
+      "key": "study.design",
+      "section": "Design",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Design, conditions/groups, assignment and chronology."
+    },
+    {
+      "scope": "study",
+      "key": "study.registration",
+      "section": "Design",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Registration or explicit absence; version, timing, deviations and stopping policy."
+    },
+    {
+      "scope": "study",
+      "key": "participants.recruitment",
+      "section": "Participants",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Sampling frame, setting, recruitment and relevant selection."
+    },
+    {
+      "scope": "study",
+      "key": "participants.eligibility",
+      "section": "Participants",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Inclusion/exclusion screening and group/matching rules."
+    },
+    {
+      "scope": "study",
+      "key": "participants.sample_size_rationale",
+      "section": "Participants",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Sample-size rationale, power assumptions or explicit absence."
+    },
+    {
+      "scope": "study",
+      "key": "participants.flow",
+      "section": "Participants",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Counts and exclusion flow, with units and non-overlapping accounting."
+    },
+    {
+      "scope": "study",
+      "key": "participants.demographics",
+      "section": "Participants",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Authorized sample summaries by group/analysis and measure definitions."
+    },
+    {
+      "scope": "study",
+      "key": "participants.clinical",
+      "section": "Participants",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Relevant diagnostic/clinical and neurocognitive measures, or justified inapplicability."
+    },
+    {
+      "scope": "study",
+      "key": "ethics.approval",
+      "section": "Ethics",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual ethics authority/approval identifier or documented determination; do not infer."
+    },
+    {
+      "scope": "study",
+      "key": "ethics.consent",
+      "section": "Ethics",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual consent, secondary-use and sharing conditions."
+    },
+    {
+      "scope": "study",
+      "key": "study.analysis_inventory",
+      "section": "Design",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "All intended/reported and relevant attempted analysis branches, statuses and output links."
+    },
+    {
+      "scope": "study",
+      "key": "sharing.data",
+      "section": "Availability",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "What data/materials can be accessed, persistent identities and restrictions."
+    },
+    {
+      "scope": "study",
+      "key": "sharing.code",
+      "section": "Availability",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual code/environment availability and revision, or explicit unavailability."
+    },
+    {
+      "scope": "study",
+      "key": "reproducibility.environment",
+      "section": "Reproducibility",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Executed software/runtime/hardware/parallelism and identities or evidence manifest."
+    },
+    {
+      "scope": "study",
+      "key": "reproducibility.agent_contribution",
+      "section": "Reproducibility",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Material agent work, exposed identifiers, review and approved data boundary, or explicit absence."
+    },
+    {
+      "scope": "study",
+      "key": "study.task",
+      "section": "Design",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Stimuli/instructions, timing, trial/run counts, randomization and response collection."
+    },
+    {
+      "scope": "study",
+      "key": "study.behaviour",
+      "section": "Design",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Task engagement, performance definitions and actual summaries."
+    },
+    {
+      "scope": "acq-main",
+      "key": "scope.members",
+      "section": "Scope",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Exact membership manifest, unit and count; no unverified scope-wide generalization."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.scanner",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Manufacturer/model, field strength, coil and meaningful hardware/software variants."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.sequence",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Sequence/contrast, acquisition dimensionality and reconstruction/online processing."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.timing",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "All relevant sequence timings, units, flip angle and sparse/variable sampling semantics."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.geometry",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Acquired geometry/matrix/FOV/slice gap/coverage; distinguish reconstruction from acquisition."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.encoding",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Phase/readout direction, readout timing/bandwidth and coordinate convention where relevant."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.acceleration",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "In-plane/multiband acceleration, partial Fourier and other relevant sequence settings."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.reference_images",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Reference images, fieldmap acquisitions and associations, including explicit omissions."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.qc",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Acquisition quality checks, problems, preparation/accommodations and relevant exceptions."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.volumes",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Stored volumes/runs and duration, including variation and retained dataset membership."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.stabilization",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Scanner-discarded/user-discarded volumes, nonsteady-state identification and time origin."
+    },
+    {
+      "scope": "acq-main",
+      "key": "acquisition.slice_timing",
+      "section": "Acquisition",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual slice timings/order, reference metadata and multiband interpretation."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "scope.members",
+      "section": "Scope",
+      "required_local": true,
+      "status": "known",
+      "fact_ids": [
+        "fixture-members"
+      ],
+      "reason": "",
+      "prompt": "Exact membership manifest, unit and count; no unverified scope-wide generalization."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "data.selection",
+      "section": "Sample",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual analysis sample, retained observations, response identity and exclusions."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "reproducibility.branch",
+      "section": "Reproducibility",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Producing code/config/attempt/output revision, primary/sensitivity role, dependencies and deviations."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.software",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Executed pipeline/components, software versions, container/environment identity and method citations."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.anatomical",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Bias correction/extraction/segmentation and reference construction, including manual edits."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.distortion",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Exact susceptibility/gradient correction branches, fieldmap association or explicit absence."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.registration",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Coregistration/normalization, transform/cost/template identity and validation."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.resampling",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Interpolation, transform composition, output grid/space and mask handling."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.smoothing",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "known",
+      "fact_ids": [
+        "fixture-smoothing"
+      ],
+      "reason": "",
+      "prompt": "Performed or not; kernel, FWHM units, space/domain and stage."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.intensity",
+      "section": "Preprocessing",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Scaling/normalization and response units, or explicit unchanged scale."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.motion",
+      "section": "Denoising",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Motion estimator, transform/reference/cost and actual correction."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "preprocessing.slice_timing",
+      "section": "Denoising",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Correction method/reference/order and verified model time-origin adjustment."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "denoising.confounds",
+      "section": "Denoising",
+      "required_local": true,
+      "status": "known",
+      "fact_ids": [
+        "fixture-confounds"
+      ],
+      "reason": "",
+      "prompt": "Actual selected nuisance terms/columns, construction and per-run counts; not all available columns."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "denoising.temporal",
+      "section": "Denoising",
+      "required_local": true,
+      "status": "known",
+      "fact_ids": [
+        "fixture-temporal"
+      ],
+      "reason": "",
+      "prompt": "Drift/filter basis/settings and exact joint/sequential implementation, runs and regressor treatment."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "denoising.censoring",
+      "section": "Denoising",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Metric/criterion, neighbours, treatment, censor vectors and retained-data accounting."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "qc.criteria",
+      "section": "Quality control",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Criteria, authority and preplanned/post-hoc status."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "qc.outcome",
+      "section": "Quality control",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual metrics/reviews, reviewer type, findings and decisions."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "qc.exclusions",
+      "section": "Quality control",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual exclusions/edits with counts, reasons, membership and downstream propagation."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.specification",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Response/units, predictors/coding, fitted formula/design and actual analysis identity."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.observations",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Observation units/counts, rank/dropped terms, sample variation and relevant diagnostics."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.estimation",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Estimator, error/covariance model, regularization, fitting settings and diagnostics."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.contrasts",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "All tested effects with exact vectors/definitions, directions and estimability."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "inference.specification",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Null/effect, statistic, unit, tails and uncertainty/testing procedure."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "inference.multiplicity",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Correction method, exact family/search space, alpha and relevant spatial settings."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "inference.resampling",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual null/resampling procedure, restrictions, repetitions and seeds, or explicit absence."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "results.inventory",
+      "section": "Modelling and inference",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Reported output/map/table identities, complete tested-effect inventory, display/threshold procedure."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.events",
+      "section": "First-level model",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Actual event definition, onsets/durations/amplitudes, error handling and time reference."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.hrf",
+      "section": "First-level model",
+      "required_local": true,
+      "status": "known_incomplete",
+      "fact_ids": [
+        "fixture-hrf"
+      ],
+      "reason": "Missing subdetails: HRF basis orthogonalization setting",
+      "prompt": "Actual HRF/basis, parameters, derivatives/windows, normalization and temporal sampling."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.modulators",
+      "section": "First-level model",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Modulator source/coding/centring/missingness/orthogonalization, or explicit absence."
+    },
+    {
+      "scope": "analysis-main",
+      "key": "model.run_combination",
+      "section": "First-level model",
+      "required_local": true,
+      "status": "missing",
+      "fact_ids": [],
+      "reason": "No current actual fact",
+      "prompt": "Run/session combination and weights, or explicit single-run handling."
+    }
+  ],
+  "eligible_facts": {
+    "fixture-members": {
+      "id": "fixture-members",
+      "kind": "fact",
+      "scope": "analysis-main",
+      "by": "synthetic-fixture-builder",
+      "key": "scope.members",
+      "phase": "actual",
+      "status": "known",
+      "value": {
+        "manifest": "evidence/input-manifest.json",
+        "unit": "runs",
+        "n_units": 2
+      },
+      "basis": "derived",
+      "evidence": [
+        {
+          "path": "evidence/input-manifest.json",
+          "locator": "/members",
+          "kind": "synthetic_fixture",
+          "sha256": "64ce9976942a3769db7136817f4f9bd90b6ba7c28b4d1305a475db55738fa4b8"
+        }
+      ],
+      "activity_ids": [],
+      "supersedes": [],
+      "recorded_at": "2026-09-30T14:06:47.675312Z"
+    },
+    "fixture-smoothing": {
+      "id": "fixture-smoothing",
+      "kind": "fact",
+      "scope": "analysis-main",
+      "by": "synthetic-fixture-builder",
+      "key": "preprocessing.smoothing",
+      "phase": "actual",
+      "status": "known",
+      "value": {
+        "performed": false,
+        "reason": "Illustrative unsmoothed model branch"
+      },
+      "basis": "observed",
+      "evidence": [
+        {
+          "path": "evidence/resolved.json",
+          "locator": "/smoothing",
+          "kind": "synthetic_fixture",
+          "sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b"
+        }
+      ],
+      "activity_ids": [
+        "fixture-receipt"
+      ],
+      "supersedes": [],
+      "notes": "Actual describes the fabricated record state, not a real MRI execution.",
+      "recorded_at": "2026-09-30T14:06:47.674798Z"
+    },
+    "fixture-confounds": {
+      "id": "fixture-confounds",
+      "kind": "fact",
+      "scope": "analysis-main",
+      "by": "synthetic-fixture-builder",
+      "key": "denoising.confounds",
+      "phase": "actual",
+      "status": "known",
+      "value": {
+        "family": "motion24",
+        "definition": "Six rigid-body parameters, their first differences, and squares of those twelve columns",
+        "first_difference_boundary": "zero at first retained volume",
+        "n_columns": 24
+      },
+      "basis": "observed",
+      "evidence": [
+        {
+          "path": "evidence/resolved.json",
+          "locator": "/confounds",
+          "kind": "synthetic_fixture",
+          "sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b"
+        }
+      ],
+      "activity_ids": [
+        "fixture-receipt"
+      ],
+      "supersedes": [],
+      "notes": "Actual describes the fabricated record state, not a real MRI execution.",
+      "recorded_at": "2026-09-30T14:06:47.674941Z"
+    },
+    "fixture-temporal": {
+      "id": "fixture-temporal",
+      "kind": "fact",
+      "scope": "analysis-main",
+      "by": "synthetic-fixture-builder",
+      "key": "denoising.temporal",
+      "phase": "actual",
+      "status": "known",
+      "value": {
+        "basis": "Legendre polynomials",
+        "degree": 2,
+        "per_run": true,
+        "includes_intercept": true,
+        "bandpass_performed": false,
+        "fit_strategy": "Nuisance terms included jointly in the task GLM"
+      },
+      "basis": "observed",
+      "evidence": [
+        {
+          "path": "evidence/resolved.json",
+          "locator": "/temporal",
+          "kind": "synthetic_fixture",
+          "sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b"
+        }
+      ],
+      "activity_ids": [
+        "fixture-receipt"
+      ],
+      "supersedes": [],
+      "notes": "Actual describes the fabricated record state, not a real MRI execution.",
+      "recorded_at": "2026-09-30T14:06:47.675071Z"
+    },
+    "fixture-hrf": {
+      "id": "fixture-hrf",
+      "kind": "fact",
+      "scope": "analysis-main",
+      "by": "synthetic-fixture-builder",
+      "key": "model.hrf",
+      "phase": "actual",
+      "status": "known",
+      "value": {
+        "family": "SPM canonical HRF",
+        "temporal_derivative": true,
+        "dispersion_derivative": false
+      },
+      "basis": "observed",
+      "evidence": [
+        {
+          "path": "evidence/resolved.json",
+          "locator": "/hrf",
+          "kind": "synthetic_fixture",
+          "sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b"
+        }
+      ],
+      "activity_ids": [
+        "fixture-receipt"
+      ],
+      "supersedes": [],
+      "notes": "Actual describes the fabricated record state, not a real MRI execution.",
+      "missing_details": [
+        "HRF basis orthogonalization setting"
+      ],
+      "recorded_at": "2026-09-30T14:06:47.675191Z"
+    }
+  },
+  "evidence_checks": {
+    "fixture-confounds": [
+      {
+        "path": "evidence/resolved.json",
+        "status": "verified",
+        "expected_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "observed_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "detail": ""
+      }
+    ],
+    "fixture-hrf": [
+      {
+        "path": "evidence/resolved.json",
+        "status": "verified",
+        "expected_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "observed_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "detail": ""
+      }
+    ],
+    "fixture-members": [
+      {
+        "path": "evidence/input-manifest.json",
+        "status": "verified",
+        "expected_sha256": "64ce9976942a3769db7136817f4f9bd90b6ba7c28b4d1305a475db55738fa4b8",
+        "observed_sha256": "64ce9976942a3769db7136817f4f9bd90b6ba7c28b4d1305a475db55738fa4b8",
+        "detail": ""
+      }
+    ],
+    "fixture-receipt": [
+      {
+        "path": "evidence/input-manifest.json",
+        "status": "verified",
+        "expected_sha256": "64ce9976942a3769db7136817f4f9bd90b6ba7c28b4d1305a475db55738fa4b8",
+        "observed_sha256": "64ce9976942a3769db7136817f4f9bd90b6ba7c28b4d1305a475db55738fa4b8",
+        "detail": ""
+      },
+      {
+        "path": "evidence/output-manifest.json",
+        "status": "verified",
+        "expected_sha256": "372e06522c00dc236b4e8c6c684a79d4a0f2535e0b5f01f904c474f583273e27",
+        "observed_sha256": "372e06522c00dc236b4e8c6c684a79d4a0f2535e0b5f01f904c474f583273e27",
+        "detail": ""
+      },
+      {
+        "path": "evidence/validation.json",
+        "status": "verified",
+        "expected_sha256": "9c7a9d8ead49324ca31c5c8e1a0e249adaa1c851945d6dd3a0555de2b1e4d58d",
+        "observed_sha256": "9c7a9d8ead49324ca31c5c8e1a0e249adaa1c851945d6dd3a0555de2b1e4d58d",
+        "detail": ""
+      }
+    ],
+    "fixture-smoothing": [
+      {
+        "path": "evidence/resolved.json",
+        "status": "verified",
+        "expected_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "observed_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "detail": ""
+      }
+    ],
+    "fixture-temporal": [
+      {
+        "path": "evidence/resolved.json",
+        "status": "verified",
+        "expected_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "observed_sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b",
+        "detail": ""
+      }
+    ]
+  },
+  "activities": {
+    "fixture-receipt": {
+      "status": "verified",
+      "reason": ""
+    }
+  },
+  "summary": {
+    "expected_local_fields": 60,
+    "eligible_known_fields": 5,
+    "complete_known_fields": 4,
+    "known_incomplete_fields": 1,
+    "not_applicable_fields": 0,
+    "gap_fields": 56,
+    "integrity_errors": 0
+  }
+}

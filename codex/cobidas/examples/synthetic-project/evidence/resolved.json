@@ -1,0 +1,27 @@
+{
+  "synthetic_fixture": true,
+  "no_images_processed": true,
+  "smoothing": {
+    "performed": false,
+    "reason": "Illustrative unsmoothed model branch"
+  },
+  "confounds": {
+    "family": "motion24",
+    "definition": "Six rigid-body parameters, their first differences, and squares of those twelve columns",
+    "first_difference_boundary": "zero at first retained volume",
+    "n_columns": 24
+  },
+  "temporal": {
+    "basis": "Legendre polynomials",
+    "degree": 2,
+    "per_run": true,
+    "includes_intercept": true,
+    "bandpass_performed": false,
+    "fit_strategy": "Nuisance terms included jointly in the task GLM"
+  },
+  "hrf": {
+    "family": "SPM canonical HRF",
+    "temporal_derivative": true,
+    "dispersion_derivative": false
+  }
+}

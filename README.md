@@ -5,6 +5,7 @@ Each skill can be downloaded and installed independently.
 
 | Skill | Purpose | Codex folder | Claude Code folder |
 |---|---|---|---|
+| [cobidas](skills/cobidas/SKILL.md) | Record MRI/fMRI analysis evidence during work and write COBIDAS-aligned methods with explicit reporting gaps | [codex/cobidas](codex/cobidas) | [claude/cobidas](claude/cobidas) |
 | [trainee-mode](skills/trainee-mode/SKILL.md) **(experimental)** | Guided practice at selected analysis checkpoints; learning benefits unvalidated | [codex/trainee-mode](codex/trainee-mode) | [claude/trainee-mode](claude/trainee-mode) |
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
 | [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
@@ -24,6 +25,11 @@ preprocessing workflow using an available fMRIPrep installation; rriscripts and
 Alliance guidance are optional. Consult the [fmriprep validation record](skills/fmriprep/tests/VALIDATION.md)
 and [Workbench import status](docs/imports/fmri-workbench.md) for their respective
 verification limits.
+
+The standalone `cobidas` skill records MRI/fMRI methods evidence and drafts
+COBIDAS-aligned methods for any pipeline or toolchain (SPM, FSL, AFNI, fMRIPrep,
+custom code). It requires none of the skills above and does not choose or run
+analyses ([import record](docs/imports/cobidas.md)).
 
 The experimental `trainee-mode` skill extends teaching interactions with selected
 pause points, graduated hints, and attribution in the existing decision record.
@@ -190,7 +196,8 @@ separately maintained copies of the instructions.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for authoring and checks, and the
 [Alliance HPC](docs/imports/alliance-hpc.md),
 [fMRI Workbench](docs/imports/fmri-workbench.md),
-[fMRIPrep](docs/imports/fmriprep/IMPLEMENTATION.md), and
+[fMRIPrep](docs/imports/fmriprep/IMPLEMENTATION.md),
+[COBIDAS](docs/imports/cobidas.md), and
 [visual hill climb](docs/imports/visual-hill-climb.md) import records for provenance and validation limits.
 The repository uses standalone skill folders for selective Git downloads. Native
 plugin packaging can be added if marketplace installation is wanted.

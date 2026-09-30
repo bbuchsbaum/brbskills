@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1.0",
+  "workspace": "../..",
+  "project_id": "regen-lf",
+  "report_title": "MRI methods",
+  "scopes": [
+    {
+      "id": "study",
+      "kind": "study",
+      "label": "Study",
+      "profiles": [
+        "task",
+        "glm"
+      ]
+    },
+    {
+      "id": "acq-main",
+      "kind": "acquisition",
+      "label": "Edit acquisition membership",
+      "profiles": [
+        "task",
+        "glm"
+      ]
+    },
+    {
+      "id": "analysis-main",
+      "kind": "analysis",
+      "label": "Edit analysis revision and membership",
+      "profiles": [
+        "task",
+        "glm"
+      ]
+    }
+  ]
+}

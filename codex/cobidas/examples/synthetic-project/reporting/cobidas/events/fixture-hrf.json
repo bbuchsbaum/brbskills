@@ -1,0 +1,32 @@
+{
+  "id": "fixture-hrf",
+  "kind": "fact",
+  "scope": "analysis-main",
+  "by": "synthetic-fixture-builder",
+  "key": "model.hrf",
+  "phase": "actual",
+  "status": "known",
+  "value": {
+    "family": "SPM canonical HRF",
+    "temporal_derivative": true,
+    "dispersion_derivative": false
+  },
+  "basis": "observed",
+  "evidence": [
+    {
+      "path": "evidence/resolved.json",
+      "locator": "/hrf",
+      "kind": "synthetic_fixture",
+      "sha256": "c644a4bccdbbf554b180a10a40671874b079bbbd9a9450f533b49ff9ec79413b"
+    }
+  ],
+  "activity_ids": [
+    "fixture-receipt"
+  ],
+  "supersedes": [],
+  "notes": "Actual describes the fabricated record state, not a real MRI execution.",
+  "missing_details": [
+    "HRF basis orthogonalization setting"
+  ],
+  "recorded_at": "2026-09-30T14:06:47.675191Z"
+}

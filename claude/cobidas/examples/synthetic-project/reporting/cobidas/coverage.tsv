@@ -1,0 +1,61 @@
+scope	key	section	required_local	status	fact_ids	reason	prompt
+study	study.question	Design	True	missing	[]	No current actual fact	Aims, estimands and hypotheses; primary/exploratory status.
+study	study.design	Design	True	missing	[]	No current actual fact	Design, conditions/groups, assignment and chronology.
+study	study.registration	Design	True	missing	[]	No current actual fact	Registration or explicit absence; version, timing, deviations and stopping policy.
+study	participants.recruitment	Participants	True	missing	[]	No current actual fact	Sampling frame, setting, recruitment and relevant selection.
+study	participants.eligibility	Participants	True	missing	[]	No current actual fact	Inclusion/exclusion screening and group/matching rules.
+study	participants.sample_size_rationale	Participants	True	missing	[]	No current actual fact	Sample-size rationale, power assumptions or explicit absence.
+study	participants.flow	Participants	True	missing	[]	No current actual fact	Counts and exclusion flow, with units and non-overlapping accounting.
+study	participants.demographics	Participants	True	missing	[]	No current actual fact	Authorized sample summaries by group/analysis and measure definitions.
+study	participants.clinical	Participants	True	missing	[]	No current actual fact	Relevant diagnostic/clinical and neurocognitive measures, or justified inapplicability.
+study	ethics.approval	Ethics	True	missing	[]	No current actual fact	Actual ethics authority/approval identifier or documented determination; do not infer.
+study	ethics.consent	Ethics	True	missing	[]	No current actual fact	Actual consent, secondary-use and sharing conditions.
+study	study.analysis_inventory	Design	True	missing	[]	No current actual fact	All intended/reported and relevant attempted analysis branches, statuses and output links.
+study	sharing.data	Availability	True	missing	[]	No current actual fact	What data/materials can be accessed, persistent identities and restrictions.
+study	sharing.code	Availability	True	missing	[]	No current actual fact	Actual code/environment availability and revision, or explicit unavailability.
+study	reproducibility.environment	Reproducibility	True	missing	[]	No current actual fact	Executed software/runtime/hardware/parallelism and identities or evidence manifest.
+study	reproducibility.agent_contribution	Reproducibility	True	missing	[]	No current actual fact	Material agent work, exposed identifiers, review and approved data boundary, or explicit absence.
+study	study.task	Design	True	missing	[]	No current actual fact	Stimuli/instructions, timing, trial/run counts, randomization and response collection.
+study	study.behaviour	Design	True	missing	[]	No current actual fact	Task engagement, performance definitions and actual summaries.
+acq-main	scope.members	Scope	True	missing	[]	No current actual fact	Exact membership manifest, unit and count; no unverified scope-wide generalization.
+acq-main	acquisition.scanner	Acquisition	True	missing	[]	No current actual fact	Manufacturer/model, field strength, coil and meaningful hardware/software variants.
+acq-main	acquisition.sequence	Acquisition	True	missing	[]	No current actual fact	Sequence/contrast, acquisition dimensionality and reconstruction/online processing.
+acq-main	acquisition.timing	Acquisition	True	missing	[]	No current actual fact	All relevant sequence timings, units, flip angle and sparse/variable sampling semantics.
+acq-main	acquisition.geometry	Acquisition	True	missing	[]	No current actual fact	Acquired geometry/matrix/FOV/slice gap/coverage; distinguish reconstruction from acquisition.
+acq-main	acquisition.encoding	Acquisition	True	missing	[]	No current actual fact	Phase/readout direction, readout timing/bandwidth and coordinate convention where relevant.
+acq-main	acquisition.acceleration	Acquisition	True	missing	[]	No current actual fact	In-plane/multiband acceleration, partial Fourier and other relevant sequence settings.
+acq-main	acquisition.reference_images	Acquisition	True	missing	[]	No current actual fact	Reference images, fieldmap acquisitions and associations, including explicit omissions.
+acq-main	acquisition.qc	Acquisition	True	missing	[]	No current actual fact	Acquisition quality checks, problems, preparation/accommodations and relevant exceptions.
+acq-main	acquisition.volumes	Acquisition	True	missing	[]	No current actual fact	Stored volumes/runs and duration, including variation and retained dataset membership.
+acq-main	acquisition.stabilization	Acquisition	True	missing	[]	No current actual fact	Scanner-discarded/user-discarded volumes, nonsteady-state identification and time origin.
+acq-main	acquisition.slice_timing	Acquisition	True	missing	[]	No current actual fact	Actual slice timings/order, reference metadata and multiband interpretation.
+analysis-main	scope.members	Scope	True	known	"[""fixture-members""]"		Exact membership manifest, unit and count; no unverified scope-wide generalization.
+analysis-main	data.selection	Sample	True	missing	[]	No current actual fact	Actual analysis sample, retained observations, response identity and exclusions.
+analysis-main	reproducibility.branch	Reproducibility	True	missing	[]	No current actual fact	Producing code/config/attempt/output revision, primary/sensitivity role, dependencies and deviations.
+analysis-main	preprocessing.software	Preprocessing	True	missing	[]	No current actual fact	Executed pipeline/components, software versions, container/environment identity and method citations.
+analysis-main	preprocessing.anatomical	Preprocessing	True	missing	[]	No current actual fact	Bias correction/extraction/segmentation and reference construction, including manual edits.
+analysis-main	preprocessing.distortion	Preprocessing	True	missing	[]	No current actual fact	Exact susceptibility/gradient correction branches, fieldmap association or explicit absence.
+analysis-main	preprocessing.registration	Preprocessing	True	missing	[]	No current actual fact	Coregistration/normalization, transform/cost/template identity and validation.
+analysis-main	preprocessing.resampling	Preprocessing	True	missing	[]	No current actual fact	Interpolation, transform composition, output grid/space and mask handling.
+analysis-main	preprocessing.smoothing	Preprocessing	True	known	"[""fixture-smoothing""]"		Performed or not; kernel, FWHM units, space/domain and stage.
+analysis-main	preprocessing.intensity	Preprocessing	True	missing	[]	No current actual fact	Scaling/normalization and response units, or explicit unchanged scale.
+analysis-main	preprocessing.motion	Denoising	True	missing	[]	No current actual fact	Motion estimator, transform/reference/cost and actual correction.
+analysis-main	preprocessing.slice_timing	Denoising	True	missing	[]	No current actual fact	Correction method/reference/order and verified model time-origin adjustment.
+analysis-main	denoising.confounds	Denoising	True	known	"[""fixture-confounds""]"		Actual selected nuisance terms/columns, construction and per-run counts; not all available columns.
+analysis-main	denoising.temporal	Denoising	True	known	"[""fixture-temporal""]"		Drift/filter basis/settings and exact joint/sequential implementation, runs and regressor treatment.
+analysis-main	denoising.censoring	Denoising	True	missing	[]	No current actual fact	Metric/criterion, neighbours, treatment, censor vectors and retained-data accounting.
+analysis-main	qc.criteria	Quality control	True	missing	[]	No current actual fact	Criteria, authority and preplanned/post-hoc status.
+analysis-main	qc.outcome	Quality control	True	missing	[]	No current actual fact	Actual metrics/reviews, reviewer type, findings and decisions.
+analysis-main	qc.exclusions	Quality control	True	missing	[]	No current actual fact	Actual exclusions/edits with counts, reasons, membership and downstream propagation.
+analysis-main	model.specification	Modelling and inference	True	missing	[]	No current actual fact	Response/units, predictors/coding, fitted formula/design and actual analysis identity.
+analysis-main	model.observations	Modelling and inference	True	missing	[]	No current actual fact	Observation units/counts, rank/dropped terms, sample variation and relevant diagnostics.
+analysis-main	model.estimation	Modelling and inference	True	missing	[]	No current actual fact	Estimator, error/covariance model, regularization, fitting settings and diagnostics.
+analysis-main	model.contrasts	Modelling and inference	True	missing	[]	No current actual fact	All tested effects with exact vectors/definitions, directions and estimability.
+analysis-main	inference.specification	Modelling and inference	True	missing	[]	No current actual fact	Null/effect, statistic, unit, tails and uncertainty/testing procedure.
+analysis-main	inference.multiplicity	Modelling and inference	True	missing	[]	No current actual fact	Correction method, exact family/search space, alpha and relevant spatial settings.
+analysis-main	inference.resampling	Modelling and inference	True	missing	[]	No current actual fact	Actual null/resampling procedure, restrictions, repetitions and seeds, or explicit absence.
+analysis-main	results.inventory	Modelling and inference	True	missing	[]	No current actual fact	Reported output/map/table identities, complete tested-effect inventory, display/threshold procedure.
+analysis-main	model.events	First-level model	True	missing	[]	No current actual fact	Actual event definition, onsets/durations/amplitudes, error handling and time reference.
+analysis-main	model.hrf	First-level model	True	known_incomplete	"[""fixture-hrf""]"	Missing subdetails: HRF basis orthogonalization setting	Actual HRF/basis, parameters, derivatives/windows, normalization and temporal sampling.
+analysis-main	model.modulators	First-level model	True	missing	[]	No current actual fact	Modulator source/coding/centring/missingness/orthogonalization, or explicit absence.
+analysis-main	model.run_combination	First-level model	True	missing	[]	No current actual fact	Run/session combination and weights, or explicit single-run handling.

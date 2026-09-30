@@ -1,0 +1,27 @@
+{
+  "audit_digest": "8d58f59fb9b15cec790e8a4cf1f5ea8facca19682c216e44b05c837e2c4e5631",
+  "paragraphs": [
+    {
+      "id": "synthetic-preprocessing-example",
+      "destination": "methods",
+      "section": "Synthetic illustration — not a real study",
+      "text": "In this synthetic task-GLM example, no spatial smoothing was applied. Twenty-four motion nuisance regressors comprised the six rigid-body motion parameters, their first differences, and the squares of those twelve columns. Run-specific Legendre polynomials through degree two were included jointly with the task and motion regressors. Task responses were represented using the SPM canonical haemodynamic response function and its temporal derivative.",
+      "claim_ids": [
+        "fixture-smoothing",
+        "fixture-confounds",
+        "fixture-temporal",
+        "fixture-hrf"
+      ]
+    },
+    {
+      "id": "synthetic-supplement",
+      "destination": "supplement",
+      "section": "Synthetic temporal details",
+      "text": "The first-difference motion columns were set to zero at the first retained volume. The polynomial basis included the intercept, and no band-pass filtering was performed in this synthetic specification.",
+      "claim_ids": [
+        "fixture-confounds",
+        "fixture-temporal"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "fixture-receipt",
+  "kind": "activity",
+  "scope": "analysis-main",
+  "by": "synthetic-fixture-builder",
+  "status": "succeeded",
+  "software": [
+    {
+      "name": "synthetic-fixture-builder-not-mri-software",
+      "version": "0.1.0"
+    }
+  ],
+  "invocation": {
+    "fixture_only": true,
+    "no_mri_analysis_executed": true
+  },
+  "inputs": [
+    {
+      "path": "evidence/input-manifest.json",
+      "locator": "/",
+      "kind": "synthetic_fixture",
+      "sha256": "64ce9976942a3769db7136817f4f9bd90b6ba7c28b4d1305a475db55738fa4b8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "evidence/output-manifest.json",
+      "locator": "/",
+      "kind": "synthetic_fixture",
+      "sha256": "372e06522c00dc236b4e8c6c684a79d4a0f2535e0b5f01f904c474f583273e27"
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "evidence": [
+      {
+        "path": "evidence/validation.json",
+        "locator": "/",
+        "kind": "synthetic_fixture",
+        "sha256": "9c7a9d8ead49324ca31c5c8e1a0e249adaa1c851945d6dd3a0555de2b1e4d58d"
+      }
+    ]
+  },
+  "depends_on": [],
+  "recorded_at": "2026-09-30T14:06:47.674291Z"
+}

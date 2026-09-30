@@ -1,0 +1,96 @@
+[
+  {
+    "id": "activity-example",
+    "kind": "activity",
+    "scope": "analysis-main",
+    "by": "analysis-worker",
+    "status": "succeeded",
+    "software": [
+      {
+        "name": "REPLACE_EXECUTED_SOFTWARE",
+        "version": "REPLACE_ACTUAL_VERSION"
+      }
+    ],
+    "invocation": {
+      "resolved_configuration": "analysis/example/resolved.json"
+    },
+    "inputs": [
+      {
+        "path": "analysis/example/inputs.json",
+        "kind": "input_manifest",
+        "locator": "/"
+      }
+    ],
+    "outputs": [
+      {
+        "path": "analysis/example/outputs.json",
+        "kind": "output_manifest",
+        "locator": "/"
+      }
+    ],
+    "validation": {
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "analysis/example/validation.json",
+          "kind": "validation",
+          "locator": "/"
+        }
+      ]
+    },
+    "depends_on": []
+  },
+  {
+    "id": "fact-example",
+    "kind": "fact",
+    "scope": "analysis-main",
+    "by": "analysis-worker",
+    "key": "preprocessing.smoothing",
+    "phase": "actual",
+    "status": "known",
+    "value": {
+      "performed": false,
+      "reason": "This analysis uses unsmoothed input patterns."
+    },
+    "basis": "observed",
+    "evidence": [
+      {
+        "path": "analysis/example/resolved.json",
+        "kind": "resolved_configuration",
+        "locator": "/smoothing"
+      }
+    ],
+    "activity_ids": [
+      "activity-example"
+    ],
+    "supersedes": []
+  },
+  {
+    "id": "fact-unknown-example",
+    "kind": "fact",
+    "scope": "acq-main",
+    "by": "reporting-worker",
+    "key": "acquisition.scanner",
+    "phase": "actual",
+    "status": "unknown",
+    "value": null,
+    "basis": "documented",
+    "evidence": [],
+    "activity_ids": [],
+    "supersedes": [],
+    "reason": "Scanner identity is documented but the receive coil has not been recovered. Preserve known subdetails separately; do not infer coil from model."
+  },
+  {
+    "id": "decision-example",
+    "kind": "decision",
+    "scope": "analysis-main",
+    "by": "REPLACE_ACTUAL_DECISION_MAKER",
+    "decision": "REPLACE_WITH_ACTUAL_DECISION",
+    "reason": "REPLACE_WITH_ACTUAL_REASON",
+    "result_exposure": "unknown",
+    "evidence": [],
+    "affects": [
+      "analysis-main"
+    ]
+  }
+]

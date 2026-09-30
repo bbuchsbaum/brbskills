@@ -1,0 +1,12 @@
+{
+  "audit_digest": "REPLACE_WITH_DIGEST_FROM_AUDIT_JSON",
+  "paragraphs": [
+    {
+      "id": "preprocessing-01",
+      "destination": "methods",
+      "section": "Preprocessing",
+      "text": "REPLACE_WITH_EVIDENCE_BACKED_TEXT",
+      "claim_ids": ["REPLACE_WITH_CURRENT_ACTUAL_FACT_ID"]
+    }
+  ]
+}

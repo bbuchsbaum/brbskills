@@ -1,0 +1,62 @@
+# Reporting gaps — local audit, not COBIDAS certification
+
+Audit digest: `8d58f59fb9b15cec790e8a4cf1f5ea8facca19682c216e44b05c837e2c4e5631`
+
+Known values still require scientific and source-level review. N/A reasons are not adjudicated by this helper.
+
+- **study / study.question** — missing: No current actual fact. Aims, estimands and hypotheses; primary/exploratory status.
+- **study / study.design** — missing: No current actual fact. Design, conditions/groups, assignment and chronology.
+- **study / study.registration** — missing: No current actual fact. Registration or explicit absence; version, timing, deviations and stopping policy.
+- **study / participants.recruitment** — missing: No current actual fact. Sampling frame, setting, recruitment and relevant selection.
+- **study / participants.eligibility** — missing: No current actual fact. Inclusion/exclusion screening and group/matching rules.
+- **study / participants.sample_size_rationale** — missing: No current actual fact. Sample-size rationale, power assumptions or explicit absence.
+- **study / participants.flow** — missing: No current actual fact. Counts and exclusion flow, with units and non-overlapping accounting.
+- **study / participants.demographics** — missing: No current actual fact. Authorized sample summaries by group/analysis and measure definitions.
+- **study / participants.clinical** — missing: No current actual fact. Relevant diagnostic/clinical and neurocognitive measures, or justified inapplicability.
+- **study / ethics.approval** — missing: No current actual fact. Actual ethics authority/approval identifier or documented determination; do not infer.
+- **study / ethics.consent** — missing: No current actual fact. Actual consent, secondary-use and sharing conditions.
+- **study / study.analysis_inventory** — missing: No current actual fact. All intended/reported and relevant attempted analysis branches, statuses and output links.
+- **study / sharing.data** — missing: No current actual fact. What data/materials can be accessed, persistent identities and restrictions.
+- **study / sharing.code** — missing: No current actual fact. Actual code/environment availability and revision, or explicit unavailability.
+- **study / reproducibility.environment** — missing: No current actual fact. Executed software/runtime/hardware/parallelism and identities or evidence manifest.
+- **study / reproducibility.agent_contribution** — missing: No current actual fact. Material agent work, exposed identifiers, review and approved data boundary, or explicit absence.
+- **study / study.task** — missing: No current actual fact. Stimuli/instructions, timing, trial/run counts, randomization and response collection.
+- **study / study.behaviour** — missing: No current actual fact. Task engagement, performance definitions and actual summaries.
+- **acq-main / scope.members** — missing: No current actual fact. Exact membership manifest, unit and count; no unverified scope-wide generalization.
+- **acq-main / acquisition.scanner** — missing: No current actual fact. Manufacturer/model, field strength, coil and meaningful hardware/software variants.
+- **acq-main / acquisition.sequence** — missing: No current actual fact. Sequence/contrast, acquisition dimensionality and reconstruction/online processing.
+- **acq-main / acquisition.timing** — missing: No current actual fact. All relevant sequence timings, units, flip angle and sparse/variable sampling semantics.
+- **acq-main / acquisition.geometry** — missing: No current actual fact. Acquired geometry/matrix/FOV/slice gap/coverage; distinguish reconstruction from acquisition.
+- **acq-main / acquisition.encoding** — missing: No current actual fact. Phase/readout direction, readout timing/bandwidth and coordinate convention where relevant.
+- **acq-main / acquisition.acceleration** — missing: No current actual fact. In-plane/multiband acceleration, partial Fourier and other relevant sequence settings.
+- **acq-main / acquisition.reference_images** — missing: No current actual fact. Reference images, fieldmap acquisitions and associations, including explicit omissions.
+- **acq-main / acquisition.qc** — missing: No current actual fact. Acquisition quality checks, problems, preparation/accommodations and relevant exceptions.
+- **acq-main / acquisition.volumes** — missing: No current actual fact. Stored volumes/runs and duration, including variation and retained dataset membership.
+- **acq-main / acquisition.stabilization** — missing: No current actual fact. Scanner-discarded/user-discarded volumes, nonsteady-state identification and time origin.
+- **acq-main / acquisition.slice_timing** — missing: No current actual fact. Actual slice timings/order, reference metadata and multiband interpretation.
+- **analysis-main / data.selection** — missing: No current actual fact. Actual analysis sample, retained observations, response identity and exclusions.
+- **analysis-main / reproducibility.branch** — missing: No current actual fact. Producing code/config/attempt/output revision, primary/sensitivity role, dependencies and deviations.
+- **analysis-main / preprocessing.software** — missing: No current actual fact. Executed pipeline/components, software versions, container/environment identity and method citations.
+- **analysis-main / preprocessing.anatomical** — missing: No current actual fact. Bias correction/extraction/segmentation and reference construction, including manual edits.
+- **analysis-main / preprocessing.distortion** — missing: No current actual fact. Exact susceptibility/gradient correction branches, fieldmap association or explicit absence.
+- **analysis-main / preprocessing.registration** — missing: No current actual fact. Coregistration/normalization, transform/cost/template identity and validation.
+- **analysis-main / preprocessing.resampling** — missing: No current actual fact. Interpolation, transform composition, output grid/space and mask handling.
+- **analysis-main / preprocessing.intensity** — missing: No current actual fact. Scaling/normalization and response units, or explicit unchanged scale.
+- **analysis-main / preprocessing.motion** — missing: No current actual fact. Motion estimator, transform/reference/cost and actual correction.
+- **analysis-main / preprocessing.slice_timing** — missing: No current actual fact. Correction method/reference/order and verified model time-origin adjustment.
+- **analysis-main / denoising.censoring** — missing: No current actual fact. Metric/criterion, neighbours, treatment, censor vectors and retained-data accounting.
+- **analysis-main / qc.criteria** — missing: No current actual fact. Criteria, authority and preplanned/post-hoc status.
+- **analysis-main / qc.outcome** — missing: No current actual fact. Actual metrics/reviews, reviewer type, findings and decisions.
+- **analysis-main / qc.exclusions** — missing: No current actual fact. Actual exclusions/edits with counts, reasons, membership and downstream propagation.
+- **analysis-main / model.specification** — missing: No current actual fact. Response/units, predictors/coding, fitted formula/design and actual analysis identity.
+- **analysis-main / model.observations** — missing: No current actual fact. Observation units/counts, rank/dropped terms, sample variation and relevant diagnostics.
+- **analysis-main / model.estimation** — missing: No current actual fact. Estimator, error/covariance model, regularization, fitting settings and diagnostics.
+- **analysis-main / model.contrasts** — missing: No current actual fact. All tested effects with exact vectors/definitions, directions and estimability.
+- **analysis-main / inference.specification** — missing: No current actual fact. Null/effect, statistic, unit, tails and uncertainty/testing procedure.
+- **analysis-main / inference.multiplicity** — missing: No current actual fact. Correction method, exact family/search space, alpha and relevant spatial settings.
+- **analysis-main / inference.resampling** — missing: No current actual fact. Actual null/resampling procedure, restrictions, repetitions and seeds, or explicit absence.
+- **analysis-main / results.inventory** — missing: No current actual fact. Reported output/map/table identities, complete tested-effect inventory, display/threshold procedure.
+- **analysis-main / model.events** — missing: No current actual fact. Actual event definition, onsets/durations/amplitudes, error handling and time reference.
+- **analysis-main / model.hrf** — known_incomplete: Missing subdetails: HRF basis orthogonalization setting. Actual HRF/basis, parameters, derivatives/windows, normalization and temporal sampling.
+- **analysis-main / model.modulators** — missing: No current actual fact. Modulator source/coding/centring/missingness/orthogonalization, or explicit absence.
+- **analysis-main / model.run_combination** — missing: No current actual fact. Run/session combination and weights, or explicit single-run handling.

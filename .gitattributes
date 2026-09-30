@@ -1,0 +1,18 @@
+# cobidas fixture digests include the helper script bytes; keep LF on every OS.
+skills/cobidas/**/*.py text eol=lf
+skills/cobidas/**/*.json text eol=lf
+skills/cobidas/**/*.md text eol=lf
+skills/cobidas/**/*.tsv text eol=lf
+skills/cobidas/**/*.yaml text eol=lf
+claude/cobidas/**/*.py text eol=lf
+claude/cobidas/**/*.json text eol=lf
+claude/cobidas/**/*.md text eol=lf
+claude/cobidas/**/*.tsv text eol=lf
+claude/cobidas/**/*.yaml text eol=lf
+codex/cobidas/**/*.py text eol=lf
+codex/cobidas/**/*.json text eol=lf
+codex/cobidas/**/*.md text eol=lf
+codex/cobidas/**/*.tsv text eol=lf
+codex/cobidas/**/*.yaml text eol=lf
+claude/cobidas/SHA256SUMS text eol=lf
+codex/cobidas/SHA256SUMS text eol=lf

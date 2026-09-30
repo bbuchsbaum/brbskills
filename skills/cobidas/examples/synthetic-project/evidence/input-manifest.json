@@ -1,0 +1,8 @@
+{
+  "synthetic_fixture": true,
+  "members": [
+    "fabricated-run-A",
+    "fabricated-run-B"
+  ],
+  "unit": "runs"
+}
