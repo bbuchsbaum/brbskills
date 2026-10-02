@@ -36,8 +36,10 @@
 - A later hardening pass ran fresh Claude subagents on 13 further cases (7 on the
   pre-hardening text, then 9 including 3 reruns and 3 new high-risk cases on the
   revised text): all rubric passes, no critical failures. Final wording edits after
-  that run were not re-exercised. Of 26 cases, host-compute-difference,
-  fieldmap-ambiguity and arm-host remain unrun. None of this is a Codex/Claude
+  that run were not re-exercised. On 2026-09-30 the three remaining cases
+  (host-compute-difference, fieldmap-ambiguity, arm-host) passed, and four
+  launcher-dependent reruns after the rriscripts refresh passed; all 26 cases have
+  now run at least once, each as a single sample. None of this is a Codex/Claude
   product-session comparison or no-skill baseline.
 - Separate read-only review reproduced a probe cancellation leak and nonfinite JSON
   parsing; both were repaired and rechecked. An actual SIGINT regression and an

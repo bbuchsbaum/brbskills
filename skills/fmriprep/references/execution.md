@@ -145,7 +145,8 @@ a single `NAME=value` token is a parse error when last and otherwise silently
 consumes the next argument as its value. `-u/--user UID:GID` sets ownership.
 Do not assume a wrapper's environment option performs a bind. [S14]
 On Apple Silicon, explicitly check image architecture and the available execution
-route; do not silently promise native performance or assume emulation. [S3, S11]
+route; do not silently promise native performance or assume emulation. State emulation
+speed only as unmeasured until pilot accounting exists. [S3, S11]
 
 Native/module fMRIPrep: use verified host paths and the module setup in the actual
 noninteractive job shell. Record loaded modules and dependency provenance. If the

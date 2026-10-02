@@ -1,31 +1,33 @@
 # Optional rriscripts adapter
 
-Reviewed sources, 2026-09-28: `origin/main` at `acb0a38` and the unmerged branch
-`fix/fmriprep-issues-3-5` at `747775e`. `install.sh` downloads from `main`, so a
-typical installed copy has no git metadata and matches `main` at install time
-(`acb0a38` when reviewed), not the branch. Neither revision is a certified execution profile. The skill also
-works without this repository.
+Reviewed 2026-09-30 at `origin/main` `db7a0aa`, compared with `acb0a38`.
+`install.sh` downloads `main` without git metadata, so an installed copy matches
+`main` at install time. No revision is a certified execution profile, and the
+skill works without this repository.
 
 ## Identify the installed copy first
 
-Locate `fmriprep_launcher.py` (`type -a`; the installer symlinks from `~/bin` into
-`~/.local/share/fmriprep` unless `--bin-dir`/`--lib-dir` were given). Record its path and the SHA-256 of `fmriprep_launcher.py`,
-`fmriprep_backend.py` and `fmriprep_shared.py`. Then classify it by content:
+Locate `fmriprep_launcher.py` (`type -a`; installer default: `~/bin` symlinks into
+`~/.local/share/fmriprep`). Record its path and the SHA-256 of the launcher,
+`fmriprep_backend.py` and `fmriprep_shared.py`. Classify by content:
 
-- `grep -n load_cli_base fmriprep_backend.py` and
-  `grep -n no-default-config fmriprep_launcher.py` both match: branch-era code
-  (fixes below present).
-- Neither matches: `main`-era code. Assume the older defects below still apply.
+| Check | Result | Era |
+|---|---|---|
+| `grep -c load_cli_base fmriprep_backend.py` | `0` | **Pre-fix** (≤ `acb0a38`): read [older installs](#older-installs). |
+| `grep -c 'skip_bids_validation", "false")' fmriprep_launcher.py` | ≥ `1` | **Current** (≥ `db7a0aa`): this page applies. |
+| Neither of the above | — | **Unclassified** (`5524fc6`, `747775e`, `5e3f643`; late Aug–Sep 2026): inspect `--help` defaults and a rendered bundle before use. |
 
-Do not infer the revision from a directory name, install date or this reference.
-With a recorded launcher profile, recompute these hashes and diff `probe` output
-against the recorded values; raise the tables below only for what drifted.
+Classify before using era-specific flags (`--no-default-config`, `--no-*`); a
+pre-fix copy rejects them. At `db7a0aa` the launcher hash is `ad10426d…97c4`; only
+it identifies that revision (backend `72fb8bb5…` and shared `ca1c2aad…` are
+unchanged since `5e3f643`). Never infer it from paths or dates.
+With a recorded launcher profile, recompute the hashes and diff `probe` output
+against the recorded values; raise the sections below only for what drifted.
 
 ## Resolve the actual interface
 
-`fmriprep_launcher.py` is the noninteractive frontend. It consumes INI; neither
-this skill's JSON records nor fMRIPrep's native config is that INI format. Do not
-use `wizard`, `tui` or `gui` from an agent; they prompt interactively and write files.
+The launcher reads its own INI, not this skill's records or fMRIPrep's config.
+Do not use the interactive `wizard`, `tui` or `gui` from an agent.
 
 ```bash
 fmriprep_launcher.py --help
@@ -35,58 +37,54 @@ fmriprep_launcher.py slurm-array --help
 fmriprep_launcher.py rerun-failed --help
 ```
 
-Global options (`--config`, and on branch-era code `--no-default-config`) go
-before the subcommand.
+Global options (`--config`, `--no-default-config`) go before the subcommand.
 
 ### Configuration layering
 
 The loader reads, in order, `/etc/fmriprep/config.ini`,
 `~/.config/fmriprep/config.ini`, `~/.fmriprep.ini`, `./fmriprep.ini` in the
 **current working directory** (not the BIDS directory), then `--config`. Later
-files override earlier keys, so on `main`-era code an explicit `--config` is an
-overlay, never an isolated configuration. Branch-era code adds `--no-default-config`,
-which reads only `--config`. `$VAR` and `~` in values are expanded on the machine
-generating the script, not on the compute node. Run commands from a known
-directory and record it.
+files override earlier keys. `--no-default-config` reads only `--config`; prefer
+it for an isolated, recorded configuration. `$VAR` and `~` expand on the generating
+machine, not the compute node. Run from a known, recorded directory.
 
-`probe` prints config files in load order and "Effective config values"; save
-that output. A generated bundle's `job_manifest.json` records `build_config`
-(the resolved values used). Do not force `init` over a user's file.
+Save `probe` output (files in load order, "Effective config values"); a bundle's
+`job_manifest.json` records `build_config`. Do not force `init` over a user's file.
 
 ### Defaults that change the science
 
-Set each of these explicitly; never inherit them silently:
+`print-cmd`, `slurm-array` and the wizards print "fMRIPrep settings that affect
+results" (container, recon-all, BIDS validation) on stderr; capture it. Still set
+each of these explicitly:
 
-| Setting | Launcher behavior | Required action |
+| Setting | Current behavior (`db7a0aa`) | Required action |
 |---|---|---|
-| `fs_reconall` | CLI default off, so `--fs-no-reconall` is added unless configured `true`. Project `init` writes `true`; `init --user` leaves it commented (so off). | Set to match the approved recipe. |
-| `skip_bids_validation` | `fmriprep.ini.example` and `init` set `true`. | Set `false` unless a matching validator record exists. |
+| `fs_reconall` | On unless configured `false`; `--fs-reconall`/`--no-fs-reconall` override config (`--no-…` adds `--fs-no-reconall`). | Match the approved recipe. A config omitting the key ran without recon-all on older launchers and runs it now. |
+| `skip_bids_validation` | Off unless configured `true`; `--[no-]skip-bids-validation` overrides config. | Keep off unless a matching validator record exists. Configs from `init` or the example before `db7a0aa` set it `true`; check `probe`. |
 | `--notrack` | Always added. | Record it; consistent with default telemetry policy. |
 | `cifti_output` | When true, hard-codes `--cifti-output 91k`. | Use `extra`/direct route for 170k. |
 | `use_aroma` | Raises an error (removed upstream). | Remove from config. |
-| `container=auto` | Singularity: newest `*.sif`/`*.simg` by mtime in `FMRIPREP_SIF_DIR` (or a directory given as `container`). Docker: first local fmriprep image, else `nipreps/fmriprep:latest`. | Always pass an explicit image file/tag and record its digest. |
-| `nprocs`, `mem_mb` | Unset values come from `SLURM_*` variables or the generating host's `os.cpu_count()` and `/proc/meminfo` × 0.9, i.e. often the login node. | Always set both explicitly per subject. |
-| Subjects `all` | Uses `participants.tsv` when present, else a `sub-*` directory scan. | Pass explicit labels; compare against the data inventory. |
-| `fs_license` | Configured/CLI value wins; `FS_LICENSE` is used only when neither is set (the module docstring says otherwise). | Pass `--fs-license` explicitly. |
+| `container=auto` or a directory | Newest `*fmriprep*.sif`/`.simg` by mtime in `$FMRIPREP_SIF_DIR` or the given directory (names the pick and skipped images). Docker: first local fmriprep image, else `nipreps/fmriprep:latest`. | Pass an explicit image file/tag and record its digest. |
+| `nprocs`, `mem_mb` | Unset values come from `SLURM_*` or the generating host's `os.cpu_count()` and `/proc/meminfo` × 0.9, often the login node. | Always set both explicitly per subject. |
+| Subjects `all` | `participants.tsv` when present, else a `sub-*` scan. | Pass explicit labels; compare with the inventory. |
+| `fs_license` | Config/CLI value wins; `FS_LICENSE` only when neither is set (the module docstring says otherwise). | Pass `--fs-license` explicitly. |
 
-### What `print-cmd` does and does not show
+### `print-cmd` versus the batch script
 
-`print-cmd` renders the **direct** route and joins argv with spaces without shell
-quoting. Use it only to compare fMRIPrep's own application arguments with the plan;
-do not paste it into a shell when paths contain spaces or metacharacters.
+For each subject, `print-cmd` prints (each line prefixed `$ `; strip it) a
+shell-quoted `mkdir` of the per-subject work directory and the command an array
+task runs: same binds, `--home`, `--pwd`, container environment and argument order.
+Use it to compare application arguments with the plan. It still differs from the job in four ways, so inspect the
+rendered `fmriprep_array.sbatch` for these:
 
-The Slurm batch script differs from `print-cmd` for Apptainer/Singularity: it uses
-a per-subject work dir `$WORK_DIR/sub-XX`, adds `--home $SUBJECT_WORK_DIR/.home`
-and `--pwd /work`, exports `*ENV_MPLCONFIGDIR` and `*ENV_NUMEXPR_MAX_THREADS`,
-and picks `apptainer` versus `singularity` at run time on the compute node rather
-than by host `which`. Its fmriprep-docker branch does not pass `--env`; it exports
-`TEMPLATEFLOW_HOME` in the host shell. Therefore verify runtime wrapper, binds and
-environment in the rendered `fmriprep_array.sbatch`, not in `print-cmd`.
-
-The direct Singularity builder prefixes argv with `APPTAINERENV_TEMPLATEFLOW_HOME=...`
-(or `SINGULARITYENV_...`) whenever TemplateFlow binding is on, which is the default
-(`bind_templateflow` is not a CLI option). That is shell assignment syntax, not an
-executable for `subprocess.run(argv)`. Separate env from argv; never `eval` it.
+- The runtime binary and `APPTAINERENV_`/`SINGULARITYENV_` prefix are chosen on the
+  generating host; the job chooses on the compute node.
+- `module load singularity` (when enabled), status markers and `SBATCH` settings
+  appear only in the job script.
+- The Apptainer/Singularity line begins with `NAME=value` assignments. That is
+  shell syntax, not an executable for `subprocess.run(argv)`; separate env from argv.
+- Multi-subject tasks run each subject in an `xargs bash -c` child; verify one
+  child's actual argv in a pilot when `subjects_per_job` > 1.
 
 ```bash
 # JOB_DIR is an authorized absolute bundle directory.
@@ -97,62 +95,70 @@ fmriprep_launcher.py slurm-array --script-outdir "$JOB_DIR"
 
 The scheduler submission is a separate action. Persist intent before calling it.
 
-## Revision-bound capability checks
+## Route and resource cautions
 
-| Interface | `main` (`acb0a38`) | Branch (`747775e`) | Consequence |
-|---|---|---|---|
-| Extras and CLI arrays | Batch script splits `extra` with `read -ra` (whitespace-quoted values break) and builds `CLI_BASE` at top level. When `subjects_per_job` > 1, subjects run through `xargs bash -c` (even with `parallel_subjects` = 1): Singularity/Docker children get a `%q`-escaped string expanded unquoted (escapes stay literal), and fmriprep-docker children lose `CLI_BASE` entirely (no `participant` or resource flags). | `build_common_cli` serves both routes; exported `load_cli_base` rebuilds arrays inside each child. | On `main`-era installs, avoid whitespace in extras and verify multi-subject tasks' actual argv, or use a direct script. |
-| Config isolation | No `--no-default-config`. | `--no-default-config` available. | Record every file `probe` lists. |
-| Compute-writability warnings | Bundle dir only. | Also warns for `--out` and `--work`. | Heuristic only; prove writes from compute. |
-| fmriprep-docker image | Direct and batch branches never pass `--image`; the wrapper then uses `nipreps/fmriprep:<wrapper version>`. | Same. | `container=` does not select the image on this route; the wrapper version pins it. Use raw Docker or a direct command. |
-| fmriprep-docker env | Direct builder appends `--env TEMPLATEFLOW_HOME=/path` as one token. The 25.2.5 wrapper defines `-e/--env` with `nargs=2` (`ENV_VAR value`), so this fails argument parsing. | Same. | Treat the direct fmriprep-docker route as broken when TemplateFlow binding is on. |
-| TemplateFlow | Host cache (config, `TEMPLATEFLOW_HOME`, else `~/.cache/templateflow`) is bound read-write, shared by all concurrent subjects. | Same. | Prestage assets; for concurrent subjects use a fully materialized cache and verify no writes are required. |
-| Module switch | Inserts `module load singularity`. | Same. | Use explicit site setup for other module names or native installs. |
-| Preflight | Image/license/BIDS paths and selected config on the host. | Same. | Add compute-context proof, asset checks and pilot evidence. |
-| Extra paths | Extras do not create mounts. | Same. | Map filter/config/derivative files explicitly and test container visibility. |
-| Raw Docker | No host UID/GID selection. | Same. | Verify output ownership for the chosen image/site. |
+| Interface | Behavior at `db7a0aa` | Consequence |
+|---|---|---|
+| fmriprep-docker image | Never passes `--image`; the wrapper runs `nipreps/fmriprep:<wrapper version>`. | `container=` does not select the image on this route. Use raw Docker or a direct command. |
+| fmriprep-docker TemplateFlow | Exports host `TEMPLATEFLOW_HOME`; the 25.2.5 wrapper ignores it and mounts no cache. | The configured cache is unused; prove offline behavior or use another route. |
+| TemplateFlow (Apptainer/Docker) | Host cache (config, `TEMPLATEFLOW_HOME`, else `~/.cache/templateflow`) bound read-write and shared by concurrent subjects. | Prestage a fully materialized cache and verify no writes are required. |
+| Work directories | One per subject under `work` (Apptainer/Docker also hold `.home`, `.cache`, `.matplotlib` there). | Budget storage per subject; do not share with another run. |
+| Module switch | Only `module load singularity`. | Use explicit site setup for other module names or native installs. |
+| Preflight | Host checks of image, license, BIDS path and subject list; heuristic compute-writability warnings for bundle, `--out` and `--work` only when `$SCRATCH` is set. | Add compute-context proof, asset checks and pilot evidence. |
+| Extra paths | `extra` is `shlex`-split; it creates no mounts. | Map filter/config/derivative files explicitly and test container visibility. |
+| Raw Docker | No host UID/GID selection. | Verify output ownership. |
 
 Set assigned subjects B (`subjects_per_job`) and simultaneous subjects M
 (`parallel_subjects`) separately; M defaults to B. `nprocs` and `mem_mb` are
-per subject; `--cpus-per-task`/`--mem` are task totals (default per-subject × M).
-Array concurrency is another bound, and neither array count nor exclusivity
-guarantees simultaneous start or distinct nodes. Use measured site budgets from
-the execution reference.
+per subject; `--cpus-per-task`/`--mem` are task totals (default per-subject × M,
+with no headroom: set `--mem` explicitly to include H from the execution reference).
+Array concurrency and exclusivity guarantee neither simultaneous start nor
+distinct nodes.
 
 ## Status markers and `rerun-failed`
 
 Each subject writes `status/sub-X.running`, then `.ok` or `.failed` on process
 exit. `.ok` means exit code 0, not output completeness or scientific QC.
 
-`rerun-failed` reads only `*.failed`. A subject killed by time limit, OOM or node
-loss keeps a stale `.running` marker; a task that died before starting a subject
-has no marker. Both are silently skipped. It also skips preflight and compute-
-writability warnings, always writes logs under the rerun bundle (dropping the
-original `--log-dir`), and defaults to a fixed `<manifest dir>/rerun_failed_job`
-that a second rerun overwrites.
+`rerun-failed` reruns every manifest subject without `.ok`, grouped as failed,
+interrupted (stale `.running`, e.g. TIMEOUT/OOM/node loss) or never started. It
+refuses while `squeue` lists the original or rerun job name (no check when `squeue`
+is absent; a warning when it fails), refuses to overwrite an existing rerun bundle, and accepts
+`--time`/`--mem` overrides; `--allow-active` bypasses both refusals. It still skips
+preflight and compute-writability warnings and writes logs inside the rerun bundle.
 
-Before any rerun:
+Before a rerun: check `sacct` states and raise `--time`/`--mem` only for recorded
+TIMEOUT/OUT_OF_MEMORY; never pass `--allow-active` without establishing that no
+earlier writer is live; use a new `--script-outdir` (or the next round's
+`--manifest`); rerun preflight and completion checks separately. With recon-all
+on, an interrupted subject may leave FreeSurfer locks; see
+[stale locks](operations.md#stale-freesurfer-locks).
 
-1. Reconcile scheduler accounting (for Slurm, `sacct -j <job> --format=JobID,State,ExitCode,Elapsed,MaxRSS`)
-   and confirm no task is still running.
-2. Diff the original `subjects.txt` against `.ok` markers and existing outputs;
-   the rerun set is every selected subject without verified completion, not
-   only `.failed` ones.
-3. Pass an explicit, new `--script-outdir` per rerun, and a subject list built
-   from step 2 through `slurm-array` when `rerun-failed` would miss subjects.
-4. Re-run preflight and compute-writability checks; a new manifest does not prove
-   that an old writer is gone.
+## Older installs
+
+A pre-fix copy (≤ `acb0a38`) differs as follows. Prefer upgrading the launcher
+(an execution change) or a direct script over working around these:
+
+- `fs_reconall` defaults off, so `--fs-no-reconall` is added unless configured
+  `true`; `fmriprep.ini.example` and `init` set `skip_bids_validation = true`.
+  Both flags are plain switches with no `--no-*` forms, so a config `true` can be
+  undone only by editing the file. No settings summary is printed.
+- No `--no-default-config`: an explicit `--config` is only an overlay.
+- The batch script splits `extra` with `read -ra` (quoted whitespace breaks).
+  Singularity/Docker tasks always expand a `%q`-escaped argument string unquoted;
+  with `subjects_per_job` > 1, fmriprep-docker children also lose `CLI_BASE`.
+- `print-cmd` is unquoted and omits the per-subject work dir, `--home`, `--pwd` and
+  environment the job uses; trust only the rendered `fmriprep_array.sbatch`.
+- The direct fmriprep-docker route appends `--env TEMPLATEFLOW_HOME=/path` as one
+  final token; the wrapper's `--env` takes two, so argument parsing fails.
+- `rerun-failed` reads only `*.failed` (interrupted and never-started subjects are
+  skipped), overwrites `<manifest dir>/rerun_failed_job`, and has no `squeue` check.
+  Build the rerun set from `subjects.txt` minus verified `.ok`, via `slurm-array`.
+- Compute-writability warnings cover only the bundle directory.
 
 ## Fallback and upstream work
 
 Use the launcher only if the installed copy can express and demonstrate the
-approved plan. A fallback must preserve subjects, methods, software and products,
-including options inherited from configuration. Explain the specific capability
-gap and emit the same logical application arguments through a direct runtime or
-minimal scheduler script. Do not install rriscripts as a prerequisite.
-
-Possible upstream improvements are explicit image forwarding for fmriprep-docker,
-two-token `--env`, structured extra mounts, rerun selection beyond `.failed`, and
-module setup beyond `singularity`. These are not existing commands or requirements
-to modify the repository during an ordinary preprocessing task. Source pointers
-and verification limits are in [sources](sources.md).
+approved plan. Otherwise name the gap and emit the same logical arguments through a
+direct runtime or minimal scheduler script. Do not install rriscripts as a
+prerequisite or modify it during a preprocessing task. Sources: [sources](sources.md).

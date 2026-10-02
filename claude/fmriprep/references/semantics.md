@@ -62,8 +62,9 @@ Confirm the expected FreeSurfer subject ID before reuse, and recheck
 `--bids-filter-file` session filters written for older releases. Do not split
 sessions into racing reconstructions of one shared subject directory. [S1, S4, S13]
 
-Disabling reconstruction can change mask refinement and registration paths, not
-merely omit surface files. Existing reconstructions may be resumed and modified;
+Disabling reconstruction can change mask refinement and registration paths (BBR
+via FSL FLIRT instead of `bbregister`), not merely omit surface files; surface and
+CIFTI outputs require it. Existing reconstructions may be resumed and modified;
 a directory's existence is insufficient proof of compatibility or completion.
 Check source anatomy, version, naming, registration frames, and exclusive ownership.
 With the BIDS output layout the default subjects directory is

@@ -63,7 +63,8 @@ inventory and `--version` alone do not establish readiness. Preserve argv and
 environment separately; verify every path-valued argument after translation.
 When a verified profile, input snapshot, authorization or pilot record is
 supplied, cite it and check only what may have drifted since it was recorded;
-do not re-derive the full probe list.
+do not re-derive the full probe list. Treat site facts the user reports as reported
+evidence; request logs only when they would change the repair.
 
 Within authorized scope, qualify each material acquisition branch (runs that
 differ in fieldmap availability, T2w/FLAIR presence, multiband, TR, voxel size or
@@ -86,7 +87,7 @@ submission requires reconciliation, never an immediate duplicate.
 Report process, output, QC and publication status separately. When runs complete,
 deliver exact commands and evidence, methods/citations, and the downstream handoff
 manifest (per run; see [operations](references/operations.md) and
-`assets/handoff.example.json`). Unavailable review
-stays pending. For blocked work, state the smallest actionable blocker in a line
-and keep the partial plan; name the next step rather than pre-listing checks for a
-target not yet known.
+`assets/handoff.example.json`). Unavailable review stays pending. For blocked
+work, lead with the smallest actionable blocker, include only recipe choices it
+affects (one line each; omit unaffected defaults and narration about absent data),
+and name the next step rather than pre-listing checks for a target not yet known.

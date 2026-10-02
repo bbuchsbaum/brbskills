@@ -24,26 +24,28 @@ execution. These are reference addresses, not commands to copy blindly.
 | A3 | OpenAI skill authoring and discovery | `https://developers.openai.com/codex/skills/` |
 | A4 | Claude Code skills | `https://code.claude.com/docs/en/skills` |
 
-Repository references are pinned to commit
-`747775e3da01e3a86e0c7e9462d9fa0c381e2715`:
+Repository references are pinned to `main` commit
+`db7a0aaae7be8335b86123af32b31fe76ea63259` (inspected 2026-09-30):
 
 | ID | Path in bbuchsbaum/rriscripts |
 |---|---|
 | R1 | `fmriprep/README.md` and `fmriprep/fmriprep.ini.example` |
 | R2 | `fmriprep/fmriprep_shared.py` |
 | R3 | `fmriprep/fmriprep_backend.py` |
-| R4 | `docs/src/content/docs/fmriprep/subcommands.md` |
+| R4 | `docs/src/content/docs/fmriprep/subcommands.md` and `configuration.md` |
 | R5 | `fmriprep/fmriprep_launcher.py` (CLI, config loading, defaults, container choice, `print-cmd`, `rerun-failed`) and `fmriprep/install.sh` |
 
 Repository base:
-`https://github.com/bbuchsbaum/rriscripts/tree/747775e3da01e3a86e0c7e9462d9fa0c381e2715`
+`https://github.com/bbuchsbaum/rriscripts/tree/db7a0aaae7be8335b86123af32b31fe76ea63259`
 
-That commit is on the unmerged branch `fix/fmriprep-issues-3-5`; the same files were
-also compared at `acb0a38` (origin/main, which `install.sh` downloads) on
-2026-09-28. See [rriscripts](rriscripts.md) for which behaviors differ. Primary fMRIPrep 25.2.5 usage, outputs, workflows,
+It includes the earlier branch fixes (`747775e`), `5e3f643` (honest `print-cmd`,
+reruns and settings summary) and `db7a0aa` (recon-all on, validation run by default).
+The same files were compared at `acb0a38` (August 2026 `main`) for older installs;
+the fmriprep-docker TemplateFlow claim was checked against the 25.2.5 wrapper [S14].
+See [rriscripts](rriscripts.md) for era markers and differences. Primary fMRIPrep 25.2.5 usage, outputs, workflows,
 spaces and FAQ, and BIDS 1.11.1 inheritance/MRI sources were checked during
 adaptation. Use matching documentation for a different selected installation.
-See [validation](../tests/VALIDATION.md) for executed checks and unrun gates.
+Executed checks and unrun gates are recorded with the skill's tests, not needed at runtime.
 
 Maintenance: on a dependency change, recheck CLI/method changes, wrapper image
 forwarding, path mounts, array packing, and the behavioral evaluations. Keep

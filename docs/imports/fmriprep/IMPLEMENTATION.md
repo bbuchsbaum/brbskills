@@ -133,3 +133,58 @@ the reviewed source and generated packages. Historical stress, multi-version
 and behavioral receipts above are not reruns of the final code. The delivery
 manifest lists checks performed for this commit; no live preprocessing, cluster
 qualification, or fresh product-session evaluation was added.
+
+## rriscripts refresh — 2026-09-30
+
+rriscripts `main` advanced to `db7a0aa`. Besides the earlier branch fixes, it adds
+two commits:
+
+- `5e3f643`:
+  - `print-cmd` is now per-subject, shell-quoted and matches what the array task runs.
+  - `rerun-failed` also covers interrupted and never-started subjects, and guards
+    against live jobs (via `squeue`) and overwriting a previous rerun.
+  - Result-changing settings are summarized on stderr.
+- `db7a0aa`: recon-all runs and BIDS validation is not skipped by default.
+
+Changes to the skill:
+
+- [rriscripts](../../../skills/fmriprep/references/rriscripts.md) now describes
+  `db7a0aa` first, and keeps a compact older-install section for `acb0a38`-era copies.
+- The installed era is classified by two content markers. They were checked against
+  `acb0a38`, `747775e`, `5e3f643` and `db7a0aa`; intermediate revisions report as
+  "unclassified". The `db7a0aa` file hashes are listed.
+- One new caution: the fmriprep-docker route now exports the host `TEMPLATEFLOW_HOME`,
+  which the 25.2.5 wrapper ignores, so the configured cache is not mounted.
+- The sources pin moved to `db7a0aa`.
+
+Checks: sync/check passed at the time of the edit. The repository (24), helper (34 + 30)
+and Workbench (42) tests passed, and all links resolve.
+
+Not done:
+
+- Behavioral cases were not rerun for this change.
+- The dist ZIPs were not rebuilt. Packaging checks every skill, and an unrelated skill
+  (`cobidas`) was mid-edit. Rebuild before distribution.
+
+A read-only verifier then checked the refreshed reference against committed
+`db7a0aa` and `acb0a38` (era greps at five revisions, hashes, and the 25.2.5
+wrapper): about 70 claims were confirmed, and 11 defects were fixed. The fixes
+cover stale older-config values that still apply under the current launcher, the
+missing `--no-*` overrides on pre-fix copies, the scope of `%q` escaping, which hash
+identifies the revision, era labels, the missing task-memory headroom,
+`container=auto` search scope, the `$SCRATCH` gate on writability warnings, the
+old `--env` parse failure, a link from reruns to stale FreeSurfer locks, and the
+`$ ` prefix on `print-cmd` output.
+
+Behavioral evidence the same day ([round3](behavioral-evidence/hardening/round3/),
+[round4](behavioral-evidence/hardening/round4/)): the three never-run cases
+(host-compute-difference, fieldmap-ambiguity, arm-host) passed, so all 26 cases have
+now run at least once. After the refresh, four launcher-dependent reruns
+(routine-wrapper, image-forwarding, inherited-config, fieldmap-ambiguity) passed
+with no critical failures. One of them made a false CLI claim about
+`--fs-reconall`; it was traced to reference wording and fixed, together with
+era-before-flags ordering and blocker-focused wording in SKILL.md. Response lengths
+rose on the reruns (single samples, so not a trend). The later wording fixes were
+not re-exercised. `round3/` also contains three fMRIPrep source files (`base.py`,
+`wf.py`, `wr.py`) that the grader fetched for claim checking; they are not
+agent output.
