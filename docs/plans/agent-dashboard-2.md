@@ -275,10 +275,12 @@ the page fixtures exactly (checked by `tests/test_snapshot.py`).
   status, status: queued` record) and a timeline event says so. Failures after the output is
   committed (rebuilding `data.js`, mote) are logged and never drop the output.
 - `conflicts[]` (enriched): `{path, sessions, sources, live, last_edit, mote_reserved_by, detail}`.
-  A path is listed when at least two distinct agents touch it through any mix of hook-recorded
-  edits (last 2 h), unexpired mote reservations (a reservation covers a path or a directory
-  prefix) and board posts from the last 24 h whose text names a repo-relative path that exists
-  in the project (URLs ignored; the 40 newest posts, 10 paths each, 200 existence checks at most).
+  A path is listed when at least two distinct agents claim it through hook-recorded edits
+  (last 2 h) or unexpired mote reservations (a reservation covers a path or a directory prefix).
+  Board posts from the last 24 h whose text names a repo-relative path that exists in the project
+  (URLs ignored; the 40 newest posts, 10 paths each, 200 existence checks at most) are added to
+  `detail` as context but never make a conflict on their own: on a live hub (2026-10-01) the
+  posts that named a reserved file said "I will not edit it" and "released it".
   Mote actors map to a session when the actor name is the session id or ends with `-<short>`;
   otherwise the actor name stands for the agent. `sessions` lists only dashboard session shorts;
   `detail[].session` is a short or an actor name, `ts` is the edit time, reservation expiry or

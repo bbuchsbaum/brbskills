@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
-<meta name="dashboard-page" content="agent-dashboard 2.5.2">
+<meta name="dashboard-page" content="agent-dashboard 2.5.3">
 <title>Agents</title>
-<!-- dashboard-builder page 2.5.2. Fixed, versioned page; data arrives through window.__hub
+<!-- dashboard-builder page 2.5.3. Fixed, versioned page; data arrives through window.__hub
      (file mode: data.js) or GET /api/hub (server mode). Fonts: Geist and Geist Mono,
      SIL Open Font License 1.1 (assets/fonts/OFL-Geist.txt), embedded at the end of the body. -->
 <style>
@@ -458,13 +458,24 @@ kbd{font-family:var(--mono); font-size:var(--fs-xs); min-width:20px; height:20px
 .live-tag,.old-tag{display:inline-block; font-size:var(--fs-xs); font-weight:600; padding:0 6px; border-radius:999px; margin-right:4px}
 .live-tag{color:var(--serious); background:color-mix(in oklab,var(--serious) 14%,transparent)}
 .old-tag{color:var(--fg-3); background:var(--surface-2)}
+.cf-lead{color:var(--fg); overflow-wrap:anywhere}
+.cf-lead b{font-weight:600}
+.cf-ctx{grid-column:2; margin-top:8px; padding-top:6px; border-top:1px dashed var(--line-2); font-size:var(--fs-s); color:var(--fg-2)}
+.cf-ctx .sub-h{margin:0 0 2px}
+.cf-ctx ul{list-style:none; margin:0; padding:0}
+.cf-ctx li{padding:1px 0; overflow-wrap:anywhere}
+.parties .pa .muted{font-size:var(--fs-xs)}
+.overlaps{margin-top:10px}
+.overlaps .sub-h{margin:0 0 6px}
+.need.k-overlap{box-shadow:inset 3px 0 0 var(--line-3),var(--shadow)}
+.need.k-overlap .need-kind{color:var(--fg-2)}
 .parties{list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:4px; grid-column:2}
-.parties li{display:grid; grid-template-columns:minmax(0,11.5rem) minmax(0,1fr); align-items:center; gap:2px 10px; font-size:var(--fs-s); min-width:0}
+.parties li{display:grid; grid-template-columns:minmax(0,11.5rem) minmax(0,7rem) minmax(0,1fr); align-items:center; gap:2px 10px; font-size:var(--fs-s); min-width:0}
 .parties li + li{padding-top:4px; border-top:1px solid var(--line)}
-.parties .pa{grid-column:2}
+.parties .pa{grid-column:3}
 .parties .sessref{justify-self:start}
 .parties .pw{color:var(--fg-2); min-width:0; overflow-wrap:anywhere}
-.parties .pa{display:inline-flex; gap:4px}
+.parties .pa{display:inline-flex; flex-wrap:wrap; align-items:center; gap:4px 8px}
 .now-k{color:var(--accent-ink); font-weight:600}
 [data-theme=dark] .now::after{content:""; position:absolute; z-index:-1; inset:-40% 40% 20% -10%; background:radial-gradient(closest-side,color-mix(in oklab,var(--accent) 10%,transparent),transparent); pointer-events:none}
 .now.is-stale .now-label{color:var(--fg-2)}
@@ -670,7 +681,10 @@ kbd{font-family:var(--mono); font-size:var(--fs-xs); min-width:20px; height:20px
   .shell > .brief{grid-column:1 / 3; grid-row:1}
   .shell > .lanes{grid-column:1; grid-row:2}
   .shell > .main{grid-column:2; grid-row:2}
-  .shell > .rail{grid-column:3; grid-row:1 / span 2}
+  /* A tall board must not stretch the content rows: the rail also spans a final 1fr row, and
+     flexible rows absorb a spanning item's extra height (auto rows would share it out). */
+  .shell{grid-template-rows:auto auto 1fr}
+  .shell > .rail{grid-column:3; grid-row:1 / span 3}
   .shell.no-rail > .brief{grid-column:1 / -1}
   .shell.cmp > .brief{grid-column:1; grid-row:1}
 }
@@ -683,7 +697,8 @@ kbd{font-family:var(--mono); font-size:var(--fs-xs); min-width:20px; height:20px
   .shell.cmp.no-rail{grid-template-columns:minmax(0,1fr); background:none}
   .shell.cmp .lanes{grid-column:1; grid-row:2; position:static; max-height:none; overflow:visible; display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,max(300px,calc((100% - (var(--n,3) - 1) * 8px) / var(--n,3)))),1fr)); gap:8px; padding:16px clamp(16px,2.2vw,28px) 2px; background:none}
   .shell.cmp .main{grid-column:1; grid-row:3; padding-top:18px}
-  .shell.cmp .rail{grid-column:2; grid-row:1 / span 3}
+  .shell.cmp{grid-template-rows:auto auto auto 1fr}
+  .shell.cmp .rail{grid-column:2; grid-row:1 / span 4}
   .shell.cmp .lanes-h,.shell.cmp .ended-toggle,.shell.cmp .board-jump{grid-column:1/-1}
   .shell.cmp .lanes-h{padding:0 2px 2px; align-items:center; gap:10px}
   .shell.cmp .lanes-h .since-h{display:inline-flex; align-items:center; gap:8px; margin-left:auto}
@@ -1170,7 +1185,7 @@ function needs() {
       for (const b of arr(p.blockers)) if (b && !b.closed) out.push({key: `${s.id}:b:${b.id}`, kind: 'blocker', s, b, text: b.text, ts: b.opened});
     }
   }
-  for (const c of arr(S.snap && S.snap.conflicts)) if (c && c.path) out.push({key: `c:${c.path}`, kind: 'conflict', c, text: c.path, ts: c.last_edit || null});
+  for (const c of arr(S.snap && S.snap.conflicts)) if (c && c.path && conflictCounts(c)) out.push({key: `c:${c.path}`, kind: 'conflict', c, text: c.path, ts: c.last_edit || null});
   out.sort((a, b) => (order[a.kind] ?? 9) - (order[b.kind] ?? 9) || (T(a.ts) || 0) - (T(b.ts) || 0));
   return out;
 }
@@ -1181,6 +1196,7 @@ const NEED = {
   stalled: {label: 'Stalled', ic: 'clock', c: '--serious'},
   waiting: {label: 'Waiting for you', ic: 'user', c: '--warn'},
   conflict: {label: 'File conflict', ic: 'alert', c: '--serious'},
+  overlap: {label: 'Possible overlap (earlier)', ic: 'alert', c: '--idle'},
   notice: {label: 'Notice', ic: 'bell', c: '--warn'},
 };
 function orderedSessions() {
@@ -1379,36 +1395,84 @@ function answerForm(s, q) {
     ${pend && pend.status === 'failed' ? `<span class="st failed">${esc(pend.error || 'Failed')}</span>` : ''}
   </form>`;
 }
+// A conflict is claimed through edits and reservations; board posts are context, never a claim.
+function claimants(c) {
+  const out = [];
+  for (const d of arr(c.detail)) {
+    if (!d || !d.session || (d.kind !== 'edit' && d.kind !== 'reservation')) continue;
+    let p = out.find((x) => x.who === d.session);
+    if (!p) out.push(p = {who: d.session, s: byShort(d.session), edits: [], res: []});
+    (d.kind === 'edit' ? p.edits : p.res).push(d);
+  }
+  return out;
+}
+// Only a live conflict between two claimants needs you; anything else is a possible overlap shown apart.
+const conflictCounts = (c) => c.live === true && claimants(c).length >= 2;
+const overlaps = () => arr(S.snap && S.snap.conflicts).filter((c) => c && c.path && !conflictCounts(c));
+// A mote actor stands for a dashboard session when its name is the id or ends with "-<short>".
+function actorSession(actor) {
+  const a = String(actor || '');
+  return byShort(a) || sessions().find((s) => s.short && (a === s.id || a.endsWith('-' + s.short))) || null;
+}
+const whoName = (who, s) => s ? esc(s.label || s.short) : `<span class="mono">${esc(who)}</span>`;
+function claimPhrase(p, c, resv) {
+  const bits = [];
+  const e = p.edits.map((d) => T(d.ts)).filter(isNum).sort((a, b) => b - a)[0];
+  if (isNum(e)) {
+    // Edit order against another party's reservation: before is a stale overlap, after may clobber it.
+    const ord = resv && resv.who !== p.who && isNum(T(resv.d.ts)) ? (e < T(resv.d.ts) ? ', before the reservation' : ', after the reservation') : '';
+    bits.push(`${Date.now() - e < 30 * 60e3 && c.live === true ? 'editing' : 'edited'} ${agoText(e)}${ord}`);
+  }
+  for (const d of p.res) {
+    const exp = T(d.expires !== undefined ? d.expires : d.ts);
+    bits.push(!isNum(exp) ? 'reservation' : exp > Date.now() ? `reservation, expires ${asOfText(exp, true)}` : `reservation expired ${asOfText(exp, true)}`);
+  }
+  return bits.join('; ');
+}
 function conflictBody(c) {
-  const detail = arr(c.detail).filter((d) => d && d.session);
-  const parties = [];
-  for (const d of detail) { let p = parties.find((x) => x.who === d.session); if (!p) parties.push(p = {who: d.session, s: byShort(d.session), acts: []}); p.acts.push(d); }
-  for (const x of arr(c.sessions)) if (!parties.some((p) => p.who === x)) parties.push({who: x, s: byShort(x), acts: []});
-  // Reservations: `ts` is the creation time and `expires` the lease end (older snapshots put the expiry in `ts`).
-  const resv = detail.find((d) => d.kind === 'reservation' && d.expires !== undefined && isNum(T(d.ts)));
-  const actText = (d) => {
-    if (d.kind === 'edit') {
-      // Order against another agent's reservation: before is a stale overlap, after may clobber it.
-      const ord = resv && resv.session !== d.session && isNum(T(d.ts)) ? (T(d.ts) < T(resv.ts) ? ' <span class="ord">before the reservation</span>' : ' <b class="ord after">after the reservation (may clobber it)</b>') : '';
-      return `edited ${d.ts ? ago(d.ts) : ''}${ord}`;
+  const cl = claimants(c);
+  const r0 = cl.find((p) => p.res.length);
+  const resv = r0 ? {who: r0.who, d: r0.res[0]} : null;
+  const staleP = cl.map((p) => p.s).filter((x) => x && stateOf(x).stale);
+  const live = c.live === true;
+  const path = `<code>${esc(c.path)}</code>`;
+  const named = cl.map((p) => `<b>${whoName(p.who, p.s)}</b> (${esc(claimPhrase(p, c, resv))})`);
+  const list = named.length > 2 ? named.slice(0, -1).join(', ') + ' and ' + named[named.length - 1] : named.join(' and ');
+  // 1. What is happening, in one sentence, and whether it is happening now.
+  const lead = cl.length >= 2 ? `${list} ${cl.length > 2 ? 'all' : 'both'} claim ${path}.`
+    : cl.length === 1 ? `Only ${list} claims ${path}; other agents mentioned it on the board.` : `Agents mentioned ${path} on the board; nobody holds it.`;
+  const when = live && staleP.length ? `<span class="old-tag">as of ${esc(stateOf(staleP[0]).asOf)}</span>`
+    : live && cl.length >= 2 ? '<span class="live-tag">Live</span>' : '<span class="old-tag">Earlier</span>';
+  const why = live && cl.length >= 2 ? '' : cl.length < 2 ? ' <span class="muted">One claim is not a conflict; the posts below say what the others intend.</span>'
+    : ' <span class="muted">No claimant has edited it in the last 30 min, so this is only a possible overlap.</span>';
+  // 2. Board posts as context: who said what, how long ago. Never a raw id in visible text.
+  const posts = arr(c.detail).filter((d) => d && d.kind === 'post');
+  const mp = arr(S.snap && S.snap.mote && S.snap.mote.posts);
+  const ctx = posts.slice(0, 3).map((d) => {
+    const post = mp.find((x) => x && x.id === d.ref);
+    const who = (post && post.from) || d.session, as = actorSession(who);
+    const ex = post && post.excerpt ? String(post.excerpt).replace(/\s+/g, ' ') : '';
+    return `<li title="${esc(d.ref || '')}">${post ? `${whoName(who, as)}${as && as.label ? ` <span class="muted">(${esc(stateOf(as).label.toLowerCase())})</span>` : ''}: “${esc(ex.length > 90 ? ex.slice(0, 89) + '…' : ex)}”` : 'a board post'} <span class="muted">· ${d.ts ? ago(d.ts) : 'time unknown'}</span></li>`;
+  }).join('');
+  // 3. What you can do about each claimant, honest about what this page can reach.
+  const m = S.snap && S.snap.mote, board = m && !m.error;
+  const rows = cl.map((p) => {
+    let act;
+    if (p.s) {
+      act = p.s.activity === 'ended' ? '<span class="muted">This session has ended.</span>'
+        : MODE === 'server' ? `<button class="btn sm" data-act="reply" data-sid="${esc(p.s.id)}" data-prefill="Re ${esc(c.path)}: ">${icon('msg', 'xs')} Message</button>${pauseBtn(p.s, true)}`
+        : '<span class="muted">Message it from the server view (<code>dash.py serve</code>).</span>';
+    } else {
+      const ask = `@${p.who} ${c.path}: who should have this?`;
+      act = `<span class="muted">Not on this dashboard — reach it on the board.</span>${MODE === 'server' && board ? `<button class="btn sm" data-act="board-ask" data-text="${esc(ask)}" ${canWrite() ? '' : 'disabled'}>${icon('board', 'xs')} Post to board</button>` : ''}`;
     }
-    if (d.kind === 'reservation') {
-      const exp = d.expires !== undefined ? d.expires : d.ts, made = d.expires !== undefined ? d.ts : null;
-      // A stale holder's lease is stated as a time, not a countdown computed from old data.
-      const staleHolder = byShort(d.session) && stateOf(byShort(d.session)).stale;
-      return `reserved${d.ref ? ' for ' + esc(d.ref) : ''}${made ? ' ' + ago(made) : ''}${exp ? (staleHolder ? ` · lease ends ${esc(asOfText(T(exp), true))}` : ` · expires <span data-left="${esc(exp)}">${leftText(T(exp))}</span>`) : ''}`;
-    }
-    return d.kind === 'post' ? `said so on the board${d.ref ? ' (' + esc(d.ref) + ')' : ''} ${d.ts ? ago(d.ts) : ''}` : esc(d.kind);
-  };
-  const staleP = parties.map((p) => p.s).filter((x) => x && stateOf(x).stale);
-  // "Live" is a present-tense claim; with a stale party it becomes an as-of statement.
-  return `<div class="need-sub">${c.live === true && staleP.length ? `<span class="old-tag">as of ${esc(stateOf(staleP[0]).asOf)}</span>` : c.live === true ? '<span class="live-tag">Live</span>' : c.live === false ? `<span class="old-tag">Earlier</span>` : ''}${c.last_edit ? ` last edit ${ago(c.last_edit)}` : ''}${c.mote_reserved_by ? ` · reserved by <b>${esc(c.mote_reserved_by)}</b>` : ' · not reserved on the board'}</div>
-    <ul class="parties">${parties.map((p) => {
-      const st = p.s ? stateOf(p.s) : null;
-      const acts = MODE === 'server' && p.s && p.s.activity !== 'ended' ? `<span class="pa">${`<button class="btn sm" data-act="reply" data-sid="${esc(p.s.id)}" data-prefill="Re ${esc(c.path)}: ">${icon('msg', 'xs')} Message</button>`}${pauseBtn(p.s, true)}</span>` : '';
-      return `<li data-k="pt-${esc(p.who)}">${p.s ? sessRef(p.s, 'sessref', 'conflict') : `<span class="sessref mono">${esc(p.who)}</span>`}
-        <span class="pw">${p.acts.map(actText).join(' · ') || 'involved'}${st ? ` · <span style="color:var(${st.c})">${esc(st.label.toLowerCase())}</span>` : ''}</span>${acts}</li>`;
-    }).join('')}</ul>`;
+    const st = p.s ? stateOf(p.s) : null;
+    return `<li data-k="pt-${esc(p.who)}" class="claimant ${p.s ? 'is-session' : 'is-actor'}">${p.s ? sessRef(p.s, 'sessref', 'conflict') : `<span class="sessref mono" title="mote actor">${esc(p.who)}</span>`}
+      <span class="pw">${st ? `<span style="color:var(${st.c})">${esc(st.label)}</span>` : '<span class="muted">mote actor</span>'}</span><span class="pa">${act}</span></li>`;
+  }).join('');
+  return `<div class="need-sub cf-lead">${when} ${lead}${why}</div>
+    ${rows ? `<ul class="parties">${rows}</ul>` : ''}
+    ${ctx ? `<div class="cf-ctx"><p class="sub-h">On the board</p><ul>${ctx}</ul>${posts.length > 3 ? `<p class="muted">and ${posts.length - 3} more post${posts.length - 3 > 1 ? 's' : ''}</p>` : ''}</div>` : ''}`;
 }
 function needCard(n, inHero) {
   const k = NEED[n.kind] || NEED.notice;
@@ -1433,20 +1497,22 @@ function needCard(n, inHero) {
     const te = lastTurnEnd(s);
     sub = te && te.detail ? `<div class="need-sub">Last said: “${esc(te.detail)}”</div>` : '';
     act = `<div class="need-act">${MODE === 'server' ? `<button class="btn sm" data-act="reply" data-sid="${esc(s.id)}" data-prefill="">${icon('msg', 'xs')} Reply</button>` : ''}<span class="need-sub">${MODE !== 'server' ? 'Reply in its terminal, or from the dashboard server view.' : !hooked(s) ? `${esc(agentName(s))} reads a reply when it next runs dash.py.` : canWake(s) ? 'A reply wakes it within about a second.' : `A reply is delivered with your next prompt in its terminal${s.wakeable === false ? ' (its inbox watcher isn’t responding)' : ''}.`}</span></div>`;
-  } else if (n.kind === 'conflict') {
+  } else if (n.kind === 'conflict' || n.kind === 'overlap') {
     sub = conflictBody(n.c);
   }
   return `<article class="need k-${esc(n.kind)}" data-k="${esc(n.key)}" style="--c:var(${k.c})">
     <span class="need-ic">${icon(k.ic)}</span>
     <div class="need-top"><span class="need-kind">${label}</span>${s && !inHero ? sessRef(s, 'who', label) : ''}${s && stateOf(s).stale ? `<span class="old-tag">${esc(stateOf(s).asOfLabel)}</span>` : ''}${n.ts ? ago(n.ts) : ''}</div>
-    <div class="need-text">${text}</div>
+    ${n.kind === 'conflict' || n.kind === 'overlap' ? '' : `<div class="need-text">${text}</div>`}
     ${sub}${act}
   </article>`;
 }
 const needsCompact = (list) => list.length > 0 && list.length <= 2 && !list.some((n) => n.kind === 'permission' || n.kind === 'blocker');
 function renderNeeds(list, sel) {
   const answered = answeredPending();
-  if (!list.length && !answered.length) return '';
+  const ov = overlaps().map((c) => ({key: `o:${c.path}`, kind: 'overlap', c, text: c.path, ts: c.last_edit || null}));
+  const ovHtml = ov.length ? `<div class="overlaps"><p class="sub-h">Possible overlap (earlier) · not counted</p><div class="needs-grid ${ov.length === 1 ? 'one' : ''}">${ov.map((n) => needCard(n)).join('')}</div></div>` : '';
+  if (!list.length && !answered.length) return ov.length ? ovHtml : '';
   const mine = (n) => sel && n.s && n.s.id === sel.id;
   // The selected session's needs are detailed in its hero below; the band points to them in one line.
   const others = list.filter((n) => !mine(n)), chips = list.filter(mine);
@@ -1459,7 +1525,7 @@ function renderNeeds(list, sel) {
     ${chips.length ? `<p class="pointer"><span><b class="num">${chips.length}</b> for ${esc(sel.label || sel.short)}: ${esc(kinds.join(', '))}</span><a href="#hero-needs" data-act="to-hero">Shown below</a></p>` : ''}</div>
     ${visible.length ? `<div class="needs-grid ${visible.length === 1 ? 'one' : ''}">${visible.map((n) => needCard(n)).join('')}</div>` : ''}
     ${extra > 0 || (S.needsAll && others.length > cap) ? `<button class="btn sm needs-more" data-act="needs-more" aria-expanded="${!!S.needsAll}">${S.needsAll ? 'Show fewer' : `+${extra} more`}</button>` : ''}
-    ${note}`;
+    ${note}${ovHtml}`;
 }
 
 /* ---------- render: lanes ---------- */
@@ -2347,6 +2413,12 @@ document.addEventListener('click', (e) => {
   else if (act === 'pause' || act === 'resume') { if (canWrite()) setPause(sid, act === 'pause'); }
   else if (act === 'dismiss-pause') { S.pauseNote.delete(sid); paint(); }
   else if (act === 'reply') { if (S.sel !== sid) select(sid); focusComposer(b.dataset.prefill || ''); }
+  else if (act === 'board-ask') {
+    // A mote-only actor is reached on the board: prefill the board composer and take the user there.
+    S.drafts.set('mote:post', b.dataset.text || ''); paint();
+    const ta = document.getElementById('mote:post');
+    if (ta) { ta.value = b.dataset.text || ''; ta.scrollIntoView({block: 'center'}); ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+  }
   else if (act === 'needs-more') { S.needsAll = !S.needsAll; paint(); }
   else if (act === 'digest-dismiss') {
     // Stay where the user is looking: focus the Sessions heading (or the session title) without scrolling.

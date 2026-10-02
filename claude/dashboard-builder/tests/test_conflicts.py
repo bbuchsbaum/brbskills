@@ -74,12 +74,19 @@ class ConflictTests(HubCase):
         self.assertEqual(self.conflicts(), [])
 
     def test_board_post_naming_an_existing_path(self):
+        self.edit(A)
         self.edit(B)
         self.post("chief", ["R/shared.R", "docs/missing.md"])
         [c] = self.conflicts()
-        self.assertEqual((c["path"], c["sessions"], c["sources"]), ("R/shared.R", ["bbbb"], ["edit", "post"]))
+        self.assertEqual((c["path"], c["sources"]), ("R/shared.R", ["edit", "post"]))
         self.assertEqual(c["detail"][-1]["ref"], "post-1")
         self.assertEqual(c["detail"][-1]["session"], "chief")
+
+    def test_post_mentions_alone_are_not_a_conflict(self):
+        # "I will not edit X" / "released X" posts name the path but claim nothing.
+        self.edit(B)
+        self.post("chief", ["R/shared.R"])
+        self.assertEqual(self.conflicts(), [])
 
     def test_old_post_and_old_edit_are_ignored(self):
         self.edit(B, ago=3 * 3600)
@@ -100,6 +107,8 @@ class ConflictTests(HubCase):
     def test_reservation_and_post_without_edits(self):
         self.reserve("codex-zz", ["R/shared.R"])
         self.post("chief", ["R/shared.R"])
+        self.assertEqual(self.conflicts(), [])
+        self.reserve("codex-yy", ["R/shared.R"])
         [c] = self.conflicts()
         self.assertEqual((c["sessions"], c["sources"], c["last_edit"], c["live"]), ([], ["reservation", "post"], None, False))
 

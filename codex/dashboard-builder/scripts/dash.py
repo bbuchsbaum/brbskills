@@ -1355,7 +1355,10 @@ def _actor_session(actor, views):
 
 
 def build_conflicts(hub, views, edits, mote, t):
-    """Paths touched by at least two agents through recent edits, mote reservations or board posts."""
+    """Paths claimed by at least two agents through recent edits or live mote reservations.
+
+    Board posts that name a path are context only: a post often says an agent is staying away
+    from a file or has released it, so a mention alone never makes a conflict."""
     root = Path(hub.root)
     reservations = [r for r in (mote or {}).get("reservations") or []
                     if (epoch(r.get("expires")) or t + 1) > t]
@@ -1394,7 +1397,7 @@ def build_conflicts(hub, views, edits, mote, t):
                 detail.append({"session": who, "kind": "post", "ts": m.get("ts"), "expires": None, "ref": m.get("id")})
         agents = []
         for d in detail:
-            if d["session"] and d["session"] not in agents:
+            if d["kind"] != "post" and d["session"] and d["session"] not in agents:
                 agents.append(d["session"])
         if len(agents) < 2:
             continue

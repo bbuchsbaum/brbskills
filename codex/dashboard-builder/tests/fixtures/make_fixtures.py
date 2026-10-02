@@ -1005,7 +1005,8 @@ def trio_mote():
     conflicts = [
         {
             "path": "R/rsa_model.R",
-            "sessions": ["a91e", "3d07", "c2d4"],
+            # Posts are context, not claims: only the two editors are parties (dash.build_conflicts).
+            "sessions": ["a91e", "3d07"],
             "sources": ["edit", "reservation", "post"],
             "live": True,
             "last_edit": max(a_edit, b_edit),

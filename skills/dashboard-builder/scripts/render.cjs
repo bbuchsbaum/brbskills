@@ -68,6 +68,46 @@ function backendDanger(cmd) {
   return JSON.parse(r.stdout);
 }
 
+// Conflict variants on trio-mote: a live claim by a mote-only actor, and an earlier overlap whose only
+// context is board posts with real mote ULIDs (as on a live hub). Times are relative to the snapshot.
+const ULID = /\b(post|bd)-[0-9A-HJKMNP-TV-Z]{20,}/;
+function conflictVariant(base) {
+  const v = JSON.parse(JSON.stringify(base)), g = Date.parse(v.generated);
+  const at = (min) => new Date(g + min * 60000).toISOString();
+  v.mote.posts.push({ id: 'post-01M3VE55VNASBDXZ4JRWP3SXX5', topic: 'coordination', from: 'plsneuro-ui-climb', ts: at(-55), excerpt: 'ui-climb r3b: I will not edit tools/acceptance-manifest.json', replies: 0 });
+  v.conflicts.push(
+    { path: 'R/shared.R', sessions: ['a91e'], sources: ['edit', 'reservation'], live: true, last_edit: at(-3), mote_reserved_by: 'codex-zz',
+      detail: [{ session: 'a91e', kind: 'edit', ts: at(-3), ref: null, expires: null },
+        { session: 'codex-zz', kind: 'reservation', ts: at(-20), ref: 'bd-01M3VK1DQ6KZ14C8H8KXF5K5MB', expires: at(10) }] },
+    { path: 'tools/acceptance-manifest.json', sessions: [], sources: ['edit', 'reservation', 'post'], live: false, last_edit: at(-90), mote_reserved_by: 'plsneuro-pls-model-method',
+      detail: [{ session: '3d07', kind: 'edit', ts: at(-90), ref: null, expires: null },
+        { session: 'plsneuro-pls-model-method', kind: 'reservation', ts: at(-120), ref: 'bd-01M3VK1DQ6KZ14C8H8KXF5K5MB', expires: at(-60) },
+        { session: 'plsneuro-ui-climb', kind: 'post', ts: at(-55), ref: 'post-01M3VE55VNASBDXZ4JRWP3SXX5', expires: null },
+        { session: 'plsneuro-ui-climb', kind: 'post', ts: at(-75), ref: 'post-01M3VDBR4H0EP6BX25STNNN65W', expires: null }] });
+  return v;
+}
+// What the conflict cards must say in either mode (shared by file and server checks).
+async function conflictCardChecks(page, tag, failures, server) {
+  const live = page.locator('#needs .need.k-conflict', { hasText: 'R/shared.R' });
+  const lt = await live.innerText().catch(() => '');
+  if (!/both claim R\/shared\.R/.test(lt) || !/Live/.test(lt) || !/expires/.test(lt)) failures.push(`${tag}: conflict lead sentence missing ("${lt.slice(0, 160)}")`);
+  const actor = live.locator('.claimant.is-actor'), sess = live.locator('.claimant.is-session');
+  if (!/Not on this dashboard/.test(await actor.innerText().catch(() => ''))) failures.push(`${tag}: mote-only claimant has no honest action line`);
+  if (server) {
+    if (await actor.locator('[data-act=board-ask]').count() !== 1) failures.push(`${tag}: mote-only claimant has no Post to board`);
+    if (await sess.locator('[data-act=reply]').count() !== 1) failures.push(`${tag}: session claimant has no Message`);
+  } else if (!/dash\.py serve/.test(await sess.innerText().catch(() => ''))) failures.push(`${tag}: file-mode session claimant doesn't say how to reach it`);
+  const ov = page.locator('#needs .need.k-overlap');
+  const ot = await ov.innerText().catch(() => '');
+  if (!/Possible overlap/.test(await page.locator('#needs .overlaps').innerText().catch(() => '')) || !/expired/.test(ot) || !/On the board/.test(ot) || !/I will not edit/.test(ot) || !/a board post/.test(ot)) failures.push(`${tag}: earlier overlap not shown with context ("${ot.slice(0, 200)}")`);
+  if (!(await ov.locator('.claimant .pa').count())) failures.push(`${tag}: earlier overlap lost its action line`);
+  const vis = await page.locator('#needs').innerText();
+  if (ULID.test(vis)) failures.push(`${tag}: raw ULID in visible conflict text ("${vis.match(ULID)[0]}")`);
+  // Only live conflicts count: trio's own conflict plus R/shared.R.
+  const n = await page.locator('.need-tally b').innerText().catch(() => '0');
+  if (n !== '2' || await page.locator('#needs .needs-h .n').innerText().catch(() => '') !== '2') failures.push(`${tag}: earlier overlap counted in "need you" (${n})`);
+}
+
 // ---- time shifting -------------------------------------------------------------------
 const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
 function formatAt(ms, offset) {
@@ -110,6 +150,41 @@ async function pageChecks(page, snap, tag, failures) {
   for (const b of r.bad) failures.push(`${tag}: page text contains "${b}"`);
 }
 
+// A board much taller than the content must not open gaps between the content rows (a grid
+// row spanned by the rail used to absorb its extra height). Runs in its own context so the
+// main page's since-you-left state is untouched; gaps are compared with a short board.
+async function tallBoardCheck(browser, hubDir, snap, tag, w, h, theme, failures) {
+  const post = (i) => ({ id: `post-tall-${i}`, topic: 'coordination', from: `agent-${i}`, ts: snap.generated,
+    excerpt: 'claiming bd-01M3 for modules/desktop/src/main/scala/plsneuro/desktop/StudyPane.scala '.repeat(6), replies: 0 });
+  const board = (n) => Object.assign({ store: '/tmp/.mote', fetched: snap.generated, error: null,
+    counts: { open: 1, doing: 0, blocked: 0, review: 0 }, doing: [], ready: [], blocked: [], reservations: [], actors: [] },
+    snap.mote || {}, { posts: Array.from({ length: n }, (_, i) => post(i)) });
+  const measure = async (n) => {
+    fs.writeFileSync(path.join(hubDir, 'data.js'), dataJs(Object.assign({}, snap, { mote: board(n) })));
+    const ctx = await browser.newContext({ viewport: { width: w, height: h }, colorScheme: theme, deviceScaleFactor: 1 });
+    try {
+      const page = await ctx.newPage();
+      await page.goto(pathToFileURL(path.join(hubDir, 'index.html')).href);
+      await page.waitForFunction(() => document.documentElement.dataset.ready === '1', null, { timeout: 5000 });
+      return await page.evaluate(() => {
+        const r = (s) => document.querySelector(s)?.getBoundingClientRect();
+        const rail = r('#rail'), brief = r('#brief'), lanes = r('#lanes'), main = r('#main');
+        const out = { rail: rail ? rail.height : 0 };
+        if (brief && lanes && lanes.height) out.briefToLanes = lanes.top - brief.bottom;
+        if (brief && main) out.briefToMain = main.top - brief.bottom;
+        return out;
+      });
+    } finally { await ctx.close(); }
+  };
+  try {
+    const base = await measure(1), tall = await measure(12);
+    if (tall.rail < 2 * h) failures.push(`${tag} (tall board): board only ${Math.round(tall.rail)}px, check not exercised`);
+    for (const k of ['briefToLanes', 'briefToMain']) {
+      if (k in tall && k in base && tall[k] - base[k] > 4) failures.push(`${tag} (tall board): ${k} gap grew ${Math.round(base[k])} -> ${Math.round(tall[k])}px`);
+    }
+  } finally { fs.writeFileSync(path.join(hubDir, 'data.js'), dataJs(snap)); }
+}
+
 async function fileMode(browser, name, raw, out, failures) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'dash-render-'));
   const hubDir = path.join(dir, '.dashboard');
@@ -140,6 +215,9 @@ async function fileMode(browser, name, raw, out, failures) {
         // File mode is read-only: no live-looking write controls at all.
         const writeControls = await page.locator('textarea[data-composer], form[data-form=answer], form[data-form=mote], [data-act=pause], [data-act=resume], [data-act=reply]').count();
         if (writeControls) failures.push(`${tag}: ${writeControls} write controls rendered in file mode`);
+        if ((name === 'solo-rcheck' || name === 'trio-mote') && size === 'desktop' && theme === 'dark') {
+          await tallBoardCheck(browser, hubDir, snap, tag, w, h, theme, failures);
+        }
         if (name === 'stress') {
           // Every lane, all needs, a long burst list and the whole timeline must still fit.
           await page.evaluate(() => { for (const b of document.querySelectorAll('[data-act=needs-more],[data-act=ended]')) b.click(); });
@@ -321,8 +399,14 @@ async function fileMode(browser, name, raw, out, failures) {
             const after = await page.locator('[data-stale]').innerText().catch(() => '');
             if (!/so it is running/.test(before) || /so it is running/.test(after) || !/may have stopped/.test(after)) failures.push(`${tag}: hub sentence not re-decided over time ("${after.slice(-200)}")`);
           }
+          // Conflict card: lead sentence, posts as context, honest action lines, earlier overlaps outside the count.
+          const cvF = conflictVariant(live(raw)); cvF.revision = snap.revision + 40;
+          fs.writeFileSync(path.join(hubDir, 'data.js'), dataJs(cvF));
+          await page.waitForFunction((r) => document.documentElement.dataset.rev === String(r), cvF.revision, { timeout: 6000 }).catch(() => failures.push(`${tag}: conflict variant not loaded`));
+          await conflictCardChecks(page, tag, failures, false);
+          if (size === 'desktop' && theme === 'dark') await page.screenshot({ path: path.join(out, `${name}-${size}-${theme}-conflicts.png`), fullPage: false });
           // Adversarial long tokens in the board, topics and bead chips must wrap or truncate, not widen the page.
-          const long = JSON.parse(JSON.stringify(snap)); long.revision += 7;
+          const long = JSON.parse(JSON.stringify(snap)); long.revision = cvF.revision + 1;
           long.mote.doing[0].tags = ['x'.repeat(140)]; long.mote.posts[0].topic = 't'.repeat(140);
           long.mote.posts[0].from = 'f'.repeat(120); long.mote.reservations[0].issue = 'bd-' + '9'.repeat(120);
           fs.writeFileSync(path.join(hubDir, 'data.js'), dataJs(long));
@@ -580,11 +664,19 @@ async function serverMode(browser, fixtures, out, failures) {
     const mp = posts.find((p) => p.path === '/api/mote/post');
     if (!mp || mp.body.topic !== 'perf' || !/6\.1x/.test(mp.body.text) || mp.token !== TOKEN) failures.push(`${tag}: board POST wrong: ${JSON.stringify(mp)}`);
     // conflicts: every involved agent is listed, live ones get Message and Pause
+    // Claimants are the two editors; the Codex post is context under "On the board".
     const conflict = page.locator('#needs .need.k-conflict');
     const parties = await conflict.locator('.parties li').count();
-    if (parties !== 3) failures.push(`${tag}: conflict lists ${parties} agents, expected 3 (two editors and the Codex post)`);
-    if (!/Port contrast_rsa/.test(await conflict.innerText())) failures.push(`${tag}: conflict omits the Codex agent named in the board post`);
-    if (await conflict.locator('[data-act=reply]').count() !== 3 || await conflict.locator('[data-act=pause]').count() !== 2) failures.push(`${tag}: conflict actions wrong (want Message x3, Pause x2 for Claude sessions)`);
+    if (parties !== 2) failures.push(`${tag}: conflict lists ${parties} claimants, expected 2 (the two editors)`);
+    if (!/Port contrast_rsa/.test(await conflict.locator('.cf-ctx').innerText().catch(() => ''))) failures.push(`${tag}: conflict omits the Codex post as context`);
+    if (await conflict.locator('[data-act=reply]').count() !== 2 || await conflict.locator('[data-act=pause]').count() !== 2) failures.push(`${tag}: conflict actions wrong (want Message x2, Pause x2 for the claimants)`);
+    // A mote-only claimant and an earlier overlap, in server mode; Post to board prefills the board composer.
+    const cvS = conflictVariant(hub); cvS.revision += 1; hub = cvS;
+    await page.waitForFunction(() => document.body.innerText.includes('R/shared.R'), null, { timeout: 5000 }).catch(() => failures.push(`${tag}: conflict variant not loaded`));
+    await conflictCardChecks(page, tag, failures, true);
+    await page.locator('#needs .claimant.is-actor [data-act=board-ask]').first().click().catch(() => {});
+    if (await page.locator('#mote\\:post').inputValue().catch(() => '') !== '@codex-zz R/shared.R: who should have this?') failures.push(`${tag}: Post to board did not prefill the board composer`);
+    await page.locator('#mote\\:post').fill('');
     // idle session delivery hint
     await page.locator('[data-lane="3d07b5e2-9a4c-4e11-b7a0-6f2d1c88e412"]').click();
     const hint = await page.locator('.composer-wrap .hint').innerText();
