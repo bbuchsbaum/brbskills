@@ -1,0 +1,22 @@
+exit status: 0
+singleton: values=[7.0]
+  exact=0 (0.0)
+  candidate=0.0; close=True
+ordinary_spread: values=[1.0, 2.0, 3.0]
+  exact=2/3 (0.6666666666666666)
+  candidate=0.666666666666667; close=True
+ordinary_mixed_sign: values=[-3.0, -1.0, 2.0, 6.0]
+  exact=23/2 (11.5)
+  candidate=11.5; close=True
+constant: values=[42.0, 42.0, 42.0]
+  exact=0 (0.0)
+  candidate=0.0; close=True
+large_offset_representable_spacing: values=[9007199254740992.0, 9007199254740994.0, 9007199254740996.0]
+  exact=8/3 (2.6666666666666665)
+  candidate=0.0; close=False
+translation_invariance:
+  base=[1.0, 2.0, 3.0], shifted=[4503599627370497.0, 4503599627370498.0, 4503599627370499.0]
+  candidate_base=0.666666666666667, candidate_shifted=0.0
+  exact_base=2/3, exact_shifted=2/3
+  preserved=False
+empty_input: ValueError='at least one observation is required'

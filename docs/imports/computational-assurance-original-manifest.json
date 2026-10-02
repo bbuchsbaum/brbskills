@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-30",
+  "repository_base": "894f68eaa93cec5719df2ef49a10a10b6788e152",
+  "imports": [
+    {
+      "name": "design-computational-tests",
+      "source": "/Users/bbuchsbaum/.codex/skills/design-computational-tests",
+      "files_sha256": {
+        "SKILL.md": "d9f76231aba382e8074d396ea15941b5e9e3d818683ae4ccfe9c19aebe26cd0a",
+        "agents/openai.yaml": "0bda5231e52e516b2e889e86c2d8f7b8bb6aab650a573949b8a07f4aabaf163f"
+      },
+      "license_supplied": false
+    },
+    {
+      "name": "scientific-check",
+      "source": "/Users/bbuchsbaum/.agents/skills/scientific-check",
+      "files_sha256": {
+        "SKILL.md": "9e931f884ae52851d6f61c35d69d6d6567d20b2f384bf1dd6952b6ccde2a2911"
+      },
+      "license_supplied": false
+    }
+  ]
+}

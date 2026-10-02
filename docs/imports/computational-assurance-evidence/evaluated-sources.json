@@ -1,0 +1,10 @@
+{
+  "design-computational-tests": {
+    "sha256": "fe0a553cf869da4eb5851592e30985e6a96280640248bcbacc8f3cf733ac1e42",
+    "body_words": 549
+  },
+  "scientific-check": {
+    "sha256": "745a03294e27977f0862a903e164310814896fdc3c45ccd93f275848a995bcb0",
+    "body_words": 453
+  }
+}

@@ -5,6 +5,8 @@ Each skill can be downloaded and installed independently.
 
 | Skill | Purpose | Codex folder | Claude Code folder |
 |---|---|---|---|
+| [design-computational-tests](skills/design-computational-tests/SKILL.md) | Design independent correctness tests for numerical algorithms and computational pipelines | [codex/design-computational-tests](codex/design-computational-tests) | [claude/design-computational-tests](claude/design-computational-tests) |
+| [scientific-check](skills/scientific-check/SKILL.md) | Assess evidence for scientific inference, numerical results, and measured performance claims | [codex/scientific-check](codex/scientific-check) | [claude/scientific-check](claude/scientific-check) |
 | [cobidas](skills/cobidas/SKILL.md) | Record MRI/fMRI analysis evidence during work and write COBIDAS-aligned methods with explicit reporting gaps | [codex/cobidas](codex/cobidas) | [claude/cobidas](claude/cobidas) |
 | [trainee-mode](skills/trainee-mode/SKILL.md) **(experimental)** | Guided practice at selected analysis checkpoints; learning benefits unvalidated | [codex/trainee-mode](codex/trainee-mode) | [claude/trainee-mode](claude/trainee-mode) |
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
@@ -17,6 +19,13 @@ Each skill can be downloaded and installed independently.
 | [fmrireg](collections/fmri-workbench/skills/fmrireg/SKILL.md) | First-level task-fMRI models, diagnostics, and exports | [codex/fmrireg](codex/fmrireg) | [claude/fmrireg](claude/fmrireg) |
 | [fmrigds](collections/fmri-workbench/skills/fmrigds/SKILL.md) | Group-level models, uncertainty, and inference | [codex/fmrigds](codex/fmrigds) | [claude/fmrigds](claude/fmrigds) |
 | [neuromosaic](collections/fmri-workbench/skills/neuromosaic/SKILL.md) | Map montages and statistical reports | [codex/neuromosaic](codex/neuromosaic) | [claude/neuromosaic](claude/neuromosaic) |
+
+The independent computational assurance skills have complementary roles:
+`design-computational-tests` chooses tests for a computational contract;
+`scientific-check` assesses whether evidence supports the broader scientific
+or performance claim. Either works alone. See the
+[import and validation record](docs/imports/computational-assurance.md) for
+the workshop changes and bounded evaluation evidence.
 
 The five fMRI skills form the [fMRI Workbench collection](collections/fmri-workbench/README.md).
 Download the stage you need; `fmri` coordinates multiple installed stages and does

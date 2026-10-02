@@ -1,0 +1,2 @@
+a3d7fba6cf1bf18b5cc708bf5420a4cf7e7ca782ef80f2170c6fbf594b7874bf  /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/SKILL.md
+62f202525463f6289a90ec495d8b2c2d6137739b3284203fc09aaca3794f039a  /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/tests/fixtures/variance.py

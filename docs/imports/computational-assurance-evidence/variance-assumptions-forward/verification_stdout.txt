@@ -1,0 +1,12 @@
+62f202525463f6289a90ec495d8b2c2d6137739b3284203fc09aaca3794f039a  /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/tests/fixtures/variance.py
+bf81c18a00b24deedff02a84472049cae48c9742f0590c1a13b1026d9a58646f  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/request.txt
+1bf89811051b4ce54e3979e2776300b50f910f78f5d0bf5d32a7f2f4deeb15af  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/check_variance.py
+240e4341335ab92544ba65ad743ef2042c42e1d5736925f931bc85ae00b9fb0e  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/final_response.md
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/check_stdout.txt
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/check_variance.py
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/commands.txt
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/final_response.md
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/hash_stdout.txt
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/hashes.txt
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/read_stdout.txt
+/private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward/request.txt

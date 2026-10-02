@@ -1,0 +1,7 @@
+fe0a553cf869da4eb5851592e30985e6a96280640248bcbacc8f3cf733ac1e42  /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/SKILL.md
+62f202525463f6289a90ec495d8b2c2d6137739b3284203fc09aaca3794f039a  /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/tests/fixtures/variance.py
+8b6c1f6a776f69cebab2f0a7894908cc8505b7b05f9fb5b4e93cf757ee433aa1  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-forward/run_review.py
+2aacfc03514457063602cc9b2ab83cb2188adb7ce47baa8f2ba35678bd75094c  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-forward/run_review.output.txt
+0bed63ead311a3a95fe55bfb88cb13fbaea95f9fa6ffe50645baab5fdbc20e14  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-forward/README.md
+a6fb557e21955751845948d2eee5649408f2676ad4eb38e9645b960eb8de3c15  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-forward/commands.md
+e07fa1b4f82bf78099cca5f48ccb119d40c1ec6435716a3b2c3ea08d9996f3e4  /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-forward/final-response.md

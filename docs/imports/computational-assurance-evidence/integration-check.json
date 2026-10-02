@@ -1,0 +1,32 @@
+{
+  "integrated_sources_and_bundles": "passed",
+  "shared_check_exit": 1,
+  "shared_drift_skills": [
+    "dashboard-builder"
+  ],
+  "baseline_shared_drift_skills": [
+    "dashboard-builder"
+  ],
+  "preexisting_files_changed_during_task": [
+    "docs/plans/agent-dashboard-2.md",
+    "skills/dashboard-builder/assets/dashboard.html",
+    "skills/dashboard-builder/scripts/dash.py",
+    "skills/dashboard-builder/scripts/dash_hook.py",
+    "skills/dashboard-builder/scripts/render.cjs",
+    "skills/dashboard-builder/tests/fixtures/done.json",
+    "skills/dashboard-builder/tests/fixtures/fresh.json",
+    "skills/dashboard-builder/tests/fixtures/make_fixtures.py",
+    "skills/dashboard-builder/tests/fixtures/needs-you.json",
+    "skills/dashboard-builder/tests/fixtures/slurm-long.json",
+    "skills/dashboard-builder/tests/fixtures/solo-rcheck.json",
+    "skills/dashboard-builder/tests/fixtures/stalled.json",
+    "skills/dashboard-builder/tests/fixtures/stress.json",
+    "skills/dashboard-builder/tests/fixtures/trio-mote.json",
+    "skills/dashboard-builder/tests/test_conflicts.py",
+    "skills/dashboard-builder/tests/test_hook.py",
+    "skills/dashboard-builder/tests/test_mote.py",
+    "skills/dashboard-builder/tests/test_payloads.py",
+    "skills/dashboard-builder/tests/test_snapshot.py"
+  ],
+  "preservation_note": "Only our explicit source, generated, evidence paths and catalog additions were written by this import. Other changed initial files are concurrent shared-checkout work."
+}

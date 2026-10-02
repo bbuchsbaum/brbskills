@@ -1,0 +1,5 @@
+Review this candidate population-variance implementation for finite float observations. Design a small, convincing set of tests for ordinary and numerically difficult inputs. Execute discriminating checks if useful. This is a review; do not change the implementation.
+
+Only input: /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/tests/fixtures/variance.py.
+Use /private/tmp/brbskills-assurance-import-vcirhv5_/checkout/skills/design-computational-tests/SKILL.md.
+Read only the skill/input, not rubric or previous evidence. You are not alone in codebase; do not edit or revert source. Work only in /private/tmp/brbskills-assurance-import-vcirhv5_/evidence/variance-assumptions-forward. No network/dependencies/external work. Bound checks to 20 seconds. Save exact request, hashes, commands, stdout and final response.

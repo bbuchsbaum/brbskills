@@ -1,0 +1,34 @@
+[
+  {
+    "skill": "design-computational-tests",
+    "product": "codex",
+    "archive_sha256": "39d9727839787af2382c06f37768945374d5e1e06d3968fb18129c98f95f1ef4",
+    "isolated_validation": "passed",
+    "checksum_validation": "passed",
+    "content_parity": "passed"
+  },
+  {
+    "skill": "design-computational-tests",
+    "product": "claude",
+    "archive_sha256": "566741404d9b9b996e9b9bd2493a079634d02ace9751f0a8b729bac88d8e07f2",
+    "isolated_validation": "passed",
+    "checksum_validation": "passed",
+    "content_parity": "passed"
+  },
+  {
+    "skill": "scientific-check",
+    "product": "codex",
+    "archive_sha256": "c577f7cd1875ae6befac49720eafa9c0f0292141e5f4722e0fd5049a2e10f1c0",
+    "isolated_validation": "passed",
+    "checksum_validation": "passed",
+    "content_parity": "passed"
+  },
+  {
+    "skill": "scientific-check",
+    "product": "claude",
+    "archive_sha256": "b70dda12f0743ec0aaac3bd6cd9279fa389c9e94a18f7350f5121926683ad413",
+    "isolated_validation": "passed",
+    "checksum_validation": "passed",
+    "content_parity": "passed"
+  }
+]

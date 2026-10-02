@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Check"
+  short_description: "Assess the evidence supporting a scientific claim"
+  default_prompt: "Use $scientific-check to assess this scientific claim and its evidence limits."

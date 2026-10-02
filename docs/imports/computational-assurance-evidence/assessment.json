@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-30",
+  "harness": "Fresh explicitly instructed Codex subagents; runtime model id not exposed",
+  "blindness": "Rubric, prior reviews and intended answers excluded. Provided skills and synthetic raw inputs only. Explicit invocation does not test discovery.",
+  "trials": [
+    {
+      "id": "variance-forward",
+      "status": "partial",
+      "entrypoint_sha256": "fe0a553cf869da4eb5851592e30985e6a96280640248bcbacc8f3cf733ac1e42",
+      "observed": "Exact rational reference exposed cancellation and overflow; no source edit.",
+      "limitations": "Unstated correct-rounding guarantee and weak tolerance rationale.",
+      "change": "Clarified unspecified accuracy and candidate-independent tolerances."
+    },
+    {
+      "id": "bootstrap-forward",
+      "status": "bounded-rubric-met",
+      "entrypoint_sha256": "745a03294e27977f0862a903e164310814896fdc3c45ccd93f275848a995bcb0",
+      "observed": "Identified clustered resampling unit, preserved participant estimand, withheld coverage qualification and did not impose holdout evaluation.",
+      "limitations": "One synthetic fixture; no independent-dataset calibration simulation."
+    },
+    {
+      "id": "variance-assumptions-forward",
+      "status": "partial",
+      "entrypoint_sha256": "a3d7fba6cf1bf18b5cc708bf5420a4cf7e7ca782ef80f2170c6fbf594b7874bf",
+      "observed": "Exact-input cancellation and representability-aware translation counterexamples; no new correct-rounding guarantee.",
+      "limitations": "Tolerances still given as constants without sufficient explanation; numerical defect is decisive independently of these thresholds."
+    }
+  ],
+  "final_wording_note": "Scientific-check simulation guidance was subsequently scoped to simulation-based evidence; analytic justification does not require a simulation. This final sentence has static review only.",
+  "limits": [
+    "No original-skill or no-skill baseline",
+    "No automatic selection or full Codex/Claude Code product-session comparison",
+    "No empirical efficacy claim",
+    "No qualification beyond supplied synthetic fixtures"
+  ]
+}

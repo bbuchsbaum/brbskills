@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Computational Tests"
+  short_description: "Choose independent evidence for computational contracts"
+  default_prompt: "Use $design-computational-tests to design discriminating tests for this computational contract."

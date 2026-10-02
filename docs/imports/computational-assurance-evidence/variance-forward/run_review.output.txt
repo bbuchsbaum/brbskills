@@ -1,0 +1,14 @@
+exact-oracle cases
+ordinary symmetric values: values=[-2.0, 0.0, 2.0]
+  exact=2.6666666666666665; candidate=2.6666666666666665; match=True
+single observation: values=[42.5]
+  exact=0.0; candidate=0.0; match=True
+large shared offset with representable spacing: values=[1e+16, 1.0000000000000002e+16]
+  exact=1.0; candidate=1.8014398509481984e+16; match=False
+large finite constant: values=[1e+308, 1e+308]
+  exact=0.0; candidate=nan; match=False
+metamorphic ordinary-scale cases
+translation: baseline=7.46875; translated=7.46875; match=True
+scale: baseline_times_9=67.21875; scaled=67.21875; match=True
+permutation: baseline=7.46875; reversed=7.46875; match=True
+empty input: raised=ValueError; match=True

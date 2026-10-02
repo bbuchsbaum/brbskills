@@ -1,0 +1,96 @@
+{
+  "context": "Isolated snapshot of tracked HEAD 894f68e plus the two new skills; ongoing unrelated working-tree edits excluded.",
+  "root_unittest": {
+    "tests": 24,
+    "exit_code": 0,
+    "seconds": 27.611,
+    "evidence": "Executed tool transcript; not rerun after documentation-only additions."
+  },
+  "checks": [
+    {
+      "check": "skills/alliance-hpc/tests/test_skill.py",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 41 tests in 16.997s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "check": "skills/cobidas/tests/test_cobidas.py",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 56 tests in 2.241s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "check": "skills/fmriprep/tests/test_probe_host.py",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 34 tests in 14.200s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "check": "skills/fmriprep/tests/test_records.py",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 30 tests in 0.033s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "check": "skills/visual-hill-climb/tests/test_helpers.py",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 14 tests in 0.923s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "check": "collection-audit",
+      "exit_code": 0,
+      "summary": [
+        "  ],",
+        "  \"total_description_characters\": 1087,",
+        "  \"note\": \"Words/characters are measured; no token count or provider latency benchmark is claimed.\"",
+        "}"
+      ]
+    },
+    {
+      "check": "collection-tests",
+      "exit_code": 0,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 42 tests in 0.175s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "check": "lme4-validator",
+      "exit_code": 0,
+      "summary": [
+        "  \"R_runtime_tests\": \"NOT EXECUTED by this validator\",",
+        "  \"agent_behavior_evaluations\": \"NOT EXECUTED\",",
+        "  \"independent_statistical_review\": \"NOT PERFORMED\"",
+        "}"
+      ]
+    },
+    {
+      "check": "shellcheck",
+      "exit_code": 0,
+      "summary": []
+    }
+  ]
+}
