@@ -1,0 +1,6 @@
+interface:
+  display_name: "BIDS Atlas"
+  short_description: "Interactive offline dashboard for a BIDS/fMRI dataset and its fMRIPrep outputs"
+  default_prompt: "Use $bids-atlas to survey this BIDS dataset and build an interactive dashboard of its structure, oddities, and fMRIPrep motion."
+policy:
+  allow_implicit_invocation: true

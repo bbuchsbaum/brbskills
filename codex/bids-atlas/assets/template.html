@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__BIDS_ATLAS_TITLE__ · BIDS atlas</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f5f4f0; --surface: #fcfcfb; --surface-2: #efeee9; --surface-3: #e6e5df; --ink: #121211; --ink-2: #4f4e4a; --muted: #7d7b74;
+  --grid: #e3e2db; --axis: #c3c2b7; --ring: rgba(11,11,11,.10); --accent: #2a5bd7; --accent-ink: #1c46b0;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+  --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --crit: #d03b3b; --warn-ink: #8a5a00;
+  --q1: #cde2fb; --q2: #9ec5f4; --q3: #6da7ec; --q4: #3987e5; --q5: #256abf; --q6: #184f95; --q7: #0d366b;
+  --absent: #ecebe5; --hatch: #c9c7bd;
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 20px rgba(0,0,0,.035);
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0e0e0d; --surface: #191918; --surface-2: #232321; --surface-3: #2d2d2a; --ink: #f4f3ee; --ink-2: #c6c5bb; --muted: #8f8d86;
+    --grid: #2b2b29; --axis: #46463f; --ring: rgba(255,255,255,.10); --accent: #6d9bff; --accent-ink: #9dbcff;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --warn-ink: #fab219;
+    --q1: #183253; --q2: #184f95; --q3: #1c5cab; --q4: #2a78d6; --q5: #5598e7; --q6: #86b6ef; --q7: #cde2fb;
+    --absent: #242422; --hatch: #4a4a44; --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0e0e0d; --surface: #191918; --surface-2: #232321; --surface-3: #2d2d2a; --ink: #f4f3ee; --ink-2: #c6c5bb; --muted: #8f8d86;
+  --grid: #2b2b29; --axis: #46463f; --ring: rgba(255,255,255,.10); --accent: #6d9bff; --accent-ink: #9dbcff;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --warn-ink: #fab219;
+  --q1: #183253; --q2: #184f95; --q3: #1c5cab; --q4: #2a78d6; --q5: #5598e7; --q6: #86b6ef; --q7: #cde2fb;
+  --absent: #242422; --hatch: #4a4a44; --shadow: none;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--ink); font: 14px/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent-ink); }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); font-size: .92em; }
+.app { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: 100vh; }
+nav.side { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 22px 12px; border-right: 1px solid var(--grid); background: var(--surface); z-index: 20; }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 650; margin: 0 8px 18px; font-size: 13px; color: var(--ink-2); }
+nav.side a { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 6px 10px; border-radius: 7px; color: var(--ink-2); text-decoration: none; font-size: 13.5px; }
+nav.side a:hover { background: var(--surface-2); color: var(--ink); }
+nav.side a.on { background: var(--surface-2); color: var(--ink); font-weight: 600; box-shadow: inset 2px 0 0 var(--accent); }
+nav.side a .n { font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.side-foot { margin: 22px 8px 0; font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+main { padding: 30px 40px 90px; max-width: 1500px; min-width: 0; }
+.eyebrow { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 4px; font-weight: 550; }
+h1 { font-size: 30px; line-height: 1.12; margin: 0 0 12px; letter-spacing: -.015em; font-weight: 700; }
+h2 { font-size: 20px; margin: 0; letter-spacing: -.01em; font-weight: 660; }
+h3 { font-size: 13.5px; margin: 0 0 10px; font-weight: 640; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); font-size: 12px; border: 1px solid var(--ring); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; text-decoration: none; }
+.chip b { color: var(--ink); font-weight: 600; }
+.btn { font-size: 12.5px; padding: 5px 11px; border-radius: 7px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); cursor: pointer; text-decoration: none; display: inline-flex; gap: 6px; align-items: center; white-space: nowrap; }
+.btn:hover { background: var(--surface-2); }
+.btn:disabled { opacity: .4; cursor: default; }
+section.sec { margin: 40px 0 0; scroll-margin-top: 16px; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.sec-head p { margin: 3px 0 0; color: var(--ink-2); font-size: 13px; max-width: 86ch; }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); min-width: 0; }
+.card + .card, .grid2 + .card, .card + .grid2, .grid3 + .card { margin-top: 14px; }
+.grid2 > .card, .grid3 > .card { margin-top: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.grid2 > *, .grid3 > * { min-width: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.tile { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow); min-width: 0; }
+.card .tile { box-shadow: none; background: var(--surface-2); border-color: transparent; }
+.tile .v { font-size: 26px; font-weight: 680; letter-spacing: -.015em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile .v small { font-size: 14px; color: var(--muted); font-weight: 500; }
+.tile .l { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.tile .sub { font-size: 11.5px; color: var(--ink-2); margin-top: 6px; overflow-wrap: anywhere; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 5px 16px; font-size: 13px; margin: 0; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; overflow-wrap: anywhere; }
+.clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.clamp.open { -webkit-line-clamp: unset; display: block; }
+.more { border: 0; background: none; color: var(--accent-ink); padding: 0; cursor: pointer; font-size: 12px; }
+pre.readme { white-space: pre-wrap; font: 12.5px/1.55 var(--mono); color: var(--ink-2); margin: 0; background: var(--surface-2); padding: 12px 14px; border-radius: 8px; max-height: 9.5em; overflow: hidden; }
+pre.readme.open { max-height: 420px; overflow: auto; }
+table.t { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+table.t th { text-align: left; font-weight: 600; color: var(--ink-2); border-bottom: 1px solid var(--axis); padding: 6px 8px; background: var(--surface); white-space: nowrap; }
+.scroll table.t th { position: sticky; top: 0; z-index: 1; }
+table.t td { border-bottom: 1px solid var(--grid); padding: 5px 8px; vertical-align: top; font-variant-numeric: tabular-nums; }
+table.t tr.click { cursor: pointer; }
+table.t tr.click:hover td, table.t tr.click:focus-visible td { background: var(--surface-2); }
+table.t td.num, table.t th.num { text-align: right; }
+.scroll { overflow: auto; max-height: 460px; }
+.hscroll { overflow-x: auto; overflow-y: hidden; background: linear-gradient(to right, var(--surface) 30%, transparent) left / 24px 100% no-repeat local, linear-gradient(to left, var(--surface) 30%, transparent) right / 24px 100% no-repeat local, radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.16), transparent) left / 10px 100% no-repeat scroll, radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.16), transparent) right / 10px 100% no-repeat scroll; background-color: var(--surface); }
+.sev { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 620; padding: 2px 9px 2px 7px; border-radius: 999px; white-space: nowrap; text-decoration: none; }
+.sev::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.sev.error { color: var(--crit); background: color-mix(in srgb, var(--crit) 12%, transparent); }
+.sev.warn { color: var(--warn-ink); background: color-mix(in srgb, var(--warn) 22%, transparent); }
+.sev.info { color: var(--ink-2); background: var(--surface-2); }
+.sev.zero { color: var(--muted); background: var(--surface-2); }
+.sev.zero::before { background: var(--axis); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: start; margin-bottom: 22px; }
+.ribbon { margin: 2px 0 22px; }
+.attention { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.att { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; text-align: left; border: 1px solid var(--ring); background: var(--surface); border-radius: 10px; padding: 11px 13px; cursor: pointer; color: var(--ink); box-shadow: var(--shadow); }
+.att:hover { border-color: var(--axis); }
+.att .bar { grid-row: span 2; width: 4px; border-radius: 2px; align-self: stretch; }
+.att .tt { font-weight: 600; font-size: 13px; line-height: 1.35; }
+.att-more { display: none; margin-top: 8px; }
+@media (max-width: 980px) { .att-more { display: inline; } }
+.att .dd { color: var(--ink-2); font-size: 12px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.finding { border-top: 1px solid var(--grid); }
+.finding:first-child { border-top: 0; }
+.finding .fh { display: flex; gap: 10px; align-items: baseline; width: 100%; text-align: left; border: 0; background: none; color: var(--ink); padding: 10px 2px; cursor: pointer; }
+.finding .fh:hover { background: color-mix(in srgb, var(--surface-2) 60%, transparent); }
+.finding .ft { font-weight: 560; min-width: 0; overflow-wrap: anywhere; }
+.finding .fc { margin-left: auto; color: var(--muted); font-size: 12px; white-space: nowrap; padding-left: 10px; }
+.finding .chev { color: var(--muted); transition: transform .12s; display: inline-block; width: 10px; }
+.finding:not(.closed) .chev { transform: rotate(90deg); }
+.finding .body { padding: 0 2px 12px 20px; }
+.finding .fd { color: var(--ink-2); font-size: 12.5px; margin: 0; }
+.finding ul { margin: 6px 0 0; padding-left: 18px; font: 12px/1.6 var(--mono); color: var(--ink-2); max-height: 220px; overflow: auto; }
+.finding.closed .body ul { display: none; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 12px; }
+.toolbar label { font-size: 12.5px; color: var(--ink-2); display: inline-flex; gap: 6px; align-items: center; }
+select, input[type=search] { font: inherit; font-size: 12.5px; padding: 4px 8px; border-radius: 7px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); }
+input[type=range] { accent-color: var(--accent); width: 120px; }
+.seg { display: inline-flex; border: 1px solid var(--ring); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
+.seg button { font-size: 12.5px; border: 0; background: var(--surface); color: var(--ink-2); padding: 5px 10px; cursor: pointer; border-right: 1px solid var(--ring); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: color-mix(in srgb, var(--accent) 16%, var(--surface)); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); font-weight: 600; }
+svg text { fill: var(--muted); font: 11px var(--sans); }
+svg .ink { fill: var(--ink-2); }
+svg .lab { fill: var(--ink-2); font-weight: 600; }
+svg rect.cell { cursor: pointer; }
+svg rect.cell:focus { outline: none; stroke: var(--ink); stroke-width: 2; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--ink-2); margin: 10px 0 0; align-items: center; }
+.legend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.legend .ramp { display: inline-flex; gap: 1px; margin: 0 6px; }
+.legend .ramp i { margin: 0; border-radius: 1px; width: 14px; }
+#tip { position: fixed; pointer-events: none; z-index: 60; background: var(--ink); color: var(--surface); padding: 7px 10px; border-radius: 8px; font-size: 12px; line-height: 1.45; max-width: 380px; opacity: 0; transition: opacity .08s; box-shadow: 0 6px 24px rgba(0,0,0,.18); left: 0; top: 0; }
+#tip b { font-weight: 650; }
+#tip .m { font-family: var(--mono); font-size: 11.5px; opacity: .85; }
+.drawer { position: fixed; top: 0; right: 0; width: min(760px, 100vw); height: 100vh; background: var(--surface); border-left: 1px solid var(--ring); box-shadow: -10px 0 40px rgba(0,0,0,.16); transform: translateX(105%); transition: transform .18s ease; z-index: 40; overflow: auto; visibility: hidden; }
+.drawer.open { transform: none; visibility: visible; }
+#backdrop { position: fixed; inset: 0; background: rgba(10,10,9,.28); opacity: 0; pointer-events: none; transition: opacity .18s; z-index: 39; }
+#backdrop.on { opacity: 1; pointer-events: auto; }
+.dhead { position: sticky; top: 0; z-index: 3; background: var(--surface); border-bottom: 1px solid var(--grid); padding: 14px 24px 12px; display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; }
+.dhead h2 { font-size: 17px; }
+.dbody { padding: 16px 24px 60px; }
+.dbody h3 { margin-top: 20px; }
+.empty { color: var(--muted); font-size: 13px; padding: 14px 0; }
+.bar-row { display: grid; grid-template-columns: minmax(70px, 170px) minmax(0, 1fr) 64px; gap: 10px; align-items: center; font-size: 12.5px; margin: 4px 0; }
+.bar-row .lab { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-2); }
+.bar-row .track { height: 10px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.bar-row .fill { height: 100%; background: var(--s1); border-radius: 4px; }
+.bar-row .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.pill { display: inline-block; padding: 1px 7px; margin: 1px 4px 1px 0; border-radius: 6px; background: var(--surface-2); font: 12px var(--mono); }
+.pill.minor { background: var(--surface-3); box-shadow: inset 0 0 0 1px var(--axis); }
+.pill.bad { background: color-mix(in srgb, var(--crit) 16%, transparent); color: var(--crit); }
+.pill.warnp { background: color-mix(in srgb, var(--warn) 26%, transparent); color: var(--warn-ink); font-weight: 600; }
+.pill.unset { background: none; border: 1px dashed var(--axis); color: var(--muted); }
+.pill.na { background: none; color: var(--muted); font-style: italic; font-family: var(--sans); }
+.pill .x { color: var(--muted); margin-left: 4px; }
+.note { font-size: 12.5px; color: var(--ink-2); background: var(--surface-2); border-radius: 8px; padding: 10px 12px; }
+.note.bad { background: color-mix(in srgb, var(--crit) 8%, var(--surface)); color: var(--ink); border: 1px solid color-mix(in srgb, var(--crit) 45%, transparent); }
+.note.warn { background: color-mix(in srgb, var(--warn) 9%, var(--surface)); color: var(--ink); border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); }
+.note b { font-weight: 640; }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--grid); margin-bottom: 14px; flex-wrap: wrap; }
+.tabs button { font-size: 13px; border: 0; background: none; padding: 8px 12px; color: var(--ink-2); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 4px 0 6px; }
+@media (max-width: 560px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpi { background: var(--surface-2); border-radius: 9px; padding: 8px 10px; }
+.frow { display: flex; gap: 8px; align-items: baseline; margin: 2px 0; padding: 3px 4px; width: 100%; text-align: left; border: 0; background: none; color: var(--ink); cursor: pointer; border-radius: 6px; }
+.frow:hover { background: var(--surface-2); }
+.kpi .v { font-size: 18px; font-weight: 660; font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 11.5px; color: var(--muted); }
+.kpi.bad .v { color: var(--crit); }
+.kpi.scr .v { color: var(--warn-ink); }
+.kpi.wrn { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--warn) 60%, transparent); }
+.kpi.wrn .v { color: var(--warn-ink); }
+.kpi.scr { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--serious) 55%, transparent); }
+@media (max-width: 980px) {
+  .app { grid-template-columns: 1fr; }
+  nav.side { position: sticky; top: 0; height: auto; display: flex; gap: 2px; padding: 8px 12px; border-right: 0; border-bottom: 1px solid var(--grid); overflow-x: auto; white-space: nowrap; }
+  nav.side a { flex: none; }
+  nav.side .brand, .side-foot { display: none; }
+  main { padding: 18px 16px 60px; }
+  .grid2, .grid3 { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; }
+  .hero .chips[style] { justify-content: flex-start !important; }
+  .finding .fh { flex-wrap: wrap; }
+  .attention:not(.all) .att:nth-child(n+4) { display: none; }
+  .att .dd { white-space: normal; }
+  .finding .fc { margin-left: 0; padding-left: 0; width: 100%; }
+  h1 { font-size: 24px; }
+  section.sec { scroll-margin-top: 56px; }
+}
+@media print { nav.side, .toolbar, .drawer, #tip { display: none; } .app { display: block; } }
+@media (prefers-reduced-motion: reduce) { .drawer, .finding .chev { transition: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="side" id="nav" aria-label="Sections">
+    <div class="brand"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 9h15M9 1.5c2.4 2.2 2.4 12.8 0 15M9 1.5c-2.4 2.2-2.4 12.8 0 15" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>BIDS atlas</div>
+  </nav>
+  <main id="main"></main>
+</div>
+<div id="backdrop" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="drawer-title" inert></aside>
+<div id="tip" role="tooltip"></div>
+<script id="atlas-data" type="application/json">/*__BIDS_ATLAS_DATA__*/null</script>
+<script>
+"use strict";
+const M = JSON.parse(document.getElementById("atlas-data").textContent);
+// Optional children are passed as null/false throughout; never render them as text.
+{ const ap = Element.prototype.append; Element.prototype.append = function (...k) { return ap.apply(this, k.filter(x => x != null && x !== false)); }; }
+const $ = (q, r = document) => r.querySelector(q);
+const NS = "http://www.w3.org/2000/svg";
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.className = v; else if (k === "text") e.textContent = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (k === "style") e.style.cssText = v;
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null && k !== false) e.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return e;
+}
+function s(tag, attrs, ...kids) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs || {})) if (v != null) { if (k === "text") e.textContent = v; else e.setAttribute(k, v); }
+  for (const k of kids.flat()) if (k) e.append(k);
+  return e;
+}
+const innerW = el => { const cs = getComputedStyle(el); return Math.floor(el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)); };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt = (x, d = 2) => x == null || Number.isNaN(x) ? "—" : (typeof x === "number" ? (Number.isInteger(x) ? x.toLocaleString() : x.toFixed(d)) : String(x));
+const bytes = b => { if (!b) return "0 B"; const u = ["B", "KB", "MB", "GB", "TB"]; let i = 0; while (b >= 1024 && i < 4) { b /= 1024; i++; } return b.toFixed(b < 10 && i ? 1 : 0) + " " + u[i]; };
+const median = a => { const v = a.filter(x => x != null).sort((x, y) => x - y); if (!v.length) return null; const n = v.length; return n % 2 ? v[n >> 1] : (v[n / 2 - 1] + v[n / 2]) / 2; };
+const range = (a, b, d = 1, u = "") => (fmt(a, d) === fmt(b, d) ? fmt(a, d) : `${fmt(a, d)}–${fmt(b, d)}`) + u;
+const plural = (n, one, many) => `${n.toLocaleString()} ${n === 1 ? one : (many || one + "s")}`;
+const natural = (a, b) => String(a).localeCompare(String(b), undefined, { numeric: true });
+const SER = ["--s1", "--s3", "--s7", "--s5", "--s6", "--s4", "--s8", "--s2"];  // status-like hues (amber, red, orange) last
+const SEQ = ["--q1", "--q2", "--q3", "--q4", "--q5", "--q6", "--q7"];
+const tip = $("#tip");
+function showTip(ev, node) { tip.innerHTML = ""; tip.append(node); tip.style.opacity = 1; moveTip(ev); }
+function moveTip(ev) { const r = tip.getBoundingClientRect(); let x = (ev.clientX ?? 0) + 14, y = (ev.clientY ?? 0) + 14; if (x + r.width > innerWidth - 8) x = (ev.clientX ?? 0) - r.width - 14; if (y + r.height > innerHeight - 8) y = (ev.clientY ?? 0) - r.height - 14; tip.style.transform = `translate(${Math.max(4, x)}px, ${Math.max(4, y)}px)`; }
+function hideTip() { tip.style.opacity = 0; }
+function tipOn(el, fn) { el.addEventListener("mouseenter", e => showTip(e, fn())); el.addEventListener("mousemove", moveTip); el.addEventListener("mouseleave", hideTip); }
+function tipBox(title, rows) { const d = h("div", {}, h("b", { text: title })); for (const [k, v] of rows) if (v != null) d.append(h("div", {}, h("span", { style: "opacity:.7" }, k + " "), h("span", { class: "m" }, v))); return d; }
+
+// ------------------------------------------------------------------ derived data
+const D = {};
+D.desc = M.description || {};
+D.derivs = M.derivatives || [];
+D.prep = D.derivs.filter(d => d.kind === "fmriprep" && (d.confounds || []).length);
+D.mriqc = D.derivs.filter(d => d.kind === "mriqc" && (d.iqms || []).length);
+D.findings = M.findings || [];
+const runLabel = r => [r.ses && "ses-" + r.ses, r.task && "task-" + r.task, r.acq && "acq-" + r.acq, r.dir && "dir-" + r.dir, r.run && "run-" + r.run].filter(Boolean).join(" ");
+D.conf = new Map();
+for (const d of D.prep) for (const c of d.confounds) if (!D.conf.has(c.key)) D.conf.set(c.key, { ...c, deriv: d.label, derivName: d.name, version: d.version });
+D.iqm = new Map();
+for (const d of D.mriqc) for (const q of d.iqms) { const k = q.key; if (!D.iqm.has(k)) D.iqm.set(k, []); D.iqm.get(k).push({ ...q, deriv: d.label }); }
+D.runs = []; D.derivOnly = [];
+{
+  const seen = new Map();
+  // r.key is the scanner's canonical acquisition key (keeps rec/ce/mod; drops echo).
+  for (const r of M.bold || []) { const k = r.key; if (seen.has(k)) { seen.get(k).echoes.push(r); continue; } const o = { ...r, key: k, echoes: [r], raw: true }; seen.set(k, o); D.runs.push(o); }
+  for (const r of D.runs) r.echoes.sort((a, b) => (+a.echo || 0) - (+b.echo || 0));
+  for (const [k, c] of D.conf) if (!seen.has(k)) { const o = { key: k, sub: c.sub, ses: c.ses, task: c.task, run: c.run, acq: c.acq, dir: c.dir, state: "derivative only", echoes: [], meta: {}, raw: false }; seen.set(k, o); D.derivOnly.push(o); }
+  for (const r of [...D.runs, ...D.derivOnly]) { r.conf = D.conf.get(r.key) || null; r.iqms = (D.iqm.get(r.key) || []).slice().sort((a, b) => (+a.echo || 0) - (+b.echo || 0)); }
+}
+D.allRuns = [...D.runs, ...D.derivOnly];
+D.subjects = [...new Set([...(M.subjects || []), ...D.allRuns.map(r => r.sub)])].sort(natural);
+D.tasks = Object.keys(M.tasks || {}).sort(natural);
+D.sev = { error: 0, warn: 0, info: 0 };
+for (const f of D.findings) D.sev[f.severity] = (D.sev[f.severity] || 0) + 1;
+D.confAll = [...D.conf.values()];
+D.multiEcho = D.runs.some(r => r.echoes.length > 1);
+D.echoes = [...new Set([...D.iqm.values()].flat().map(q => q.echo || ""))].sort(natural);
+const state = { fd: 0.5, meanFd: 0.5, pct: 20 };
+D.qcThres = (D.mriqc.find(d => d.fd_thres != null) || {}).fd_thres ?? null;
+const QC_T = D.qcThres ?? 0.2;   // MRIQC's default when provenance does not record it
+// Multi-echo MRIQC metrics differ by echo; use one explicit, labelled echo (middle echo by default).
+state.echo = D.echoes.length > 1 ? D.echoes[Math.floor((D.echoes.length - 1) / 2)] : (D.echoes[0] || "");
+const echoLabel = () => D.echoes.length > 1 ? `, echo-${state.echo}` : "";
+// Motion per run: fMRIPrep confounds when fetched, otherwise MRIQC's FD (labelled as such).
+function motionFromIqm(r, q) { return { src: "MRIQC", echo: q.echo || null, key: r.key, sub: r.sub, ses: r.ses, task: r.task, run: r.run, fd: { mean: q.m.fd_mean, max: null }, n_vols: q.m.size_t, fd_num02: q.m.fd_num, path: q.deriv + "/group_bold.tsv" }; }
+// Where both sources exist, how far apart are they? Reported so a mixed exclusion is an informed one.
+function fdGap() {
+  const pairs = D.runs.filter(r => r.conf && r.conf.fd && r.iqms[0] && r.iqms[0].m.fd_mean != null).map(r => [r.conf.fd.mean, r.iqms[0].m.fd_mean]);
+  if (pairs.length < 3) return null;
+  const rel = median(pairs.map(([a, b]) => (a - b) / b));
+  return { n: pairs.length, rel };
+}
+function refreshDerived() {
+  for (const r of D.allRuns) {
+    r.iqm = r.iqms.find(q => (q.echo || "") === state.echo) || r.iqms[0] || null;
+    // Head motion is a property of the run: use the first echo (as fMRIPrep does for HMC), not the display echo.
+    const q1 = r.iqms[0];
+    r.mot = !r.raw ? null : r.conf && r.conf.fd ? Object.assign(r.conf, { src: "fMRIPrep" }) : (q1 && q1.m.fd_mean != null ? motionFromIqm(r, q1) : null);
+  }
+  D.motion = D.runs.map(r => r.mot).filter(Boolean);
+}
+refreshDerived();
+if (D.motion.length && D.motion.every(m => m.src === "MRIQC")) state.fd = QC_T;
+D.confUsable = D.confAll.filter(c => c.fd);
+state.metric = D.motion.length >= 0.5 * Math.max(1, D.runs.length) ? "fd" : "presence";
+const fdIndex = t => Math.max(0, Math.min(39, Math.round(t / 0.05) - 1));
+function spikes(c) {
+  if (!c || !c.fd) return null;
+  if (c.fd_spikes) return c.fd_spikes[fdIndex(state.fd)];
+  if (c.src === "MRIQC") return Math.abs(state.fd - QC_T) < 1e-9 && c.fd_num02 != null ? c.fd_num02 : null;  // MRIQC counts FD > its fd_thres only
+  return (c.trace_fd || []).filter(v => v != null && v > state.fd).length;
+}
+function pctSpikes(c) { const n = spikes(c); return n == null || !c.n_vols ? null : 100 * n / c.n_vols; }
+function exclusion(c) {
+  if (!c || !c.fd) return null;
+  const why = [];
+  if (c.fd.mean != null && c.fd.mean > state.meanFd) why.push(`mean FD ${c.fd.mean.toFixed(3)} > ${state.meanFd}`);
+  const p = pctSpikes(c); if (p != null && p > state.pct) why.push(`${p.toFixed(1)}% vols FD > ${state.fd} (limit ${state.pct}%)`);
+  return why;
+}
+// Index every finding under the tokens a run can be matched by, once; runFindings is then a few map lookups.
+const FIDX = (() => {
+  const idx = new Map(), add = (t, f) => { if (!t) return; if (!idx.has(t)) idx.set(t, new Set()); idx.get(t).add(f); };
+  for (const f of D.findings) for (const p of [...(f.units || []), ...(f.paths || [])]) {
+    add(p, f); add(p.split(" ")[0], f); add(p.split(":")[0], f); add(p.split("_echo-")[0], f);
+    add(p.replace(/\.[^./]*$/, ""), f);
+    const cell = p.match(/^(sub-\S+(?: ses-\S+)? task-\S+):/); if (cell) add(cell[1] + ":", f);
+  }
+  return idx;
+})();
+const runFindings = r => {
+  if (r._rf) return r._rf;
+  const tokens = [r.path, ...(r.echoes || []).map(e => e.path), r.events_path, r.conf && r.conf.path, ...Object.values(r.meta_src || {}),
+    ...(r.echoes || []).map(e => e.path.replace(/_bold\.nii(\.gz)?$/, "_bold")), r.key, `sub-${r.sub}${r.ses ? " ses-" + r.ses : ""} task-${r.task}:`].filter(Boolean);
+  const out = new Set(); for (const t of tokens) for (const f of FIDX.get(t) || []) out.add(f);
+  return (r._rf = D.findings.filter(f => out.has(f)));
+};
+const normRun = name => name.replace(/_run-0*(\d+)/, "_run-$1");
+
+// ------------------------------------------------------------------ sections
+const sections = [];
+function section(id, title, sub, build, count) { sections.push({ id, title, sub, build, count }); }
+section("overview", "Overview", null, buildOverview);
+section("grid", "Acquisition grid", "One cell per BOLD run. Switch the colouring to presence or a quality metric; click a cell, or focus one and press Enter, to inspect the run.", buildGrid, D.runs.length);
+section("findings", "Findings", "Everything the scanner flagged, grouped by kind. Reviewed notes from an agent pass are marked.", buildFindings, D.findings.length);
+if (D.prep.length || D.motion.length) section("motion", "Motion & confounds", `${D.prep.length && D.motion.some(m => m.src === "MRIQC") ? "Motion from fMRIPrep confounds, with MRIQC filling runs whose confounds are missing" : D.prep.length ? "fMRIPrep confound summaries" : "Head motion from MRIQC (no fMRIPrep confounds found)"}. Thresholds are live: the counts, grid markers and exclusion table all follow them.`, buildMotion, D.motion.length);
+if (D.mriqc.length) section("mriqc", "Image quality (MRIQC)", "Per-run image-quality metrics from MRIQC group tables. One dot per run; hover for values, click to inspect.", buildMriqc, D.iqm.size);
+section("about", "About this dataset", "dataset_description.json, README, datatypes and how much image data is local.", el => el.append(D.aboutCard));
+section("acq", "Acquisition parameters", "Sidecar values after BIDS inheritance, one column per task. Outlined: differs from the task's majority. Yellow: a warning (incl. TR, multiband or scanner drift). Red: an error. Dashed: not set.", buildAcq, D.tasks.length);
+section("events", "Events", "Trial structure from events.tsv. The grey band behind each run is the scan's length when known.", buildEvents);
+section("modalities", "Anatomy, fieldmaps & diffusion", null, buildModalities);
+section("participants", "Participants", null, buildParticipants, (M.participants || {}).n_rows);
+section("derivatives", "Derivatives", "Pipelines found under derivatives/ or passed with --derivatives.", buildDerivs, D.derivs.length);
+section("files", "Files", null, buildFiles, M.n_files);
+
+function mount() {
+  const nav = $("#nav"), main = $("#main");
+  for (const sc of sections) nav.append(h("a", { href: "#" + sc.id, "data-id": sc.id }, h("span", { text: sc.title }), sc.count != null ? h("span", { class: "n", text: fmt(sc.count) }) : null));
+  nav.append(h("div", { class: "side-foot" }, h("div", { text: M.tool || "" }), h("div", { text: "generated " + (M.generated || "").replace("T", " ").replace("+00:00", " UTC") }),
+    h("div", { style: "margin-top:10px" }, h("button", { class: "btn", onclick: toggleTheme, text: "Toggle theme" }))));
+  main.append(buildHero());
+  for (const sc of sections) {
+    const body = h("div");
+    main.append(h("section", { class: "sec", id: sc.id, "aria-labelledby": "h-" + sc.id }, sc.id === "overview" ? null : h("div", { class: "sec-head" }, h("div", {}, h("h2", { id: "h-" + sc.id, text: sc.title }), sc.sub ? h("p", { text: sc.sub }) : null)), body));
+    try { sc.build(body); } catch (err) { body.append(h("div", { class: "note warn", text: "This section failed to render: " + err.message })); console.error(err); }
+  }
+  const links = [...nav.querySelectorAll("a")];
+  const io = new IntersectionObserver(es => { for (const e of es) if (e.isIntersecting) links.forEach(a => a.classList.toggle("on", a.dataset.id === e.target.id)); }, { rootMargin: "-15% 0px -75% 0px" });
+  document.querySelectorAll("section.sec").forEach(x => io.observe(x));
+}
+let currentRun = null;
+function toggleTheme() { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme = dark ? "light" : "dark"; rerender(); }
+const redraws = [];
+// Leading-edge throttle: a single change redraws at once; a drag redraws at most once per frame, plus a final redraw.
+let rerenderBusy = false, rerenderPending = false;
+function rerenderSoon() {
+  if (rerenderBusy) { rerenderPending = true; return; }
+  rerender(); rerenderBusy = true;
+  requestAnimationFrame(() => { rerenderBusy = false; if (rerenderPending) { rerenderPending = false; rerenderSoon(); } });
+}
+function rerender() { for (const f of redraws) f(); const d = $("#drawer"); if (d.classList.contains("open") && currentRun) { const top = d.scrollTop, fe = document.activeElement; openRun(currentRun, null, true); d.scrollTop = top; if (fe && !d.contains(fe) && document.contains(fe)) fe.focus({ preventScroll: true }); else if (fe && !document.contains(fe)) $("#drawer-close").focus({ preventScroll: true }); } }
+let resizeT; addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(rerender, 150); });
+
+// ------------------------------------------------------------------ hero + attention
+function sevLabel(k, n) { return `${n} ${k === "error" ? (n === 1 ? "error" : "errors") : k === "warn" ? (n === 1 ? "warning" : "warnings") : (n === 1 ? "note" : "notes")}`; }
+function buildHero() {
+  const name = D.desc.Name || M.root_name;
+  const chips = h("div", { class: "chips" });
+  if (D.desc.BIDSVersion) chips.append(h("span", { class: "chip" }, "BIDS ", h("b", { text: D.desc.BIDSVersion })));
+  if (D.desc.DatasetType) chips.append(h("span", { class: "chip", text: D.desc.DatasetType }));
+  if (D.desc.License) { const L = String(D.desc.License); chips.append(h("span", { class: "chip", title: L }, "License ", h("b", { text: L.length > 28 ? "custom (see description)" : L }))); }
+  if (D.desc.DatasetDOI) chips.append(h("span", { class: "chip", text: String(D.desc.DatasetDOI).replace(/^https?:\/\/(dx\.)?doi\.org\//, "doi:") }));
+  if (M.openneuro) chips.append(h("span", { class: "chip", title: M.openneuro_evidence || "", text: "OpenNeuro" }));
+  for (const d of D.derivs) chips.append(h("span", { class: "chip" }, h("b", { text: d.name }), d.version ? " " + d.version : ""));
+  const sev = h("div", { class: "chips", style: "justify-content:flex-end" }, ...["error", "warn", "info"].map(k => h("a", { href: "#findings", class: "sev " + ((D.sev[k] || 0) ? k : "zero"), text: sevLabel(k, D.sev[k] || 0) })));
+  const top = h("div", { class: "hero" }, h("div", {}, h("p", { class: "eyebrow", text: M.root_is_derivative ? M.root_name + " · derivative dataset" : M.root_name }), h("h1", { text: name }), chips), sev);
+  const wrap = h("div", {}, top, runRibbon());
+  // Errors first; MRIQC screening flags fold into one card so they cannot crowd out metadata problems.
+  const sevRank = { error: 0, warn: 1 };
+  const nonQc = D.findings.filter(f => f.severity !== "info" && f.category !== "quality").sort((a, b) => sevRank[a.severity] - sevRank[b.severity]);
+  const qc = D.findings.filter(f => f.category === "quality");
+  const att = nonQc.slice(0, qc.length ? 5 : 6).map(f => ({ id: f.id, sev: f.severity, title: f.title + (f.count > 1 ? ` · ${f.count}` : ""), detail: (f.count <= 3 && (f.paths || []).length) ? f.paths.join("; ") : (f.detail || (f.paths || [])[0] || f.category) }));
+  if (qc.length) { const runs = new Set(qc.flatMap(f => (f.paths || []).map(p => p.split(/[:_]echo-|:/)[0]))); att.push({ id: qc[0].id, sev: "warn", title: `MRIQC screening flags · ${runs.size} runs`, detail: qc.map(f => f.title.replace(/^.*runs with /, "").replace(/ \(MRIQC\)$/, "") + " " + f.count).join(" · ") }); }
+  if (att.length) {
+    const g = h("div", { class: "attention" });
+    for (const f of att) g.append(h("button", { class: "att", onclick: () => focusFinding(f.id) },
+      h("span", { class: "bar", style: `background:var(${f.sev === "error" ? "--crit" : "--warn"})` }),
+      h("span", { class: "tt", text: f.title }),
+      h("span", { class: "dd", text: f.detail })));
+    wrap.append(h("p", { class: "eyebrow", style: "margin-top:4px", text: "Needs attention" }), g);
+    if (att.length > 3) wrap.append(h("button", { class: "more att-more", text: `show all ${att.length}`, onclick: e => { g.classList.add("all"); e.target.remove(); } }));
+  }
+  return wrap;
+}
+// One tick per raw run, in grid order, coloured by its status: an at-a-glance fingerprint of the dataset.
+function runStatus(r) {
+  if (r.mot && exclusion(r.mot).length) return ["excluded at current motion thresholds", "--crit"];
+  if (r.mot && spikes(r.mot) == null) return ["within mean-FD threshold (spikes not evaluated)", "--q2"];
+  if (r.mot) return ["motion known, within thresholds", "--q3"];
+  if (D.prep.length || D.mriqc.length) return ["motion unknown", "hatch"];
+  return ["raw run", "--q3"];
+}
+function runRibbon() {
+  const runs = D.runs.slice().sort((a, b) => natural(a.sub, b.sub) || natural(a.ses || "", b.ses || "") || natural(a.task || "", b.task || "") || natural(a.run || "", b.run || ""));
+  if (!runs.length) return null;
+  const box = h("div", { class: "ribbon", "aria-label": "Run status ribbon" });
+  function draw() {
+    box.innerHTML = "";
+    const nSub = new Set(runs.map(r => r.sub)).size, sgap = runs.length / nSub > 1 && runs.length < 600 ? 4 : 0;
+    const full = Math.max(280, innerW(box) || 900), n = runs.length, w = Math.min(14, (full - sgap * (nSub - 1)) / n), W = Math.min(full, w * n + sgap * (nSub - 1)), H = 28, gap = w > 3 ? 1.5 : 0;
+    let off = 0;
+    const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, style: "display:block", role: "img", "aria-label": `${runs.length} BOLD runs coloured by motion status; open a run from the grid with the keyboard` });
+    svg.append(s("defs", {}, s("pattern", { id: "rhatch", patternUnits: "userSpaceOnUse", width: 4, height: 4, patternTransform: "rotate(45)" }, s("rect", { width: 4, height: 4, fill: css("--absent") }), s("line", { x1: 0, y1: 0, x2: 0, y2: 4, stroke: css("--hatch"), "stroke-width": 1.6 }))));
+    const counts = new Map(); let prevSub = null, errN = 0, scrN = 0;
+    runs.forEach((r, i) => {
+      const [lab, col] = runStatus(r); counts.set(lab, (counts.get(lab) || { col, n: 0 })); counts.get(lab).n++;
+      if (prevSub !== null && r.sub !== prevSub) off += sgap;
+      prevSub = r.sub;
+      const x = i * w + off;
+      const rfs = runFindings(r), err = rfs.some(f => f.severity === "error"), scr = !err && rfs.some(f => f.category === "quality");
+      if (err) errN++; if (scr) scrN++;
+      if (err || scr) svg.append(s("rect", { x, y: H - 4, width: Math.max(0.6, w - gap), height: 4, fill: css(err ? "--crit" : "--serious"), "pointer-events": "none" }));
+      const rect = s("rect", { x, y: 0, width: Math.max(0.6, w - gap), height: H - 7, rx: w > 4 ? 1.5 : 0, fill: col === "hatch" ? "url(#rhatch)" : css(col) });
+      rect.style.cursor = "pointer"; rect.setAttribute("tabindex", i === 0 ? "0" : "-1"); rect.setAttribute("aria-label", `sub-${r.sub} ${runLabel(r)}: ${lab}`);
+      rect.addEventListener("click", () => openRun(r, rect));
+      rect.addEventListener("keydown", e => { const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (step) { e.preventDefault(); const all = [...svg.querySelectorAll("rect[tabindex]")]; const k = Math.max(0, Math.min(all.length - 1, all.indexOf(rect) + step)); all.forEach(x => x.setAttribute("tabindex", "-1")); all[k].setAttribute("tabindex", "0"); all[k].focus(); } else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openRun(r, rect); } });
+      tipOn(rect, () => tipBox(`sub-${r.sub} ${runLabel(r)}`, [["status", lab], ["mean FD", r.mot ? fmt(r.mot.fd.mean, 3) + " mm" : null], ["errors", runFindings(r).filter(f => f.severity === "error").map(f => f.title).join("; ") || null]]));
+      svg.append(rect);
+    });
+    box.append(svg);
+    const leg = h("div", { class: "legend", style: "margin-top:6px" }, h("span", { class: "muted", text: `${runs.length} BOLD runs, by subject` }));
+    for (const [lab, { col, n }] of counts) leg.append(h("span", {}, h("i", { style: col === "hatch" ? "background:repeating-linear-gradient(45deg,var(--absent) 0 2px,var(--hatch) 2px 4px)" : `background:var(${col})` }), `${lab} ${n}`));
+    if (errN) leg.append(h("span", {}, h("i", { style: "background:var(--crit);height:4px;vertical-align:2px" }), `underline: error finding ${errN}`));
+    if (scrN) leg.append(h("span", {}, h("i", { style: "background:var(--serious);height:4px;vertical-align:2px" }), `underline: MRIQC screening flag ${scrN}`));
+    box.append(leg);
+  }
+  requestAnimationFrame(draw); redraws.push(draw);
+  return box;
+}
+let findingsApi = null;
+function focusFinding(id) { if (findingsApi) findingsApi.reveal(id); }
+
+// ------------------------------------------------------------------ overview
+function tile(v, l, sub) { return h("div", { class: "tile" }, h("div", { class: "v" }, v), h("div", { class: "l", text: l }), sub ? h("div", { class: "sub", text: sub }) : null); }
+function frac(a, b) { return [a.toLocaleString(), h("small", { text: ` / ${b.toLocaleString()}` })]; }
+function boldSummary() {
+  const vals = k => [...new Set(D.runs.map(r => (r.meta || {})[k]).filter(v => v != null))];
+  const trs = vals("RepetitionTime"), mbs = vals("MultibandAccelerationFactor");
+  return [trs.length ? `TR ${trs.length > 2 ? trs.length + " values" : trs.join("/") + " s"}` : null, mbs.length ? `MB ${mbs.join("/")}` : null].filter(Boolean).join(" · ");
+}
+function buildOverview(el) {
+  const st = M.image_states || {};
+  const nimg = Object.values(st).reduce((a, b) => a + b, 0);
+  const sesN = (M.sessions || []).length;
+  const P = M.participants || {};
+  const tiles = h("div", { class: "tiles", style: "margin-top:20px" },
+    tile(D.subjects.length.toLocaleString(), "subjects", P.present ? `${fmt(P.n_rows)} rows in participants.tsv` : "no participants.tsv"),
+    tile(sesN ? String(sesN) : "—", "sessions", sesN ? (M.sessions || []).map(x => "ses-" + x).slice(0, 4).join(", ") : "single-session layout"),
+    tile(String(D.tasks.length), D.tasks.length === 1 ? "task" : "tasks", D.tasks.slice(0, 4).join(", ") + (D.tasks.length > 4 ? "…" : "")),
+    tile(D.runs.length.toLocaleString(), "BOLD runs", [boldSummary(), D.multiEcho ? `${D.echoes.length > 1 ? D.echoes.length + " echoes" : "multi-echo"}` : "single-echo", D.derivOnly.length ? `+${D.derivOnly.length} derivative-only` : null].filter(Boolean).join(" · ")),
+    D.prep.length ? tile(frac(D.runs.filter(r => r.conf && r.conf.fd).length, D.runs.length), "runs with confounds", D.confAll.length > D.confUsable.length ? `${plural(D.confAll.length - D.confUsable.length, "confound file")} not fetched` : "all fetched") :
+      tile(String(D.derivs.length), "derivatives", D.derivs.map(d => d.name).slice(0, 3).join(", ") || "none"),
+    tile(fmt(M.n_files), "files", nimg ? `${(st.present || 0).toLocaleString()} / ${nimg.toLocaleString()} images local` : ""));
+  el.append(tiles);
+  const left = h("div", { class: "card" }, h("h3", { text: "Dataset description" }));
+  const dl = h("dl", { class: "kv" });
+  const auth = Array.isArray(D.desc.Authors) ? D.desc.Authors : [];
+  const add = (k, v, clamp) => { if (v == null || v === "" || (Array.isArray(v) && !v.length)) return; const dd = h("dd", {}); if (clamp && String(v).length > 180) { const span = h("span", { class: "clamp", text: String(v) }); dd.append(span, h("button", { class: "more", text: "more", onclick: e => { span.classList.toggle("open"); e.target.textContent = span.classList.contains("open") ? "less" : "more"; } })); } else dd.textContent = String(v); dl.append(h("dt", { text: k }), dd); };
+  add("Name", D.desc.Name);
+  add("Authors", auth.length ? (auth.length > 8 ? auth.slice(0, 8).join(", ") + ` + ${auth.length - 8} more` : auth.join(", ")) : null);
+  add("License", D.desc.License, true);
+  add("Funding", Array.isArray(D.desc.Funding) ? D.desc.Funding.join("; ") : D.desc.Funding, true);
+  add("Ethics", Array.isArray(D.desc.EthicsApprovals) ? D.desc.EthicsApprovals.join("; ") : null, true);
+  add("How to cite", D.desc.HowToAcknowledge, true);
+  add("References", Array.isArray(D.desc.ReferencesAndLinks) ? D.desc.ReferencesAndLinks.join("; ") : null, true);
+  if (!dl.children.length) dl.append(h("dt", { text: "—" }), h("dd", { class: "muted", text: "No dataset_description.json fields." }));
+  left.append(dl);
+  if (M.readme) { const pre = h("pre", { class: "readme", text: M.readme }); left.append(h("h3", { text: "README", style: "margin-top:16px" }), pre); if (M.readme.split("\n").length > 6 || M.readme.length > 500) left.append(h("button", { class: "more", style: "margin-top:6px", text: "show full README", onclick: e => { pre.classList.toggle("open"); e.target.textContent = pre.classList.contains("open") ? "collapse" : "show full README"; } })); }
+  const right = h("div", { class: "card" }, h("h3", { text: "Datatypes" }));
+  const dts = M.datatypes || {};
+  const tot = Object.entries(dts).map(([k, v]) => [k, Object.values(v).reduce((a, b) => a + b, 0)]).sort((a, b) => b[1] - a[1]);
+  const mx = Math.max(1, ...tot.map(x => x[1]));
+  for (const [k, n] of tot) {
+    const suf = Object.entries(dts[k]).sort((a, b) => b[1] - a[1]).map(([a, b]) => `${a} ${b}`).join(" · ");
+    right.append(h("div", { class: "bar-row" }, h("span", { class: "lab mono", text: k }), h("div", { class: "track", title: suf }, h("div", { class: "fill", style: `width:${100 * n / mx}%` })), h("span", { class: "val", text: fmt(n) })));
+    right.append(h("div", { class: "small muted", style: "margin:-2px 0 6px 0;padding-left:2px", text: suf }));
+  }
+  if (!tot.length) right.append(h("div", { class: "empty", text: "No subject-level data files found." }));
+  right.append(h("h3", { text: "Image payloads", style: "margin-top:16px" }));
+  const states = [["present", "present locally", "--s1"], ["annex", "git-annex, not fetched", "--hatch"], ["placeholder", "zero-byte placeholder", "--axis"], ["broken", "broken link", "--crit"]];
+  const bar = h("div", { style: "display:flex;height:12px;border-radius:4px;overflow:hidden;gap:2px" });
+  const leg = h("div", { class: "legend" });
+  for (const [k, lab, col] of states) { const n = st[k] || 0; if (!n) continue; bar.append(h("div", { style: `flex:${n};background:var(${col})` })); leg.append(h("span", {}, h("i", { style: `background:var(${col})` }), `${lab} ${fmt(n)}`)); }
+  right.append(nimg ? bar : h("div", { class: "empty", text: "No image files." }), leg);
+  if (nimg && !st.present) right.append(h("p", { class: "small muted", text: "No image content is local, so volume counts come from confounds or MRIQC where available." }));
+  if (M.bytes_present) right.append(h("div", { class: "small muted", style: "margin-top:6px", text: `${bytes(M.bytes_present)} of image data on disk` }));
+  D.aboutCard = h("div", { class: "grid2" }, left, right);
+}
+
+// ------------------------------------------------------------------ findings
+function buildFindings(el) {
+  if (!D.findings.length) { el.append(h("div", { class: "card empty", text: "No findings. Either the dataset is clean or there was little to inspect." })); return; }
+  const cats = [...new Set(D.findings.map(f => f.category))].sort();
+  const sev = new Set(["error", "warn", "info"]); let cat = "all", q = "";
+  const list = h("div"), card = h("div", { class: "card" });
+  const sevSeg = h("div", { class: "seg", role: "group", "aria-label": "Severity" });
+  for (const k of ["error", "warn", "info"]) { const b = h("button", { "aria-pressed": "true", text: sevLabel(k, D.sev[k] || 0), onclick: () => { sev.has(k) ? sev.delete(k) : sev.add(k); b.setAttribute("aria-pressed", sev.has(k)); draw(); } }); sevSeg.append(b); }
+  const catSel = h("select", { "aria-label": "Category", onchange: e => { cat = e.target.value; draw(); } }, h("option", { value: "all", text: "all categories" }), ...cats.map(c => h("option", { value: c, text: c })));
+  const search = h("input", { type: "search", placeholder: "filter text or path…", "aria-label": "Filter findings", oninput: e => { q = e.target.value.toLowerCase(); draw(); } });
+  card.append(h("div", { class: "toolbar" }, sevSeg, catSel, search), list);
+  el.append(card);
+  const nodes = new Map();
+  function draw() {
+    list.innerHTML = ""; nodes.clear();
+    const fs = D.findings.filter(f => sev.has(f.severity) && (cat === "all" || f.category === cat) && (!q || (f.title + " " + f.detail + " " + (f.paths || []).join(" ")).toLowerCase().includes(q)));
+    if (!fs.length) list.append(h("div", { class: "empty", text: "Nothing matches these filters." }));
+    for (const f of fs) {
+      const it = h("div", { class: "finding closed", id: "f-" + f.id });
+      const hasPaths = f.paths && f.paths.length;
+      const btn = h("button", { class: "fh", "aria-expanded": "false", onclick: () => { it.classList.toggle("closed"); btn.setAttribute("aria-expanded", !it.classList.contains("closed")); } },
+        h("span", { class: "chev", "aria-hidden": "true", text: hasPaths ? "›" : "" }), h("span", { class: "sev " + f.severity, text: f.severity === "warn" ? "warning" : f.severity === "info" ? "note" : "error" }), h("span", { class: "ft", text: f.title }),
+        f.source === "agent" ? h("span", { class: "chip", text: "reviewed" }) : null,
+        h("span", { class: "fc", text: `${f.category}${f.count > 1 ? " · " + f.count.toLocaleString() : ""}` }));
+      const body = h("div", { class: "body" });
+      if (f.detail) body.append(h("p", { class: "fd", text: f.detail }));
+      if (hasPaths) { const ul = h("ul"); for (const p of f.paths) ul.append(h("li", { text: p })); if (f.count > f.paths.length) ul.append(h("li", { class: "muted", text: `… ${(f.count - f.paths.length).toLocaleString()} more` })); body.append(ul); }
+      it.append(btn, body); list.append(it); nodes.set(f.id, it);
+    }
+  }
+  draw();
+  findingsApi = { reveal(id) { if (!nodes.has(id)) { sev.add("error"); sev.add("warn"); sev.add("info"); cat = "all"; q = ""; search.value = ""; catSel.value = "all"; sevSeg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", "true")); draw(); } const n = nodes.get(id); if (!n) return; n.classList.remove("closed"); const b = n.querySelector(".fh"); b.setAttribute("aria-expanded", "true"); n.scrollIntoView({ block: "center", behavior: "smooth" }); b.focus({ preventScroll: true }); } };
+}
+
+// ------------------------------------------------------------------ grid
+const NOT_APPLICABLE = Symbol("not applicable");  // e.g. events for a rest run; distinct from "no data"
+const METRICS = [
+  { k: "presence", l: "Presence" },
+  { k: "fd", l: () => D.multiEcho && D.motion.some(m => m.src === "MRIQC") ? "Mean FD (echo-1)" : "Mean FD", need: () => D.motion.length, unit: "mm", v: r => r.mot ? r.mot.fd.mean : undefined, lo: 0, hi: () => 0.6 },
+  { k: "pct", l: () => D.prep.length ? `% FD > ${state.fd}` : `% FD > ${QC_T} (MRIQC)`, need: () => D.motion.length, unit: "%", v: r => !r.mot ? undefined : (!D.prep.length && r.mot.src === "MRIQC" ? (r.iqms[0] || {}).m?.fd_perc : pctSpikes(r.mot)), lo: 0, hi: () => Math.max(state.pct * 1.5, 10) },
+  { k: "dvars", l: "std DVARS", need: () => D.confUsable.length, unit: "", v: r => r.conf && r.conf.std_dvars ? r.conf.std_dvars.mean : undefined, lo: 0.9, hi: () => 1.5 },
+  { k: "tsnr", l: () => `tSNR (MRIQC${echoLabel()})`, need: () => D.iqm.size, unit: "", v: r => r.iqm ? r.iqm.m.tsnr : undefined, lo: null, hi: null, reverse: true },
+  { k: "events", l: "Events", need: () => D.runs.some(r => r.events), unit: "", v: r => r.events ? r.events.n : (/rest/i.test(r.task || "") ? NOT_APPLICABLE : undefined), lo: null, hi: null },
+  { k: "fmap", l: "Fieldmap", need: () => (M.fmap || []).length },
+];
+const metricLabel = m => typeof m.l === "function" ? m.l() : m.l;
+// The state of a cell: no run / run without the metric (hatched) / value.
+function cellValue(r, m) { if (!r) return { kind: "none" }; if (m.k === "presence" || m.k === "fmap") return { kind: "cat" }; const v = m.v(r); return v === NOT_APPLICABLE ? { kind: "nil" } : v == null ? { kind: "na" } : { kind: "val", v }; }
+function presenceCat(r) {
+  if (!r.raw) return ["derivative only", "outline-warn"];
+  if (D.prep.length) {
+    if (r.conf && r.conf.fd) return ["confounds available", "--q3"];
+    if (r.conf) return ["confounds not fetched", "hatch"];
+    return ["no fMRIPrep output", "--warn"];
+  }
+  return r.state === "present" ? ["image local", "--q3"] : ["image not fetched", "hatch"];
+}
+function fmapCat(r) { if (!r.raw) return ["n/a", "--absent"]; return (r.fmaps && r.fmaps.length) || r.b0_source ? ["fieldmap targets this run", "--q3"] : ["no fieldmap", "--warn"]; }
+function buildGrid(el) {
+  if (!D.allRuns.length) { el.append(h("div", { class: "card empty", text: "No BOLD runs found." })); return; }
+  // Column groups: (session, task); members: acq/dir/run combinations.
+  const groups = new Map();
+  for (const r of D.allRuns) { const g = (r.ses ? "ses-" + r.ses + " · " : "") + (r.task || "(no task)"); if (!groups.has(g)) groups.set(g, new Map()); const sub = [r.acq && "acq-" + r.acq, r.dir && "dir-" + r.dir, r.run && "r" + r.run].filter(Boolean).join(" ") || "·"; groups.get(g).set(sub, true); }
+  const cols = [];
+  for (const g of [...groups.keys()].sort(natural)) for (const sub of [...groups.get(g).keys()].sort(natural)) cols.push({ g, sub });
+  const colIdx = new Map(cols.map((c, i) => [c.g + "|" + c.sub, i]));
+  const cellOf = new Map();
+  for (const r of D.allRuns) { const g = (r.ses ? "ses-" + r.ses + " · " : "") + (r.task || "(no task)"); const sub = [r.acq && "acq-" + r.acq, r.dir && "dir-" + r.dir, r.run && "r" + r.run].filter(Boolean).join(" ") || "·"; cellOf.set(r.sub + "|" + colIdx.get(g + "|" + sub), r); }
+  D.gridOrder = []; for (const sb of D.subjects) cols.forEach((c, j) => { const r = cellOf.get(sb + "|" + j); if (r) D.gridOrder.push(r); });
+  const card = h("div", { class: "card" });
+  const seg = h("div", { class: "seg", role: "group", "aria-label": "Colour cells by" });
+  const metrics = METRICS.filter(m => !m.need || m.need());
+  if (!metrics.find(m => m.k === state.metric)) state.metric = "presence";
+  const btns = metrics.map(m => { const b = h("button", { "aria-pressed": String(state.metric === m.k), text: metricLabel(m), onclick: () => { state.metric = m.k; btns.forEach((x, i) => x.setAttribute("aria-pressed", String(metrics[i].k === m.k))); draw(); } }); return b; });
+  seg.append(...btns);
+  const wrap = h("div", { class: "hscroll" }), legend = h("div", { class: "legend" });
+  const unf = D.runs.filter(r => r.conf && !r.conf.fd), unfQc = unf.filter(r => r.mot);
+  const note = unf.length ? h("div", { class: "note warn", style: "margin-bottom:12px" }, h("b", { text: `${unf.length} of ${plural(D.confAll.length, "confound file")} not fetched` }), ` (zero-byte or annexed).${unfQc.length ? ` Under Mean FD, ${unfQc.length === unf.length ? "all" : unfQc.length} of them use MRIQC's FD and carry a small corner dot.` : ""} Cells with no estimate are hatched: unknown, not good.`) : null;
+  card.append(h("div", { class: "toolbar" }, seg, h("span", { class: "small muted", text: `${D.subjects.length} subjects × ${cols.length} run slots` })), note, wrap, legend);
+  el.append(card);
+  function draw() {
+    btns.forEach((b, i) => b.textContent = metricLabel(metrics[i]));
+    wrap.innerHTML = ""; legend.innerHTML = "";
+    const m = metrics.find(x => x.k === state.metric);
+    const avail = Math.max(320, card.clientWidth - 36);
+    const left = 14 + 6.8 * Math.max(...D.subjects.map(x => ("sub-" + x).length));
+    const sumW = 92, gap = 6, ng = groups.size;
+    const cw = Math.max(16, Math.min(D.subjects.length > 80 ? 26 : D.subjects.length > 40 ? 36 : 52, Math.floor((avail - left - sumW - gap * (ng - 1)) / cols.length)));
+    // Group labels set a minimum group width so task names never truncate (within the available width).
+    const gcount = {}; for (const c of cols) gcount[c.g] = (gcount[c.g] || 0) + 1;
+    const gw = {}; for (const g of Object.keys(gcount)) gw[g] = cw;
+    const taskOf = g => g.includes(" · ") ? g.split(" · ")[1] : g;
+    const angled = Object.keys(gcount).some(g => taskOf(g).length * 6.8 + 6 > gcount[g] * cw + gap);
+    const lift = angled ? Math.ceil(Math.max(...Object.keys(gcount).map(g => taskOf(g).length)) * 6.8 * 0.5) + 6 : 0;
+    const ch = D.subjects.length > 80 ? 11 : D.subjects.length > 40 ? 15 : 22;
+    const twoLine = cols.some(c => c.g.includes(" · "));
+    const top = (twoLine ? 56 : 44) + lift;
+    const xOf = j => { let gi = 0, prev = null; for (let i = 0; i <= j; i++) { if (prev !== null && cols[i].g !== prev) gi++; prev = cols[i].g; } let x = left; for (let i = 0; i < j; i++) x += wOf(i); return x + gi * gap; };
+    const wOf = j => gw[cols[j].g];
+    const W = xOf(cols.length - 1) + wOf(cols.length - 1) + 12 + sumW, H = top + D.subjects.length * ch + 6;
+    const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "grid", "aria-label": "Acquisition grid", style: "display:block" });
+    svg.append(s("defs", {}, s("pattern", { id: "hatch", patternUnits: "userSpaceOnUse", width: 5, height: 5, patternTransform: "rotate(45)" }, s("rect", { width: 5, height: 5, fill: css("--absent") }), s("line", { x1: 0, y1: 0, x2: 0, y2: 5, stroke: css("--hatch"), "stroke-width": 2 }))));
+    // headers
+    let start = 0;
+    for (let j = 1; j <= cols.length; j++) if (j === cols.length || cols[j].g !== cols[start].g) {
+      const x0 = xOf(start), x1 = xOf(j - 1) + wOf(j - 1), label = cols[start].g, maxc = Math.max(3, Math.floor((x1 - x0) / 6.4));
+      const [ses, task] = label.includes(" · ") ? label.split(" · ") : [null, label];
+      const fit = t => t.length > maxc ? t.slice(0, maxc - 1) + "…" : t;
+
+      const ty = lift + (twoLine ? 26 : 14);
+      // Angle the task name (30°) when it is wider than its group, so cells never stretch to fit a label.
+      const t = angled ? s("text", { x: x0 + 2, y: ty, class: "lab", transform: `rotate(-30 ${x0 + 2} ${ty})`, text: task }) : s("text", { x: x0, y: ty, class: "lab", text: fit(task) });
+      t.append(s("title", { text: label })); svg.append(t);
+      svg.append(s("line", { x1: x0, x2: x1 - 2, y1: ty + 6, y2: ty + 6, stroke: css("--axis") }));
+      start = j;
+    }
+    // Session headers span every column of a contiguous session block.
+    if (twoLine) { let a = 0; for (let j = 1; j <= cols.length; j++) { const sesOf = k => cols[k].g.includes(" · ") ? cols[k].g.split(" · ")[0] : ""; if (j === cols.length || sesOf(j) !== sesOf(a)) { const x0 = xOf(a), x1 = xOf(j - 1) + wOf(j - 1); if (sesOf(a)) { svg.append(s("text", { x: x0, y: 11, text: sesOf(a), style: "font-size:10.5px;font-weight:600" })); svg.append(s("line", { x1: x0, x2: x1 - 2, y1: 15, y2: 15, stroke: css("--grid") })); } a = j; } } }
+    if (cw >= 16) cols.forEach((c, j) => { if (c.sub === "·") return; const cwj = wOf(j), lab = c.sub.length * 5.6 > cwj ? (c.sub.match(/r\d+$/) || [c.sub.slice(0, 3)])[0] : c.sub; svg.append(s("text", { x: xOf(j) + cwj / 2, y: top - 8, "text-anchor": "middle", text: lab, style: "font-size:10px" })); });
+    svg.append(s("text", { x: W - sumW + 4, y: top - 8, text: m.k === "presence" || m.k === "fmap" ? "runs" : "subject median", style: "font-size:10px" }));
+    // values and scale
+    const vals = D.allRuns.map(r => m.v ? m.v(r) : null).filter(v => typeof v === "number").sort((a, b) => a - b);
+    let lo = m.lo, hi = m.hi ? m.hi() : null;
+    if (lo == null) lo = vals.length ? vals[Math.floor(vals.length * 0.02)] : 0;
+    if (hi == null) hi = vals.length ? vals[Math.floor(vals.length * 0.98)] : 1;
+    if (hi <= lo) hi = lo + 1;
+    // Motion metrics: blues up to the exclusion threshold, status colours beyond it.
+    const pctInForce = D.prep.length || Math.abs(state.fd - QC_T) < 1e-9;
+    const thr = m.k === "fd" ? state.meanFd : (m.k === "pct" && pctInForce) ? state.pct : null;
+    if (thr != null) { lo = 0; hi = thr; }
+    const below = ["--q1", "--q2", "--q3", "--q4"];
+    const colorOf = v => { if (thr != null && v > thr) return css("--crit"); let t = (v - lo) / (hi - lo); if (m.reverse) t = 1 - t; t = Math.max(0, Math.min(0.999, t)); return css(below[Math.floor(t * below.length)]); };
+    const cells = [];
+    D.subjects.forEach((sb, i) => {
+      const y = top + i * ch;
+      svg.append(s("text", { x: left - 8, y: y + ch * 0.72, "text-anchor": "end", text: "sub-" + sb, class: "ink", style: ch < 14 ? "font-size:9.5px" : "" }));
+      const rowVals = [];
+      let nRuns = 0;
+      cols.forEach((c, j) => {
+        const r = cellOf.get(sb + "|" + j); const x = xOf(j);
+        const cv = cellValue(r, m);
+        if (cv.kind === "na" && (m.k === "fd" || m.k === "pct") && r && r.mot && exclusion(r.mot).length) cv.kind = "excl";
+        if (r && !r.raw && (m.k === "fd" || m.k === "pct")) cv.kind = "deriv";
+        if (cv.kind === "none") { svg.append(s("rect", { x: x + 1.5, y: y + 1.5, width: wOf(j) - 3, height: ch - 3, rx: 2.5, fill: "none", stroke: css("--axis"), "stroke-dasharray": "2 2" })); return; }
+        nRuns++;
+        let fill, label;
+        let outline = null;
+        if (cv.kind === "cat") { const [lab, col] = m.k === "fmap" ? fmapCat(r) : presenceCat(r); if (col === "outline-warn") { fill = css("--surface"); outline = css("--warn"); } else fill = col === "hatch" ? "url(#hatch)" : css(col); label = lab; }
+        else if (cv.kind === "na") { fill = "url(#hatch)"; label = "no data for this metric"; }
+        else if (cv.kind === "nil") { fill = css("--absent"); label = "not applicable (rest run)"; }
+        else if (cv.kind === "deriv") { fill = css("--surface"); outline = css("--warn"); label = "derivative only: not part of motion decisions"; }
+        else if (cv.kind === "excl") { fill = css("--crit"); label = "excluded (this metric is not available for the run)"; }
+        else { fill = (m.k === "fd" || m.k === "pct") && r.mot && exclusion(r.mot).length ? css("--crit") : colorOf(cv.v); label = fmt(cv.v, 3) + (m.unit ? " " + m.unit : ""); rowVals.push(cv.v); }
+        const rect = s("rect", { class: "cell", x: x + 1, y: y + 1, width: wOf(j) - 2, height: ch - 2, rx: 2.5, fill, stroke: outline, "stroke-width": outline ? 2 : null, tabindex: -1, role: "gridcell", "aria-label": `sub-${sb} ${runLabel(r)}: ${label}` });
+        rect.addEventListener("click", () => openRun(r, rect));
+        rect.addEventListener("keydown", e => cellKey(e, i, j));
+        tipOn(rect, () => runTip(r, `sub-${sb} ${runLabel(r)}`, label));
+        svg.append(rect); cells.push({ i, j, rect });
+        if (m.k === "fd" && r.mot && r.mot.src === "MRIQC" && cv.kind === "val" && D.motion.some(x => x.src !== "MRIQC")) svg.append(s("circle", { cx: x + wOf(j) - 5, cy: y + 5, r: 1.8, fill: css("--surface"), "pointer-events": "none" }));
+        const ex = exclusion(r.mot);
+        if (ex && ex.length && m.k !== "presence" && m.k !== "fmap") svg.append(s("circle", { cx: x + wOf(j) / 2, cy: y + ch / 2, r: Math.min(3, ch / 5), fill: css("--surface"), stroke: "none", "pointer-events": "none" }));
+      });
+      // per-subject summary
+      const sx = W - sumW + 4;
+      if (m.k === "presence" || m.k === "fmap" || !rowVals.length) svg.append(s("text", { x: sx, y: y + ch * 0.72, text: m.k === "presence" || m.k === "fmap" ? `${nRuns}` : "—", class: "ink", style: "font-size:10.5px" }));
+      else { const md = median(rowVals); const bw = 46 * Math.max(0, Math.min(1, (m.reverse ? hi - md : md - lo) / (hi - lo))); svg.append(s("rect", { x: sx, y: y + ch / 2 - 3, width: 46, height: 6, rx: 3, fill: css("--surface-2") }), s("rect", { x: sx, y: y + ch / 2 - 3, width: md > 0 ? Math.max(2, bw) : 0, height: 6, rx: 3, fill: css("--q3") }), s("text", { x: sx + 52, y: y + ch * 0.72, text: fmt(md, md >= 10 ? 0 : 2) + (m.unit === "%" ? "%" : ""), class: "ink", style: "font-size:10.5px" })); }
+    });
+    wrap.append(svg);
+    // roving keyboard focus
+    const at = new Map(cells.map(c => [c.i + "," + c.j, c.rect]));
+    if (cells.length) cells[0].rect.setAttribute("tabindex", "0");
+    gridNav = (i, j, di, dj) => { let ni = i, nj = j; for (let k = 0; k < 400; k++) { ni += di; nj += dj; if (ni < 0 || nj < 0 || ni >= D.subjects.length || nj >= cols.length) return; const r = at.get(ni + "," + nj); if (r) { cells.forEach(c => c.rect.setAttribute("tabindex", "-1")); r.setAttribute("tabindex", "0"); r.focus(); return; } } };
+    // legend
+    if (m.k === "presence" || m.k === "fmap") {
+      const seen = new Map(); for (const r of D.allRuns) { const [lab, col] = m.k === "fmap" ? fmapCat(r) : presenceCat(r); seen.set(lab, (seen.get(lab) || { col, n: 0 })); seen.get(lab).n++; }
+      for (const [lab, { col, n }] of seen) legend.append(h("span", {}, h("i", { style: col === "hatch" ? `background:repeating-linear-gradient(45deg,var(--absent) 0 2px,var(--hatch) 2px 4px)` : col === "outline-warn" ? "background:var(--surface);box-shadow:inset 0 0 0 2px var(--warn)" : `background:var(${col})` }), `${lab} (${n})`));
+    } else {
+      if (thr != null) legend.append(h("span", { text: "0" }), h("span", { class: "ramp" }, ...below.map(c => h("i", { style: `background:var(${c})` }))), h("span", { text: `${thr} ${m.unit}` }));
+      else legend.append(h("span", { text: (m.reverse ? "high " : "") + fmt(m.reverse ? hi : lo, lo >= 10 ? 0 : 2) }), h("span", { class: "ramp" }, ...below.map(c => h("i", { style: `background:var(${c})` }))), h("span", { text: fmt(m.reverse ? lo : hi, hi >= 10 ? 0 : 2) + (m.reverse ? " low" : "+") + (m.unit ? " " + m.unit : "") }));
+      if ((m.k === "fd" || m.k === "pct") && D.runs.some(r => r.mot && exclusion(r.mot).length)) legend.append(h("span", {}, h("i", { style: "background:var(--crit);box-shadow:inset 0 0 0 3.5px var(--crit),inset 0 0 0 6px var(--surface)" }), "excluded (mean FD or spikes; dot marks the cell)"));
+      legend.append(h("span", {}, h("i", { style: "background:repeating-linear-gradient(45deg,var(--absent) 0 2px,var(--hatch) 2px 4px)" }), "run exists, metric unavailable"));
+      if ((m.k === "fd" || m.k === "pct") && D.derivOnly.length) legend.append(h("span", {}, h("i", { style: "background:var(--surface);box-shadow:inset 0 0 0 2px var(--warn)" }), "derivative only (not in motion decisions)"));
+      if (m.k === "events" && D.runs.some(r => !r.events && /rest/i.test(r.task || ""))) legend.append(h("span", {}, h("i", { style: "background:var(--absent)" }), "not applicable (rest)"));
+      if (m.k !== "fd" && m.k !== "pct" && D.runs.some(r => r.mot && exclusion(r.mot).length)) legend.append(h("span", {}, h("i", { style: "background:var(--q2);box-shadow:inset 0 0 0 3.5px var(--q2),inset 0 0 0 6px var(--surface)" }), "dot = excluded for motion"));
+
+      if (m.k === "fd" && D.motion.some(x => x.src === "MRIQC") && D.motion.some(x => x.src !== "MRIQC")) legend.append(h("span", {}, h("i", { style: "background:var(--q4);box-shadow:inset -3px 3px 0 -1px var(--surface)" }), "corner dot = FD from MRIQC"));
+    }
+    legend.append(h("span", {}, h("i", { style: "border:1px dashed var(--axis);background:none" }), "no run"));
+  }
+  draw(); redraws.push(draw);
+}
+let gridNav = null;
+function cellKey(e, i, j) {
+  const map = { ArrowRight: [0, 1], ArrowLeft: [0, -1], ArrowDown: [1, 0], ArrowUp: [-1, 0] };
+  if (map[e.key] && gridNav) { e.preventDefault(); gridNav(i, j, ...map[e.key]); }
+  else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.target.dispatchEvent(new MouseEvent("click")); }
+}
+function runTip(r, title, value) {
+  const c = r.conf, mo = r.mot;
+  const ex = mo ? exclusion(mo) : null;
+  return tipBox(title, [["value", value], ["motion", !r.raw ? "not part of motion decisions" : !mo ? "unknown" : ex.length ? "excluded: " + ex.join("; ") : spikes(mo) == null ? "kept on mean FD only" : "kept"], ["raw", r.raw ? r.state : "none (derivative only)"], ["confounds", c ? (c.fd ? "available" : "not fetched") : "none"], ["mean FD", mo ? fmt(mo.fd.mean, 3) + " mm" + (mo.src === "MRIQC" ? " (MRIQC)" : "") : null], ["volumes", r.nvols ? `${fmt(r.nvols)} (${r.nvols_source})` : null], [`tSNR${echoLabel()}`, r.iqm ? fmt(r.iqm.m.tsnr, 1) : null], ["events", r.events ? fmt(r.events.n) : null]]);
+}
+
+// ------------------------------------------------------------------ run drawer
+let lastOpener = null;
+function closeDrawer() { $("#backdrop").classList.remove("on"); const d = $("#drawer"); d.classList.remove("open"); d.setAttribute("aria-hidden", "true"); d.setAttribute("inert", ""); if (lastOpener && document.contains(lastOpener)) lastOpener.focus({ preventScroll: true }); }
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#drawer").classList.contains("open")) closeDrawer(); });
+function openRun(r, opener, keepFocus) {
+  hideTip(); if (opener) lastOpener = opener; currentRun = r; $("#backdrop").classList.add("on");
+  const d = $("#drawer"); d.innerHTML = "";
+  const order = D.gridOrder || D.allRuns; const idx = order.indexOf(r);
+  const nav = h("div", { style: "display:flex;gap:6px;flex:none" },
+    h("button", { class: "btn", "aria-label": "Previous run", disabled: idx <= 0, onclick: () => openRun(order[idx - 1]), text: "‹" }),
+    h("button", { class: "btn", "aria-label": "Next run", disabled: idx < 0 || idx >= order.length - 1, onclick: () => openRun(order[idx + 1]), text: "›" }),
+    h("button", { class: "btn", id: "drawer-close", onclick: closeDrawer, text: "Close" }));
+  d.append(h("div", { class: "dhead" }, h("div", { style: "min-width:0" }, h("p", { class: "eyebrow", text: "sub-" + r.sub + (idx >= 0 ? ` · run ${idx + 1} of ${order.length}` : "") }), h("h2", { id: "drawer-title", text: runLabel(r) || r.key })), nav));
+  const body = h("div", { class: "dbody" }); d.append(body);
+  const c = r.conf, mo = r.mot, q = r.iqm, meta = r.meta || {}, tr = meta.RepetitionTime;
+  // headline numbers
+  const kp = h("div", { class: "kpis" });
+  const kpi = (v, l, bad) => kp.append(h("div", { class: "kpi" + (bad === "scr" ? " scr" : bad === "wrn" ? " wrn" : bad ? " bad" : "") }, h("div", { class: "v", text: v }), h("div", { class: "l", text: l })));
+  const ex = exclusion(mo);
+  if (mo) {
+    const srcNote = mo.src === "MRIQC" ? ` · MRIQC${mo.echo ? " echo-" + mo.echo : ""}` : "";
+    kpi(fmt(mo.fd.mean, 3), `mean FD (mm${srcNote})${mo.fd.mean > state.meanFd ? ` · > ${state.meanFd}` : ""}`, mo.fd.mean > state.meanFd);
+    if (mo.fd.max != null) kpi(fmt(mo.fd.max, 2), "max FD (mm)");
+    const sp = spikes(mo); if (sp != null) kpi(`${sp}`, `vols FD > ${state.fd} mm${pctSpikes(mo) > state.pct ? ` · > ${state.pct}%` : ""}`, pctSpikes(mo) > state.pct);
+    if (c && c.std_dvars) kpi(fmt(c.std_dvars.mean, 2), "mean std DVARS");
+    if (c && c.max_abs_trans != null) kpi(fmt(c.max_abs_trans, 2), "max |translation| (mm)" + (c.max_abs_trans > 3 ? " · > 3 mm" : ""), c.max_abs_trans > 3 ? "wrn" : false);
+    if (c && c.max_abs_rot_deg != null) kpi(fmt(c.max_abs_rot_deg, 2), "max |rotation| (°)" + (c.max_abs_rot_deg > 3 ? " · > 3°" : ""), c.max_abs_rot_deg > 3 ? "wrn" : false);
+  }
+  if (q && q.m.tsnr != null) kpi(fmt(q.m.tsnr, 1), `tSNR (MRIQC${q.echo ? ", echo-" + q.echo : ""})${(q.outliers || []).includes("tsnr") ? " · screening flag" : ""}`, (q.outliers || []).includes("tsnr") ? "scr" : false);
+  if (r.events) kpi(fmt(r.events.n), "events");
+  if (kp.children.length) body.append(kp);
+  // banners: exclusion, missing preprocessing, and this run's findings
+  const ban = (cls, b, t) => body.append(h("div", { class: "note " + cls, style: "margin:8px 0" }, b ? h("b", { text: b }) : null, t));
+  if (ex && ex.length) ban("bad", "Excluded at current thresholds: ", ex.join("; "));
+  if (mo && mo.src === "MRIQC") ban("", "Motion from MRIQC. ", `fMRIPrep confounds are ${c ? "not fetched" : "absent"} for this run; MRIQC estimates FD from its own realignment${spikes(mo) == null ? `, and reports spikes only at FD > ${QC_T} mm, so the spike criterion is not applied at ` + state.fd + " mm" : ""}.`);
+  else if (r.raw && c && !c.fd) ban("warn", "Motion unknown. ", "The confounds file exists but is not fetched (zero-byte or annexed).");
+  else if (r.raw && !c && D.prep.length) ban("warn", "No fMRIPrep output for this run. ", "Preprocessing was skipped or failed; check the fMRIPrep logs and subject report.");
+  if (!r.raw) ban("warn", "Derivative only. ", "Confounds exist but no raw BOLD run matches this name.");
+  const rf = runFindings(r);
+  const badSide = rf.find(f => f.id === "json-invalid" || f.id === "json-empty");
+  if (badSide) ban("bad", "This run's own sidecar is unusable. ", `${badSide.id === "json-empty" ? "It is empty" : "It does not parse"}; sidecar values below are inherited from higher-level files (see "Where each value comes from"); header and volume rows come from the image itself.`);
+  if (!rf.length && r.raw) body.append(h("p", { class: "small muted", style: "margin:8px 0", text: "No scanner findings attach to this run." }));
+  if (rf.length) {
+    const box = h("div", { class: "card", style: "padding:10px 12px;margin:10px 0;box-shadow:none" }, h("h3", { text: `Findings that touch this run (${rf.length})`, style: "margin:0 0 6px" }));
+    for (const f of rf) box.append(h("button", { class: "frow", title: "Show this finding in the Findings list", onclick: () => { closeDrawer(); focusFinding(f.id); } }, h("span", { class: "sev " + f.severity, text: f.severity === "warn" ? "warning" : f.severity === "info" ? "note" : "error" }), h("span", { class: "small", text: f.title })));
+    body.append(box);
+  }
+  // report links (MRIQC per-run names use zero-padded runs; compare normalized)
+  const links = h("div", { class: "chips", style: "margin:10px 0" });
+  for (const dv of D.derivs) for (const rp of dv.reports || []) { const base = normRun(rp.replace(/\.html$/, "")); if (base === "sub-" + r.sub || base === r.key || base.startsWith(r.key + "_")) links.append(h("a", { class: "btn", href: (dv.report_links || {})[rp] || rp, target: "_blank", rel: "noopener", text: `${dv.name} ${base === "sub-" + r.sub ? "subject" : base.replace(r.key, "").replace(/^_/, "") || "run"} report ↗` })); }
+  if (links.children.length) body.append(links);
+  // traces on one time axis: volume i sits at i × TR
+  const nT = c && c.n_vols ? c.n_vols : 0;
+  const end = Math.max(r.scan_seconds || 0, tr && nT ? tr * nT : 0, (r.events && r.events.end) || 0) || null;
+  const tx = { tr: tr || null, end, w: innerW(body), stride: c && c.decimated && c.trace_fd ? c.n_vols / c.trace_fd.length : 1 };
+  if (c && c.trace_fd) {
+    body.append(h("h3", { text: "Framewise displacement (mm)" }), lineChart([{ name: "FD", v: c.trace_fd, col: "--s1" }], { ...tx, h: 140, thr: state.fd, thrLabel: `${state.fd} mm` }));
+    if (c.trace_std_dvars) body.append(h("h3", { text: "Standardized DVARS" }), lineChart([{ name: "std DVARS", v: c.trace_std_dvars, col: "--ink-2" }], { ...tx, h: 110, thr: 1.5, thrLabel: "1.5" }));
+  }
+  if (r.events && r.events.events && r.events.events.length) body.append(h("h3", { text: "Events" }), eventRaster([r], { end, compact: true, w: innerW(body) }));
+  if (c && c.trace_motion) {
+    const keys = Object.keys(c.trace_motion), tk = keys.filter(k => !/^rot/i.test(k)), rk = keys.filter(k => /^rot/i.test(k));
+    body.append(h("h3", { text: "Translation (mm)" }), lineChart(tk.map((k, i) => ({ name: k, v: c.trace_motion[k], col: SER[i] || SER[0] })), { ...tx, h: 120, legend: true }));
+    body.append(h("h3", { text: "Rotation (°)" }), lineChart(rk.map((k, i) => ({ name: k, v: c.trace_motion[k].map(x => x == null ? null : x * 180 / Math.PI), col: SER[i] || SER[0] })), { ...tx, h: 120, legend: true }));
+  }
+  if (c && c.decimated) body.append(h("p", { class: "small muted", text: `Traces decimated to ${c.decimated} points (peak-preserving); summary numbers use every volume.` }));
+  // metadata, with values that triggered a check marked
+  const dl = h("dl", { class: "kv", style: "margin-top:18px" });
+  // A flag is [text, "error" | "warn"]; plain strings are warnings.
+  const add = (k, v, mono, flag) => { if (v == null || v === "") return; const [msg, sev] = Array.isArray(flag) ? flag : [flag, "warn"]; dl.append(h("dt", { text: k }), h("dd", { class: mono ? "mono" : "", style: msg ? `color:var(${sev === "error" ? "--crit" : "--warn-ink"});font-weight:600` : "", title: msg || "", text: (typeof v === "object" ? JSON.stringify(v) : String(v)) + (msg ? "  ⚠ " + msg : "") })); };
+  add("raw file", r.path, 1); add("state", r.state);
+  if (r.echoes && r.echoes.length > 1) add("echoes", r.echoes.map(e => `echo-${e.echo}: TE ${(e.meta || {}).EchoTime ?? "?"} s`).join(" · "));
+  for (const [k, v] of Object.entries(meta)) {
+    if (k === "EchoTime" && r.echoes.length > 1) continue;
+    let warn = null;
+    if (k === "SliceTiming" && v.n && tr && v.max >= tr) warn = v.max > 5 * tr ? ["values look like milliseconds", "error"] : "reaches or exceeds TR";
+    if (k === "SliceTiming" && !v.n) warn = "present but empty";
+    if (k === "EchoTime" && +v > 1) warn = ["looks like milliseconds", "error"]; else if (k === "EchoTime" && +v > 0.1) warn = "implausibly long for BOLD";
+    if (k === "RepetitionTime" && +v > 20) warn = ["looks like milliseconds", "error"];
+    if (k === "RepetitionTime" && r.hdr && r.hdr.tr && Math.abs(r.hdr.tr - v) > 0.01) warn = `header says ${r.hdr.tr} s`;
+    add(k, k === "SliceTiming" ? (v.n ? `${v.n} slices, ${v.order}, ${v.min}–${v.max} s` : "[]") : v, false, warn);
+  }
+  if (!meta.PhaseEncodingDirection && r.raw) add("PhaseEncodingDirection", "not set", false, "distortion correction cannot use fieldmaps");
+  if (r.hdr) add("header", `${r.hdr.dims.join(" × ")}, TR ${r.hdr.tr ?? "?"} s`);
+  if (r.nvols) add("volumes", `${r.nvols} (${r.nvols_source})`, false, c && c.n_vols && r.nvols_source === "NIfTI header" && c.n_vols !== r.nvols ? [`confounds have ${c.n_vols} rows`, "error"] : null);
+  if (r.fmaps && r.fmaps.length) add("fieldmaps", r.fmaps.join(", "), 1); else if (r.raw && (M.fmap || []).length && !r.b0_source) add("fieldmaps", "none target this run", false, "no distortion correction from fieldmaps");
+  if (r.b0_source) add("B0FieldSource", r.b0_source);
+  add("events", r.events_path ? r.events_path + (r.events_inherited ? " (inherited)" : "") : null, 1); add("physio", r.physio ? "yes" : null);
+  if (c) { add("confounds", c.path, 1); add("confound columns", c.n_cols); add("non-steady-state vols", c.n_nonsteady); add("motion_outlier columns", c.n_motion_outliers != null ? `${c.n_motion_outliers} (flagged by fMRIPrep at run time with its own thresholds)` : null); }
+  body.append(h("h3", { text: "Metadata" }), dl);
+  if (r.iqms.length) {
+    const cols = [["tsnr", "tSNR", 1], ["fd_mean", "mean FD", 3], ["fd_perc", `% FD>${QC_T}`, 1], ["dvars_std", "std DVARS", 2], ["aqi", "AQI", 4], ["gcor", "GCOR", 3], ["dummy_trs", "dummy", 0]].filter(([k]) => r.iqms.some(q => q.m[k] != null));
+    const tb = h("tbody", {}, ...r.iqms.map(q => h("tr", {}, h("td", { class: "mono", text: q.echo ? "echo-" + q.echo : "run" }), ...cols.map(([k, , d]) => { const out = (q.outliers || []).includes(k); return h("td", { class: "num", style: out ? "color:var(--warn-ink);font-weight:650" : "", title: out ? "robust outlier (screening)" : "", text: q.m[k] == null ? "—" : (+q.m[k]).toFixed(d) + (out ? " ●" : "") }); }))));
+    body.append(h("h3", { text: "MRIQC image-quality metrics" }), h("div", { class: "hscroll" }, h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "" }), ...cols.map(([, l]) => h("th", { class: "num", text: l })))), tb)));
+  }
+  if (r.meta_src && Object.keys(r.meta_src).length) {
+    const tb = h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "key" }), h("th", { text: "set in" }))), h("tbody", {}, ...Object.entries(r.meta_src).map(([k, v]) => h("tr", {}, h("td", { text: k }), h("td", { class: "mono", text: v })))));
+    body.append(h("h3", { text: "Where each value comes from (inheritance)" }), tb);
+  }
+  d.classList.add("open"); d.removeAttribute("inert"); d.setAttribute("aria-hidden", "false"); d.scrollTop = 0;
+  if (!keepFocus) $("#drawer-close").focus({ preventScroll: true });
+}
+
+function lineChart(series, o) {
+  const W = Math.max(280, o.w || 700), H = o.h || 130, L = 44, R = o.thr != null ? 52 : 10, T = 8, B = 22;
+  const n = Math.max(...series.map(x => x.v.length));
+  const all = series.flatMap(x => x.v).filter(v => v != null);
+  let lo = Math.min(0, ...all), hi = Math.max(...all, o.thr || 0);
+  if (hi === lo) hi = lo + 1;
+  const stride = o.stride || 1;  // > 1 when traces were decimated: point i stands for volume i × stride
+  const secs = o.tr ? Math.max(o.end || 0, n * stride * o.tr) : null;
+  const tAt = i => secs ? i * stride * o.tr : i * stride;
+  const tMax = secs || Math.max(1, (n - 1) * stride);
+  const X = t => L + (W - L - R) * t / tMax, Y = v => T + (H - T - B) * (1 - (v - lo) / (hi - lo));
+  const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, style: "display:block" });
+  const yt = ticks(lo, hi, 4), xt = ticks(0, tMax, Math.max(3, Math.floor(W / 110)));
+  for (const t of yt) { svg.append(s("line", { x1: L, x2: W - R, y1: Y(t), y2: Y(t), stroke: css("--grid") })); svg.append(s("text", { x: L - 6, y: Y(t) + 3.5, "text-anchor": "end", text: t.toFixed(yt.dec) })); }
+  for (const t of xt) if (X(t) < W - R - 30) svg.append(s("text", { x: X(t), y: H - 6, "text-anchor": "middle", text: t.toFixed(xt.dec) }));
+  svg.append(s("text", { x: W - R, y: H - 6, "text-anchor": "end", text: secs ? "s" : "volume", class: "ink" }));
+  if (o.thr != null && o.thr <= hi) { svg.append(s("line", { x1: L, x2: W - R, y1: Y(o.thr), y2: Y(o.thr), stroke: css("--crit"), "stroke-dasharray": "4 3", "stroke-width": 1 })); svg.append(s("text", { x: W - R + 6, y: Y(o.thr) + 4, text: o.thrLabel || "", style: `fill:${css("--crit")}` })); }
+  for (const sr of series) {
+    let d = "", pen = false;
+    sr.v.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + X(tAt(i)).toFixed(1) + " " + Y(v).toFixed(1); pen = true; });
+    svg.append(s("path", { d, fill: "none", stroke: css(sr.col), "stroke-width": 1.4, "stroke-linejoin": "round" }));
+  }
+  const cross = s("line", { y1: T, y2: H - B, stroke: css("--axis"), opacity: 0 });
+  svg.append(cross);
+  const hit = s("rect", { x: L, y: T, width: W - L - R, height: H - T - B, fill: "transparent" });
+  hit.addEventListener("mousemove", e => { const bb = svg.getBoundingClientRect(); const x = (e.clientX - bb.left) * W / bb.width; const i = Math.max(0, Math.min(n - 1, Math.round((x - L) / (W - L - R) * tMax / ((secs ? o.tr : 1) * stride)))); cross.setAttribute("x1", X(tAt(i))); cross.setAttribute("x2", X(tAt(i))); cross.setAttribute("opacity", 1); showTip(e, tipBox(`${stride > 1 ? "≈ " : ""}volume ${Math.round(i * stride)}` + (secs ? ` · ${fmt(tAt(i), 1)} s` : ""), series.map(sr => [sr.name, fmt(sr.v[i], 3)]))); });
+  hit.addEventListener("mouseleave", () => { cross.setAttribute("opacity", 0); hideTip(); });
+  svg.append(hit);
+  const wrap = h("div", {}, svg);
+  if (o.legend) wrap.append(h("div", { class: "legend", style: "margin-top:4px" }, ...series.map(sr => h("span", {}, h("i", { style: `background:var(${sr.col})` }), sr.name))));
+  return wrap;
+}
+function ticks(lo, hi, n) { const span = hi - lo; if (!(span > 0)) return [lo]; const step0 = span / n, mag = Math.pow(10, Math.floor(Math.log10(step0))); const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(x => span / x <= n) || mag * 10; const out = []; for (let t = Math.ceil(lo / step) * step; t <= hi + 1e-9; t += step) out.push(+t.toFixed(10)); let d = 0; while (d < 6 && Math.abs(Math.round(step * 10 ** d) - step * 10 ** d) > 1e-6) d++; out.dec = d; return out; }
+
+// ------------------------------------------------------------------ motion
+function buildMotion(el) {
+  const status = r => { const mo = r.mot; if (!mo) return r.conf ? "unavailable" : "no_motion"; if (exclusion(mo).length) return "excluded"; return spikes(mo) == null ? "kept_mean_fd_only" : "kept"; };
+  const nPrep = D.runs.filter(r => r.mot && r.mot.src === "fMRIPrep").length, nQc = D.runs.filter(r => r.mot && r.mot.src === "MRIQC").length;
+  const unfetched = D.runs.filter(r => r.conf && !r.conf.fd && !r.mot).length;
+  const noPrep = D.runs.filter(r => !r.conf && !r.mot).length;
+  const parts = [nQc && `${plural(nQc, "run")} use MRIQC's FD (hollow dots) because fMRIPrep confounds are ${D.prep.length ? "missing or not fetched" : "absent"}`, unfetched && `${plural(unfetched, "confound file")} not fetched`, noPrep && `${plural(noPrep, "run")} with no motion estimate`, D.derivOnly.length && `${plural(D.derivOnly.length, "derivative-only run")} without a raw match left out`].filter(Boolean);
+  if (parts.length) el.append(h("div", { class: nQc && !unfetched && !noPrep ? "note" : "note warn", style: "margin-bottom:12px" }, h("b", { text: `Motion is known for ${D.motion.length} of ${plural(D.runs.length, "raw run")}${nPrep && nQc ? ` (${nPrep} fMRIPrep, ${nQc} MRIQC)` : ""}.` }), ` ${parts.join("; ")}.${nPrep && nQc && fdGap() ? ` Where both exist (${fdGap().n} runs), fMRIPrep's mean FD is a median ${(100 * fdGap().rel).toFixed(1)}% ${fdGap().rel >= 0 ? "higher" : "lower"} than MRIQC's, so one threshold treats the sources slightly differently.` : ""}${nQc && D.multiEcho ? " MRIQC FD uses echo-1 regardless of the echo shown elsewhere." : ""} The export lists every raw run with its status, criteria evaluated and source.`));
+  const cf = h("div", { "aria-live": "polite" });
+  const startFd = state.fd;
+  let preClick = null, preCount = null;
+  const counterfactual = () => {
+    cf.innerHTML = "";
+    if (preClick != null && Math.abs(state.fd - QC_T) > 1e-9) { preClick = null; preCount = null; }
+    const backTo = preClick ?? startFd;
+    if (Math.abs(state.fd - backTo) > 1e-9 && (preClick != null || !D.motion.every(m => m.src === "MRIQC"))) cf.append(h("div", { class: "note", style: "margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap" }, h("span", { text: `Spike threshold is ${state.fd} mm (was ${backTo} mm)${Math.abs(state.fd - QC_T) < 1e-9 || !D.motion.some(m => m.src === "MRIQC") ? " for all runs" : `; it applies to fMRIPrep runs only, and MRIQC runs are judged on mean FD alone (MRIQC counts spikes only at ${QC_T} mm)`}.${preClick != null ? (() => { const now = D.motion.filter(m => exclusion(m).length).length; const keep = state.fd; state.fd = preClick; const was = D.motion.filter(m => exclusion(m).length).length; state.fd = keep; return ` Excluded runs: ${was} → ${now}.`; })() : ""}${Math.abs(state.fd - QC_T) < 1e-9 ? " MRIQC runs are now judged on both criteria." : ""}` }), h("button", { class: "btn", id: "spike-back", text: preClick != null ? `Back to spike FD > ${backTo} mm` : `Reset to page default (${backTo} mm)`, onclick: () => { setSpike(backTo); preClick = null; preCount = null; const b = $("#spike-use"); if (b) b.focus(); } })));
+    const partial = D.motion.filter(m => m.src === "MRIQC" && spikes(m) == null);
+    const onlyQc = D.motion.length && D.motion.every(m => m.src === "MRIQC");
+    if (onlyQc && Math.abs(state.fd - QC_T) < 1e-9 && preClick == null) { cf.append(h("div", { class: "note", style: "margin-bottom:12px" }, h("b", { text: `Spike threshold starts at ${QC_T} mm` }), ` because all motion here comes from MRIQC, which counts spikes only above its fd_thres (${QC_T} mm${D.qcThres != null ? ", from provenance" : ", MRIQC default"}). At any other value only mean FD could be tested.`)); return; }
+    if (!partial.length) return;
+    // What changes if the spike threshold moves to MRIQC's fd_thres — for every run, not only the MRIQC ones.
+    const before = new Set(D.motion.filter(m => exclusion(m).length).map(m => m.key));
+    const keep = state.fd; state.fd = QC_T;
+    const after = D.motion.filter(m => exclusion(m).length);
+    const subjLost = [...new Set(D.motion.map(m => m.sub))].filter(sb => D.motion.filter(m => m.sub === sb).every(m => exclusion(m).length));
+    state.fd = keep;
+    const added = after.filter(m => !before.has(m.key)), dropped = [...before].filter(k => !after.some(m => m.key === k));
+    const bySrc = src => added.filter(m => m.src === src).length;
+    cf.append(h("div", { class: "note", style: "margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap" },
+      h("span", {}, h("b", { text: `${plural(partial.length, "MRIQC run")} judged on mean FD only` }), ` because MRIQC counts spikes only at FD > ${QC_T} mm${D.qcThres == null ? " (MRIQC default)" : ""}. Setting the spike threshold to ${QC_T} mm for all runs would exclude ${plural(added.length, "more run")} (${bySrc("MRIQC")} MRIQC, ${bySrc("fMRIPrep")} fMRIPrep)${dropped.length ? ` and readmit ${dropped.length}` : ""}${subjLost.length ? `; subjects losing every run: ${subjLost.map(x => "sub-" + x).join(", ")}` : ""}.`),
+      h("button", { class: "btn", id: "spike-use", text: `Use spike FD > ${QC_T} mm`, onclick: () => { preClick = state.fd; preCount = D.motion.filter(m => exclusion(m).length).length; setSpike(QC_T); const b = $("#spike-back"); if (b) b.focus(); } })));
+  };
+  // Buttons redraw synchronously (the slider's own input handler is frame-throttled).
+  const setSpike = v => { const sl = el.querySelector('input[aria-label="spike: FD >"]'); state.fd = v; if (sl) { sl.value = v; sl.dispatchEvent(new Event("input")); } rerender(); };
+  el.append(cf); counterfactual(); redraws.push(counterfactual);
+  const controls = h("div", { class: "toolbar" });
+  const mk = (label, key, min, max, step, unit) => { const out = h("span", { class: "mono", style: "min-width:52px", text: state[key] + unit }); const inp = h("input", { type: "range", min, max, step, value: state[key], "aria-label": label, oninput: e => { state[key] = +e.target.value; out.textContent = state[key] + unit; rerenderSoon(); } }); return h("label", {}, label, inp, out); };
+  controls.append(mk("spike: FD >", "fd", 0.05, 2, 0.05, " mm"), mk("exclude if mean FD >", "meanFd", 0.05, 2, 0.05, " mm"), mk("or spikes >", "pct", 1, 60, 1, " % of vols"));
+  const summary = h("div", { class: "tiles", style: "margin-bottom:14px" }), strip = h("div", { class: "hscroll" });
+  const card = h("div", { class: "card" }, controls, summary, h("h3", { text: "Mean framewise displacement per run" }), strip);
+  const exCard = h("div", { class: "card" }), usableCard = h("div", { class: "card" }), famCard = h("div", { class: "card" });
+  el.append(card, h("div", { class: "grid2", style: "margin-top:14px" }, exCard, usableCard));
+  if (D.prep.length) el.append(famCard);
+  const versions = D.derivs.filter(d => d.kind === "fmriprep" || d.kind === "mriqc").map(d => `${d.name} ${d.version || "?"}`).join(", ");
+  const gap = fdGap();
+  function exportTSV() {
+    const qcEcho = D.runs.some(r => r.mot && r.mot.src === "MRIQC" && r.mot.echo) ? "; MRIQC FD taken from echo-1 (fMRIPrep also estimates head motion on the first echo)" : "";
+    const lines = [`# bids-atlas exclusions for ${M.root_name}`, `# generated ${new Date().toISOString()} by ${M.tool || "bids-atlas"}`, `# sources: ${versions}`,
+      `# thresholds: spike = FD > ${state.fd} mm; exclude if mean FD > ${state.meanFd} mm or > ${state.pct}% of volumes are spikes`,
+      D.motion.some(x => x.src === "MRIQC") ? `# fd_source MRIQC: FD from MRIQC's own realignment; its spike count exists only at FD > ${QC_T} mm, so MRIQC rows are judged on mean FD alone (status kept_mean_fd_only) unless the spike threshold is ${QC_T}${qcEcho}` : null,
+      D.motion.some(x => x.src === "MRIQC") ? `# MRIQC fd_thres = ${QC_T} mm (${D.qcThres != null ? "from MRIQC provenance" : "MRIQC default; not recorded in provenance"})` : null,
+      `# status: kept | kept_mean_fd_only | excluded | unavailable | no_motion`,
+      gap ? `# fMRIPrep vs MRIQC mean FD on ${gap.n} runs with both: median relative difference ${(100 * gap.rel).toFixed(1)}% (fMRIPrep − MRIQC)` : null,
+      `# n_vols_fd: volumes the FD statistics use (fMRIPrep confounds rows; MRIQC size_t, after its dummy-scan removal). n_vols_acquired: the run's volumes (header, confounds rows, or MRIQC size_t + dummy_trs)`,
+      ["sub", "ses", "task", "acq", "dir", "run", "status", "criteria_evaluated", "fd_source", "mean_fd", "n_spikes", "n_vols_fd", "n_vols_acquired", "pct_spikes", "reason", "source_file"].join("\t")].filter(Boolean);
+    for (const r of D.runs) {
+      const mo = r.mot, st = status(r), ex = exclusion(mo), sp = mo ? spikes(mo) : null;
+      const crit = !mo ? "" : sp != null ? "mean_fd,spikes" : "mean_fd";
+      const reason = st === "excluded" ? ex.join("; ") : st === "kept" ? "within both thresholds" : st === "kept_mean_fd_only" ? `mean FD within threshold; spike criterion not evaluated (MRIQC counts spikes only at FD > ${QC_T} mm)` : st === "unavailable" ? "confounds file not fetched (zero-byte or annexed)" : D.prep.length && !r.conf ? "no fMRIPrep confounds for this run" : "no motion estimate available";
+      lines.push([r.sub, r.ses || "", r.task || "", r.acq || "", r.dir || "", r.run || "", st, crit, mo ? mo.src + (mo.echo ? ` echo-${mo.echo}` : "") : "", mo ? mo.fd.mean : "", sp ?? "", mo ? mo.n_vols || "" : "", r.nvols || "", sp != null && mo.n_vols ? (100 * sp / mo.n_vols).toFixed(2) : "", reason, mo && mo.src === "MRIQC" ? mo.path : (r.conf ? r.conf.path : "")].join("\t"));
+    }
+    return lines.join("\n") + "\n";
+  }
+  function redrawMotion() {
+    summary.innerHTML = "";
+    const known = D.motion, ex = known.filter(c => exclusion(c).length), subs = new Set(known.map(c => c.sub));
+    const allOut = [...subs].filter(sb => known.filter(c => c.sub === sb).every(c => exclusion(c).length));
+    summary.append(tile(frac(known.length, D.runs.length), "raw runs with known motion", nQc ? `${nQc} from MRIQC` : null), tile(fmt(median(known.map(c => c.fd.mean)), 3), "median of run mean FD (mm)"), tile(frac(ex.length, known.length), "known runs excluded", `${(100 * ex.length / Math.max(1, known.length)).toFixed(0)}%` + (() => { const n = known.filter(c => !exclusion(c).length && spikes(c) == null).length; return n ? ` · ${n} kept on mean FD only` : ""; })()), tile(String(allOut.length), allOut.length === 1 ? "subject loses every known run" : "subjects lose every known run", `${new Set(ex.map(c => c.sub)).size} lose at least one`));
+    strip.innerHTML = ""; strip.append(stripPlot(known, c => c.fd.mean, { w: innerW(strip), minW: 320, unit: "mean FD (mm)", thr: state.meanFd, clip: 3, flag: c => exclusion(c).length, hollow: c => c.src === "MRIQC", labelOf: c => c.task || "(none)", tipRows: c => [["source", c.src], ["mean FD", fmt(c.fd.mean, 3) + " mm"], ["max FD", c.fd.max != null ? fmt(c.fd.max, 2) + " mm" : null], [`vols FD > ${state.fd}`, spikes(c) != null ? `${spikes(c)} of ${c.n_vols}${c.src === "MRIQC" ? " (after dummy removal)" : ""}` : `not evaluated (MRIQC: ${QC_T} mm only)`], ["status", exclusion(c).length ? "excluded: " + exclusion(c).join("; ") : spikes(c) == null ? "kept on mean FD only (spikes not evaluated)" : "kept"]] }));
+    exCard.innerHTML = "";
+    exCard.append(h("div", { class: "sec-head", style: "margin-bottom:8px" }, h("h3", { text: `Excluded runs (${ex.length})`, style: "margin:0" }), h("button", { class: "btn", text: "Download exclusions.tsv", onclick: () => download("exclusions.tsv", exportTSV()) })));
+    if (!ex.length) exCard.append(h("div", { class: "empty", text: "No known runs exceed the current thresholds." }));
+    else {
+      const tb = h("tbody");
+      for (const c of ex.sort((a, b) => b.fd.mean - a.fd.mean)) { const r = D.runs.find(x => x.key === c.key); const sp = spikes(c); const row = h("tr", { class: "click", tabindex: 0, onclick: () => r && openRun(r, row), onkeydown: e => { if (e.key === "Enter") r && openRun(r, row); } }, h("td", { class: "mono", text: c.key }), h("td", { class: "num", text: fmt(c.fd.mean, 3) + (c.src === "MRIQC" ? " ᴹ" : "") }), h("td", { class: "num", text: sp ?? "—" }), h("td", { class: "num", text: sp != null ? pctSpikes(c).toFixed(1) : "—" })); tb.append(row); }
+      exCard.append(h("div", { class: "scroll hscroll", style: "max-height:320px" }, h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "run" }), h("th", { class: "num", text: "mean FD" }), h("th", { class: "num", text: "spikes" }), h("th", { class: "num", text: "% vols" }))), tb)));
+    }
+    exCard.append(h("p", { class: "small muted", text: `The TSV lists every raw run: status (kept / kept_mean_fd_only / excluded / unavailable / no_motion), criteria evaluated, FD source, reason, thresholds and pipeline versions.${nQc ? " ᴹ = MRIQC FD." : ""}` }));
+    usableCard.innerHTML = ""; usableCard.append(h("h3", { text: "Usable runs per subject" }));
+    const tb = h("tbody");
+    for (const sb of D.subjects) {
+      const row = h("tr", {}, h("td", { class: "mono", text: "sub-" + sb }));
+      let any = false;
+      for (const t of D.tasks) {
+        const rs = D.runs.filter(r => r.sub === sb && r.task === t), kn = rs.filter(r => r.mot), kept = kn.filter(r => !exclusion(r.mot).length), unk = rs.length - kn.length;
+        if (rs.length) any = true;
+        row.append(h("td", { class: "num", style: kept.length < kn.length ? "color:var(--crit);font-weight:600" : "", title: rs.length ? `${kept.length} kept, ${kn.length - kept.length} excluded, ${unk} unknown of ${rs.length}` : "", text: !rs.length ? "—" : `${kept.length}/${rs.length}${unk ? ` (${unk}?)` : ""}` }));
+      }
+      if (any) tb.append(row);
+    }
+    usableCard.append(h("div", { class: "scroll hscroll", style: "max-height:320px" }, h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "subject" }), ...D.tasks.map(t => h("th", { class: "num", text: t })))), tb)), h("p", { class: "small muted", text: "kept / total raw runs; (n?) = runs whose motion is unknown. Red: at least one known run excluded." }));
+  }
+  redrawMotion(); redraws.push(redrawMotion);
+  for (const d of D.prep) {
+    famCard.append(h("h3", { text: `${d.name} ${d.version || ""} · confound columns per file` }));
+    const fam = {}; let n = 0;
+    for (const c of d.confounds) if (c.families) { n++; for (const [k, v] of Object.entries(c.families)) (fam[k] = fam[k] || []).push(v); }
+    const rows = Object.entries(fam).map(([k, v]) => [k, v.reduce((a, b) => a + b, 0) / v.length, Math.min(...v), Math.max(...v)]).sort((a, b) => b[1] - a[1]);
+    const mx = Math.max(1, ...rows.map(r => r[3]));
+    const g = h("div", { class: "grid2" }), a = h("div"), b = h("div");
+    for (const [k, mean, mn, mxv] of rows) a.append(h("div", { class: "bar-row" }, h("span", { class: "lab", text: k }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * mean / mx}%` })), h("span", { class: "val", text: mn === mxv ? fmt(mn) : `${mn}–${mxv}` })));
+    a.append(h("p", { class: "small muted", text: `${n} fetched files. A range means files differ (CompCor retains components to 50% variance, so counts vary by run). Naming: ${Object.entries(d.naming || {}).map(([k, v]) => `${k} ${v}`).join(", ") || "?"}.` }));
+    const cc = {};
+    for (const c of d.confounds) for (const [k, v] of Object.entries(c.compcor || {})) (cc[k] = cc[k] || []).push(v);
+    if (Object.keys(cc).length) {
+      b.append(h("h3", { text: "CompCor components retained" }));
+      const tb = h("tbody");
+      for (const [k, arr] of Object.entries(cc).sort()) { const ret = +median(arr.map(x => x.retained)).toFixed(1), ve = median(arr.map(x => x.cum_ve)), tot = +median(arr.map(x => x.n)).toFixed(1); const listsDropped = arr.some(x => x.lists_dropped); tb.append(h("tr", {}, h("td", { class: "mono", text: k.replace(":", " · ") }), h("td", { class: "num", text: listsDropped ? `${ret} of ${tot}` : `${ret}` }), h("td", { class: "num", text: ve != null ? (100 * ve).toFixed(1) + "%" : "—" }))); }
+      b.append(h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "method · mask" }), h("th", { class: "num", text: "retained (median)" }), h("th", { class: "num", text: "cum. variance" }))), tb), h("p", { class: "small muted", text: "Medians across runs, from the confounds JSON sidecars. \"r of n\" appears only when the sidecar also lists dropped components; some fMRIPrep versions list retained components only." }));
+    }
+    g.append(a, b); famCard.append(g);
+  }
+}
+function stripPlot(items, val, o) {
+  const groups = [...new Set(items.map(o.labelOf))].sort(natural);
+  const L = 14 + 6.6 * Math.max(6, ...groups.map(g => g.length)), W = Math.max(o.minW || 300, o.w || 640), rowH = Math.max(38, Math.min(70, 300 / Math.max(1, groups.length))), R = 16, T = 8, B = 34, H = T + B + rowH * groups.length;
+  const vals = items.map(val).filter(v => v != null);
+  if (!vals.length) return h("div", { class: "empty", text: "No values." });
+  const vmin = Math.min(...vals), vmax = Math.max(...vals.map(v => o.clip ? Math.min(v, o.clip) : v));
+  let lo, hi;
+  if (o.dataRange) { const pad = (vmax - vmin) * 0.06 || Math.abs(vmax) * 0.05 || 1; lo = vmin - pad; hi = vmax + pad; }
+  else { lo = Math.min(0, vmin); hi = Math.max(o.thr != null ? o.thr * 1.15 : -Infinity, vmax * 1.04); }
+  if (hi <= lo) hi = lo + 1;
+  const X = v => L + (W - L - R) * ((o.clip ? Math.min(v, o.clip) : v) - lo) / (hi - lo);
+  const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, style: "display:block" });
+  const xt = ticks(lo, hi, Math.max(3, Math.min(8, Math.floor((W - L) / 70))));
+  for (const t of xt) { svg.append(s("line", { x1: X(t), x2: X(t), y1: T, y2: H - B, stroke: css("--grid") })); svg.append(s("text", { x: X(t), y: H - B + 14, "text-anchor": "middle", text: t.toFixed(xt.dec) })); }
+  if (o.unit) svg.append(s("text", { x: (L + W - R) / 2, y: H - 4, "text-anchor": "middle", text: o.unit, class: "ink" }));
+  if (o.thr != null) svg.append(s("line", { x1: X(o.thr), x2: X(o.thr), y1: T, y2: H - B, stroke: css("--crit"), "stroke-dasharray": "4 3" }));
+  groups.forEach((g, i) => {
+    const y0 = T + i * rowH + rowH / 2;
+    if (i) svg.append(s("line", { x1: L, x2: W - R, y1: T + i * rowH, y2: T + i * rowH, stroke: css("--grid"), "stroke-dasharray": "1 3" }));
+    svg.append(s("text", { x: L - 10, y: y0 + 4, "text-anchor": "end", text: g, class: "ink" }));
+    items.filter(c => o.labelOf(c) === g).forEach((c, k) => {
+      const v = val(c); if (v == null) return;
+      const j = (((k + 1) * 2654435761) % 1000) / 1000 - 0.5;
+      const bad = o.flag && o.flag(c);
+      const hol = o.hollow && o.hollow(c), col = bad ? css(o.flagVar || "--crit") : css("--s1");
+      const dot = s("circle", { cx: X(v), cy: y0 + j * (rowH - 16), r: 4.2, fill: hol ? css("--surface") : col, "fill-opacity": bad ? 0.95 : 0.8, stroke: hol ? col : css("--surface"), "stroke-width": hol ? 1.6 : 1 });
+      dot.style.cursor = "pointer";
+      if (bad) { dot.setAttribute("tabindex", "0"); dot.setAttribute("role", "button"); dot.setAttribute("aria-label", `${c.key}: ${fmt(v, 3)}`); dot.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); dot.dispatchEvent(new MouseEvent("click")); } }); }
+      tipOn(dot, () => tipBox(c.key, o.tipRows(c)));
+      dot.addEventListener("click", () => { const r = D.allRuns.find(x => x.key === c.key); if (r) openRun(r, dot); });
+      svg.append(dot);
+    });
+  });
+  const leg = h("div", { class: "legend" }, h("span", {}, h("i", { style: "background:var(--s1);border-radius:50%;opacity:.6" }), o.baseLabel || (o.flag ? "kept" : "run")));
+  if (o.flag) leg.append(h("span", {}, h("i", { style: `background:var(${o.flagVar || "--crit"});border-radius:50%` }), o.flagLabel || "excluded at current thresholds"));
+  if (o.hollow && items.some(o.hollow)) leg.append(h("span", {}, h("i", { style: "border:1.6px solid var(--s1);border-radius:50%;background:var(--surface)" }), "FD from MRIQC"));
+  if (o.clip && vals.some(v => v > o.clip)) leg.append(h("span", { class: "muted", text: `values above ${o.clip} ${o.unit} drawn at the edge` }));
+  return o.noLegend ? svg : h("div", {}, svg, leg);
+}
+function download(name, text) { const a = h("a", { href: URL.createObjectURL(new Blob([text], { type: "text/tab-separated-values" })), download: name }); document.body.append(a); a.click(); a.remove(); }
+
+// ------------------------------------------------------------------ MRIQC
+function buildMriqc(el) {
+  const echoes = [...new Set([...D.iqm.values()].flat().map(q => q.echo || ""))].sort(natural);
+  let echo = state.echo;
+  const IQ = [["tsnr", "tSNR", "higher is better"], ["fd_mean", "mean FD (mm)", "lower is better"], ["dvars_std", "std DVARS", "≈1 is ideal"], ["aqi", "AFNI quality index", "lower is better"], ["gcor", "global correlation", "lower is better"], ["efc", "entropy focus criterion", "lower is better"]];
+  const card = h("div", { class: "card" }), body = h("div");
+  if (echoes.length > 1) { const tabs = h("div", { class: "tabs", role: "tablist" }); echoes.forEach(e => tabs.append(h("button", { role: "tab", "aria-selected": String(e === echo), text: e ? "echo-" + e : "all", onclick: ev => { echo = e; state.echo = e; refreshDerived(); setTimeout(rerender, 0); tabs.querySelectorAll("button").forEach(b => b.setAttribute("aria-selected", String(b === ev.target))); draw(); } }))); card.append(tabs); }
+  const gl = h("div", { class: "chips", style: "margin-bottom:12px" });
+  for (const d of D.mriqc) for (const g of d.group_reports || []) gl.append(h("a", { class: "btn", href: (d.report_links || {})[g] || g, target: "_blank", rel: "noopener", text: `${d.name} ${g.replace(/^group_|\.html$/g, "")} group report ↗` }));
+  if (gl.children.length) card.prepend(gl);
+  card.append(body); el.append(card);
+  function draw() {
+    body.innerHTML = "";
+    if (echoes.length > 1) body.append(h("p", { class: "small muted", style: "margin-top:0", text: `Showing echo-${echo}. The grid, tooltips and run drawer use the same echo, except head motion (mean FD), which always uses echo-1.` }));
+    const items = [...D.iqm.values()].flat().filter(q => (q.echo || "") === echo);
+    const g = h("div", { class: "grid2" });
+    body.append(h("div", { class: "legend", style: "margin:0 0 12px" }, h("span", {}, h("i", { style: "background:var(--s1);border-radius:50%;opacity:.8" }), "run"), h("span", {}, h("i", { style: "background:var(--serious);border-radius:50%" }), `robust outlier${echoes.length > 1 ? " at this echo" : ""} (screening; see Findings)`), h("span", { class: "muted", text: "axes span the data range" })), g);
+    for (const [k, lab, hint] of IQ) {
+      if (!items.some(q => q.m[k] != null)) continue;
+      const box = h("div", { class: "hscroll" });
+      g.append(h("div", {}, h("h3", {}, lab, h("span", { class: "muted small", style: "font-weight:400", text: "  " + hint })), box));
+      const src = (k === "fd_mean" && echoes.length > 1) ? [...D.iqm.values()].map(a => a.slice().sort((x, y) => (+x.echo || 0) - (+y.echo || 0))[0]) : items;
+      if (k === "fd_mean" && echoes.length > 1) box.previousSibling && box.previousSibling.append(h("span", { class: "muted small", style: "font-weight:400", text: " · echo-1 (as used for motion)" }));
+      box.append(stripPlot(src, q => q.m[k], { w: innerW(box), minW: 300, dataRange: true, noLegend: true, flag: q => (q.outliers || []).includes(k), flagVar: "--serious", labelOf: q => q.task || "(none)", tipRows: q => [[lab, fmt(q.m[k], 3)], k !== "tsnr" ? ["tSNR", fmt(q.m.tsnr, 1)] : null, k !== "fd_mean" ? [`mean FD${q.echo ? " (echo-" + q.echo + ")" : ""}`, fmt(q.m.fd_mean, 3)] : null].filter(Boolean) }));
+    }
+
+    const anat = D.mriqc.flatMap(d => d.iqms_anat || []);
+    if (anat.length) {
+      const keys = ["cjv", "cnr", "snr_total", "efc", "fber", "qi_1"].filter(k => anat.some(a => a.m[k] != null));
+      const tb = h("tbody");
+      // Direction: +1 = higher is worse, -1 = lower is worse. FBER spans decades, so it is judged on log10.
+      const DIR = { cjv: 1, cnr: -1, snr_total: -1, efc: 1, fber: -1, qi_1: 1 }, tf = k => k === "fber" ? (x => Math.log10(Math.max(x, 1e-6))) : (x => x);
+      const stat = {}; for (const k of keys) { const raw = anat.map(a => a.m[k]).filter(x => x != null); const v = raw.map(tf(k)).sort((x, y) => x - y); const md = median(v); const mad = 1.4826 * median(v.map(x => Math.abs(x - md))); const big = Math.max(...raw.map(Math.abs)); stat[k] = { md, mad, dec: big >= 1000 ? 0 : big >= 10 ? 1 : big >= 1 ? 2 : 3 }; }
+      for (const a of anat.slice().sort((x, y) => natural(x.name, y.name))) tb.append(h("tr", {}, h("td", { class: "mono", text: a.name }), ...keys.map(k => { const v = a.m[k], st = stat[k], out = v != null && st.mad > 0 && DIR[k] * (tf(k)(v) - st.md) / st.mad > 3.5; return h("td", { class: "num", style: out ? "color:var(--warn-ink);font-weight:650;background:color-mix(in srgb, var(--serious) 18%, transparent)" : "", title: out ? "screening flag: more than 3.5 robust SDs worse than the median" : "", text: v == null ? "—" : v.toFixed(st.dec) }); })));
+      body.append(h("h3", { text: `T1w image-quality metrics (${anat.length})`, style: "margin-top:16px" }), h("p", { class: "small muted", style: "margin-top:-6px", text: "Highlighted: more than 3.5 robust SDs worse than the column median (cjv, efc, qi_1 high; cnr, snr_total, fber low; fber on a log scale)." }), h("div", { class: "scroll hscroll", style: "max-height:300px" }, h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "image" }), ...keys.map(k => h("th", { class: "num", text: k })))), tb)));
+    }
+  }
+  draw(); redraws.push(draw);
+}
+
+// ------------------------------------------------------------------ acquisition
+function buildAcq(el) {
+  const C = M.consistency || {};
+  const tasks = Object.keys(C).sort(natural);
+  if (!tasks.length) { el.append(h("div", { class: "card empty", text: "No BOLD sidecars to summarize." })); return; }
+  const params = Object.keys(C[tasks[0]]);
+  const tb = h("tbody");
+  tb.append(h("tr", {}, h("td", { text: "runs" }), ...tasks.map(t => h("td", { text: fmt((M.tasks[t] || {}).runs) }))));
+  const unsetEverywhere = params.filter(p => tasks.every(t => (C[t][p] || []).every(([v]) => v == null)));
+  for (const p of params) {
+    if (unsetEverywhere.includes(p)) continue;
+    const UNITS = { RepetitionTime: "s", EchoTime: "s", EffectiveEchoSpacing: "s", TotalReadoutTime: "s", FlipAngle: "°", MagneticFieldStrength: "T" };
+    const tr = h("tr", {}, h("td", {}, p, UNITS[p] ? h("span", { class: "muted", text: ` (${UNITS[p]})` }) : null));
+    for (const t of tasks) {
+      const vals = C[t][p] || [], td = h("td");
+      vals.forEach(([v, n], i) => {
+        const unset = v == null, na = typeof v === "string" && v.startsWith("header not readable");
+        const txt = unset ? "not set" : na ? "unknown (image not local)" : Array.isArray(v) ? (p === "SliceTiming" ? (v[0] ? `${v[0]} slices · ${v[1]} · ${v[2]}` : "[] (empty list)") : p === "EchoTime" ? v.map((x, k) => `e${k + 1} ${x}`).join(" · ") : v.join(", ")) : String(v);
+        const err = (p === "EchoTime" && [].concat(v).some(x => +x > 1)) || (p === "RepetitionTime" && +v > 20) || (p === "SliceTiming" && Array.isArray(v) && v[2] === "values in ms?");
+        const warn = !err && ((p === "EchoTime" && [].concat(v).some(x => +x > 0.1)) || (p === "SliceTiming" && Array.isArray(v) && (v[2] === "values ≥ TR" || v[0] === 0)));
+        // TR, multiband and manufacturer drift are warning findings (hetero-*); other minority values are neutral.
+        const heteroWarn = i > 0 && D.findings.some(f => f.id === `hetero-${t}-${p}`);
+        const cls = "pill" + (na ? " na" : unset ? " unset" : err ? " bad" : (warn || heteroWarn) ? " warnp" : i > 0 ? " minor" : "");
+        td.append(h("span", { class: cls, title: `${n} runs` }, txt, vals.length > 1 ? h("span", { class: "x", text: `×${n}` }) : null));
+      });
+      tr.append(td);
+    }
+    tb.append(tr);
+  }
+  el.append(h("div", { class: "card hscroll" }, h("table", { class: "t" }, h("thead", {}, h("tr", {}, h("th", { text: "parameter" }), ...tasks.map(t => h("th", { text: "task-" + t })))), tb), unsetEverywhere.length ? h("p", { class: "small muted", style: "margin:10px 0 0" }, "Not set for any run: ", h("span", { class: "mono", text: unsetEverywhere.join(", ") })) : null));
+}
+
+// ------------------------------------------------------------------ events
+function buildEvents(el) {
+  const withEv = D.runs.filter(r => r.events && r.events.events);
+  if (!withEv.length) { el.append(h("div", { class: "card empty", text: "No events.tsv files found for BOLD runs." })); return; }
+  const tasks = [...new Set(withEv.map(r => r.task))].sort(natural);
+  let task = tasks[0];
+  const tabs = h("div", { class: "tabs", role: "tablist" }), body = h("div");
+  tasks.forEach(t => tabs.append(h("button", { role: "tab", "aria-selected": String(t === task), text: "task-" + t, onclick: e => { task = t; tabs.querySelectorAll("button").forEach(b => b.setAttribute("aria-selected", String(b === e.target))); draw(); } })));
+  el.append(h("div", { class: "card" }, tabs, body));
+  function draw() {
+    body.innerHTML = "";
+    const rs = withEv.filter(r => r.task === task);
+    const tt = {}; for (const r of rs) for (const [k, v] of Object.entries(r.events.trial_types || {})) tt[k] = (tt[k] || 0) + v;
+    const types = Object.entries(tt).sort((a, b) => b[1] - a[1]);
+    const left = h("div"), right = h("div");
+    const mx = Math.max(1, ...types.map(x => x[1]));
+    const col0 = rs[0].events.type_column || rs[0].events.type_column_inferred;
+    left.append(h("h3", { text: `Conditions (${col0 ? (rs[0].events.type_column ? "trial_type" : col0 + ", inferred") : "none"})` }));
+    types.slice(0, 16).forEach(([k, n], i) => left.append(h("div", { class: "bar-row" }, h("span", { class: "lab mono", text: k }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * n / mx}%;background:var(${i < 7 ? SER[i] : "--muted"})` })), h("span", { class: "val", text: fmt(n) }))));
+    if (types.length > 16) left.append(h("p", { class: "small muted", text: `+ ${types.length - 16} more` }));
+    const ns = rs.map(r => r.events.n), ends = rs.map(r => r.events.end), scans = rs.map(r => r.scan_seconds).filter(Boolean);
+    const past = rs.filter(r => r.scan_seconds && r.events.end > r.scan_seconds + ((r.meta || {}).RepetitionTime || 0)).length;
+    right.append(h("h3", { text: "Per-run summary" }), h("dl", { class: "kv" },
+      h("dt", { text: "runs with events" }), h("dd", { text: `${rs.length}` }),
+      h("dt", { text: "events per run" }), h("dd", { text: Math.min(...ns) === Math.max(...ns) ? `${ns[0]}` : `${Math.min(...ns)}–${Math.max(...ns)}` }),
+      h("dt", { text: "last event ends" }), h("dd", { text: range(Math.min(...ends), Math.max(...ends), 1, " s") }),
+      h("dt", { text: "scan length" }), h("dd", { text: scans.length ? `${range(Math.min(...scans), Math.max(...scans), 1, " s")} (${scans.length} runs known)` : "unknown" }),
+      h("dt", { text: "past scan end" }), h("dd", { text: scans.length ? `${past} of ${scans.length} runs` : "not checkable" }),
+      h("dt", { text: "columns" }), h("dd", { class: "mono", text: (rs[0].events.columns || []).join(", ") })));
+    const lim = Math.min(rs.length, 40);
+    const tlWrap = h("div", { class: "hscroll" });
+    body.append(h("div", { class: "grid2" }, left, right), h("h3", { text: `Timelines (${lim} of ${rs.length} runs)`, style: "margin-top:16px" }), tlWrap); tlWrap.append(eventRaster(rs.slice(0, lim), { order: types.map(t => t[0]), w: innerW(tlWrap) }));
+  }
+  draw(); redraws.push(draw);
+}
+function eventRaster(rs, o) {
+  const compact = o.compact, rowH = compact ? 22 : 15, L = compact ? 44 : Math.max(120, 14 + 6.2 * Math.max(...rs.map(r => rowName(r).length))), W = Math.max(compact ? 280 : 520, o.w || (compact ? 700 : 1100)), R = 10, T = 4, B = 24, H = T + B + rowH * rs.length;
+  const order = o.order || [...new Set(rs.flatMap(r => r.events.events.map(e => e[2])))];
+  const col = t => { const i = order.indexOf(t); return i >= 0 && i < 7 ? css(SER[i]) : css("--muted"); };
+  const end = o.end || Math.max(...rs.map(r => Math.max(r.events.end || 0, r.scan_seconds || 0)), 1);
+  const X = t => L + (W - L - R) * t / end;
+  const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, style: "display:block" });
+  for (const t of ticks(0, end, Math.max(3, Math.floor((W - L) / 90))).filter(t => X(t) < W - R - 22)) { svg.append(s("line", { x1: X(t), x2: X(t), y1: T, y2: H - B, stroke: css("--grid") })); svg.append(s("text", { x: X(t), y: H - 8, "text-anchor": "middle", text: fmt(t, 0) })); }
+  svg.append(s("text", { x: W - R, y: H - 8, "text-anchor": "end", text: "s", class: "ink" }));
+  rs.forEach((r, i) => {
+    const y = T + i * rowH;
+    if (!compact) svg.append(s("text", { x: L - 8, y: y + rowH * 0.72, "text-anchor": "end", text: rowName(r), class: "ink" }));
+    if (r.scan_seconds) svg.append(s("rect", { x: L, y: y + 1, width: Math.max(0, X(Math.min(r.scan_seconds, end)) - L), height: rowH - 2, fill: css("--surface-2"), rx: 2 }));
+    for (const [on, du, tt] of r.events.events) {
+      const w = Math.max(1.5, X(on + (du || 0)) - X(on));
+      const rect = s("rect", { x: X(on), y: y + 3, width: w, height: rowH - 6, fill: col(tt), rx: 1 });
+      tipOn(rect, () => tipBox(tt, [["onset", fmt(on, 2) + " s"], ["duration", fmt(du, 2) + " s"]]));
+      svg.append(rect);
+    }
+    if (r.scan_seconds && r.events.end > r.scan_seconds) svg.append(s("line", { x1: X(r.scan_seconds), x2: X(r.scan_seconds), y1: y, y2: y + rowH, stroke: css("--warn"), "stroke-width": 2 }));
+  });
+  const leg = h("div", { class: "legend" }, ...order.slice(0, 7).map((t, i) => h("span", {}, h("i", { style: `background:var(${SER[i]})` }), t)));
+  if (order.length > 7) leg.append(h("span", {}, h("i", { style: "background:var(--muted)" }), `other (${order.length - 7})`));
+  leg.append(h("span", {}, h("i", { style: "background:var(--surface-2);border:1px solid var(--grid)" }), "scan length"), rs.some(r => r.scan_seconds && r.events.end > r.scan_seconds) ? h("span", {}, h("i", { style: "background:var(--warn);width:2px" }), "scan ends before last event") : null);
+  return h("div", {}, svg, leg);
+}
+const rowName = r => `sub-${r.sub}${r.ses ? " ses-" + r.ses : ""}${r.run ? " run-" + r.run : ""}`;
+
+// ------------------------------------------------------------------ modalities
+function buildModalities(el) {
+  const anat = M.anat || [], fmap = M.fmap || [], dwi = M.dwi || [];
+  const g = h("div", { class: "grid3" });
+  const a = h("div", { class: "card" }, h("h3", { text: `Anatomical · ${anat.length} images` }));
+  const bySuf = {}; for (const r of anat) (bySuf[r.suffix] = bySuf[r.suffix] || new Set()).add(r.sub);
+  if (!anat.length) a.append(h("div", { class: "empty", text: "None." }));
+  for (const [k, v] of Object.entries(bySuf)) a.append(h("div", { class: "bar-row" }, h("span", { class: "lab mono", text: k }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * v.size / Math.max(1, D.subjects.length)}%` })), h("span", { class: "val", text: `${v.size}/${D.subjects.length}` })));
+  if (anat.length) a.append(h("p", { class: "small muted", text: "Subjects with at least one image of each suffix." }));
+  const f = h("div", { class: "card" }, h("h3", { text: `Fieldmaps · ${fmap.length} images` }));
+  if (!fmap.length) f.append(h("div", { class: "empty", text: "None. Without fieldmaps, fMRIPrep skips susceptibility distortion correction unless fieldmap-less SDC (--use-syn-sdc) is requested." }));
+  else {
+    const cov = D.runs.filter(r => r.echoes.some(e => (e.fmaps && e.fmaps.length) || e.b0_source)).length;
+    f.append(h("div", { class: "tiles" }, tile(frac(cov, D.runs.length), "BOLD runs targeted"), tile(String(fmap.filter(x => x.b0id).length), "with B0FieldIdentifier")));
+    const sfx = {}; for (const r of fmap) sfx[r.suffix] = (sfx[r.suffix] || 0) + 1;
+    f.append(h("div", { class: "chips", style: "margin-top:10px" }, ...Object.entries(sfx).map(([k, v]) => h("span", { class: "chip" }, h("b", { text: k }), " " + v))));
+    if (cov < D.runs.length) f.append(h("p", { class: "small muted", text: "Switch the grid to Fieldmap to see which runs lack coverage." }));
+  }
+  const w = h("div", { class: "card" }, h("h3", { text: `Diffusion · ${dwi.length} images` }));
+  if (!dwi.length) w.append(h("div", { class: "empty", text: "None." }));
+  else {
+    const shells = {}; for (const r of dwi) if (r.bvals) for (const [b, n] of Object.entries(r.bvals.shells)) shells[b] = (shells[b] || 0) + n;
+    const mx = Math.max(1, ...Object.values(shells));
+    for (const [b, n] of Object.entries(shells).sort((x, y) => +x[0] - +y[0])) w.append(h("div", { class: "bar-row" }, h("span", { class: "lab mono", text: `b = ${b}` }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * n / mx}%` })), h("span", { class: "val", text: fmt(n) })));
+    w.append(h("p", { class: "small muted", text: "Volumes per shell, summed over runs (b rounded to 50)." }));
+  }
+  g.append(a, f, w);
+  el.append(g);
+}
+
+// ------------------------------------------------------------------ participants
+function buildParticipants(el) {
+  const P = M.participants || {};
+  if (!P.present) { el.append(h("div", { class: "card empty", text: "No participants.tsv." })); return; }
+  const card = h("div", { class: "card" });
+  card.append(h("div", { class: P.included ? "note" : "note warn", style: "margin-bottom:12px" }, h("b", { text: P.included ? "Values shown. " : "Values withheld. " }), P.reason));
+  const g = h("div", { class: "grid3" });
+  for (const [col, sm] of Object.entries(P.summary || {})) {
+    if (sm.type === "id") continue;
+    const dict = (P.dictionary || {})[col] || {};
+    const c = h("div", { class: "tile" }, h("div", { style: "font-weight:620", text: col }), h("div", { class: "small muted", text: `${sm.type} · ${sm.n - sm.na}/${sm.n} filled${dict.Description && dict.Description !== col ? " · " + dict.Description : ""}` }));
+    if (sm.values) c.append(histogram(sm.values, dict));
+    if (sm.levels) { const mx = Math.max(1, ...Object.values(sm.levels)); for (const [k, v] of Object.entries(sm.levels)) c.append(h("div", { class: "bar-row", style: "grid-template-columns:minmax(40px,110px) 1fr 34px" }, h("span", { class: "lab", text: k }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * v / mx}%` })), h("span", { class: "val", text: v }))); if (sm.n_levels > 12) c.append(h("div", { class: "small muted", text: `${sm.n_levels} distinct values` })); }
+    g.append(c);
+  }
+  card.append(g);
+  if (P.on_disk_not_listed && P.on_disk_not_listed.length) card.append(h("p", { class: "small", text: `On disk but not listed: ${P.on_disk_not_listed.map(x => "sub-" + x).join(", ")}` }));
+  if (P.listed_not_on_disk && P.listed_not_on_disk.length) card.append(h("p", { class: "small", text: `Listed but no folder: ${P.listed_not_on_disk.map(x => "sub-" + x).join(", ")}` }));
+  el.append(card);
+}
+function histogram(vals, dict) {
+  const W = 260, H = 64, n = 14; const lo = Math.min(...vals), hi = Math.max(...vals); const bw = (hi - lo) / n || 1; const bins = Array(n).fill(0);
+  for (const v of vals) bins[Math.min(n - 1, Math.floor((v - lo) / bw))]++;
+  const mx = Math.max(...bins); const svg = s("svg", { width: W, height: H + 16, viewBox: `0 0 ${W} ${H + 16}`, style: "display:block;margin-top:8px;max-width:none" });
+  bins.forEach((b, i) => { const r = s("rect", { x: i * W / n + 1, y: H - H * b / mx, width: W / n - 2, height: H * b / mx, fill: css("--s1"), rx: 2 }); tipOn(r, () => tipBox(`${fmt(lo + i * bw, 1)}–${fmt(lo + (i + 1) * bw, 1)}`, [["n", String(b)]])); svg.append(r); });
+  svg.append(s("text", { x: 0, y: H + 13, text: fmt(lo, 1) }), s("text", { x: W, y: H + 13, "text-anchor": "end", text: fmt(hi, 1) + (dict && dict.Units ? " " + dict.Units : "") }));
+  return svg;
+}
+
+// ------------------------------------------------------------------ derivatives
+function buildDerivs(el) {
+  if (!D.derivs.length) { el.append(h("div", { class: "card empty", text: "No derivatives found." })); return; }
+  for (const d of D.derivs) {
+    const c = h("div", { class: "card" });
+    c.append(h("div", { class: "sec-head", style: "margin-bottom:10px" }, h("div", {}, h("p", { class: "eyebrow", text: d.label }), h("h3", { style: "font-size:17px;margin:0", text: `${d.name}${d.version ? " " + d.version : ""}` }))));
+    const tiles = h("div", { class: "tiles" }, tile(frac(d.subjects.length, D.subjects.length || d.subjects.length), "subjects"), tile(fmt(d.n_files), "files", bytes(d.bytes) + " local"));
+    if (d.kind === "fmriprep") { const ok = d.confounds.filter(x => x.state === "present").length; tiles.append(tile(frac(ok, d.confounds.length), "confound files fetched"), tile(String(d.reports.length), "subject reports")); }
+    else if (d.kind === "mriqc") { tiles.append(tile(fmt((d.iqms || []).length), "BOLD IQM rows"), tile(fmt((d.iqms_anat || []).length), "T1w IQM rows"), tile(fmt(d.reports.length), "HTML reports")); }
+    else if (d.reports.length) tiles.append(tile(String(d.reports.length), "HTML reports"));
+    c.append(tiles);
+    if (Object.keys(d.spaces).length) c.append(h("h3", { text: "Output spaces", style: "margin-top:14px" }), h("div", { class: "chips" }, ...Object.entries(d.spaces).sort((a, b) => b[1] - a[1]).map(([k, v]) => h("span", { class: "chip" }, h("b", { text: k }), ` ${v} files`))));
+    if ((d.group_reports || []).length) c.append(h("div", { class: "chips", style: "margin-top:14px" }, ...d.group_reports.map(g => h("a", { class: "btn", href: (d.report_links || {})[g] || g, target: "_blank", rel: "noopener", text: g.replace(".html", "") + " ↗" }))));
+    if (d.reports.length) {
+      const links = h("div", { class: "chips", style: "max-height:160px;overflow:auto;margin-top:8px" });
+      for (const r of d.reports) links.append(h("a", { class: "chip", href: (d.report_links || {})[r] || r, target: "_blank", rel: "noopener", text: r.replace(".html", "") }));
+      const empty = d.reports_empty || 0;
+      c.append(h("details", { style: "margin-top:12px" }, h("summary", { text: `${plural(d.reports.length, "HTML report")}${empty ? ` · ${empty === d.reports.length ? "all" : empty} zero-byte placeholders (not fetched)` : ""}` }), links));
+    }
+    if (d.citation) c.append(h("details", { style: "margin-top:12px" }, h("summary", { text: "Methods boilerplate (CITATION)" }), h("pre", { class: "readme open", text: d.citation })));
+    el.append(c);
+  }
+}
+
+// ------------------------------------------------------------------ files
+function buildFiles(el) {
+  const ext = Object.entries(M.extensions || {}).sort((a, b) => b[1] - a[1]);
+  const a = h("div", { class: "card" }, h("h3", { text: "Top level" }));
+  const tree = Object.entries(M.tree || {});
+  const subs = tree.filter(([k]) => /^sub-/.test(k)), rest = tree.filter(([k]) => !/^sub-/.test(k));
+  const rows = [...(subs.length ? [[`sub-* (${subs.length} folders)`, subs.reduce((x, [, v]) => x + v, 0)]] : []), ...rest].sort((x, y) => y[1] - x[1]).slice(0, 16);
+  const mx = Math.max(1, ...rows.map(x => x[1]));
+  for (const [k, v] of rows) a.append(h("div", { class: "bar-row" }, h("span", { class: "lab mono", text: k }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * v / mx}%` })), h("span", { class: "val", text: fmt(v) })));
+  const b = h("div", { class: "card" }, h("h3", { text: "Extensions" }));
+  const mx2 = Math.max(1, ...ext.map(x => x[1]));
+  for (const [k, v] of ext.slice(0, 14)) b.append(h("div", { class: "bar-row" }, h("span", { class: "lab mono", text: k }), h("div", { class: "track" }, h("div", { class: "fill", style: `width:${100 * v / mx2}%` })), h("span", { class: "val", text: fmt(v) })));
+  el.append(h("div", { class: "grid2" }, a, b));
+  if (M.n_nonbids) { const ul = h("ul", { class: "mono small", style: "max-height:220px;overflow:auto;margin:0" }); for (const p of M.nonbids) ul.append(h("li", { text: p })); el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", { text: `Outside BIDS naming (${M.n_nonbids})` }), ul)); }
+}
+
+if (!M) document.getElementById("main").textContent = "No data embedded.";
+else mount();
+</script>
+</body>
+</html>
