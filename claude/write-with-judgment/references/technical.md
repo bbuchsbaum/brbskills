@@ -83,10 +83,10 @@ a checksum is not validating a model.
 Some text is parsed by a reader who cannot ask what it meant: an agent reading a
 tool description, system prompt, or inter-agent instruction; a program or
 operator reading an error or status message; a translation pipeline; a
-non-native reader under time pressure. For these readers, ambiguity is the main
-defect, and the discipline of ASD-STE100 (Simplified Technical English) is the
-most useful model. STE removes two sources of misreading: words with more than one
-meaning, and sentences with more than one possible structure.
+non-native reader under time pressure. Check for ambiguity that could change
+the reader's action or interpretation. ASD-STE100 (Simplified Technical English)
+offers a useful discipline: control word meanings and sentence structures that
+allow competing readings.
 
 Apply that aim, not STE's numeric limits. Each concern below has a purpose; the
 test is whether *this* reader could build a second reading, not whether a count
@@ -94,7 +94,7 @@ was exceeded.
 
 | Concern | Why it matters | When to leave it |
 | --- | --- | --- |
-| **Words with two possible parts of speech.** "Close the valve" (shut it, or the nearby one?); "Report errors" (a command, or a noun phrase?) | The reader may build the wrong sentence structure. | When the syntax or the surrounding steps leave only one reading. |
+| **Words with two possible parts of speech.** "Report errors" as a standalone label (a command, or errors in a report?) | The reader may build the wrong sentence structure. | When the syntax or the surrounding steps leave only one reading. |
 | **Shifting names.** "user", "customer", and "client" for one entity | The reader cannot tell one thing from three. | Never for one referent; keep distinct names for distinct things. |
 | **Ellipsis.** "Files not backed up will be lost" | Omitted words leave the scope open: which files, and when? | When the omitted words are unambiguous from the immediate context. |
 | **Noun stacks.** "agent task queue priority handler" | The relationships between the nouns are guessed. | When the cluster is an established name the reader knows; define it once. |
@@ -105,24 +105,25 @@ was exceeded.
 | **Passive voice** | It hides who must act. | When the actor is unknown, irrelevant, or the system itself, and the reader does not have to act. |
 | **Compound tenses.** "has completed" | They add a parse step. | When they carry information: "has completed" (and its output is ready now) is not "completed"; "may have failed" is a hedge. |
 | **Long or semicolon-joined sentences** | They make the reader hold several clauses. | When splitting would separate a condition, exception, or qualification from what it governs. |
-| **Stacked hedges.** "It is important to note that this may potentially help to improve" | The pile blurs how confident the author is and asserts almost nothing. | Never stack them; keep the one hedge that carries the author's actual confidence. |
+| **Stacked hedges.** "It is important to note that this may potentially help to improve" | Redundant hedges blur how confident the author is. | When the qualifications carry distinct information: "may help some users" preserves both uncertainty and population scope. |
 | **Praise adjectives.** "seamless", "robust", "blazing-fast" | They claim quality without information. | When the word is a technical term, or a measurement backs it. |
 
 Hedges are content. "May have failed", "could be caused by", and "sometimes"
 carry the author's confidence. A shorter sentence that promotes a hedge to a fact
-is a different claim, and this is the commonest failure of simplifying rewrites
-because hedges are what length pressure cuts first. Equally, never add a cause,
-frequency, or mechanism the source did not state to make a sentence read better.
+is a different claim. Check hedges explicitly when shortening. Equally, never
+add a cause, frequency, or mechanism the source did not state to make a sentence
+read better.
 
-Stop when the text has one reading, not when it is shortest. Past that point,
-compression costs the reader time. When the source itself does not decide between
-readings, do not pick one silently: write what the source settles and list the
-open questions. Form does not supply substance: a hollow paragraph rewritten for
+Stop when the intended reader can recover the action, claim, and limits without
+guessing. Further compression may cost the reader time. When the source itself
+does not decide between readings, do not pick one silently: write what the source
+settles and list the open questions. Form does not supply substance: a hollow paragraph rewritten for
 clarity is a clear hollow paragraph, so say when the text has nothing to say
 rather than polishing it.
 
-Output for this kind of text is usually pasted straight into a tool description,
-an error string, or a prompt. Return the pasteable text first, with no preamble.
+For requested drafting or revision, the result is usually pasted straight into a
+tool description, an error string, or a prompt. Return the pasteable text first,
+with no preamble. For review, lead with findings tied to the relevant passages.
 After it, and clearly separated from it, add only what the user must act on:
 open questions the source does not answer, and, if you deliberately kept a longer
 phrasing, a `Kept as-is:` line naming the phrase and the precision it protects.
@@ -148,7 +149,8 @@ After drafting documentation, check that a new reader can answer:
 For a procedure, check: who acts, on what, under which conditions, and what
 happens when a condition fails.
 
-Replace any sentence that could appear unchanged in the documentation of twenty
-unrelated libraries. When compression hides a reasoning step, add the step.
+Check generic sentences for missing information about this system. Keep shared
+instructions when they are useful, such as a prerequisite common to several
+libraries. When compression hides a reasoning step, add the step.
 Clarity is not the fewest words; it is the fewest words that leave the right
 understanding.

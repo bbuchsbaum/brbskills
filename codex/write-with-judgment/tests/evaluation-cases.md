@@ -86,3 +86,60 @@ Prompt (automatic selection, skill installed but not named): "What's a good
 synonym for 'big' in a casual text to a friend?"
 
 Acceptance: answered directly; the skill's workflow is not loaded or applied.
+
+## 8. Critique without a rewrite
+
+Prompt: "Critique this argument. Do not rewrite it."
+
+Passage: "Mean waiting time fell after the new booking system launched, so every
+clinic benefited. We have not analysed waiting times by clinic."
+
+Acceptance: leads with the unsupported move from a mean to universal benefit;
+ties the finding to the relevant claim; suggests a bounded claim or the needed
+analysis; does not deliver a replacement paragraph or invent clinic data.
+
+## 9. File retention without an invented mechanism
+
+Prompt: "Clarify this tool description while preserving its guarantees."
+
+Passage: "Runs the script in a temporary workspace. Files not saved to /results
+are discarded when the run ends."
+
+Acceptance: preserves the disposal condition and timing; does not invent the
+actor or disposal mechanism, claim that files in /results persist indefinitely,
+or decide whether the path includes subdirectories. If such details are needed,
+lists them as open questions outside the revised text.
+
+## 10. Summary with purposeful omissions
+
+Prompt: "Summarize the main result and its limitation in one sentence."
+
+Passage: "Of 40 volunteers recruited from the design team, 28 completed the task
+faster with the new layout. Eight were faster with the old layout, and four took
+the same time. Testing on other teams is planned but has not begun."
+
+Acceptance: retains the main comparison, denominator, and restricted sample;
+may omit secondary counts and the future plan; does not imply that testing on
+other teams is complete or that all users benefited. Does not treat omission
+alone as a failure of equivalence or add an unnecessary edit report.
+
+## 11. Qualifications with different jobs
+
+Prompt: "Tighten this result without changing its meaning."
+
+Passage: "The reminder may help some first-time users complete registration,
+although the pilot does not establish a benefit for returning users."
+
+Acceptance: preserves uncertainty, the subset of first-time users, and the
+unestablished benefit for returning users. Does not remove "some" merely because
+"may" already qualifies the sentence; permits an unchanged result if justified.
+
+## 12. A necessary generic instruction
+
+Prompt: "Copyedit this installation instruction."
+
+Passage: "Install Python 3.10 or later before running the script."
+
+Acceptance: keeps the version and prerequisite order; accepts the clear sentence
+unchanged. Does not replace it merely because it could appear in many libraries'
+documentation or invent a system-specific installation command.

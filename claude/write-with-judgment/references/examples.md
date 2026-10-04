@@ -40,9 +40,9 @@ Contents: scientific precision · permission and recommendation · necessary con
 
 **Source:** Spins up a sandbox and runs the user's script; files not saved to /out are discarded when the session has ended, and network access may be restricted depending on workspace policy.
 
-**Revision:** Starts a sandbox and runs the supplied script in it. When the session ends, the sandbox deletes every file outside `/out`. Network access may be restricted by the workspace policy.
+**Revision:** Starts a sandbox and runs the user's script in it. When the session ends, files not saved to `/out` are discarded. Network access may be restricted by the workspace policy.
 
-**Decision:** Replace the idiom, split the three facts, and resolve the ellipsis ("files not saved to /out") into an explicit scope. Keep "may be restricted": the source does not say access is always restricted, so the hedge is content. Do not add a list of blocked hosts or a retention period the source never gave. A mechanical rewrite that capped every sentence and banned the hedge would have produced "Network access is restricted", which is a different claim.
+**Decision:** Replace the idiom and separate execution, file retention, and network policy. Keep the passive: the source does not identify who discards the files or how. It also does not define whether `/out` includes its subdirectories or whether files saved there persist indefinitely; flag those questions if the description must settle them. Keep "may be restricted": the source does not say access is always restricted. Do not add blocked hosts or a retention period. "Network access is restricted" would be a different claim.
 
 ## Useful passive voice
 

@@ -73,3 +73,62 @@ the originals and the candidates found five meaning drifts introduced by the fir
 draft (a widened definition of "brief", a weakened frequency claim, a broadened
 safeguard rule, a moved quotation condition, and a split instruction), all reverted.
 This was a text-only pass; the behavioural cases were not re-run.
+
+## Judgment and scope revision — 2026-10-04
+
+This revision changes several editorial instructions, rather than only their
+wording. It separates critique from rewriting, makes verification depend on the
+requested task, limits terminology consistency to technical referents, and
+reports compression by the significance of omissions. Scientific introductions
+are described by function rather than paragraph count; evidential verbs by the
+relationship they assert. Technical guidance now allows distinct qualifications
+and useful generic instructions. The sandbox example preserves the source's
+unspecified disposal mechanism.
+
+A separate read-only reviewer (gpt-6-astra) compared the brief, HEAD originals,
+and candidates without the editor's rationale or tests. It found that repository
+delivery guidance and technical.md's pasteable-output rule could override the
+review-only mode. Both were explicitly scoped to drafting or revision. This was
+a textual review, not a behavioral evaluation.
+
+### Bounded forward check
+
+One fresh Codex-managed subagent (gpt-6-astra) received only the skill path and
+the prompts/passages for cases 8, 9, and 11. It read the generated Codex SKILL.md,
+technical.md, and verification.md. It did not receive acceptance notes, diffs,
+or the editing rationale. All three cases shared that one context. The parent
+judged the outputs against the recorded acceptance criteria.
+
+| Case | Result | Evidence |
+| --- | --- | --- |
+| 8 Critique | Pass | Identified the mean-to-every-clinic inference, suggested bounded conclusions or clinic-level analysis, and returned findings rather than a replacement paragraph. |
+| 9 Retention | Pass | Kept the disposal condition and timing without adding an actor, mechanism, permanent retention guarantee, or subdirectory policy. |
+| 11 Qualifications | Pass | Kept possibility, the subset of first-time users, and the unestablished benefit for returning users. |
+
+Exact outputs:
+
+**8:** “Every clinic benefited” does not follow from a fall in the overall mean:
+some clinics could have unchanged or longer waits. The second sentence
+acknowledges that the clinic-level evidence needed for this claim is missing.
+Analyse changes by clinic or limit the conclusion to the overall mean. Also, the
+timing alone does not establish that the booking system caused the decline.
+
+**9:** Runs the script in a temporary workspace. When the run ends, files that
+were not saved to `/results` are discarded.
+
+**11:** The reminder may help some first-time users complete registration, but
+the pilot does not establish a benefit for returning users.
+
+These checks cover three decisions only. Cases 1–7, 10, and 12 were not rerun;
+there were no fresh standalone Codex or Claude Code sessions, selection trials,
+or baseline comparisons. The full product evaluation in CONTRIBUTING.md remains
+unrun for this revision. Subsequent entrypoint edits condensed wording and
+clarified repository delivery; the three cases were not repeated after those
+edits. No general improvement or cross-model reliability is established.
+
+### Local checks
+
+Skill-creator validation, root `sync` and `check`, all 24 root tests, the 10 anchor
+comparison tests, and `git diff --check` passed. The anchor utility's code was
+unchanged. Both product downloads were regenerated from source; these checks
+establish packaging and helper behavior, not editorial quality.

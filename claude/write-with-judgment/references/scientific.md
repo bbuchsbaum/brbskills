@@ -50,10 +50,10 @@ mould.
 
 ## Sections
 
-**Introduction.** Paragraph 1: the unresolved problem and why it remains
-unresolved. Paragraph 2: what prior work established and what ambiguity remains.
-Paragraph 3: the governing claim or strategy and why it addresses the problem.
-Add a roadmap only when the paper is complex.
+**Introduction.** Establish the unresolved problem, what prior work explains and
+leaves open, and how the paper's claim or strategy addresses that gap. Give each
+enough space for the reader to follow; these are functions, not a required
+three-paragraph structure. Add a roadmap when the reader needs one.
 
 **Results.** For each subsection: state the question, report the result,
 interpret it, and say what it rules out or motivates next. When the last step is
@@ -74,8 +74,8 @@ citation dump; what remains unestablished; the next tractable question.
   not open as if a specific effect were established.
 - If the strongest evidence is convergence across analyses, sources, or methods
   rather than one decisive result, say so in the opening paragraph.
-- Do not put limitations before the reader knows the answer, or repeat scene
-  setting already given in the introduction.
+- Put any boundary needed to interpret the answer beside it, including at the
+  opening. Avoid a detached list of limitations or repeated scene setting.
 - End by clarifying what the work makes possible, not by restating the abstract.
 
 ## Claims and evidence
@@ -96,12 +96,13 @@ repairing them, and then disclose the change:
 | Aggregate or average effect | Effect in every member |
 | Consistent with an interpretation | Establishes that interpretation |
 
-Use calibrated verbs and choose them from the evidence, not from the desired tone:
-*shows, demonstrates, establishes* → *supports, strongly suggests* → *suggests, is
-consistent with* → *raises the possibility* → *does not by itself establish*.
-Do not stack weak hedges, and do not delete a hedge that defines scope,
-population, or evidential strength. One well-placed qualification can govern a
-clearly delimited passage.
+Choose the verb for the relationship the evidence warrants. Use *shows* or
+*establishes* for what the analysis directly demonstrates, *supports* for evidence
+favouring an interpretation, and *is consistent with* for compatibility that may
+not distinguish alternatives. These are different relationships, not a scale to
+climb when asked for stronger prose. Remove redundant hedges while keeping
+qualifications that define scope, population, or evidential strength. One
+well-placed qualification can govern a clearly delimited passage.
 
 Keep a confidence interval with its estimate, a p-value with its test, the
 comparison and denominator with a quantity, and each citation with the clause it
@@ -164,6 +165,6 @@ conclusion enlarge rather than repeat?
 ## Compression
 
 Restructure before deleting. Preserve necessary literature and reasoning; cut
-redundancy, not substance. When cutting roughly a fifth or more of a section,
-flag the result as a substantial compression so the author can check what was
-lost.
+redundancy, not substance. Identify cuts whose omissions could affect the
+argument or its use, so the author can assess what was lost. A short cut can be
+consequential; a large cut may remove only repetition.
