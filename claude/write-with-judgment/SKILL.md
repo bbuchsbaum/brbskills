@@ -12,11 +12,11 @@ it working, fix that, and check what the revision changed.
 ## 1. Infer the job
 
 Read the request and the whole relevant passage first. Infer audience, purpose,
-genre, English variety, venue rules, length, and permitted intervention from
-context; ask one focused question only when an open choice would materially change
-the result. Continue the unambiguous work.
+genre, English variety, venue rules, length, and the permitted edit from context;
+ask one focused question only when an open choice would materially change the
+result. Continue the unambiguous work.
 
-| Request | Permitted transformation |
+| Request | Permitted edit |
 | --- | --- |
 | Proofread, copyedit, light polish | Correct errors and improve readability; keep claims, structure where practical, and effective voice. |
 | Rewrite, improve, strengthen | Reorganize and rephrase as needed; keep the position and evidential strength. |
@@ -32,8 +32,9 @@ than making them more credible.
 Follow the user's instructions and any required venue style first. Then protect
 truth, required meaning, quotations, citations, literal identifiers, and intended
 effect before optimizing wording. A citation travels with the claim it supports;
-if an authorized cut removes a cited claim, say so. Keep English variety, citation
-style, and prose conventions as separate choices.
+if a permitted cut removes a cited claim, say so. English variety, citation style,
+and prose conventions are independent choices: settling one does not settle the
+others.
 
 ## 2. Load the genre guidance
 
@@ -60,15 +61,17 @@ text and keep their effect.
   claims they limit.
 - One term per concept; different terms for different concepts.
 - Judge economy by reader effort, not word count.
-- Treat familiar style advice as conditional. When rules conflict or a paragraph
-  will not cohere, read [decisions.md](references/decisions.md). For light
-  polish, or when unsure whether to intervene at all, read
-  [examples.md](references/examples.md), which includes deliberate non-edits.
+- Treat familiar style advice as conditional.
+
+When rules conflict or a paragraph will not cohere, read
+[decisions.md](references/decisions.md). For light polish, or when unsure whether
+to intervene at all, read [examples.md](references/examples.md), which includes
+deliberate non-edits.
 
 For a debatable edit, ask: **if I reverted this, what would the reader lose?** If
-the answer is only a different preference, keep the original. An explicit request
-to tighten, shorten, or restyle makes economy and rhythm real gains, so the test
-then guards meaning and voice rather than blocking the requested edit. Large
+the answer is only a different preference, keep the original. When the user asked
+to tighten, shorten, or restyle, economy and rhythm count as gains; the test then
+protects meaning and voice and does not block the requested edit. Large
 problems justify large changes. Never use length caps, passive counts,
 readability grades, or banned-word lists as measures of quality.
 
@@ -76,8 +79,8 @@ readability grades, or banned-word lists as measures of quality.
 
 Compare the source (or brief) with the revision: roles, logic, modal force, scope,
 numbers, and which claim each citation supports. Compare relationships, not just
-whether the same words remain. For a hard case ask: could the original be true
-while the revision is false, or the reverse? When the revision changes claims,
+whether the same words remain. When equivalence is uncertain, ask: could the
+original be true while the revision is false, or the reverse? When the revision changes claims,
 conditions, numbers, or instructions that someone will publish or act on, read
 [verification.md](references/verification.md), which also covers the optional
 `scripts/compare_anchors.py` check and when to use a fresh reviewer. Stop when the
@@ -91,7 +94,7 @@ fifth or more of a section). When asked to explain edits, label each as a
 correction, house-style choice, suggestion, or substantive change. Leaving good
 writing unchanged is a valid result; say so in one line with the reason.
 
-For recurring projects, maintain an authorized style sheet
-([style-sheet.md](references/style-sheet.md)). For disputed conventions, consult
+For recurring projects, maintain a style sheet when the user or project workflow
+authorizes one ([style-sheet.md](references/style-sheet.md)). For disputed conventions, consult
 [sources.md](references/sources.md) and current primary guidance. Never claim
 comprehensive Chicago or certified ASD-STE100 compliance.

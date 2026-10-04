@@ -12,7 +12,7 @@ Use this register to distinguish verified source guidance from this skill's orig
 - Chapter II, principles 20 and 22: attend to the proximity of related expressions and the placement of emphasis.
 - Chapter V, reminders 7–8 and 16: avoid overstatement, distinguish empty intensification from substance, and value clarity without denying literary purpose.
 
-Apply these as composition advice. Do not inherit every historical usage judgment. The fourth edition's treatment of singular “they” in chapter IV, differs from current Chicago guidance. Its examples sometimes infer what a writer intended; this skill requires support before making that inference factual.
+Apply these as composition advice. Do not inherit every historical usage judgment. The fourth edition's treatment of singular “they” in chapter IV differs from current Chicago guidance. Its examples sometimes infer what a writer intended; this skill requires support before making that inference factual.
 
 ## Chicago: public primary guidance
 

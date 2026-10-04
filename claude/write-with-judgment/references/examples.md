@@ -1,6 +1,6 @@
 # Worked editorial decisions
 
-Use these original, hypothetical examples to calibrate judgment. The preferred wording is one defensible result, not a mandatory answer. Read the task before selecting the transformation.
+Use these original, hypothetical examples to calibrate judgment. The preferred wording is one defensible result, not a mandatory answer. Read the task before choosing the permitted edit.
 
 Contents: scientific precision · permission and recommendation · necessary conditions · text an agent must parse · useful passive voice · terminology · literary non-edit · deliberate repetition · substantive repair · summary · claim needing evidence.
 
@@ -98,7 +98,7 @@ Contents: scientific precision · permission and recommendation · necessary con
 
 **Source:** A pilot included 18 volunteers. Twelve preferred the new interface. Five preferred the old interface, and one expressed no preference. Recruitment was by convenience. The team will conduct a larger comparison next quarter.
 
-**Revision:** Twelve of 18 volunteers preferred the new interface in a convenience sample, limiting how broadly the result can be generalized.
+**Revision:** In a convenience sample, 12 of 18 volunteers preferred the new interface; the sampling method limits how broadly the result can be generalized.
 
 **Decision:** Preserve the central comparison and limitation. The purpose allows omission of the other counts and future plan. Do not say all users preferred the interface or that a representative sample was tested.
 

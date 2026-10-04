@@ -11,7 +11,7 @@ sentence work · symptoms · output modes · compression.
 ## Architecture before polish
 
 The aim is prose that is easier to follow, harder to misread, and calibrated to
-the evidence. Within the permitted edit depth, check these in order:
+the evidence. Within the permitted edit, check these in order:
 
 1. **A live problem early.** The opening presents a tension, gap, conflict,
    puzzle, or methodological limit. Background earns its place by serving that
@@ -19,8 +19,9 @@ the evidence. Within the permitted edit depth, check these in order:
 2. **One governing claim** for the paper or section, statable in one sentence.
 3. **One job per section and paragraph.** A section that cannot be summarized by
    its job is probably mixing functions; split or reorder it.
-4. **Progressive disambiguation.** Order evidence from demonstration to the
-   ruling-out of weaker explanations to implication. For each result, ask what
+4. **Progressive disambiguation.** Order evidence in three steps: the
+   demonstration, then the ruling-out of weaker explanations, then the
+   implication. For each result, ask what
    skeptical account it answers, and make that visible.
 5. **Calibration.** Keep what the evidence shows separate from what it suggests.
 6. **Sentences last.** Tighten only after the structure is working.
@@ -80,9 +81,9 @@ citation dump; what remains unestablished; the next tractable question.
 ## Claims and evidence
 
 Help the reader recover the question, the evidence or design, the result, and
-the limit of the inference. Treat a qualification, statistical or otherwise, as part of the finding. Keep
-these distinctions intact unless the brief authorizes repairing them, and then
-disclose the change:
+the limit of the inference. Treat a qualification, statistical or otherwise, as
+part of the finding. Keep these distinctions intact unless the brief authorizes
+repairing them, and then disclose the change:
 
 | Preserve | Do not silently substitute |
 | --- | --- |
@@ -163,5 +164,6 @@ conclusion enlarge rather than repeat?
 ## Compression
 
 Restructure before deleting. Preserve necessary literature and reasoning; cut
-redundancy, not substance. When cutting more than roughly 20% of a section, flag
-the result as a substantive compression so the author can check what was lost.
+redundancy, not substance. When cutting roughly a fifth or more of a section,
+flag the result as a substantial compression so the author can check what was
+lost.

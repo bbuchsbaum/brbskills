@@ -59,3 +59,17 @@ The fixed version has not been re-run.
 `python scripts/skills.py sync` and `check`, the 24 root repository tests, and
 `tests/test_compare_anchors.py` (10 tests) passed. Source URLs in
 references/sources.md resolved (HTTP 200) on 2026-10-04.
+
+## Self-application pass — 2026-10-04
+
+The skill was applied to its own SKILL.md and references as a targeted rewrite
+(no rule, condition, or force intentionally changed). Edits: one name for the
+edit-scope concept ("permitted edit"); "substantial compression" at roughly a
+fifth in both SKILL.md and scientific.md; several multi-action sentences split;
+opaque phrases glossed ("contrast formula", "implied safeguard", "otherwise");
+a dangling modifier in the summary example and a stray comma in sources.md fixed.
+`compare_anchors.py` flagged only the intended changes. A blind reviewer given
+the originals and the candidates found five meaning drifts introduced by the first
+draft (a widened definition of "brief", a weakened frequency claim, a broadened
+safeguard rule, a moved quotation condition, and a split instruction), all reverted.
+This was a text-only pass; the behavioural cases were not re-run.

@@ -6,7 +6,7 @@ Scale this process to the material. For a sentence, compare directly. For a cons
 
 For faithful editing, check the source and revision in both directions: Does the revision add anything unsupported? Does it lose anything the task requires? For summarization, require support for each retained claim and coverage of the requested essentials; full equivalence is not the objective. For substantive revision, assess changed claims against the brief and evidence and identify material changes. For new drafting, compare claims to the brief and sources.
 
-Preserve assertions as assertions and attributed views as attributed views. Do not silently endorse a source's unverified claim by stripping its attribution. Do not treat a known falsehood as protected merely because the author wrote it; handle it according to the permitted scope of editing.
+Preserve assertions as assertions and attributed views as attributed views. Do not silently endorse a source's unverified claim by stripping its attribution. Do not treat a known falsehood as protected merely because the author wrote it; handle it according to the permitted edit.
 
 ## 2. Attach qualifications to claims
 
@@ -16,7 +16,7 @@ When useful, make a compact working record:
 | --- | --- | --- | --- | --- |
 | What is asserted, recommended, or required? | Who or what does it concern? | When and under what scope? | Fact, possibility, recommendation, obligation, inference, or reported view? | What values and sources belong specifically to it? |
 
-Keep citations in the same record as their claims. Matching citation strings is insufficient: a citation may have migrated to a stronger or unrelated sentence. Check quotations against their sources when altering surrounding syntax, punctuation, or ellipses could change their meaning. Preserve source wording inside direct quotations unless the permitted edit is explicitly marked.
+Keep citations in the same record as their claims. Matching citation strings is insufficient: a citation may have migrated to a stronger or unrelated sentence. Check quotations against their sources when altering surrounding syntax, punctuation, or ellipses could change their meaning. Preserve source wording inside direct quotations unless a permitted change is explicitly marked.
 
 Inspect these dimensions whenever they appear:
 
