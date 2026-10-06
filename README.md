@@ -3,10 +3,49 @@
 Modular skills for **Codex and Claude Code**, maintained from one shared source.
 Each skill can be downloaded and installed independently.
 
+## Install or update one skill
+
+The easiest route is the [Skills CLI](https://github.com/vercel-labs/skills#readme),
+run with `npx` (Node.js 22.20+ and Git). Choose one command and replace
+`alliance-hpc` with any skill name in the catalog below. **Run the same command
+to install it or update it later.** `--skill` selects only that skill, including
+its references and scripts.
+
+**Codex:**
+
+```bash
+npx skills@latest add https://github.com/bbuchsbaum/brbskills/tree/main/codex \
+  --skill alliance-hpc --agent codex --global
+```
+
+**Claude Code:**
+
+```bash
+npx skills@latest add https://github.com/bbuchsbaum/brbskills/tree/main/claude \
+  --skill alliance-hpc --agent claude-code --global
+```
+
+For updates, rerun your chosen `add` command and confirm replacement. Back up any
+local customizations first. This also works for a skill previously copied manually.
+The explicit `codex` or `claude` source folder matters: in Skills CLI 1.7.1,
+generic `skills update` treats this repository's source and generated copies
+as ambiguous duplicate names and skips them.
+
+`--global` makes the skill available across projects. For a project-only install,
+run the same command from that project without `--global`, including when updating.
+
+For **both agents**, use the Codex command with `--agent codex claude-code` to
+maintain one shared copy; Claude ignores the extra Codex UI metadata. To avoid
+Node.js, use the [Git download](#download-an-individual-skill) and
+[manual installation](#install-the-selected-folder) below.
+
+## Skill catalog
+
 | Skill | Purpose | Codex folder | Claude Code folder |
 |---|---|---|---|
 | [design-computational-tests](skills/design-computational-tests/SKILL.md) | Design independent correctness tests for numerical algorithms and computational pipelines | [codex/design-computational-tests](codex/design-computational-tests) | [claude/design-computational-tests](claude/design-computational-tests) |
 | [scientific-check](skills/scientific-check/SKILL.md) | Assess evidence for scientific inference, numerical results, and measured performance claims | [codex/scientific-check](codex/scientific-check) | [claude/scientific-check](claude/scientific-check) |
+| [r-rmvpa](skills/r-rmvpa/SKILL.md) | Build and review rMVPA decoding, RSA, encoding, cross-domain, and pattern-model workflows | [codex/r-rmvpa](codex/r-rmvpa) | [claude/r-rmvpa](claude/r-rmvpa) |
 | [write-with-judgment](skills/write-with-judgment/SKILL.md) | Draft and revise scientific, technical, agent-facing, and literary prose while preserving meaning, evidence, and voice | [codex/write-with-judgment](codex/write-with-judgment) | [claude/write-with-judgment](claude/write-with-judgment) |
 | [cobidas](skills/cobidas/SKILL.md) | Record MRI/fMRI analysis evidence during work and write COBIDAS-aligned methods with explicit reporting gaps | [codex/cobidas](codex/cobidas) | [claude/cobidas](claude/cobidas) |
 | [trainee-mode](skills/trainee-mode/SKILL.md) **(experimental)** | Guided practice at selected analysis checkpoints; learning benefits unvalidated | [codex/trainee-mode](codex/trainee-mode) | [claude/trainee-mode](claude/trainee-mode) |
@@ -146,8 +185,10 @@ guides in [Authoritative guidance](#authoritative-guidance) for cloud products, 
 
 ## Authoritative guidance
 
-Last reviewed **2026-09-27**. Maintain these links and our conventions as guidance
-evolves; the date records a review, not a promise that upstream pages are unchanged.
+OpenAI skills/prompting and Anthropic authoring guidance rechecked **2026-10-06**
+while creating [r-rmvpa](skills/r-rmvpa/references/sources.md). Other installation
+and specification guidance last reviewed **2026-09-27**. These dates record
+reviews, not a promise that upstream pages are unchanged.
 
 | Source | What to consult it for |
 |---|---|

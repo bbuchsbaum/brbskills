@@ -1,0 +1,4 @@
+interface:
+  display_name: "rMVPA analyses"
+  short_description: "Build and review rMVPA neuroimaging analyses"
+  default_prompt: "Use $r-rmvpa to choose and verify the rMVPA workflow for my analysis."
