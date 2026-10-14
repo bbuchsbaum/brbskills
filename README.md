@@ -45,6 +45,7 @@ Node.js, use the [Git download](#download-an-individual-skill) and
 |---|---|---|---|
 | [design-computational-tests](skills/design-computational-tests/SKILL.md) | Design independent correctness tests for numerical algorithms and computational pipelines | [codex/design-computational-tests](codex/design-computational-tests) | [claude/design-computational-tests](claude/design-computational-tests) |
 | [scientific-check](skills/scientific-check/SKILL.md) | Assess evidence for scientific inference, numerical results, and measured performance claims | [codex/scientific-check](codex/scientific-check) | [claude/scientific-check](claude/scientific-check) |
+| [project-reality-check](skills/project-reality-check/SKILL.md) | Assess project readiness against intended outcomes and evidence; identify the next credible action | [codex/project-reality-check](codex/project-reality-check) | [claude/project-reality-check](claude/project-reality-check) |
 | [r-rmvpa](skills/r-rmvpa/SKILL.md) | Build and review rMVPA decoding, RSA, encoding, cross-domain, and pattern-model workflows | [codex/r-rmvpa](codex/r-rmvpa) | [claude/r-rmvpa](claude/r-rmvpa) |
 | [write-with-judgment](skills/write-with-judgment/SKILL.md) | Draft and revise scientific, technical, agent-facing, and literary prose while preserving meaning, evidence, and voice | [codex/write-with-judgment](codex/write-with-judgment) | [claude/write-with-judgment](claude/write-with-judgment) |
 | [cobidas](skills/cobidas/SKILL.md) | Record MRI/fMRI analysis evidence during work and write COBIDAS-aligned methods with explicit reporting gaps | [codex/cobidas](codex/cobidas) | [claude/cobidas](claude/cobidas) |
@@ -67,6 +68,10 @@ The independent computational assurance skills have complementary roles:
 or performance claim. Either works alone. See the
 [import and validation record](docs/imports/computational-assurance.md) for
 the workshop changes and bounded evaluation evidence.
+
+`project-reality-check` reviews a project milestone across implementation,
+integration, evidence, and value. It complements the focused scientific skills
+without requiring them; see its [review and import record](docs/imports/project-reality-check.md).
 
 The five fMRI skills form the [fMRI Workbench collection](collections/fmri-workbench/README.md).
 Download the stage you need; `fmri` coordinates multiple installed stages and does
@@ -250,8 +255,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for authoring and checks, and the
 [Alliance HPC](docs/imports/alliance-hpc.md),
 [fMRI Workbench](docs/imports/fmri-workbench.md),
 [fMRIPrep](docs/imports/fmriprep/IMPLEMENTATION.md),
-[COBIDAS](docs/imports/cobidas.md), and
-[visual hill climb](docs/imports/visual-hill-climb.md) import records for provenance and validation limits.
+[COBIDAS](docs/imports/cobidas.md),
+[visual hill climb](docs/imports/visual-hill-climb.md), and
+[project reality check](docs/imports/project-reality-check.md) import records for provenance and validation limits.
 The repository uses standalone skill folders for selective Git downloads. Native
 plugin packaging can be added if marketplace installation is wanted.
 

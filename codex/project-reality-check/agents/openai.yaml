@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Reality Check"
+  short_description: "Test project claims and find the next credible move"
+  default_prompt: "Use $project-reality-check to assess this project against its intended outcomes, verify the claims that determine readiness, and recommend a dependency-ordered next move."

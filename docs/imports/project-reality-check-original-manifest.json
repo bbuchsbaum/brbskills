@@ -1,0 +1,32 @@
+{
+  "imported_on": "2026-10-14",
+  "source_archive": "~/Downloads/project-reality-check.zip",
+  "archive_sha256": "6ac8f9113212f6bae3b6a6f01076ce43a8dedf829768d7010c59a938ce9b6d69",
+  "license": "No license or upstream attribution supplied in the archive; none inferred.",
+  "files": {
+    "SKILL.md": {
+      "sha256": "f849b72accbacd860428c2a0a8801f0e69c4c6498aa6c00bb3440ab41379bf0c",
+      "bytes": 5541
+    },
+    "agents/openai.yaml": {
+      "sha256": "ec7d4c96f1ea81def055a4714a5d33f75b507fc8b4dc36e1fba0bb710e658857",
+      "bytes": 317
+    },
+    "references/architecture-and-value.md": {
+      "sha256": "8fdeab27b82d2a4911c2d716b1d66e49494de5ae77115fbdf6d825f49be32c7d",
+      "bytes": 4052
+    },
+    "references/evidence.md": {
+      "sha256": "39fb02af437cfbf7a85648a1cbce233afc446e042f4cadc47be1d9b813bf8bc9",
+      "bytes": 4764
+    },
+    "references/report-and-handoff.md": {
+      "sha256": "c639a7d4f463aa9f40f79ae8dbcf24a052c2089d5d71bc5f48d05da63b2180b2",
+      "bytes": 5343
+    },
+    "references/scientific-claims.md": {
+      "sha256": "e417a2df1af19bc439ec1e214d9ca24b2861ecac5107011dd8cf66144c39cd9e",
+      "bytes": 4307
+    }
+  }
+}

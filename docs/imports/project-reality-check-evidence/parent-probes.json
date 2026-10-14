@@ -1,0 +1,102 @@
+[
+  {
+    "fixture": "pilot",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "main.py",
+      "readings.json"
+    ],
+    "exit": 0,
+    "stdout": "{\"count\": 3, \"mean\": 2}\n",
+    "stderr": ""
+  },
+  {
+    "fixture": "pilot",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "main.py",
+      "readings.json",
+      "--backend",
+      "file"
+    ],
+    "exit": 0,
+    "stdout": "{\"count\": 3, \"mean\": 10}\n",
+    "stderr": ""
+  },
+  {
+    "fixture": "pilot",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "main.py",
+      "missing.json"
+    ],
+    "exit": 0,
+    "stdout": "{\"count\": 3, \"mean\": 2}\n",
+    "stderr": ""
+  },
+  {
+    "fixture": "pilot",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "checks",
+      "-v"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_empty (test_summary.SummaryTests.test_empty) ... ok\ntest_nonnumeric (test_summary.SummaryTests.test_nonnumeric) ... ok\ntest_values (test_summary.SummaryTests.test_values) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "fixture": "reviewed",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "main.py",
+      "readings.json"
+    ],
+    "exit": 0,
+    "stdout": "{\"count\": 3, \"mean\": 10}\n",
+    "stderr": ""
+  },
+  {
+    "fixture": "reviewed",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "main.py",
+      "readings.json",
+      "--backend",
+      "file"
+    ],
+    "exit": 0,
+    "stdout": "{\"count\": 3, \"mean\": 10}\n",
+    "stderr": ""
+  },
+  {
+    "fixture": "reviewed",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "main.py",
+      "missing.json"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "error: [Errno 2] No such file or directory: 'missing.json'\n"
+  },
+  {
+    "fixture": "reviewed",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "checks",
+      "-v"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "test_empty (test_summary.SummaryTests.test_empty) ... ok\ntest_nonnumeric (test_summary.SummaryTests.test_nonnumeric) ... ok\ntest_values (test_summary.SummaryTests.test_values) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  }
+]

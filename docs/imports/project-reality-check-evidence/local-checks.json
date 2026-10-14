@@ -1,0 +1,58 @@
+[
+  {
+    "command": [
+      ".venv/bin/python",
+      "/Users/bbuchsbaum/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+      "skills/project-reality-check"
+    ],
+    "exit": 0,
+    "log": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-final-checks-bk6q304m/skill-validator.log",
+    "output": "Skill is valid!\n"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "scripts/skills.py",
+      "sync"
+    ],
+    "exit": 0,
+    "log": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-final-checks-bk6q304m/sync.log",
+    "output": "alliance-hpc: description 161 chars; body 564 words\nbids-atlas: description 219 chars; body 551 words\ncobidas: description 207 chars; body 680 words\ndashboard-builder: description 209 chars; body 765 words\ndesign-computational-tests: description 140 chars; body 574 words\nfmriprep: description 260 chars; body 744 words\nlme4-mixed-models: description 190 chars; body 515 words\nproject-reality-check: description 186 chars; body 528 words\nr-rmvpa: description 197 chars; body 540 words\nscientific-check: description 143 chars; body 455 words\ntrainee-mode: description 182 chars; body 578 words\nvisual-hill-climb: description 212 chars; body 536 words\nwrite-with-judgment: description 202 chars; body 730 words\nfmri: description 209 chars; body 495 words\nfmri-bids: description 216 chars; body 463 words\nfmrigds: description 225 chars; body 407 words\nfmrireg: description 216 chars; body 523 words\nneuromosaic: description 221 chars; body 410 words\nClaude and Codex bundles match their sources.\n"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "scripts/skills.py",
+      "check"
+    ],
+    "exit": 0,
+    "log": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-final-checks-bk6q304m/check.log",
+    "output": "alliance-hpc: description 161 chars; body 564 words\nbids-atlas: description 219 chars; body 551 words\ncobidas: description 207 chars; body 680 words\ndashboard-builder: description 209 chars; body 765 words\ndesign-computational-tests: description 140 chars; body 574 words\nfmriprep: description 260 chars; body 744 words\nlme4-mixed-models: description 190 chars; body 515 words\nproject-reality-check: description 186 chars; body 528 words\nr-rmvpa: description 197 chars; body 540 words\nscientific-check: description 143 chars; body 455 words\ntrainee-mode: description 182 chars; body 578 words\nvisual-hill-climb: description 212 chars; body 536 words\nwrite-with-judgment: description 202 chars; body 730 words\nfmri: description 209 chars; body 495 words\nfmri-bids: description 216 chars; body 463 words\nfmrigds: description 225 chars; body 407 words\nfmrireg: description 216 chars; body 523 words\nneuromosaic: description 221 chars; body 410 words\nClaude and Codex bundles match their sources.\n"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "scripts/skills.py",
+      "package",
+      "project-reality-check"
+    ],
+    "exit": 0,
+    "log": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-final-checks-bk6q304m/package.log",
+    "output": "alliance-hpc: description 161 chars; body 564 words\nbids-atlas: description 219 chars; body 551 words\ncobidas: description 207 chars; body 680 words\ndashboard-builder: description 209 chars; body 765 words\ndesign-computational-tests: description 140 chars; body 574 words\nfmriprep: description 260 chars; body 744 words\nlme4-mixed-models: description 190 chars; body 515 words\nproject-reality-check: description 186 chars; body 528 words\nr-rmvpa: description 197 chars; body 540 words\nscientific-check: description 143 chars; body 455 words\ntrainee-mode: description 182 chars; body 578 words\nvisual-hill-climb: description 212 chars; body 536 words\nwrite-with-judgment: description 202 chars; body 730 words\nfmri: description 209 chars; body 495 words\nfmri-bids: description 216 chars; body 463 words\nfmrigds: description 225 chars; body 407 words\nfmrireg: description 216 chars; body 523 words\nneuromosaic: description 221 chars; body 410 words\nClaude and Codex bundles match their sources.\ndist/project-reality-check-codex.zip\ndist/project-reality-check-claude.zip\n"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit": 0,
+    "tests": 24,
+    "duration_seconds": 28.764,
+    "receipt": "Observed earlier in this task, exec session 36668; no code/tooling changes since that run. Only new skill documentation and generated bundles subsequently changed."
+  }
+]

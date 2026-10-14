@@ -1,0 +1,62 @@
+[
+  {
+    "command": "find /var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed -maxdepth 3 -type f -print | sort",
+    "working_directory": "/Users/bbuchsbaum/code/brbskills",
+    "exit_status": 0,
+    "output": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/README.md\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/VERSION\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/checks/test_summary.py\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/decisions.md\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/main.py\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/previous-review.md\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/readings.json\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/roadmap.md\n/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed/summary.py\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s checks -v",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 0,
+    "output": "test_empty (test_summary.SummaryTests.test_empty) ... ok\ntest_nonnumeric (test_summary.SummaryTests.test_nonnumeric) ... ok\ntest_values (test_summary.SummaryTests.test_values) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 main.py readings.json",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 0,
+    "output": "{\"count\": 3, \"mean\": 10}\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 main.py missing.json",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 2,
+    "output": "error: [Errno 2] No such file or directory: 'missing.json'\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 main.py ../../evidence/reviewed/invalid.json",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 2,
+    "output": "error: Expecting value: line 1 column 1 (char 0)\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 main.py ../../evidence/reviewed/empty.json",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 2,
+    "output": "error: expected a nonempty array of finite numbers\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 main.py ../../evidence/reviewed/nonfinite.json",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 2,
+    "output": "error: expected a nonempty array of finite numbers\n"
+  },
+  {
+    "command": "python3 --version",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 0,
+    "output": "Python 3.14.7\n"
+  },
+  {
+    "command": "test -d .git; printf '%s\\n' $?",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/fixtures/reviewed",
+    "exit_status": 0,
+    "output": "1\n"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -c \"import json; json.load(open('commands.json')); json.load(open('selected-files.json')); print('JSON artifacts valid')\"",
+    "working_directory": "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/evidence/reviewed",
+    "exit_status": 0,
+    "output": "JSON artifacts valid\n"
+  }
+]

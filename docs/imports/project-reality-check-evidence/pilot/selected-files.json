@@ -1,0 +1,9 @@
+{
+  "skill_files_read": [
+    "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/skill/project-reality-check/SKILL.md",
+    "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/skill/project-reality-check/references/evidence.md",
+    "/var/folders/9h/nkjq6vss7mqdl4ck7q1hd8ph0000gp/T/project-reality-check-eval-057i5i09/skill/project-reality-check/references/report-and-handoff.md"
+  ],
+  "fixture_files_read": ["README.md", "VERSION", "decisions.md", "main.py", "summary.py", "checks/test_summary.py", "readings.json"],
+  "not_read": ["roadmap.md", "repository author files", "sibling fixtures", "memory", "evaluation rubrics"]
+}

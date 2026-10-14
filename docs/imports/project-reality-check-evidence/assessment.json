@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-14",
+  "execution": "Two fresh Codex collaboration subagents with explicit skill invocation; exact model identity not exposed by tool response.",
+  "skill_and_fixture_hashes": "inputs.json",
+  "fixture_files_unchanged": true,
+  "trials": {
+    "pilot": {
+      "outcome": "met bounded rubric",
+      "evidence": "pilot/report.md",
+      "reason": "Observed mean 2 versus 10 and exit 0 on missing file through documented entrypoint; recognized the working file backend, passing component tests, deferred dashboard, and bounded integration repair."
+    },
+    "reviewed": {
+      "outcome": "met bounded rubric",
+      "evidence": "reviewed/report.md",
+      "reason": "Ran the corrected default and failure probes, superseded historical RC-01 and RC-02 blockers, and allowed a scoped clean verdict without changing source or inventing a backlog."
+    }
+  },
+  "receipt_limits": "Agent commands.json files are agent-authored command/output records, not complete raw tool transcripts; pilot outputs include condensed test text and literal newline escapes. parent-probes.json preserves independently captured subprocess stdout, stderr and exit codes for the decisive behavior and component tests.",
+  "not_established": [
+    "Automatic selection",
+    "Fresh full Codex versus Claude Code product-session behavior",
+    "Improvement over original or no-skill baseline",
+    "Scientific review efficacy",
+    "Live tracker behavior",
+    "Authorized repair behavior"
+  ]
+}

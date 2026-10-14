@@ -1,0 +1,7 @@
+{
+  "user_tasks": {
+    "pilot": "Use $project-reality-check to decide whether this project is ready for the local CLI pilot described in its README and accepted scope. Inspect the project and run bounded local checks as useful. Return a concise evidence-backed assessment and the next executable action. This is a review only; leave the project files unchanged. Do not access the network or external services.",
+    "reviewed": "Use $project-reality-check to reassess this project's readiness for the local CLI pilot. Reconcile the previous review with the accepted scope and current files. Run bounded local checks as useful. Give a concise verdict, remaining decisive gaps, and the next executable action. This is a review only; leave the project files unchanged. Do not access the network or external services."
+  },
+  "harness_constraints": "Fresh Codex subagent contexts. Read only SKILL.md, conditional references, and the named fixture. Do not read sibling fixtures, repository author files, memory, or rubrics; do not delegate. Write only in the assigned temporary evidence directory. Use PYTHONDONTWRITEBYTECODE=1. Retain report.md, commands.json, and selected-files.json. Do not infer unexposed model identity."
+}

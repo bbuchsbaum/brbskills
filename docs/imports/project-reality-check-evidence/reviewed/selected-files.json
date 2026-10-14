@@ -1,0 +1,19 @@
+{
+  "skill_files_read": [
+    "skill/project-reality-check/SKILL.md",
+    "skill/project-reality-check/references/evidence.md",
+    "skill/project-reality-check/references/architecture-and-value.md",
+    "skill/project-reality-check/references/report-and-handoff.md"
+  ],
+  "fixture_files_read": [
+    "fixtures/reviewed/README.md",
+    "fixtures/reviewed/VERSION",
+    "fixtures/reviewed/decisions.md",
+    "fixtures/reviewed/previous-review.md",
+    "fixtures/reviewed/roadmap.md",
+    "fixtures/reviewed/main.py",
+    "fixtures/reviewed/summary.py",
+    "fixtures/reviewed/checks/test_summary.py",
+    "fixtures/reviewed/readings.json"
+  ]
+}

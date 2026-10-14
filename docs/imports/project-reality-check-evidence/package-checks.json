@@ -1,0 +1,22 @@
+[
+  {
+    "product": "codex",
+    "archive": "dist/project-reality-check-codex.zip",
+    "sha256": "902a0c2d2856ced8e416177202f295b3b22bfbfd7a27a039b1134abd1fbd8317",
+    "files": 26,
+    "exact_source_render": true,
+    "checksums": "passed",
+    "relative_links": "passed",
+    "ui_metadata_scope": "passed"
+  },
+  {
+    "product": "claude",
+    "archive": "dist/project-reality-check-claude.zip",
+    "sha256": "17599faac9e0442f09c34387884e412ecf3ae2f45dd4161d5062e14f083c1598",
+    "files": 25,
+    "exact_source_render": true,
+    "checksums": "passed",
+    "relative_links": "passed",
+    "ui_metadata_scope": "passed"
+  }
+]
