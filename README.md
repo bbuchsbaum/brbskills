@@ -53,6 +53,7 @@ Node.js, use the [Git download](#download-an-individual-skill) and
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
 | [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
 | [dashboard-builder](skills/dashboard-builder/SKILL.md) | Live local page for agent sessions in a project: hook-captured activity, needs-you, and messages to agents | [codex/dashboard-builder](codex/dashboard-builder) | [claude/dashboard-builder](claude/dashboard-builder) |
+| [codex-wakeup](skills/codex-wakeup/SKILL.md) **(experimental)** | Bounded cron check-ins to an existing Codex thread, with durable acknowledgement and backlog protection | [codex/codex-wakeup](codex/codex-wakeup) | [claude/codex-wakeup](claude/codex-wakeup) |
 | [bids-atlas](skills/bids-atlas/SKILL.md) | Offline interactive dashboard of a BIDS dataset: inventory, oddities, events, fieldmaps, fMRIPrep/MRIQC motion and QC | [codex/bids-atlas](codex/bids-atlas) | [claude/bids-atlas](claude/bids-atlas) |
 | [fmriprep](skills/fmriprep/SKILL.md) | Portable BIDS preprocessing plans, execution, recovery, and QC | [codex/fmriprep](codex/fmriprep) | [claude/fmriprep](claude/fmriprep) |
 | [alliance-hpc](skills/alliance-hpc/SKILL.md) | Alliance/DRAC Slurm planning, execution, and troubleshooting | [codex/alliance-hpc](codex/alliance-hpc) | [claude/alliance-hpc](claude/alliance-hpc) |
@@ -93,6 +94,14 @@ It does not replace an analysis skill or change its execution permissions.
 Protocol behavior and learning benefits remain unvalidated; see its
 [rationale](skills/trainee-mode/references/evidence.md) and
 [validation status](skills/trainee-mode/tests/VALIDATION.md).
+
+`codex-wakeup` adds an optional scheduling mechanism for an existing Codex
+conversation. It keeps one helper wakeup outstanding until the receiving turn
+acknowledges it, and stops submissions at a configured deadline. Mote still
+governs work. Claude can configure the helper, but this package does not wake
+Claude sessions. See [operations](skills/codex-wakeup/references/operations.md)
+and [validation limits](skills/codex-wakeup/tests/VALIDATION.md); live delivery
+of this revised protocol remains unverified.
 
 ## Download an individual skill
 
