@@ -1,0 +1,14 @@
+interface:
+  display_name: Strunk & White, with Orwell
+  short_description: Write and revise clear, precise, unforced prose
+  default_prompt: Use $write-with-elements-of-style to draft or revise this text while
+    preserving its meaning, evidence, and voice.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

@@ -48,6 +48,7 @@ Node.js, use the [Git download](#download-an-individual-skill) and
 | [project-reality-check](skills/project-reality-check/SKILL.md) | Assess project readiness against intended outcomes and evidence; identify the next credible action | [codex/project-reality-check](codex/project-reality-check) | [claude/project-reality-check](claude/project-reality-check) |
 | [r-rmvpa](skills/r-rmvpa/SKILL.md) | Build and review rMVPA decoding, RSA, encoding, cross-domain, and pattern-model workflows | [codex/r-rmvpa](codex/r-rmvpa) | [claude/r-rmvpa](claude/r-rmvpa) |
 | [write-with-judgment](skills/write-with-judgment/SKILL.md) | Draft and revise scientific, technical, agent-facing, and literary prose while preserving meaning, evidence, and voice | [codex/write-with-judgment](codex/write-with-judgment) | [claude/write-with-judgment](claude/write-with-judgment) |
+| [write-with-elements-of-style](skills/write-with-elements-of-style/SKILL.md) | Draft, revise, shorten, and critique prose with Strunk and White, plus Orwell on clarity; preserve meaning, evidence, and voice | [codex/write-with-elements-of-style](codex/write-with-elements-of-style) | [claude/write-with-elements-of-style](claude/write-with-elements-of-style) |
 | [cobidas](skills/cobidas/SKILL.md) | Record MRI/fMRI analysis evidence during work and write COBIDAS-aligned methods with explicit reporting gaps | [codex/cobidas](codex/cobidas) | [claude/cobidas](claude/cobidas) |
 | [trainee-mode](skills/trainee-mode/SKILL.md) **(experimental)** | Guided practice at selected analysis checkpoints; learning benefits unvalidated | [codex/trainee-mode](codex/trainee-mode) | [claude/trainee-mode](claude/trainee-mode) |
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
@@ -62,6 +63,11 @@ Node.js, use the [Git download](#download-an-individual-skill) and
 | [fmrireg](collections/fmri-workbench/skills/fmrireg/SKILL.md) | First-level task-fMRI models, diagnostics, and exports | [codex/fmrireg](codex/fmrireg) | [claude/fmrireg](claude/fmrireg) |
 | [fmrigds](collections/fmri-workbench/skills/fmrigds/SKILL.md) | Group-level models, uncertainty, and inference | [codex/fmrigds](codex/fmrigds) | [claude/fmrigds](claude/fmrigds) |
 | [neuromosaic](collections/fmri-workbench/skills/neuromosaic/SKILL.md) | Map montages and statistical reports | [codex/neuromosaic](codex/neuromosaic) | [claude/neuromosaic](claude/neuromosaic) |
+
+`write-with-elements-of-style` includes the operating guide and eight references
+from the supplied **Strunk & White, with Orwell** skill. See its
+[import record](docs/imports/write-with-elements-of-style.md) for provenance and
+verification limits.
 
 The independent computational assurance skills have complementary roles:
 `design-computational-tests` chooses tests for a computational contract;
