@@ -16,6 +16,10 @@ These are original teaching examples, not quotations from Strunk, White, or Orwe
 10. Preserve the author's position
 11. Keep useful negation
 12. Leave effective prose alone
+13. State the relationship directly
+14. Remove manufactured importance
+15. Resolve an instruction before shortening it
+16. Account for a substantive cut
 
 ## 1. Recover the action
 
@@ -120,3 +124,39 @@ These are original teaching examples, not quotations from Strunk, White, or Orwe
 **Decision:** Keep both sentences if that is the intended narrative beat.
 
 **Why:** Combining them, adding an adverb, or explaining the suspense need not improve anything. A passage earns its form by what it does for the reader, not by how many rules an edit can visibly apply.
+
+## 13. State the relationship directly
+
+**Before:** Setting either matrix to something other than the identity is how you tell the decomposition to use a different metric.
+
+**After:** A nonidentity matrix specifies a different metric for the decomposition.
+
+**Why:** The original proposition becomes the sentence's main assertion. Retain the surrounding definitions of the two matrices and their respective metrics; this sentence cannot replace them.
+
+## 14. Remove manufactured importance
+
+**Before:** It is worth understanding the crucial distinction here: the cache stores parsed files, not query results. This is not merely an implementation detail; it fundamentally shapes how you should think about reuse. The honest answer is that a new query still runs.
+
+**After:** The cache stores parsed files. Each new query runs against those files; its results are not cached.
+
+**Why:** The revision gives the reader the mechanism and consequence without staging a revelation. Its rhythm follows the explanation. Contrast is useful here, but repeating and announcing it adds no information. This example diagnoses the passage's effect, not its authorship.
+
+## 15. Resolve an instruction before shortening it
+
+**Before:** To disable the penalty, drop `lambda_v`.
+
+**If the documented API says omission restores the default and zero disables it:** To disable the penalty, set `lambda_v = 0`. Omitting `lambda_v` restores the default penalty.
+
+**If the API is unknown:** Flag whether “drop” means omit the argument or set it to zero. Do not choose either operation without support.
+
+**Why:** A short, grammatical instruction can produce the wrong call. Resolve the operation before polishing the sentence; keep any unresolved factual question visible.
+
+## 16. Account for a substantive cut
+
+**Original:** Earlier versions processed one file at a time. The current version batches files, reducing setup work but requiring more memory. Use single-file mode when memory is limited.
+
+**Unjustified cut:** The current version batches files to reduce setup work.
+
+**Decision:** Keep the memory tradeoff and single-file advice. Retain the historical comparison in migration guidance; in a current-use quickstart, it may be removed or relocated.
+
+**Why:** The cut removes both a cost and an actionable alternative. Account for what disappears and judge it against the reader's purpose. Shortening alone does not justify the loss.
