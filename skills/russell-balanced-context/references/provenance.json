@@ -1,0 +1,257 @@
+{
+  "title": "Russell interleaved with Darwin, Huxley, and James",
+  "design": "Russell fills alternate blocks (about half the tokens); the other blocks rotate Darwin, Huxley, James (about one sixth each). Order: R D R H R J, repeating.",
+  "separator": "* * *",
+  "block_target_tokens": 450,
+  "block_rule": "Consecutive whole paragraphs from one source, stopping at the paragraph count nearest the target; a single long paragraph may exceed it.",
+  "sample_selection": "Nested prefixes of one block sequence, each ending on a completed Russell/counterweight pair; each source is read in original order with no repetition or padding.",
+  "extraction": "Collapse HTML whitespace and flatten inline markup; keep paragraph text, punctuation, and spelling. Exclude headings, Gutenberg markers, CSS, and HTML.",
+  "token_encoding": "o200k_base",
+  "token_count_scope": "File text only, separators included; excludes chat framing, instructions, draft, history, tools, and output. Other tokenizers may differ.",
+  "sources": {
+    "russell": {
+      "author": "Bertrand Russell",
+      "title": "The Problems of Philosophy",
+      "year": 1912,
+      "url": "https://www.gutenberg.org/files/5827/5827-h/5827-h.htm",
+      "retrieved_date": "2026-10-28",
+      "excerpt": "Chapters I-XV in order; chapter headings dropped",
+      "source_file": "russell-context/source.html",
+      "source_sha256": "e366ea36bc6014e67bda2841b45919ef31a08c5c26f9352ebfed037bc5f4d882",
+      "paragraphs_available": 274
+    },
+    "darwin": {
+      "author": "Charles Darwin",
+      "title": "The Voyage of the Beagle",
+      "year": 1839,
+      "url": "https://www.gutenberg.org/cache/epub/944/pg944-images.html",
+      "retrieved_date": "2026-10-30",
+      "excerpt": "Chapter I (St. Jago - Cape de Verd Islands); italic synopsis dropped",
+      "source_file": "russell-balanced-context/sources/darwin-944.html",
+      "source_sha256": "374fb5b604520c8ff9483d4ee34d352c77cf5435bfbb2519546425b3ea8ee280",
+      "paragraphs_available": 30
+    },
+    "huxley": {
+      "author": "Thomas Henry Huxley",
+      "title": "On a Piece of Chalk, in Discourses: Biological & Geological",
+      "year": 1868,
+      "url": "https://www.gutenberg.org/cache/epub/10060/pg10060-images.html",
+      "retrieved_date": "2026-10-30",
+      "excerpt": "Essay I only; date line, footnotes, and footnote markers dropped",
+      "source_file": "russell-balanced-context/sources/huxley-10060.html",
+      "source_sha256": "9937829b341af47e28ab08319f0f7bc301b17ecf79433e600b20db84bc159ab3",
+      "paragraphs_available": 59
+    },
+    "james": {
+      "author": "William James",
+      "title": "Pragmatism: A New Name for Some Old Ways of Thinking",
+      "year": 1907,
+      "url": "https://www.gutenberg.org/cache/epub/5116/pg5116-images.html",
+      "retrieved_date": "2026-10-30",
+      "excerpt": "Lecture I (The Present Dilemma in Philosophy)",
+      "source_file": "russell-balanced-context/sources/james-5116.html",
+      "source_sha256": "6ce54d7cf9e536117ee2f583cc299aa717c3516725a94d1e9c24daf07d15cfec",
+      "paragraphs_available": 52
+    }
+  },
+  "outputs": {
+    "balanced-8k.txt": {
+      "tokens": 7103,
+      "whitespace_words": 5941,
+      "bytes": 33204,
+      "sha256": "a5c7b045142ba9674ea927e773e5ddfbfc7a2a97532ae23d8d0fddf8a823ce7f",
+      "target_token_cap": 8000,
+      "blocks": 16,
+      "block_authors": [
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley"
+      ],
+      "author_shares": {
+        "russell": {
+          "blocks": 8,
+          "paragraphs": 20,
+          "tokens": 3467
+        },
+        "darwin": {
+          "blocks": 3,
+          "paragraphs": 5,
+          "tokens": 1084
+        },
+        "huxley": {
+          "blocks": 3,
+          "paragraphs": 11,
+          "tokens": 1452
+        },
+        "james": {
+          "blocks": 2,
+          "paragraphs": 6,
+          "tokens": 1055
+        }
+      }
+    },
+    "balanced-16k.txt": {
+      "tokens": 15605,
+      "whitespace_words": 13023,
+      "bytes": 73932,
+      "sha256": "9ccf32f94b4243d0987300eb4a955d824005f393b24aec1bc45cfd093cd86b03",
+      "target_token_cap": 16000,
+      "blocks": 34,
+      "block_authors": [
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley"
+      ],
+      "author_shares": {
+        "russell": {
+          "blocks": 17,
+          "paragraphs": 43,
+          "tokens": 7489
+        },
+        "darwin": {
+          "blocks": 6,
+          "paragraphs": 12,
+          "tokens": 2682
+        },
+        "huxley": {
+          "blocks": 6,
+          "paragraphs": 18,
+          "tokens": 2799
+        },
+        "james": {
+          "blocks": 5,
+          "paragraphs": 17,
+          "tokens": 2536
+        }
+      }
+    },
+    "balanced-24k.txt": {
+      "tokens": 23781,
+      "whitespace_words": 19921,
+      "bytes": 113067,
+      "sha256": "2c8e72f78e313a69a192ddd45492ec75e37e7302d51a93bcca12e1b1013a9853",
+      "target_token_cap": 24000,
+      "blocks": 52,
+      "block_authors": [
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley",
+        "russell",
+        "james",
+        "russell",
+        "darwin",
+        "russell",
+        "huxley"
+      ],
+      "author_shares": {
+        "russell": {
+          "blocks": 26,
+          "paragraphs": 62,
+          "tokens": 11421
+        },
+        "darwin": {
+          "blocks": 9,
+          "paragraphs": 17,
+          "tokens": 4138
+        },
+        "huxley": {
+          "blocks": 9,
+          "paragraphs": 24,
+          "tokens": 4094
+        },
+        "james": {
+          "blocks": 8,
+          "paragraphs": 25,
+          "tokens": 3975
+        }
+      }
+    }
+  }
+}
