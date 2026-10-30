@@ -1,0 +1,59 @@
+{
+  "title": "The Problems of Philosophy",
+  "author": "Bertrand Russell",
+  "publication_year": 1912,
+  "source_url": "https://www.gutenberg.org/files/5827/5827-h/5827-h.htm",
+  "retrieved_date": "2026-10-28",
+  "source_sha256": "e366ea36bc6014e67bda2841b45919ef31a08c5c26f9352ebfed037bc5f4d882",
+  "extraction": "Chapters I-XV only; preserve paragraph order and punctuation; collapse HTML whitespace; flatten inline markup. Exclude contents, preface, bibliographical note, Gutenberg markers, CSS, and HTML.",
+  "sample_selection": "Nested prefixes in original chapter order, ending at paragraph boundaries; no repetition or padding.",
+  "token_encoding": "o200k_base",
+  "token_count_scope": "File text only; excludes chat framing, instructions, draft, history, tools, and output. Other tokenizers may differ.",
+  "chapters": [
+    "CHAPTER I. APPEARANCE AND REALITY",
+    "CHAPTER II. THE EXISTENCE OF MATTER",
+    "CHAPTER III. THE NATURE OF MATTER",
+    "CHAPTER IV. IDEALISM",
+    "CHAPTER V. KNOWLEDGE BY ACQUAINTANCE AND KNOWLEDGE BY DESCRIPTION",
+    "CHAPTER VI. ON INDUCTION",
+    "CHAPTER VII. ON OUR KNOWLEDGE OF GENERAL PRINCIPLES",
+    "CHAPTER VIII. HOW A PRIORI KNOWLEDGE IS POSSIBLE",
+    "CHAPTER IX. THE WORLD OF UNIVERSALS",
+    "CHAPTER X. ON OUR KNOWLEDGE OF UNIVERSALS",
+    "CHAPTER XI. ON INTUITIVE KNOWLEDGE",
+    "CHAPTER XII. TRUTH AND FALSEHOOD",
+    "CHAPTER XIII. KNOWLEDGE, ERROR, AND PROBABLE OPINION",
+    "CHAPTER XIV. THE LIMITS OF PHILOSOPHICAL KNOWLEDGE",
+    "CHAPTER XV. THE VALUE OF PHILOSOPHY"
+  ],
+  "outputs": {
+    "russell-full.txt": {
+      "tokens": 50047,
+      "whitespace_words": 42550,
+      "bytes": 243701,
+      "sha256": "da50ff8a3af092d04c4c84a100222515899c7074214a1f327b89ff857f8c7a9f",
+      "target_token_cap": null
+    },
+    "russell-2k.txt": {
+      "tokens": 1961,
+      "whitespace_words": 1694,
+      "bytes": 9173,
+      "sha256": "6913157f1ce3143c362c44fbb25f5cacd23e05c8b233bb5880c244cd0aa3b9c3",
+      "target_token_cap": 2000
+    },
+    "russell-8k.txt": {
+      "tokens": 7961,
+      "whitespace_words": 6846,
+      "bytes": 38320,
+      "sha256": "a0c27d99155c9929fd479a62292ffc247f0fa39de119d6671d147643b91761d7",
+      "target_token_cap": 8000
+    },
+    "russell-24k.txt": {
+      "tokens": 23940,
+      "whitespace_words": 20523,
+      "bytes": 116229,
+      "sha256": "5fa4dc401854a109f2a8ecff8e8050f24a13a18806b2d31bc90b06620f47f65c",
+      "target_token_cap": 24000
+    }
+  }
+}

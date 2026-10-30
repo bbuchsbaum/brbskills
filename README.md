@@ -49,12 +49,14 @@ Node.js, use the [Git download](#download-an-individual-skill) and
 | [r-rmvpa](skills/r-rmvpa/SKILL.md) | Build and review rMVPA decoding, RSA, encoding, cross-domain, and pattern-model workflows | [codex/r-rmvpa](codex/r-rmvpa) | [claude/r-rmvpa](claude/r-rmvpa) |
 | [write-with-judgment](skills/write-with-judgment/SKILL.md) | Draft and revise scientific, technical, agent-facing, and literary prose while preserving meaning, evidence, and voice | [codex/write-with-judgment](codex/write-with-judgment) | [claude/write-with-judgment](claude/write-with-judgment) |
 | [write-with-elements-of-style](skills/write-with-elements-of-style/SKILL.md) | Draft, revise, shorten, and critique prose with Strunk and White, plus Orwell on clarity; preserve meaning, evidence, and voice | [codex/write-with-elements-of-style](codex/write-with-elements-of-style) | [claude/write-with-elements-of-style](claude/write-with-elements-of-style) |
+| [russell-context](skills/russell-context/SKILL.md) **(experimental)** | Load Russell's prose before drafting or revision, with selectable context doses; writing benefits unvalidated | [codex/russell-context](codex/russell-context) | [claude/russell-context](claude/russell-context) |
 | [cobidas](skills/cobidas/SKILL.md) | Record MRI/fMRI analysis evidence during work and write COBIDAS-aligned methods with explicit reporting gaps | [codex/cobidas](codex/cobidas) | [claude/cobidas](claude/cobidas) |
 | [trainee-mode](skills/trainee-mode/SKILL.md) **(experimental)** | Guided practice at selected analysis checkpoints; learning benefits unvalidated | [codex/trainee-mode](codex/trainee-mode) | [claude/trainee-mode](claude/trainee-mode) |
 | [lme4-mixed-models](skills/lme4-mixed-models/SKILL.md) | Design, fit, audit, and interpret lme4 mixed models with explicit evidence and inference limits | [codex/lme4-mixed-models](codex/lme4-mixed-models) | [claude/lme4-mixed-models](claude/lme4-mixed-models) |
 | [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
 | [dashboard-builder](skills/dashboard-builder/SKILL.md) | Live local page for agent sessions in a project: hook-captured activity, needs-you, and messages to agents | [codex/dashboard-builder](codex/dashboard-builder) | [claude/dashboard-builder](claude/dashboard-builder) |
 | [codex-wakeup](skills/codex-wakeup/SKILL.md) **(experimental)** | Bounded cron check-ins to an existing Codex thread, with durable acknowledgement and backlog protection | [codex/codex-wakeup](codex/codex-wakeup) | [claude/codex-wakeup](claude/codex-wakeup) |
+| [mote-peer-work](skills/mote-peer-work/SKILL.md) **(experimental)** | Persistent collaboration across two or more Claude/Codex terminals: Mote ownership, reciprocal review, and useful next actions | [codex/mote-peer-work](codex/mote-peer-work) | [claude/mote-peer-work](claude/mote-peer-work) |
 | [bids-atlas](skills/bids-atlas/SKILL.md) | Offline interactive dashboard of a BIDS dataset: inventory, oddities, events, fieldmaps, fMRIPrep/MRIQC motion and QC | [codex/bids-atlas](codex/bids-atlas) | [claude/bids-atlas](claude/bids-atlas) |
 | [fmriprep](skills/fmriprep/SKILL.md) | Portable BIDS preprocessing plans, execution, recovery, and QC | [codex/fmriprep](codex/fmriprep) | [claude/fmriprep](claude/fmriprep) |
 | [alliance-hpc](skills/alliance-hpc/SKILL.md) | Alliance/DRAC Slurm planning, execution, and troubleshooting | [codex/alliance-hpc](codex/alliance-hpc) | [claude/alliance-hpc](claude/alliance-hpc) |
@@ -100,6 +102,15 @@ It does not replace an analysis skill or change its execution permissions.
 Protocol behavior and learning benefits remain unvalidated; see its
 [rationale](skills/trainee-mode/references/evidence.md) and
 [validation status](skills/trainee-mode/tests/VALIDATION.md).
+
+`mote-peer-work` adds an instruction-only protocol for independently started
+peers using an available Mote CLI and a shared store. Its
+[setup guide](skills/mote-peer-work/references/setup.md) includes an opening
+mandate, two-worker and larger-team arrangements, and an optional project
+agreement. It preserves existing Mote/Fray workflows and adds no scheduler.
+Live cross-terminal behavior remains unvalidated; see the
+[import record](docs/imports/mote-peer-work.md) and
+[trial cases](skills/mote-peer-work/tests/evaluation-cases.md).
 
 `codex-wakeup` adds an optional scheduling mechanism for an existing Codex
 conversation. It keeps one helper wakeup outstanding until the receiving turn

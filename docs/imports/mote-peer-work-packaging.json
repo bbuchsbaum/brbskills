@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-16",
+  "skill_creator_validation": "passed",
+  "source_bundle_check": "passed",
+  "repository_unit_tests": {
+    "count": 24,
+    "result": "passed"
+  },
+  "packages": [
+    {
+      "target": "codex",
+      "archive": "dist/mote-peer-work-codex.zip",
+      "sha256": "5306ced3d57d5a0512d53c0c90423be257b975b234ce24fa13ec69103bfe6301",
+      "files": 9,
+      "checked_hashes": 8,
+      "isolated_validation": "passed",
+      "source_parity": "passed"
+    },
+    {
+      "target": "claude",
+      "archive": "dist/mote-peer-work-claude.zip",
+      "sha256": "ffa0f9fec38db1761c82c714cdafcee53863220a4843a538ccd5d45333b39577",
+      "files": 8,
+      "checked_hashes": 7,
+      "isolated_validation": "passed",
+      "source_parity": "passed"
+    }
+  ],
+  "limits": "Structural and packaging checks only; no live cross-terminal evaluation or hosted CI."
+}

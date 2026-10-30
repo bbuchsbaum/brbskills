@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mote Peer Work"
+  short_description: "Persistent peer collaboration across agent terminals"
+  default_prompt: "Use $mote-peer-work to join the existing peers on this project's approved plan, clear reviews and blockers, and continue useful authorized work."

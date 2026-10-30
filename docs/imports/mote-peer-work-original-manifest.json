@@ -1,0 +1,32 @@
+{
+  "imported": "2026-10-16",
+  "source": "User-supplied Downloads files",
+  "archive": {
+    "name": "mote-peer-work.zip",
+    "bytes": 10937,
+    "sha256": "ebd142521a9b71de3c4b0879d6105c6823295dd3840347fe60b1a1b19286c7c0"
+  },
+  "members": [
+    {
+      "path": "mote-peer-work/AGENTS-snippet.md",
+      "bytes": 1928,
+      "sha256": "e8dfa2cc5dee488dbc71671343998e8ce9a11fe823f391dbb5bcb15bd99f20ef",
+      "loose_file": "AGENTS-snippet.md",
+      "loose_file_matches": true
+    },
+    {
+      "path": "mote-peer-work/START-HERE.md",
+      "bytes": 9528,
+      "sha256": "fa8c1775b87c7e3c82c52090ce978dc9e66266700be2c297dcc0b86d44a117b9",
+      "loose_file": "START-HERE.md",
+      "loose_file_matches": true
+    },
+    {
+      "path": "mote-peer-work/skills/mote-peer-work/SKILL.md",
+      "bytes": 12617,
+      "sha256": "b37e2e5cc6c0bab06ddca351d9d4f471a946c1d7e042b4bfcb2b33adb63c77d7",
+      "loose_file": "SKILL.md",
+      "loose_file_matches": true
+    }
+  ]
+}

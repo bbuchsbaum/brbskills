@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-16",
+  "kind": "Independent read-only instruction review with three synthetic situations; no live Mote mutations or terminal trial",
+  "reviewed_sha256": {
+    "SKILL.md": "70d5904d99c51e414bd0cf0e8052156c4031f80d8e58bae924186d1f6a4b8c60",
+    "assets/AGENTS-snippet.md": "be71648b64ce1a769809485cc68b08ec2a286232b32667e3faa54404055b0dc3",
+    "references/review-and-integration.md": "5ff770d607040513b672162aac2ae6a02ca9bb3b7a59ba8355dbd2b2795ac463",
+    "references/setup.md": "97a82e6d803dbd896733ee183d568943de9976444a54eed087c5d6658167bae3",
+    "references/shared-resources.md": "c059302e377bf37946654198971e3f92f61de5b0da87ecaff8cbe95ebad96751"
+  },
+  "findings": [
+    {
+      "finding": "Expired unstarted resource proposal lifecycle was not explicit.",
+      "disposition": "Clarify proposal versus agreed window; withdraw or re-propose lapsed proposals with fresh timings and acknowledgements."
+    },
+    {
+      "finding": "Returning former owner should explicitly reacquire an expired lease.",
+      "disposition": "Clarify use of established claim/adoption procedure before mutation."
+    },
+    {
+      "finding": "Reciprocal review might be confused with approval trading.",
+      "disposition": "Clarify independent reciprocal verdicts are permitted."
+    },
+    {
+      "finding": "Evaluation-cases link absent when reviewer read the initial files.",
+      "disposition": "Transient authoring state; file added during review. Final packaging checks must validate link."
+    }
+  ],
+  "limits": [
+    "Case reasoning only; no simulated or live execution by independent product sessions.",
+    "Model identity not exposed by the collaboration result.",
+    "The follow-up covers the clarified passages and link; it is not execution evidence."
+  ],
+  "followup": {
+    "verdict": "Material concerns resolved; no residual blocker within the instruction review scope.",
+    "reviewed_sha256": {
+      "SKILL.md": "198e928362cecb12fe1d75bbddf652939bab22e87db972e525362d2c462bf018",
+      "references/review-and-integration.md": "e8b58050ffb699a5b346ae9a0bc930ab73e42af5e2d47ec66d2d63005d86e1a5",
+      "references/shared-resources.md": "fe7d9f1f050502382dfb87eb05c51f8f138245d3f17bbce13903f15c644f0dc2"
+    },
+    "evaluation_cases_link": "Present; future cases explicitly unrun."
+  }
+}
