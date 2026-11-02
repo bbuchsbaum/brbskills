@@ -1,0 +1,4 @@
+interface:
+  display_name: "Remove Writing Tics"
+  short_description: "Detect and revise formulaic prose with a bounded recheck"
+  default_prompt: "Use $remove-writing-tics to scan this draft with detectors, revise the flagged habits, and recheck the changes once."
