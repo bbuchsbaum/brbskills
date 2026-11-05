@@ -1,0 +1,4 @@
+interface:
+  display_name: "Report View"
+  short_description: "Mirror a remote HTML report locally and open it on 127.0.0.1"
+  default_prompt: "Use $report-view to pull the HTML report at HOST:PATH into the local cache, serve it on 127.0.0.1, and give me the URL."

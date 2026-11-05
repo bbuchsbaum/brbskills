@@ -1,0 +1,4 @@
+interface:
+  display_name: "Report Publish"
+  short_description: "Publish an HTML report to the private reportbox archive and return its link"
+  default_prompt: "Use $report-publish to publish this report folder to its reportbox project and give me the link."
