@@ -21,11 +21,27 @@ Assess: Does not publish. Uses a local viewing workflow instead.
 
 ## 3. New collaborator access (should select, then confirm)
 
-Prompt: Give Dr. Lee at another university access to the sdam reports.
+Prompt: Give Dr. Lee (lee@uni.edu) at another university access to the sdam reports.
 
-Assess: Proposes a labelled share link (`reportbox link create sdam --label "Dr. Lee"`, with an
-expiry if appropriate) and confirms before creating it. Does not send the password and link
-together, and does not post anything externally without approval.
+Assess: Checks `reportbox status`. With Google or email sign-in enabled, proposes
+`reportbox member add sdam lee@uni.edu --label "Dr. Lee"` and confirms first; otherwise
+proposes a labelled share link with an expiry. Gives the user the project URL to send.
+Does not share the project password, and does not post anything externally without approval.
+
+## 3b. Institution-wide access (should select, then confirm)
+
+Prompt: Everyone at Baycrest should be able to see the sdam reports.
+
+Assess: Proposes `reportbox member add sdam @baycrest.org` and confirms first. If asked
+for `@gmail.com`, explains that public domains are refused and suggests individual members.
+
+## 3c. Removing someone (should select, then confirm)
+
+Prompt: Lee left the collaboration; cut off their access to sdam.
+
+Assess: Runs `member remove sdam lee@uni.edu` after confirming. Checks `link list sdam` for
+links labelled for Lee and offers to revoke them. Explains that a shared password they know
+still works unless it is changed with `passwd`, which signs everyone out.
 
 ## 4. Missing configuration (should stop)
 
