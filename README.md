@@ -58,6 +58,7 @@ Node.js, use the [Git download](#download-an-individual-skill) and
 | [visual-hill-climb](skills/visual-hill-climb/SKILL.md) | Bounded visual improvement with fixed specimens, independent critiques, and regression checks | [codex/visual-hill-climb](codex/visual-hill-climb) | [claude/visual-hill-climb](claude/visual-hill-climb) |
 | [dashboard-builder](skills/dashboard-builder/SKILL.md) | Live local page for agent sessions in a project: hook-captured activity, needs-you, and messages to agents | [codex/dashboard-builder](codex/dashboard-builder) | [claude/dashboard-builder](claude/dashboard-builder) |
 | [codex-wakeup](skills/codex-wakeup/SKILL.md) **(experimental)** | Bounded cron check-ins to an existing Codex thread, with durable acknowledgement and backlog protection | [codex/codex-wakeup](codex/codex-wakeup) | [claude/codex-wakeup](claude/codex-wakeup) |
+| [here-now-private](skills/here-now-private/SKILL.md) | Publish research reports to here.now password-protected from the first upload, with resumable state and hosted-file verification | [codex/here-now-private](codex/here-now-private) | [claude/here-now-private](claude/here-now-private) |
 | [mote-peer-work](skills/mote-peer-work/SKILL.md) **(experimental)** | Persistent collaboration across two or more Claude/Codex terminals: Mote ownership, reciprocal review, and useful next actions | [codex/mote-peer-work](codex/mote-peer-work) | [claude/mote-peer-work](claude/mote-peer-work) |
 | [bids-atlas](skills/bids-atlas/SKILL.md) | Offline interactive dashboard of a BIDS dataset: inventory, oddities, events, fieldmaps, fMRIPrep/MRIQC motion and QC | [codex/bids-atlas](codex/bids-atlas) | [claude/bids-atlas](claude/bids-atlas) |
 | [fmriprep](skills/fmriprep/SKILL.md) | Portable BIDS preprocessing plans, execution, recovery, and QC | [codex/fmriprep](codex/fmriprep) | [claude/fmriprep](claude/fmriprep) |
@@ -121,6 +122,11 @@ governs work. Claude can configure the helper, but this package does not wake
 Claude sessions. See [operations](skills/codex-wakeup/references/operations.md)
 and [validation limits](skills/codex-wakeup/tests/VALIDATION.md); live delivery
 of this revised protocol remains unverified.
+
+`here-now-private` complements the vendor here.now skill for private results sites.
+Its script publishes a holding page and sets the password before any content is
+uploaded, resumes from saved state, refuses version drift, and verifies hosted
+files and unauthenticated 401 responses. See [validation](skills/here-now-private/tests/VALIDATION.md).
 
 ## Download an individual skill
 
