@@ -21,6 +21,9 @@ Classify before using era-specific flags (`--no-default-config`, `--no-*`); a
 pre-fix copy rejects them. At `db7a0aa` the launcher hash is `ad10426d…97c4`; only
 it identifies that revision (backend `72fb8bb5…` and shared `ca1c2aad…` are
 unchanged since `5e3f643`). Never infer it from paths or dates.
+A file named `fmriprep_latest.sif` can contain an old release even when a newer
+versioned image is installed beside it. Check the image's observed version and
+content identity, not the alias or filename.
 With a recorded launcher profile, recompute the hashes and diff `probe` output
 against the recorded values; raise the sections below only for what drifted.
 
@@ -103,6 +106,7 @@ The scheduler submission is a separate action. Persist intent before calling it.
 | fmriprep-docker TemplateFlow | Exports host `TEMPLATEFLOW_HOME`; the 25.2.5 wrapper ignores it and mounts no cache. | The configured cache is unused; prove offline behavior or use another route. |
 | TemplateFlow (Apptainer/Docker) | Host cache (config, `TEMPLATEFLOW_HOME`, else `~/.cache/templateflow`) bound read-write and shared by concurrent subjects. | Prestage a fully materialized cache and verify no writes are required. |
 | Work directories | One per subject under `work` (Apptainer/Docker also hold `.home`, `.cache`, `.matplotlib` there). | Budget storage per subject; do not share with another run. |
+| Temporary storage | No explicit `/tmp` bind in the generated Apptainer script (also checked at `81a9b879`). | Inspect the compute node's default tmp. Where unsuitable, add a recorded per-subject scratch tmp bind to the rendered payload or use a minimal direct adapter; keep scientific argv unchanged. |
 | Module switch | Only `module load singularity`. | Use explicit site setup for other module names or native installs. |
 | Preflight | Host checks of image, license, BIDS path and subject list; heuristic compute-writability warnings for bundle, `--out` and `--work` only when `$SCRATCH` is set. | Add compute-context proof, asset checks and pilot evidence. |
 | Extra paths | `extra` is `shlex`-split; it creates no mounts. | Map filter/config/derivative files explicitly and test container visibility. |

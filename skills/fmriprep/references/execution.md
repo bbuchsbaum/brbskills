@@ -108,6 +108,34 @@ may be forbidden. Use site-approved isolation or the actual offline node, and
 state the scope of the test. Do not weaken TLS validation to fix downloads.
 A successful pilot covers its branch, not every heterogeneous acquisition.
 
+## Materialize and verify TemplateFlow assets
+
+A populated cache directory can still contain zero-byte placeholders or unresolved
+annex links. `probe_host.py --path cache=...` reports path visibility; it does not
+exercise TemplateFlow queries or establish asset completeness.
+
+Use the selected release's prefetch recipe as a starting point (for 25.2.5:
+[`scripts/fetch_templates.py`](https://github.com/nipreps/fmriprep/blob/25.2.5/scripts/fetch_templates.py)).
+Resolve the explicit outputs and implicit dependencies of the actual recipe;
+do not fetch every template merely because the upstream helper offers it.
+In particular, native-surface processing may require assets beyond the requested
+volumetric template.
+
+TemplateFlow's `api.get()` is **not a read-only availability check**: it may
+download missing content. Run materialization only in an authorized connected
+context with an intentionally writable cache. If the shared cache is incomplete,
+use an authorized writable cache or coordinate its repair; do not let concurrent
+offline jobs attempt to fill it.
+
+Then repeat the selected queries against the staged cache in the intended runtime
+without download access. Check every returned path for readable, nonempty content,
+record identities, and exercise workflow initialization on the compute node.
+An in-process HTTP guard can witness a requested download, but does not prove
+operating-system network isolation or discover dependencies absent from the tested
+queries. Keep failed-query evidence and distinguish this asset check from a
+completed full-quality pilot. Cache repair changes execution provenance; a change
+of template or resolution changes the scientific recipe.
+
 ## Building the command
 
 Construct one application argument vector with logical paths. Map those paths

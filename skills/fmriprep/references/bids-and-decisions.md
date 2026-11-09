@@ -24,6 +24,13 @@ axis/polarity or a valid association. Do not invent missing readout timing from 
 scanner brand. Legitimate derivations must cite source fields and the applicable
 formula. Store proposed metadata repairs separately. [S4, S8]
 
+When verifying discovery with the installed SDCFlows/fMRIPrep API, follow the
+application's selected association mechanism. With explicit B0 identifiers,
+check each BOLD's effective `B0FieldSource` against the discovered estimator IDs
+and their source files. An empty legacy `IntendedFor` registry lookup alone does
+not establish missing correction coverage. Confirm the selection in workflow
+initialization; do not repair valid metadata to satisfy an inappropriate probe.
+
 A material acquisition branch is a subset of runs whose acquisition or available
 correction could make the same recipe behave differently: runs with versus
 without a usable fieldmap (or with different fieldmap types), T2w/FLAIR present
