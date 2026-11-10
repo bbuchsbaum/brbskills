@@ -34,6 +34,11 @@ Key covariates by subject; verify rownames/order, missingness, factors and codin
 not assume identical assay names for different reducers. Meta-regression can
 return named coefficient/SE assays such as `coef:age` and `se_coef:age`.
 
+For a sample-label space, resolve sample IDs through `space(result)$labels`;
+assay dimnames may be NULL. Verify labels are nonmissing, unique, and match the
+assay's sample dimension and expected ID set before reordering by explicit keys.
+Image spaces have a different spatial contract; do not fabricate ROI labels.
+
 Posthoc public registry: `register_posthoc`, `list_posthoc`, `get_posthoc`;
 `posthoc(plan,"fdr:bh")` / `"fdr:by"` are documented. Confirm family semantics
 in the installed method and choose how contrasts/estimands enter the family.

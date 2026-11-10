@@ -29,6 +29,9 @@ selected package versions before retaining them.
 When the intended model is still open, inspect the event tables and use
 [events to candidate designs](references/events-to-design.md) to propose supported
 questions and contrasts before choosing a formula.
+For ambiguous timing, missing modulators or interactions, use the
+[synthetic design audits](references/design-audits.md). For trialwise/RSA work,
+read the [specialist decision guide](references/trial-patterns-rsa.md).
 
 Record the event meaning and timing origin, duration/amplitude handling, HRF and
 basis interpretation, contrast sign/weights, run structure, scaling, nuisance,

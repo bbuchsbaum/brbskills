@@ -19,6 +19,13 @@ Read the selected system's section. Source keys resolve in [sources.md](sources.
 
 Use the CPU and GPU login endpoints as distinct scheduling targets; record both hostname and Slurm `ClusterName`. They share storage, not a single interchangeable submission profile. CPU jobs consume whole nodes. The starter CPU recipe requests one task with 192 CPUs and no `--mem`/`--mem-per-cpu`; verify against the current quickstart and scheduler before a campaign. A single-core job here still needs a whole-node justification or should go elsewhere. [S1–S3]
 
+**Dated compute-partition constraint:** live `sbatch --test-only` reports on
+2026-11-04 and 2026-11-06 rejected requests below 15 minutes and accepted
+`--time=00:15:00` ([reports #1](https://github.com/bbuchsbaum/brbskills/issues/1)
+and [#7](https://github.com/bbuchsbaum/brbskills/issues/7)). This is a minimum
+requested walltime, not a minimum runtime; let completed work exit immediately.
+Recheck the selected partition with live preflight because site policy can change.
+
 Submit with the current directory, logs, and working outputs under a verified `$SCRATCH` path. Use job-specific scratch directories on its shared VAST filesystem. There are no local disks: inspect `findmnt`/`df` inside an allocation before using `$TMPDIR` or `$SLURM_TMPDIR`; a RAM-backed temporary directory consumes memory. Do not copy data into `/tmp` on the assumption it is an NVMe drive. [S1,S2]
 
 For GPU work, confirm the current GPU partition, GRES, CPU/RAM coupling, and quarter-node versus full-node requirements. Do not apply CPU 192-core flags to its 96-core GPU nodes. Restricted Neptune nodes are not generally available; their 40-core examples are not Trillium CPU defaults. [S1,S2,S1b]

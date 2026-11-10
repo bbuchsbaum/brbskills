@@ -32,6 +32,9 @@ preprocessor implicitly. Do not assume fMRIPrep completion means analysis readin
 When the question is open, use [events to candidate designs](references/events-to-design.md)
 to infer plausible models from event tables and task documentation. Present a few
 supported candidates and their unresolved meanings before the interview.
+For trialwise patterns or representational comparisons, read the conditional
+[trial-pattern/RSA guide](references/trial-patterns-rsa.md) and verify the required
+specialist capabilities before planning execution.
 
 Present a compact **observed / proposed / needs your decision** summary. Resolve
 the scientific question, estimand, meaningful condition labels, cohort, and

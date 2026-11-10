@@ -41,6 +41,13 @@ absolute author-machine paths, implicit shell expansion, hooks, or undocumented
 dependencies. Add product-specific behavior only for a demonstrated need and test
 both generated versions. Do not fork the entire workflow to change branding.
 
+Generalize lessons from use. Put reusable decision criteria and failure checks in
+the guidance; use small synthetic examples to make them applicable. Keep a study's
+stimuli, hypothesis, model dimensions, thresholds, and successful parameter choices
+out of general defaults. Site/version constraints belong in dated profiles with
+sources. Fix demonstrated bugs before extending a workflow, and distinguish a
+numerical check from evidence that a scientific model is appropriate.
+
 ## Add or change a skill
 
 1. Create `skills/<name>/SKILL.md` and only the resources it uses. Define a few

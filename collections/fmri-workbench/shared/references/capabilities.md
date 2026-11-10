@@ -14,6 +14,12 @@ Treat a reexport as a public API: for example fmrireg exports baseline/design
 functions implemented by fmridesign and frames from fmridataset. Do not infer
 absence from a missing same-named file in fmrireg/man.
 
+Probe ingestion and computation separately. An adapter rejecting a Z-only table
+does not establish that the installed package lacks a Z-combination reducer.
+Test the documented public in-memory constructor and reducer independently on
+synthetic data, then verify the intended import route. Keep effects, variances,
+and evidence statistics distinct; never invent effects to satisfy an adapter.
+
 If an API differs, either adapt a small reviewed adapter and test it, or propose
 an explicit environment update. Do not use triple-colon internals as a shortcut,
 or silently update all packages to latest. Save `sessionInfo()`, a package lock

@@ -41,6 +41,12 @@ private classes or patch namespace internals to bypass a missing contract.
 Plugin validation checks interfaces; numerical accuracy needs an independent
 reference or invariant appropriate to the new calculation.
 
+For a distance/RDM callback, compare a tiny ROI against separate matrix arithmetic;
+test item relabeling, session exchange when the estimator is symmetric, negative
+crossvalidated estimates and insufficient-support rejection. Record searchlight
+units, boundary handling and the support denominator rather than inheriting a
+radius or percentage from an unrelated analysis.
+
 For ITEM, inspect `item_design()`, `item_model()` and `vignette("ITEM_Decoding")`;
 first-level estimation is delegated to the documented fmrilss integration.
 The archived hrfdecoder API is not a current exported continuous-analysis family.

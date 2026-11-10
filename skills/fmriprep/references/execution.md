@@ -128,13 +128,16 @@ use an authorized writable cache or coordinate its repair; do not let concurrent
 offline jobs attempt to fill it.
 
 Then repeat the selected queries against the staged cache in the intended runtime
-without download access. Check every returned path for readable, nonempty content,
+without download access, with the cache mounted read-only where supported.
+Check every returned path for readable, nonempty content,
 record identities, and exercise workflow initialization on the compute node.
 An in-process HTTP guard can witness a requested download, but does not prove
 operating-system network isolation or discover dependencies absent from the tested
 queries. Keep failed-query evidence and distinguish this asset check from a
 completed full-quality pilot. Cache repair changes execution provenance; a change
-of template or resolution changes the scientific recipe.
+of template or resolution changes the scientific recipe. See the
+[TemplateFlow client](https://www.templateflow.org/usage/client/) and the
+[dated preflight report](https://github.com/bbuchsbaum/brbskills/issues/1).
 
 ## Building the command
 

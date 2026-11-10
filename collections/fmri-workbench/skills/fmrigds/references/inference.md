@@ -61,3 +61,9 @@ uses an initial fixed-heterogeneity approximation with later exact refits for
 retained cases; preserve those availability/approximation flags. Exclude only
 under approved validity criteria. Report leave-one-out or alternative-model
 sensitivity as sensitivity, not a replacement primary result chosen for significance.
+
+For precision-weighted results, inspect weight concentration and omitted-subject
+influence alongside effect and uncertainty maps. Require the intended participant
+support at each sample; a precise result driven by one participant has different
+evidence than broad agreement. Within-model contrasts need their covariance, and
+normal-approximation beta/SE statistics retain the input noise-model limitations.

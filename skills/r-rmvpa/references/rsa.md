@@ -26,6 +26,12 @@ squared Euclidean distance. Where crossvalidated contrasts are the question,
 consult `msreve_design()`/`contrast_rsa_model()` and their centering, whitening,
 and normalization contracts.
 
+For a crossvalidated squared-distance estimator, preserve legitimate negative
+estimates; clipping or square-rooting changes the estimator. Distinguish temporal
+whitening of time series from diagonal/full spatial noise normalization. Verify
+independent repetitions and the provenance of trial patterns before choosing the
+distance; correct RSA arithmetic cannot repair a biased or misaligned input fit.
+
 Inspect nuisance variation **after pair filtering**. A same-run/different-run RDM
 is constant if only cross-run pairs remain, so adding it can make the regression
 rank deficient. Reconcile pair eligibility with the intended nuisance adjustment;
@@ -68,6 +74,16 @@ b.vividness)` multiplies the `item` template by retrieval attributes from
 prefixed feature columns. Use symmetric formulas for within-domain relationships.
 To standardize at the observation level, transform feature columns before pair
 expansion; formula transformations otherwise act on pair metadata.
+
+Define the moderator's meaning before constructing it. A predictor-distance by
+behavioral-distance interaction asks a different question from predictor-distance
+by pair-mean behavior. Include the matching lower-order terms; centering alone
+does not supply them. For repeated observations, specify which endpoint/session
+measurements enter each pair and preserve the complete-pair mask. Check rank after
+filtering, and compare models on matched support when interpreting their changes.
+These are conditional associations, not an orthogonal variance partition or a
+causal gain estimate. See the [workflow evidence](https://github.com/bbuchsbaum/brbskills/issues/6)
+for the motivating distinction, not study-specific parameter defaults.
 
 For similarity coefficients, use `rsa_model(..., measure = "similarity",
 regtype = "lm", statistic = "beta")`. Retrieval-observation intercepts can be

@@ -5,6 +5,12 @@ Inspect the events and task documentation first, then propose a small set of
 plausible analyses. Preserve an existing protocol or confirmed question; do not
 replace it with whatever comparison is easiest to construct.
 
+Contents: [row meaning](#recover-the-task-and-the-meaning-of-a-row),
+[support](#inspect-structure-before-recommending-a-model),
+[timing and modulation](#audit-timing-and-modulator-meaning),
+[candidates](#suggest-a-few-supported-candidates),
+[handoff](#present-evidence-candidates-and-the-remaining-decision).
+
 ## Recover the task and the meaning of a row
 
 Resolve the applicable `events.tsv`, inherited JSON column descriptions/levels,
@@ -50,6 +56,41 @@ timing against the stored-image origin; negative onsets and zero durations can b
 valid. Missing response time is not zero. Look for documented omissions, errors,
 practice and instruction periods before deciding their modeling role. Preserve
 raw values and propose any recoding or exclusion with its scientific consequence.
+
+## Audit timing and modulator meaning
+
+Keep acquisition-clock alignment separate from the event being modeled. A routine
+can contain a shorter stimulus, a later response and an interval with no stimulus.
+Retain source events and derive an explicit analysis table with the relevant
+component onsets/durations and response timestamps. Software logs alone do not
+verify physical stimulus delivery. Sort combined event rows by run and onset
+before strict design construction; keep item IDs through sorting and joins.
+
+Derive each run's sampling reference from the preprocessing actually performed,
+including retained-volume indexing and slice-timing correction. For fMRIPrep,
+consult derivative `StartTime` when present, the report and selected version's
+[output documentation](https://fmriprep.org/en/25.2.5/outputs.html).
+Do not assume TR/2 or shift both events and sampling times for the same correction.
+Never tune a global clock to recover expected activation.
+
+For modulation, state the centering population (e.g. observed trials within a
+condition/run), scale, missingness treatment and orthogonalization policy. One
+possible missingness model retains all main events, uses a centered modulator only
+on observed trials, and adds a missingness indicator; its scientific assumption
+must be justified. Unobserved or constant modulators provide no slope information.
+Do not substitute zero ratings or silently drop their main events.
+
+Inspect distinct ordinal levels and feature variation at nonmodal levels before
+forming interactions. A full-rank feature matrix can still yield aliased
+feature-by-rating terms when rating support is sparse. Form products at the event
+amplitude level, retain lower-order terms, and check both event-level and realized
+HRF-plus-nuisance rank and contrast estimability. Convolution with a common linear
+operator cannot recover rank already lost in the amplitudes. Smaller models and
+shared slopes across runs change assumptions; they are explicit alternatives,
+not automatic repairs for an unestimable joint model.
+Imbalance alone does not prove rank deficiency; measure support, rank and precision.
+A shared-slope assumption can borrow information from scored runs, but creates no
+direct score or interaction information in an unrated run.
 
 ## Suggest a few supported candidates
 

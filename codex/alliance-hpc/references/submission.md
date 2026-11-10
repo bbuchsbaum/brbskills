@@ -47,6 +47,10 @@ resources=(--cpus-per-task=192)  # No memory flag; whole-node CPU profile.
 
 The payload must productively use that allocation, e.g. an appropriately sized process pool or packed tasks. A few highly threaded BLAS calls do not guarantee good 192-core utilization. Pilot scaling and memory bandwidth. [S1–S3; sizing design]
 
+For short Trillium compute jobs, retain at least the dated 15-minute **requested**
+walltime in the [CPU profile](systems.md#trillium), subject to live preflight.
+Do not add sleep to make a finished job consume its requested allocation.
+
 **Syntax traps:** native `sbatch -n` is task count, `-c` is CPUs/task; bare native time is minutes. Put submission options before the script. `#SBATCH` does not expand shell variables. Inspect conflicting inherited `SBATCH_*` settings; a CLI override does not erase an unrelated inherited option. Avoid inherited `--export=NONE` surprises; the template restores export for its `srun` step after loading the environment. [S11,S12]
 
 ## 2. Capped, data-only arrays

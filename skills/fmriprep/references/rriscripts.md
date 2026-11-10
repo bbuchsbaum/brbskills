@@ -112,6 +112,11 @@ The scheduler submission is a separate action. Persist intent before calling it.
 | Extra paths | `extra` is `shlex`-split; it creates no mounts. | Map filter/config/derivative files explicitly and test container visibility. |
 | Raw Docker | No host UID/GID selection. | Verify output ownership. |
 
+Inspect the generated payload for an explicit temporary-storage mount. If absent,
+verify the compute filesystem used by `/tmp` and the effective temp environment;
+a work-directory bind does not establish where temporary files land. Preserve
+any runtime/mount adjustment in the frozen command and execution provenance.
+
 Set assigned subjects B (`subjects_per_job`) and simultaneous subjects M
 (`parallel_subjects`) separately; M defaults to B. `nprocs` and `mem_mb` are
 per subject; `--cpus-per-task`/`--mem` are task totals (default per-subject × M,

@@ -28,7 +28,7 @@ When verifying discovery with the installed SDCFlows/fMRIPrep API, follow the
 application's selected association mechanism. With explicit B0 identifiers,
 check each BOLD's effective `B0FieldSource` against the discovered estimator IDs
 and their source files. An empty legacy `IntendedFor` registry lookup alone does
-not establish missing correction coverage. Confirm the selection in workflow
+not establish missing correction coverage. Reconcile inherited metadata and confirm the selection in workflow
 initialization; do not repair valid metadata to satisfy an inappropriate probe.
 
 A material acquisition branch is a subset of runs whose acquisition or available
