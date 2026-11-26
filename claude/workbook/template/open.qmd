@@ -1,0 +1,18 @@
+---
+title: "Open questions"
+toc: false
+---
+
+Work that has not reached an answer yet, and work that exists but is not yet in the workbook.
+
+## In progress
+
+{{< wblist status=running sort=updated fields="entry,chapter,updated,answer" empty="Nothing is in progress." >}}
+
+## Planned
+
+{{< wblist status=planned sort=date fields="entry,chapter,kind,date" empty="Nothing is planned." >}}
+
+## Not yet in the workbook
+
+{{< wbbacklogs >}}

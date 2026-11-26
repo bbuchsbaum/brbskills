@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analysis workbook"
+  short_description: "Keep a browsable catalogue of a project's analyses"
+  default_prompt: "Use $workbook to add this analysis to the project's workbook as a structured entry, then build and check the site."

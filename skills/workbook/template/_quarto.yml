@@ -1,0 +1,49 @@
+# Site configuration for the analysis workbook. Content changes never need
+# edits here: entries, chapters and the sidebar are discovered by
+# _tools/wb.R index, which runs before every render.
+project:
+  type: website
+  output-dir: _site
+  pre-render: Rscript _tools/wb.R index
+  render:
+    - "*.qmd"
+    - "analyses/**/*.qmd"
+
+metadata-files:
+  - _wb/sidebar.yml
+
+website:
+  title: "{{WB_TITLE}}"
+  search:
+    location: sidebar
+    type: textbox
+  page-navigation: false
+  back-to-top-navigation: true
+  reader-mode: false
+
+filters:
+  - workbook
+
+format:
+  html:
+    theme:
+      light: [cosmo, _extensions/workbook/workbook-light.scss, _extensions/workbook/workbook.scss]
+      dark: [darkly, _extensions/workbook/workbook-dark.scss, _extensions/workbook/workbook.scss]
+    respect-user-color-scheme: true
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    page-layout: article
+    grid:
+      sidebar-width: 290px
+      body-width: 840px
+      margin-width: 230px
+    lightbox: auto
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    link-external-newwindow: true
+    anchor-sections: true
+    date-format: iso
+
+execute:
+  enabled: false

@@ -1,0 +1,16 @@
+---
+title: "{{title}}"
+question: "What does this note record?"
+answer: "Pending."
+kind: note
+status: {{status}}
+date: {{date}}
+updated: {{date}}
+chapter: {{chapter}}
+categories: []
+related: []
+log:
+  - "{{date}} — Entry created."
+---
+
+<!-- wb: A note holds material that is not an analysis, a plan, a data product or a method: a review, a decision record, a reconstruction of the task. Use headings that suit it. -->

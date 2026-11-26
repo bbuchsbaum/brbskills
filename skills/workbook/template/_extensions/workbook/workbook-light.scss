@@ -1,0 +1,47 @@
+/*-- scss:defaults --*/
+$primary: #0b6b66;
+$link-color: #0b6b66;
+$body-bg: #fcfcfa;
+$body-color: #1f2328;
+$font-family-sans-serif:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+  sans-serif;
+$font-family-monospace: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+$headings-font-family:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+  sans-serif;
+$headings-font-weight: 600;
+$font-size-root: 16px;
+$line-height-base: 1.6;
+$sidebar-bg: #f4f4f1;
+$sidebar-fg: #3d4247;
+$code-color: #6b3a1f;
+$table-border-color: #e2e2dc;
+
+/*-- scss:rules --*/
+:root {
+  --wb-paper: #fcfcfa;
+  --wb-ink: #1f2328;
+  --wb-ink-soft: #5a6169;
+  --wb-rule: #e2e2dc;
+  --wb-panel: #f4f4f1;
+  --wb-panel-2: #ffffff;
+  --wb-code-bg: #efeee9;
+  --wb-focus: #0b6b66;
+  --wb-shadow: rgba(31, 35, 40, 0.28);
+  --wb-current-bg: #dff1ee;
+  --wb-current-fg: #0b524e;
+  --wb-current-line: #8cc9c2;
+  --wb-running-bg: #fdf0d5;
+  --wb-running-fg: #6e4400;
+  --wb-running-line: #e2b45c;
+  --wb-planned-bg: #e4e9f5;
+  --wb-planned-fg: #2c4a86;
+  --wb-planned-line: #9fb2dc;
+  --wb-superseded-bg: #ececea;
+  --wb-superseded-fg: #4f5257;
+  --wb-superseded-line: #c4c4c0;
+  --wb-retracted-bg: #fbe3e1;
+  --wb-retracted-fg: #8f1a12;
+  --wb-retracted-line: #e4a29b;
+}

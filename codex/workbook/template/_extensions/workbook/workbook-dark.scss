@@ -1,0 +1,50 @@
+/*-- scss:defaults --*/
+$primary: #5cc8bd;
+$link-color: #6fd3c8;
+$body-bg: #16181b;
+$body-color: #e4e6e8;
+$font-family-sans-serif:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+  sans-serif;
+$font-family-monospace: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+$headings-font-family:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+  sans-serif;
+$headings-font-weight: 600;
+$font-size-root: 16px;
+$line-height-base: 1.6;
+$sidebar-bg: #1d2024;
+$sidebar-fg: #c9cdd1;
+$code-color: #f0b48a;
+$table-border-color: #34383d;
+$input-bg: #1d2024;
+$input-color: #e4e6e8;
+$input-border-color: #3a3f45;
+
+/*-- scss:rules --*/
+:root {
+  --wb-paper: #16181b;
+  --wb-ink: #e4e6e8;
+  --wb-ink-soft: #a9afb6;
+  --wb-rule: #34383d;
+  --wb-panel: #1d2024;
+  --wb-panel-2: #22262b;
+  --wb-code-bg: #262a2f;
+  --wb-focus: #6fd3c8;
+  --wb-shadow: rgba(255, 255, 255, 0.24);
+  --wb-current-bg: #173a37;
+  --wb-current-fg: #8fe0d5;
+  --wb-current-line: #2f6b65;
+  --wb-running-bg: #3d2f12;
+  --wb-running-fg: #f5cd7a;
+  --wb-running-line: #7a5a1c;
+  --wb-planned-bg: #222c44;
+  --wb-planned-fg: #b3c7f3;
+  --wb-planned-line: #3e5180;
+  --wb-superseded-bg: #2b2d30;
+  --wb-superseded-fg: #b4b7ba;
+  --wb-superseded-line: #4a4d52;
+  --wb-retracted-bg: #45201d;
+  --wb-retracted-fg: #f6b0a8;
+  --wb-retracted-line: #7c3a33;
+}

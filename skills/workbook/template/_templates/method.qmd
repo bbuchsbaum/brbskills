@@ -1,0 +1,24 @@
+---
+title: "{{title}}"
+question: "Which method does this page define?"
+answer: "Pending."
+kind: method
+status: {{status}}
+date: {{date}}
+updated: {{date}}
+chapter: {{chapter}}
+categories: []
+related: []
+code: []
+record: ""
+log:
+  - "{{date}} — Entry created."
+---
+
+## Summary
+
+<!-- wb: The method in one paragraph, as an entry's Approach section would cite it. -->
+
+## Details
+
+<!-- wb: Parameters, software and versions, defaults, and the reasons for each choice. Entries that use this method link here instead of repeating it. -->

@@ -1,0 +1,26 @@
+# Workbook settings read by _tools/wb.R.
+template: true
+title: "{{WB_TITLE}}"
+
+# Folder that provenance paths (code, outputs, record) and snapped sources are
+# relative to. Relative values resolve from this workbook folder.
+study_root: ".."
+
+# Soft limits; exceeding them gives a warning.
+limits:
+  title_chars: 40      # the title is the sidebar label
+  answer_words: 70
+  approach_words: 250
+
+# Regular expressions (Perl syntax) that must never appear in workbook sources,
+# snapped text assets or the rendered site. A match is an error.
+privacy:
+  forbid:
+    - '/Users/[^/\s]+'
+    - 'file://'
+
+# Canonical vocabulary. A term listed under 'avoid' gives a warning that names
+# the preferred term. Keep the glossary page in step with this list.
+terms: []
+#  - use: "listening task"
+#    avoid: ["speech task", "heard task"]

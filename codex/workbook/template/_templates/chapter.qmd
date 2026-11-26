@@ -1,0 +1,19 @@
+---
+title: "{{title}}"
+wb-chapter: true
+order: {{order}}
+toc: false
+backlog: []
+---
+
+## Where this line of work stands
+
+<!-- wb: Two to five sentences: the question this chapter pursues, what the current entries say, and what remains open. Link entries with a wbref shortcode. Rewrite this paragraph whenever an entry changes the chapter's conclusion. -->
+
+## Entries {#entries}
+
+{{< wblist chapter=this status=current,running,planned sort=date fields="entry,status,evidence,updated,answer" empty="No entries yet." >}}
+
+{{< wbbacklog >}}
+
+{{< wblist chapter=this status=superseded,retracted sort=date heading="Superseded and retracted" id=superseded fields="entry,status,updated,answer" >}}

@@ -1,0 +1,47 @@
+---
+title: "How to read this workbook"
+toc: true
+---
+
+The workbook catalogues every analysis in the project. Each analysis is one
+entry, and every entry has the same shape, so you can read any of them the
+same way.
+
+## An entry
+
+- The **question** it answers, and the **answer** in a few sentences, with the key estimate and its uncertainty. If you read nothing else, read these.
+- **Approach**: brief methods, enough to judge whether the inference is sound. Shared methods (data products, preprocessing, conventions) have their own pages under *Shared methods* and are linked rather than repeated.
+- **Results**: a few figures and tables. Every table links its full TSV.
+- **Interpretation**: what the result establishes and what it does not.
+- **Caveats**: specific limitations.
+- **Provenance**: the scripts, results folder, technical record, cluster jobs and interactive viewer behind the entry; the files shown on the page with the study file each was copied from and when; other entries that cite this one; and a dated log of changes.
+
+## Labels
+
+| Status | Meaning |
+|---|---|
+| Planned | Written down; nothing has run. |
+| In progress | Running; results may change. |
+| Current | The latest word on its question. |
+| Superseded | A later entry answers the same question better. Kept for the record and grouped under *Superseded* in the sidebar. |
+| Retracted | Found to be wrong; the log says why. |
+
+| Evidence | Meaning |
+|---|---|
+| confirmatory | The test was fixed before the outcome was seen. |
+| exploratory | Some choices were made after looking at the data. Treat as hypothesis-generating. |
+| descriptive | No inferential test; a description of the data. |
+
+## Finding things
+
+The sidebar groups entries by chapter, a line of work with one research
+question, and each chapter page opens with a short account of where that work
+stands. The **Catalogue** lists every entry and can be filtered and sorted.
+**Open questions** lists work in progress and planned work. **Recent changes**
+lists the latest updates. The home page's chapter table shows how many entries
+each chapter holds in each status.
+
+Read the workbook served rather than as files: from the project folder run
+`Rscript workbook/_tools/wb.R serve` and open the address it prints. Opened as
+files, the search box, the contents highlight and the remembered theme do not
+work.

@@ -1,0 +1,23 @@
+---
+title: "{{WB_TITLE}}"
+subtitle: "Analysis workbook"
+toc: false
+---
+
+{{< wbstart >}}
+
+<!-- wb: The study at a glance, in three to six sentences: what the study asks, the task and design, the data, and where restricted data live. Edit rarely. -->
+
+## Where things stand
+
+<!-- wb: The current synthesis across chapters, at most about 300 words. Each claim links the entry that supports it with a wbref shortcode. Rewrite it whenever an entry changes a headline conclusion. -->
+
+## Chapters
+
+{{< wbchapters >}}
+
+## Current findings
+
+Every analysis whose status is current, newest first. The [catalogue](catalogue.qmd) lists everything; [open questions](open.qmd) lists work in progress and planned.
+
+{{< wblist status=current kind=analysis sort=updated fields="entry,answer,evidence,updated" empty="No current findings yet." >}}

@@ -1,0 +1,37 @@
+---
+title: "{{title}}"
+question: "Which data does this product provide, and when should it be used?"
+answer: "Pending."
+kind: data
+status: {{status}}
+date: {{date}}
+updated: {{date}}
+chapter: {{chapter}}
+categories: []
+methods: []
+supersedes: []
+superseded_by: []
+related: []
+code: []
+outputs: ""
+record: ""
+jobs: []
+log:
+  - "{{date}} — Entry created."
+---
+
+## Contents
+
+<!-- wb: What the product holds: units (trials, runs, windows), spaces and grids, file formats, and counts. No individual records. -->
+
+## How it was made
+
+<!-- wb: The pipeline in a few sentences: inputs, model, key parameters, software versions. -->
+
+## How to use it
+
+<!-- wb: Which file to load for which purpose, and how to load it. A short table is ideal. -->
+
+## Caveats
+
+<!-- wb: Known defects, exclusions, and what the product must not be used for. -->

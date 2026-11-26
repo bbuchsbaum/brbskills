@@ -1,0 +1,35 @@
+---
+title: "{{title}}"
+question: "What question will this plan answer?"
+answer: "Pending."
+kind: plan
+status: {{status}}
+date: {{date}}
+updated: {{date}}
+chapter: {{chapter}}
+categories: []
+methods: []
+supersedes: []
+superseded_by: []
+related: []
+code: []
+record: ""
+log:
+  - "{{date}} — Plan written."
+---
+
+## Rationale
+
+<!-- wb: Why the question matters now, and what earlier entries leave open. Link them with a wbref shortcode. -->
+
+## Design
+
+<!-- wb: Data, model, validation and controls, fixed before any outcome is seen. -->
+
+## Analysis plan
+
+<!-- wb: The primary endpoint, the test and its null, multiplicity control, and the secondary or exploratory analyses, labelled as such. -->
+
+## Decision rules
+
+<!-- wb: What result would lead to which conclusion or next step. -->
