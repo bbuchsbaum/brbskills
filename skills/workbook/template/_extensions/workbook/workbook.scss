@@ -1,0 +1,939 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+/* ------------------------------------------------------------ type and measure */
+
+h1.title {
+  font-family: "Iowan Old Style", "Palatino Linotype", Charter, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+#title-block-header {
+  margin-bottom: 0.5rem;
+}
+#title-block-header .quarto-title-meta {
+  display: none !important;
+}
+.subtitle {
+  color: var(--wb-ink-soft);
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-top: 2.2rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--wb-rule);
+  text-wrap: balance;
+}
+h3 {
+  font-size: 1.1rem;
+  margin-top: 1.6rem;
+}
+
+/* Running text keeps a readable measure; tables and figures use the full width. */
+main.content p,
+main.content li,
+main.content dl {
+  max-width: var(--wb-measure);
+}
+/* Boxes that set their own width: their text runs to the box edge. */
+main.content .wb-list-table p,
+main.content .wb-list-table li,
+main.content .wb-banner p,
+main.content .wb-qa p,
+main.content .wb-start p,
+main.content .wb-start li,
+main.content .wb-provenance dl,
+main.content .wb-provenance li,
+main.content .wb-meta p,
+main.content .wb-table-source p {
+  max-width: none;
+}
+:root {
+  --wb-measure: 46rem;
+}
+/* Long unbroken strings (paths, identifiers) wrap rather than widen the page. */
+main.content p,
+main.content li {
+  overflow-wrap: anywhere;
+}
+
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+dd code:not(.sourceCode),
+td code:not(.sourceCode) {
+  background-color: var(--wb-code-bg);
+}
+
+/* ------------------------------------------------------------ focus and skip link */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible,
+.nav-link:focus-visible,
+.form-control:focus,
+.form-select:focus {
+  outline: 2px solid var(--wb-focus) !important;
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+.wb-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  z-index: 3000;
+  background: var(--wb-paper);
+  color: var(--wb-focus);
+  padding: 0.5rem 0.9rem;
+  border: 2px solid var(--wb-focus);
+  border-radius: 6px;
+  font-weight: 600;
+}
+.wb-skip:focus {
+  left: 0.75rem;
+}
+
+/* ------------------------------------------------------------ sidebar */
+
+.sidebar-navigation .sidebar-item-text,
+.sidebar-navigation .menu-text {
+  font-size: 0.92rem;
+}
+.sidebar-navigation .sidebar-item-section > .sidebar-item-container .menu-text {
+  font-weight: 600;
+}
+.sidebar-title {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.sidebar-navigation .sidebar-item .sidebar-link {
+  padding-block: 0.2rem;
+  min-height: 1.6rem;
+}
+.wb-dot {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  margin-left: 0.35em;
+  vertical-align: middle;
+}
+.wb-dot-running {
+  background: var(--wb-running-fg);
+}
+.wb-dot-planned {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--wb-planned-fg);
+}
+.wb-dot-retracted {
+  background: var(--wb-retracted-fg);
+  border-radius: 1px;
+}
+
+/* Search box and breadcrumbs follow the theme rather than a fixed light slab. */
+.aa-Form,
+#quarto-search .aa-Form {
+  background-color: var(--wb-panel-2) !important;
+  border-color: var(--wb-rule) !important;
+}
+.aa-Input {
+  color: var(--wb-ink) !important;
+}
+.aa-Input::placeholder {
+  color: var(--wb-ink-soft);
+  opacity: 1;
+}
+.aa-SubmitIcon,
+.aa-ClearIcon {
+  color: var(--wb-ink-soft) !important;
+  fill: currentColor;
+}
+.quarto-page-breadcrumbs,
+.quarto-page-breadcrumbs .breadcrumb {
+  background: transparent !important;
+}
+.quarto-title-breadcrumbs .breadcrumb {
+  padding: 0 !important;
+  margin: 0 0 0.35rem;
+}
+.quarto-page-breadcrumbs .breadcrumb-item a {
+  color: var(--wb-ink-soft) !important;
+}
+.quarto-page-breadcrumbs .breadcrumb-item:last-child a {
+  color: var(--wb-ink) !important;
+}
+.quarto-page-breadcrumbs .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--wb-ink-soft);
+}
+
+/* ------------------------------------------------------------ entry header */
+
+.wb-meta {
+  font-size: 0.85rem;
+  color: var(--wb-ink-soft);
+  margin: 0 0 0.9rem 0;
+}
+.wb-meta p {
+  margin: 0;
+  max-width: none;
+}
+.wb-dates::before,
+.wb-chapter::before {
+  content: "·";
+  margin: 0 0.4rem 0 0.1rem;
+}
+
+.wb-pill {
+  display: inline-block;
+  padding: 0.05rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  white-space: nowrap;
+  background: var(--wb-panel);
+  color: var(--wb-ink-soft);
+  border: 1px solid var(--wb-rule);
+  vertical-align: 0.08em;
+}
+.wb-status {
+  border-color: transparent;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+.wb-status-current {
+  background: var(--wb-current-bg);
+  color: var(--wb-current-fg);
+}
+.wb-status-running {
+  background: var(--wb-running-bg);
+  color: var(--wb-running-fg);
+}
+.wb-status-planned {
+  background: var(--wb-planned-bg);
+  color: var(--wb-planned-fg);
+}
+.wb-status-superseded {
+  background: var(--wb-superseded-bg);
+  color: var(--wb-superseded-fg);
+}
+.wb-status-retracted {
+  background: var(--wb-retracted-bg);
+  color: var(--wb-retracted-fg);
+}
+.wb-evidence-exploratory {
+  border-style: dashed;
+}
+.wb-evidence-confirmatory {
+  color: var(--wb-current-fg);
+  border-color: var(--wb-current-line);
+}
+.wb-evidence[title] {
+  cursor: help;
+}
+
+/* Status banner: same colour family as the status pill. */
+.wb-banner {
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+  margin: 0 0 1rem 0;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  max-width: var(--wb-measure);
+}
+.wb-banner p {
+  margin: 0;
+  max-width: none;
+}
+.wb-banner a {
+  color: inherit;
+  text-decoration: underline;
+}
+.wb-banner .wb-pill {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+.wb-banner-current {
+  background: var(--wb-current-bg);
+  color: var(--wb-current-fg);
+  border-color: var(--wb-current-line);
+}
+.wb-banner-running {
+  background: var(--wb-running-bg);
+  color: var(--wb-running-fg);
+  border-color: var(--wb-running-line);
+}
+.wb-banner-planned {
+  background: var(--wb-planned-bg);
+  color: var(--wb-planned-fg);
+  border-color: var(--wb-planned-line);
+}
+.wb-banner-superseded {
+  background: var(--wb-superseded-bg);
+  color: var(--wb-superseded-fg);
+  border-color: var(--wb-superseded-line);
+}
+.wb-banner-retracted {
+  background: var(--wb-retracted-bg);
+  color: var(--wb-retracted-fg);
+  border-color: var(--wb-retracted-line);
+}
+
+/* Question and answer: one panel, read first. */
+.wb-qa {
+  background: var(--wb-panel);
+  border: 1px solid var(--wb-rule);
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem 1rem;
+  margin: 0 0 1.6rem 0;
+  max-width: var(--wb-measure);
+}
+.wb-qa-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--wb-ink-soft);
+}
+.wb-qa-label p {
+  margin: 0;
+}
+.wb-question p {
+  font-size: 1.12rem;
+  line-height: 1.45;
+  margin: 0.1rem 0 0.8rem;
+  text-wrap: pretty;
+}
+.wb-answer p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin: 0.1rem 0 0;
+}
+.wb-answer p + p {
+  margin-top: 0.5rem;
+}
+.wb-qa-current {
+  border-color: var(--wb-current-line);
+}
+.wb-qa-current .wb-qa-label:nth-of-type(3) {
+  color: var(--wb-current-fg);
+}
+.wb-qa-running {
+  border-color: var(--wb-running-line);
+}
+.wb-qa-running .wb-qa-label:nth-of-type(3) {
+  color: var(--wb-running-fg);
+}
+.wb-qa-planned {
+  border-color: var(--wb-planned-line);
+}
+.wb-qa-superseded .wb-answer,
+.wb-qa-retracted .wb-answer {
+  color: var(--wb-ink-soft);
+}
+.wb-qa-retracted {
+  border-color: var(--wb-retracted-line);
+}
+.wb-qa-retracted .wb-qa-label:nth-of-type(3) {
+  color: var(--wb-retracted-fg);
+}
+.wb-answer-pending p {
+  color: var(--wb-ink-soft);
+  font-style: italic;
+}
+
+/* Links between entries. */
+.wb-refwrap .wb-pill {
+  font-size: 0.62rem;
+  padding: 0 0.4rem;
+}
+
+/* Sections the template asks for but nobody has written yet. */
+.wb-unwritten p {
+  color: var(--wb-ink-soft);
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------ data tables */
+
+.wb-table {
+  margin: 1rem 0 1.4rem 0;
+}
+.wb-table-caption p {
+  color: var(--wb-ink-soft);
+  font-size: 0.88rem;
+  margin: 0 0 0.35rem;
+}
+/* Only the table scrolls; caption and source line stay put. */
+.wb-table-scroll {
+  overflow-x: auto;
+  border-radius: 4px;
+}
+.wb-table table {
+  display: table !important;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.4rem;
+}
+.wb-table th,
+.wb-table td {
+  padding: 0.3rem 0.55rem;
+}
+.wb-table th {
+  vertical-align: bottom;
+  line-height: 1.25;
+}
+.wb-table-narrow table {
+  width: auto;
+  min-width: min(100%, 26rem);
+}
+/* When a table is wider than its column, a shadow at the right edge and a
+   line under it say that it scrolls. */
+.wb-scrolls .wb-table-scroll {
+  box-shadow: inset -16px 0 14px -14px var(--wb-shadow);
+}
+.wb-table-source {
+  font-size: 0.78rem;
+  color: var(--wb-ink-soft);
+}
+.wb-nowrap {
+  white-space: nowrap;
+}
+.wb-table-source p {
+  margin: 0;
+}
+.panel-tabset .tab-content {
+  overflow-x: auto;
+}
+
+/* Figures: on the dark theme a white chart becomes a framed plate, not a glare. */
+.quarto-figure img,
+figure img {
+  border-radius: 4px;
+}
+.figure-caption,
+figcaption {
+  font-size: 0.88rem;
+  color: var(--wb-ink-soft);
+  max-width: 46rem;
+}
+body.quarto-dark .quarto-figure img {
+  background: #ffffff;
+  padding: 6px;
+  border: 1px solid var(--wb-rule);
+}
+
+/* ------------------------------------------------------------ provenance */
+
+.wb-provenance {
+  font-size: 0.85rem;
+  background: var(--wb-panel);
+  border: 1px solid var(--wb-rule);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+}
+.wb-provenance dl {
+  display: grid;
+  grid-template-columns: minmax(8rem, max-content) 1fr;
+  column-gap: 1.2rem;
+  row-gap: 0.35rem;
+  margin: 0;
+  max-width: none;
+}
+.wb-provenance dt {
+  font-weight: 600;
+  color: var(--wb-ink-soft);
+}
+.wb-provenance dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.wb-provenance ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.wb-provenance li {
+  max-width: none;
+}
+.wb-provenance code {
+  font-size: 0.8rem;
+}
+/* Long paths wrap instead of widening the page. */
+.wb-provenance code,
+.wb-start code,
+.wb-banner code,
+main.content p code,
+main.content li code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.wb-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0 0.45rem;
+  margin: 0 0.25rem 0.2rem 0;
+  border-radius: 4px;
+  background: var(--wb-paper);
+  border: 1px solid var(--wb-rule);
+  color: var(--wb-ink);
+  text-decoration: none;
+}
+a.wb-tag:hover,
+a.wb-count:hover {
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .wb-provenance dl {
+    grid-template-columns: 1fr;
+  }
+  .wb-provenance dt {
+    margin-top: 0.4rem;
+  }
+}
+
+/* ------------------------------------------------------------ entry lists */
+
+.wb-list {
+  margin: 0.8rem 0 1.6rem;
+  container-type: inline-size;
+  overflow-x: auto;
+}
+.wb-list-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.8rem;
+  margin-bottom: 0.6rem;
+}
+.wb-list-tools label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--wb-ink-soft);
+}
+.wb-list-tools input {
+  flex: 1 1 18rem;
+  min-width: 0;
+  max-width: 28rem;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--wb-rule);
+  border-radius: 6px;
+  background: var(--wb-panel-2);
+  color: var(--wb-ink);
+}
+.wb-list-count {
+  font-size: 0.8rem;
+  color: var(--wb-ink-soft);
+}
+.wb-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+.wb-list-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--wb-ink-soft);
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--wb-rule);
+  white-space: nowrap;
+}
+.wb-list-table th button {
+  all: unset;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+}
+.wb-sort-ind::after {
+  content: "↕";
+  margin-left: 0.25rem;
+  opacity: 0.55;
+}
+.wb-list-table th[aria-sort="ascending"] .wb-sort-ind::after {
+  content: "↑";
+  opacity: 1;
+}
+.wb-list-table th[aria-sort="descending"] .wb-sort-ind::after {
+  content: "↓";
+  opacity: 1;
+}
+.wb-list-table td {
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid var(--wb-rule);
+  vertical-align: top;
+}
+.wb-list-table tr:hover td {
+  background: var(--wb-panel);
+}
+.wb-l-title {
+  font-weight: 600;
+}
+.wb-l-q {
+  display: block;
+  color: var(--wb-ink-soft);
+  font-size: 0.84rem;
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+.wb-l-none {
+  color: var(--wb-ink-soft);
+}
+.wb-c-entry {
+  min-width: 12rem;
+  max-width: 22rem;
+}
+.wb-c-answer {
+  min-width: 14rem;
+  line-height: 1.45;
+}
+.wb-c-status,
+.wb-c-updated,
+.wb-c-date,
+.wb-c-evidence,
+.wb-c-kind {
+  white-space: nowrap;
+}
+.wb-row-superseded .wb-l-title,
+.wb-row-retracted .wb-l-title {
+  font-weight: 500;
+  color: var(--wb-ink-soft);
+}
+.wb-list-empty {
+  color: var(--wb-ink-soft);
+  font-style: italic;
+}
+
+/* Home: chapter overview. */
+.wb-chapters {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 0.6rem 0 1.6rem;
+}
+.wb-chapters th {
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--wb-ink-soft);
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--wb-rule);
+}
+.wb-chapters td {
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid var(--wb-rule);
+  vertical-align: top;
+}
+.wb-ch-name a {
+  font-weight: 600;
+}
+.wb-ch-sum {
+  display: block;
+  color: var(--wb-ink-soft);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+  line-height: 1.4;
+  max-width: 46rem;
+}
+.wb-ch-counts {
+  white-space: nowrap;
+  width: 1%;
+}
+.wb-count {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0 0.45rem;
+  margin: 0 0.2rem 0.2rem 0;
+  border-radius: 999px;
+  background: var(--wb-panel);
+  color: var(--wb-ink-soft);
+  border: 1px solid var(--wb-rule);
+  text-decoration: none;
+}
+.wb-count-backlog {
+  background: transparent;
+  border-style: dashed;
+  color: var(--wb-ink);
+}
+.wb-count-current {
+  background: var(--wb-current-bg);
+  color: var(--wb-current-fg);
+  border-color: transparent;
+}
+.wb-count-running {
+  background: var(--wb-running-bg);
+  color: var(--wb-running-fg);
+  border-color: transparent;
+}
+.wb-count-planned {
+  background: var(--wb-planned-bg);
+  color: var(--wb-planned-fg);
+  border-color: transparent;
+}
+.wb-count-retracted {
+  background: var(--wb-retracted-bg);
+  color: var(--wb-retracted-fg);
+  border-color: transparent;
+}
+
+/* A new workbook's first screen. */
+.wb-start {
+  background: var(--wb-panel);
+  border: 1px solid var(--wb-rule);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.wb-start-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+.wb-start ol {
+  margin-bottom: 0.6rem;
+}
+.wb-start code {
+  overflow-wrap: anywhere;
+}
+
+/* Narrow lists (phones, or a narrow column on any screen): rows become stacked
+   cards, so nothing scrolls the page sideways. A container query rather than a
+   media query, because the sidebar changes the width a list actually gets. */
+@container (max-width: 760px) {
+  .wb-chapters thead {
+    display: none;
+  }
+  .wb-list-table,
+  .wb-list-table tbody,
+  .wb-chapters,
+  .wb-chapters tbody,
+  .wb-chapters tr,
+  .wb-chapters td {
+    display: block;
+    width: auto;
+  }
+  /* Sortable lists keep their sort buttons, as a row above the cards. */
+  .wb-list-table thead {
+    display: block;
+  }
+  .wb-list-table thead tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.9rem;
+    border-bottom: 1px solid var(--wb-rule);
+    padding: 0.2rem 0 0.5rem;
+  }
+  .wb-list-table thead tr::before {
+    content: "Sort by";
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--wb-ink-soft);
+  }
+  .wb-list-table thead th {
+    display: block;
+    border: 0;
+    padding: 0.2rem 0;
+  }
+  .wb-list-table thead th:not([aria-sort]) {
+    display: none;
+  }
+  .wb-list-table:not(:has(th[aria-sort])) thead {
+    display: none;
+  }
+  /* Each row becomes a card: title and question, then one line of status and
+     dates, then the answer. */
+  .wb-list-table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.8rem;
+    border-bottom: 1px solid var(--wb-rule);
+    padding: 0.65rem 0;
+  }
+  .wb-list-table td {
+    display: block;
+    border: 0;
+    padding: 0;
+    min-width: 0;
+    max-width: none;
+    order: 1;
+  }
+  .wb-list-table td.wb-c-entry {
+    flex-basis: 100%;
+    order: 0;
+  }
+  .wb-list-table td.wb-c-answer,
+  .wb-list-table td.wb-c-question {
+    flex-basis: 100%;
+    order: 2;
+    margin-top: 0.2rem;
+  }
+  .wb-list-table td.wb-c-evidence::before,
+  .wb-list-table td.wb-c-updated::before,
+  .wb-list-table td.wb-c-date::before,
+  .wb-list-table td.wb-c-kind::before,
+  .wb-chapters td.wb-ch-counts::before {
+    content: attr(data-label) " ";
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--wb-ink-soft);
+    margin-right: 0.25rem;
+  }
+  .wb-chapters tr {
+    border-bottom: 1px solid var(--wb-rule);
+    padding: 0.6rem 0;
+  }
+  .wb-chapters td {
+    border: 0;
+    padding: 0.1rem 0;
+  }
+  .wb-ch-counts {
+    white-space: normal;
+    width: auto;
+  }
+}
+@media (max-width: 720px) {
+  main.content
+    table:not(.wb-list-table):not(.wb-chapters):not(.wb-table table) {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  /* The phone top bar shows only the current page, on one line. */
+  .quarto-secondary-nav .breadcrumb {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .quarto-secondary-nav .breadcrumb-item:not(:last-child) {
+    display: none;
+  }
+  .quarto-secondary-nav .breadcrumb-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .quarto-secondary-nav .breadcrumb-item::before {
+    display: none;
+  }
+}
+
+.wb-error {
+  color: var(--wb-retracted-fg);
+  background: var(--wb-retracted-bg);
+  padding: 0 0.3rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------ v3 refinements */
+
+/* Phone top bar: the page name shrinks and truncates; the menu and search
+   buttons keep their size, so search never leaves the screen. */
+.quarto-secondary-nav .container-fluid {
+  min-width: 0;
+}
+.quarto-secondary-nav .quarto-page-breadcrumbs {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb,
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item {
+  min-width: 0;
+}
+.quarto-secondary-nav .quarto-btn-toggle,
+.quarto-secondary-nav #quarto-search,
+.quarto-secondary-nav .quarto-search-button,
+.quarto-secondary-nav a[href*="search"],
+.quarto-secondary-nav button:not(.quarto-btn-toggle) {
+  flex: none;
+}
+
+/* Keep the scroll cue while a table has keyboard focus. */
+.wb-scrolls .wb-table-scroll:focus-visible {
+  box-shadow: inset -16px 0 14px -14px var(--wb-shadow) !important;
+}
+/* The content region takes focus from the skip link; it is not a control. */
+#quarto-document-content:focus,
+#quarto-document-content:focus-visible {
+  outline: none !important;
+}
+
+/* Tags are links into the catalogue. */
+a.wb-tag {
+  color: var(--bs-link-color, var(--wb-focus));
+}
+.wb-list-tag {
+  font-size: 0.85rem;
+  color: var(--wb-ink-soft);
+  margin: 0 0 0.5rem;
+}
+.wb-list-tag button {
+  font: inherit;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--wb-rule);
+  border-radius: 999px;
+  background: var(--wb-panel);
+  color: var(--wb-ink);
+  cursor: pointer;
+}
+
+@container (max-width: 760px) {
+  /* The sort row sizes to its labels, not to the table's column widths. */
+  .wb-list-table thead th {
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+  /* Cards: title, then status first on the meta line, then the answer. */
+  .wb-list-table td.wb-c-status {
+    order: 1;
+  }
+  .wb-list-table td.wb-c-chapter,
+  .wb-list-table td.wb-c-kind,
+  .wb-list-table td.wb-c-evidence,
+  .wb-list-table td.wb-c-updated,
+  .wb-list-table td.wb-c-date {
+    order: 2;
+  }
+  .wb-list-table td.wb-c-answer,
+  .wb-list-table td.wb-c-question {
+    order: 3;
+  }
+}
+
+/* Paths move to the next line whole; a path longer than a line breaks after a slash. */
+.wb-path {
+  display: inline-block;
+  max-width: 100%;
+}
+/* The phone top bar's page name has no extra padding in either theme. */
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb {
+  padding: 0 !important;
+  margin: 0 !important;
+}

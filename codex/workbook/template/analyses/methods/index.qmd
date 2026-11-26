@@ -1,0 +1,15 @@
+---
+title: "Shared methods"
+wb-chapter: true
+order: 90
+toc: false
+backlog: []
+---
+
+Methods and data products that several analyses share. An entry's Approach section links these pages instead of repeating them.
+
+## Entries {#entries}
+
+{{< wblist chapter=this sort=title fields="entry,kind,status,updated" empty="No shared methods yet." >}}
+
+{{< wbbacklog >}}

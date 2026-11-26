@@ -1,0 +1,40 @@
+---
+title: "{{title}}"
+question: "What does this analysis ask?"
+answer: "Pending."
+kind: analysis
+status: {{status}}
+evidence: ""
+date: {{date}}
+updated: {{date}}
+chapter: {{chapter}}
+categories: []
+plan: ""
+methods: []
+supersedes: []
+superseded_by: []
+related: []
+code: []
+outputs: ""
+record: ""
+jobs: []
+viewer: ""
+log:
+  - "{{date}} — Entry created."
+---
+
+## Approach
+
+<!-- wb: Brief methods, at most about 200 words, in this order: data (which betas or inputs, how many participants and runs), model or statistic, validation scheme, inferential test and its null, correction for multiple comparisons. Link shared methods with a wbref shortcode rather than repeating them. Say what was fixed in advance and what was chosen after looking at the data. -->
+
+## Results
+
+<!-- wb: Lead with one sentence that states the result. Then at most three figures or tables, each snapped into assets/ with wb snap. Give every figure a caption that says what is plotted, the n, and what the error bars or bands mean. Put an evidence link after each number that is not in a table on this page. -->
+
+## Interpretation
+
+<!-- wb: What the result establishes and what it does not. How it changes the chapter's account. Distinguish a null result from evidence of absence. -->
+
+## Caveats
+
+<!-- wb: Limitations, circularity, exploratory choices, untested assumptions, and checks that were not run. -->

@@ -1,0 +1,12 @@
+---
+title: "Glossary"
+toc: true
+---
+
+The words this workbook uses for its tasks, windows, data products and methods. Entries use these terms and no synonyms. When a term changes, update this page and the `terms` list in `_workbook.yml` together.
+
+<!-- wb: One definition list item per term, alphabetical. Give the preferred term, a one-sentence definition, and the synonyms it replaces.
+
+Term
+: Definition in one sentence. *Replaces:* old name, other old name.
+-->

@@ -1,0 +1,8 @@
+---
+title: "Recent changes"
+toc: false
+---
+
+The forty most recently updated entries. Each entry's history, at the foot of its page, says what changed.
+
+{{< wblist sort=updated limit=40 fields="updated,entry,status,answer" >}}
